@@ -1,0 +1,709 @@
+[gd_scene load_steps=32 format=3 uid="uid://cwyivfx8wgtmv"]
+
+[ext_resource type="Script" uid="uid://8ns0f2y8stm7" path="res://features/portal/portal.gd" id="1_5qe4s"]
+[ext_resource type="Texture2D" uid="uid://daeplqk8xxe5y" path="res://assets/environment/shadow.png" id="1_6xn3f"]
+[ext_resource type="Shader" uid="uid://b6lrylsvvbgfk" path="res://assets/shaders/portalswirl.gdshader" id="2_drdhw"]
+[ext_resource type="Texture2D" uid="uid://b7jaqmeovjg8m" path="res://assets/img/portal frame2-empty.png" id="3_5qe4s"]
+[ext_resource type="Shader" uid="uid://dao5vv2l5c0q8" path="res://assets/shaders/fade_changeTexture.gdshader" id="3_8c0hn"]
+[ext_resource type="Texture2D" uid="uid://c156pm2h7r1xm" path="res://assets/img/portal frame2.png" id="4_4o7wp"]
+[ext_resource type="Texture2D" uid="uid://3vpqw3wymof6" path="res://assets/32x32 textures (52).png" id="5_5qe4s"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hl71l"]
+frequency = 0.0245
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i0td8"]
+noise = SubResource("FastNoiseLite_hl71l")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yle5p"]
+shader = ExtResource("3_8c0hn")
+shader_parameter/new_texture = ExtResource("4_4o7wp")
+shader_parameter/transition_value = 0.0
+shader_parameter/mask_texture = SubResource("NoiseTexture2D_i0td8")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5qe4s"]
+noise_type = 0
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j4o3x"]
+noise = SubResource("FastNoiseLite_5qe4s")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4o3x"]
+shader = ExtResource("2_drdhw")
+shader_parameter/portal_texture = SubResource("NoiseTexture2D_j4o3x")
+shader_parameter/portal_tint = Color(0.58479977, 0.17806673, 0.58825254, 1)
+shader_parameter/vortex_effect_radius = 0.5
+shader_parameter/twist_strength = 0.05
+shader_parameter/swirl_speed = 0.05000007525106031
+shader_parameter/pulsation_speed = 0.3499999921768
+shader_parameter/breath_magnitude = 0.05
+shader_parameter/overall_rotation_speed = 0.25
+shader_parameter/texture_scroll_speed_x = 0.08
+shader_parameter/texture_scroll_speed_y = 0.03
+shader_parameter/edge_softness = 0.1
+
+[sub_resource type="QuadMesh" id="QuadMesh_8c0hn"]
+size = Vector2(1100, 1100)
+
+[sub_resource type="Animation" id="Animation_5qe4s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PortalFrame:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PortalFrame:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shadow:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PortalFrame/MagicCircle:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.50000006, 0.50000006)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PortalFrame:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shadow:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PortalFrame:use_parent_material")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PortalFrame:material:shader_parameter/transition_value")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PortalFrame/crystal_light/PointLight2D:texture_scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PortalFrame/crystal_light/PointLight2D2:texture_scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PortalFrame/crystal_light/PointLight2D3:texture_scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PortalFrame/crystal_light/PointLight2D4:texture_scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+
+[sub_resource type="Animation" id="Animation_8c0hn"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PortalFrame:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_drdhw"]
+resource_name = "portal"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PortalFrame:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PortalFrame:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shadow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PortalFrame/MagicCircle:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.7, 1.7)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PortalFrame:use_parent_material")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PortalFrame:material:shader_parameter/transition_value")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PortalFrame/crystal_light/PointLight2D:texture_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PortalFrame/crystal_light/PointLight2D2:texture_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PortalFrame/crystal_light/PointLight2D3:texture_scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PortalFrame/crystal_light/PointLight2D4:texture_scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_j4o3x"]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PortalFrame:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PortalFrame/MagicCircle:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.7, 1.7)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shadow:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PortalFrame:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PortalFrame:use_parent_material")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.03),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PortalFrame:material:shader_parameter/transition_value")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.11, 3.0666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_4o7wp"]
+resource_name = "spawn_2"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PortalFrame:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-1.0666667, -0.06666672),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-1.0666667, -0.06666672),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PortalFrame/MagicCircle:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.1666665, 3.8333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.7, 1.7)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shadow:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(-1.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PortalFrame:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(-1.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PortalFrame:use_parent_material")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(-1.0666667, -0.03666675),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PortalFrame:material:shader_parameter/transition_value")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.043333292, 1.9999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PortalFrame/crystal_light/PointLight2D:texture_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PortalFrame/crystal_light/PointLight2D2:texture_scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 1.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PortalFrame/crystal_light/PointLight2D3:texture_scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PortalFrame/crystal_light/PointLight2D4:texture_scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(2.0333333, 4.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 2.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j4o3x"]
+_data = {
+&"RESET": SubResource("Animation_5qe4s"),
+&"default": SubResource("Animation_8c0hn"),
+&"portal": SubResource("Animation_drdhw"),
+&"spawn": SubResource("Animation_j4o3x"),
+&"spawn_2": SubResource("Animation_4o7wp")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j4o3x"]
+animation = &"default"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_drdhw"]
+animation = &"portal"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5qe4s"]
+animation = &"spawn"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hl71l"]
+animation = &"spawn_2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4o7wp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hl71l"]
+advance_mode = 2
+advance_condition = &"portal_spawn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i0td8"]
+advance_mode = 2
+advance_condition = &"crystal_placed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yle5p"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8c0hn"]
+advance_mode = 2
+advance_condition = &"crystal_placed"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_j4o3x"]
+states/Start/position = Vector2(191, 111)
+states/default/node = SubResource("AnimationNodeAnimation_j4o3x")
+states/default/position = Vector2(368, 157)
+states/portal/node = SubResource("AnimationNodeAnimation_drdhw")
+states/portal/position = Vector2(759, 134)
+states/spawn/node = SubResource("AnimationNodeAnimation_5qe4s")
+states/spawn/position = Vector2(454, 66)
+states/spawn_2/node = SubResource("AnimationNodeAnimation_hl71l")
+states/spawn_2/position = Vector2(604, 48)
+transitions = ["Start", "default", SubResource("AnimationNodeStateMachineTransition_4o7wp"), "default", "spawn", SubResource("AnimationNodeStateMachineTransition_hl71l"), "spawn", "spawn_2", SubResource("AnimationNodeStateMachineTransition_i0td8"), "spawn_2", "portal", SubResource("AnimationNodeStateMachineTransition_yle5p"), "default", "portal", SubResource("AnimationNodeStateMachineTransition_8c0hn")]
+graph_offset = Vector2(55, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qe4s"]
+size = Vector2(18, 9)
+
+[node name="Portal" type="Node2D"]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_5qe4s")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(0.9999999, -5)
+scale = Vector2(0.685, 0.252)
+texture = ExtResource("1_6xn3f")
+offset = Vector2(0, 19.28)
+
+[node name="PortalFrame" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_yle5p")
+use_parent_material = true
+scale = Vector2(0.016, 0.016)
+texture = ExtResource("3_5qe4s")
+offset = Vector2(0, -1000)
+
+[node name="MagicCircle" type="MeshInstance2D" parent="PortalFrame"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_j4o3x")
+position = Vector2(0, -999.9999)
+scale = Vector2(0.50000006, 0.50000006)
+mesh = SubResource("QuadMesh_8c0hn")
+
+[node name="crystal_light" type="Node2D" parent="PortalFrame"]
+position = Vector2(0, 21.856485)
+scale = Vector2(62.499996, 62.499996)
+
+[node name="PointLight2D" type="PointLight2D" parent="PortalFrame/crystal_light"]
+position = Vector2(-9, -7.349704)
+color = Color(1, 0, 0, 1)
+texture = ExtResource("5_5qe4s")
+texture_scale = 0.01
+
+[node name="PointLight2D2" type="PointLight2D" parent="PortalFrame/crystal_light"]
+position = Vector2(10, -7.349704)
+color = Color(0.35563087, 1, 0.16459775, 1)
+texture = ExtResource("5_5qe4s")
+texture_scale = 0.01
+
+[node name="PointLight2D3" type="PointLight2D" parent="PortalFrame/crystal_light"]
+position = Vector2(0, -29.349705)
+color = Color(0, 0.88627577, 1, 1)
+texture = ExtResource("5_5qe4s")
+texture_scale = 0.01
+
+[node name="PointLight2D4" type="PointLight2D" parent="PortalFrame/crystal_light"]
+position = Vector2(0, -16.349705)
+texture = ExtResource("5_5qe4s")
+texture_scale = 0.01
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_j4o3x")
+}
+autoplay = "default"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/..")
+tree_root = SubResource("AnimationNodeStateMachine_j4o3x")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/crystal_placed = false
+parameters/conditions/portal_spawn = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Collision" type="CollisionPolygon2D" parent="StaticBody2D"]
+unique_name_in_owner = true
+polygon = PackedVector2Array(-14, -2, -10, -15, 10, -15, 13, -2, 20, -2, 16, -27, 0, -35, -15, -26, -21, -2)
+
+[node name="portal_detector" type="Area2D" parent="."]
+
+[node name="portal_collider" type="CollisionShape2D" parent="portal_detector"]
+unique_name_in_owner = true
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_5qe4s")
+
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="body_entered" from="portal_detector" to="." method="_on_portal_detector_body_entered"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://k7ytn73rl7ca"]
+
+[ext_resource type="Script" uid="uid://n4tvfds5vula" path="res://core/components/nav_line/nav_line.gd" id="1_0lu07"]
+
+[node name="NavLine" type="Line2D"]
+script = ExtResource("1_0lu07")

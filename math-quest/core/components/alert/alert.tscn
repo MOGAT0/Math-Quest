@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4xuxte02negr"]
+
+[ext_resource type="Script" uid="uid://bx3a103fvtpo8" path="res://core/components/alert/alert.gd" id="1_otqrp"]
+[ext_resource type="Texture2D" uid="uid://ds8eiokubkr1n" path="res://assets/ui/borders/Border All 1.png" id="2_vh6uj"]
+[ext_resource type="FontFile" uid="uid://wbjufq0cuj84" path="res://assets/fonts/PressStart2P-Regular.ttf" id="3_vh6uj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ijpld"]
+texture = ExtResource("2_vh6uj")
+texture_margin_left = 19.0
+texture_margin_top = 18.0
+texture_margin_right = 19.0
+texture_margin_bottom = 19.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(320, 321, 64, 63)
+
+[node name="alert" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_otqrp")
+
+[node name="popup" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21614583
+anchor_top = 0.084876545
+anchor_right = 0.7838542
+anchor_bottom = 0.15895061
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijpld")
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="popup"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_vh6uj")
+theme_override_font_sizes/font_size = 11
+text = "class starts from 4am to 9pm Please comeback again later"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,544 @@
+[gd_scene load_steps=9 format=3 uid="uid://8m0erhru6s7"]
+
+[ext_resource type="Texture2D" uid="uid://bjhoy02veiaxu" path="res://icon.svg" id="1_1ig7j"]
+[ext_resource type="Script" uid="uid://bbs00uxb6wb8i" path="res://scenes/lobby/lobby.gd" id="1_ukx7c"]
+[ext_resource type="Texture2D" uid="uid://kka18xd8iy8b" path="res://assets/ui/background.png" id="2_jekxk"]
+[ext_resource type="Texture2D" uid="uid://ch4jme7cfq17y" path="res://assets/ui/book.png" id="3_i6yme"]
+[ext_resource type="Texture2D" uid="uid://c6ecqidqdfeu3" path="res://assets/models/teacher/1.png" id="3_mlusu"]
+[ext_resource type="FontFile" uid="uid://dtymm3qpgc6ar" path="res://assets/fonts/Book.otf" id="4_stkcr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_stkcr"]
+texture = ExtResource("3_i6yme")
+region_rect = Rect2(92, 42, 1104, 630)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_mlusu"]
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ukx7c")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jekxk")
+expand_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(864, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -432.0
+offset_top = -250.0
+offset_right = 432.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_stkcr")
+
+[node name="class_creation" type="VBoxContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/class_creation"]
+custom_minimum_size = Vector2(0, 330.335)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/class_creation/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 40
+
+[node name="class_info" type="VBoxContainer" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer/class_info"]
+texture_filter = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_stkcr")
+theme_override_font_sizes/font_size = 30
+text = "Class Information"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer/class_info"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer/class_info"]
+texture_filter = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_stkcr")
+theme_override_font_sizes/font_size = 18
+text = "Class Name"
+vertical_alignment = 1
+
+[node name="class_name_inp" type="LineEdit" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer/class_info"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer/class_info"]
+texture_filter = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_stkcr")
+theme_override_font_sizes/font_size = 20
+text = "Assigned Teacher"
+vertical_alignment = 1
+
+[node name="teacher_name_inp" type="LineEdit" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer/class_info"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/class_creation/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/class_creation/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 90
+
+[node name="avatar" type="VBoxContainer" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer2/avatar"]
+texture_filter = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_stkcr")
+theme_override_font_sizes/font_size = 30
+text = "Avatar Selection"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer2/avatar"]
+layout_mode = 2
+
+[node name="avatar_selection" type="HBoxContainer" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer2/avatar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="prev_T_avatar" type="Button" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer2/avatar/avatar_selection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+text = "<"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer2/avatar/avatar_selection"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="T_avatar_preview" type="Sprite2D" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer2/avatar/avatar_selection/TextureRect"]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(1, 0)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("3_mlusu")
+hframes = 3
+vframes = 4
+frame = 1
+
+[node name="next_T_avatar" type="Button" parent="PanelContainer/class_creation/HBoxContainer/MarginContainer2/avatar/avatar_selection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+text = ">"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/class_creation"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="return_to_home" type="Button" parent="PanelContainer/class_creation/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
+text = "Home"
+
+[node name="next_to_student_creation" type="Button" parent="PanelContainer/class_creation/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
+text = "Next"
+
+[node name="student_creation" type="VBoxContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/student_creation"]
+custom_minimum_size = Vector2(0, 330.335)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/student_creation/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 40
+
+[node name="add_students" type="VBoxContainer" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer/add_students"]
+layout_mode = 2
+text = "Student Entry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer/add_students"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer/add_students"]
+layout_mode = 2
+text = "Student Name:"
+
+[node name="student_name_inp" type="LineEdit" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer/add_students"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Full Name"
+
+[node name="avatar_selection" type="HBoxContainer" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer/add_students"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="prev_S_avatar" type="Button" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer/add_students/avatar_selection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "<"
+
+[node name="S_avatar_preview" type="TextureRect" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer/add_students/avatar_selection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("1_1ig7j")
+expand_mode = 1
+
+[node name="next_S_avatar" type="Button" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer/add_students/avatar_selection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = ">"
+
+[node name="add_student" type="Button" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer/add_students"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "+ Add Student"
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/student_creation/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/student_creation/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 90
+
+[node name="classRecord" type="VBoxContainer" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer2/classRecord"]
+layout_mode = 2
+text = "List Of Students"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer2/classRecord"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer2/classRecord"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="student_lists" type="VBoxContainer" parent="PanelContainer/student_creation/HBoxContainer/MarginContainer2/classRecord/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/student_creation"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="return_to_teacher_creation" type="Button" parent="PanelContainer/student_creation/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
+text = "Return"
+
+[node name="next_to_activities" type="Button" parent="PanelContainer/student_creation/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
+text = "Submit"
+
+[node name="activity_creation" type="VBoxContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/activity_creation"]
+custom_minimum_size = Vector2(0, 330.335)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/activity_creation/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Create Quest"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Question:"
+
+[node name="question_inp" type="LineEdit" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Enter Text"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="header" type="HBoxContainer" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/header"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Question"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/header"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Answer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="option1" type="HBoxContainer" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/option1"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="opt_a_inp" type="LineEdit" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/option1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="option_a" type="CheckBox" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/option1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+button_group = SubResource("ButtonGroup_mlusu")
+
+[node name="option2" type="HBoxContainer" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/option2"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="opt_b_inp" type="LineEdit" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/option2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="option_b" type="CheckBox" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/option2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+button_group = SubResource("ButtonGroup_mlusu")
+
+[node name="option3" type="HBoxContainer" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/option3"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "C"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="opt_c_inp" type="LineEdit" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/option3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="option_c" type="CheckBox" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/option3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+button_group = SubResource("ButtonGroup_mlusu")
+
+[node name="option4" type="HBoxContainer" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/option4"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="opt_d_inp" type="LineEdit" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/option4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="option_d" type="CheckBox" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/option4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+button_group = SubResource("ButtonGroup_mlusu")
+
+[node name="save_quest" type="Button" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Save Quest"
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/activity_creation/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 90
+
+[node name="QuestLog" type="VBoxContainer" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer2/QuestLog"]
+layout_mode = 2
+text = "Quest Logs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/activity_creation/HBoxContainer/MarginContainer2/QuestLog"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/activity_creation"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 40
+
+[node name="return_to_student_creation" type="Button" parent="PanelContainer/activity_creation/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
+text = "Return"
+
+[node name="next_to_game" type="Button" parent="PanelContainer/activity_creation/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
+text = "Submit"
+
+[connection signal="pressed" from="PanelContainer/class_creation/HBoxContainer/MarginContainer2/avatar/avatar_selection/prev_T_avatar" to="." method="_on_prev_t_avatar_pressed"]
+[connection signal="pressed" from="PanelContainer/class_creation/HBoxContainer/MarginContainer2/avatar/avatar_selection/next_T_avatar" to="." method="_on_next_t_avatar_pressed"]
+[connection signal="pressed" from="PanelContainer/class_creation/HBoxContainer2/return_to_home" to="." method="_on_return_to_home_pressed"]
+[connection signal="pressed" from="PanelContainer/class_creation/HBoxContainer2/next_to_student_creation" to="." method="_on_next_to_student_creation_pressed"]
+[connection signal="pressed" from="PanelContainer/student_creation/HBoxContainer/MarginContainer/add_students/avatar_selection/prev_S_avatar" to="." method="_on_prev_s_avatar_pressed"]
+[connection signal="pressed" from="PanelContainer/student_creation/HBoxContainer/MarginContainer/add_students/avatar_selection/next_S_avatar" to="." method="_on_next_s_avatar_pressed"]
+[connection signal="pressed" from="PanelContainer/student_creation/HBoxContainer/MarginContainer/add_students/add_student" to="." method="_on_add_student_pressed"]
+[connection signal="pressed" from="PanelContainer/student_creation/HBoxContainer2/return_to_teacher_creation" to="." method="_on_return_to_teacher_creation_pressed"]
+[connection signal="pressed" from="PanelContainer/student_creation/HBoxContainer2/next_to_activities" to="." method="_on_next_to_activities_pressed"]
+[connection signal="pressed" from="PanelContainer/activity_creation/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/save_quest" to="." method="_on_save_quest_pressed"]
+[connection signal="pressed" from="PanelContainer/activity_creation/HBoxContainer2/return_to_student_creation" to="." method="_on_return_to_student_creation_pressed"]
+[connection signal="pressed" from="PanelContainer/activity_creation/HBoxContainer2/next_to_game" to="." method="_on_next_to_game_pressed"]

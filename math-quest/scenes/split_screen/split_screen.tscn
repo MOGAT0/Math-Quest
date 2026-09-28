@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://d22cqu26ldbug"]
+
+[ext_resource type="PackedScene" uid="uid://dhqbio0n88xsb" path="res://scenes/test scene/test_scene.tscn" id="1_ua7j0"]
+
+[node name="splitScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
+
+[node name="test_scene" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_ua7j0")]
+
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(260.65, 0)
+layout_mode = 2

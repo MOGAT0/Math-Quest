@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjxsw4iq3hdwy"]
+
+[ext_resource type="Script" uid="uid://djkmxp13svhc3" path="res://core/components/quest_list/quest.gd" id="1_akswx"]
+
+[node name="quest" type="HBoxContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_akswx")
+
+[node name="question" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "what are the 4 pillars of OOP ajdhkjadshakskjdhkahskdhkjahskjdhkajhskdhkashdkhakshdkhakshdkahskdhakshdkahskdhkashdkhaskdkahsdjasdasdasdasda"
+scroll_following = true
+autowrap_mode = 1
+
+[node name="edit" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "edit"

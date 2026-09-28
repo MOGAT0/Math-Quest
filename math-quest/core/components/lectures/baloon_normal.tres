@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bny3euip5et3t"]
+
+[ext_resource type="Texture2D" uid="uid://bwfk8f8umo2hu" path="res://assets/ui/icon/icons8-party-balloon-100.png" id="1_sl0vv"]
+
+[resource]
+texture = ExtResource("1_sl0vv")

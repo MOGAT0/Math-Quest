@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhqbio0n88xsb"]
+
+[ext_resource type="Script" uid="uid://cmg2ourjvd5ox" path="res://scenes/test scene/test_scene.gd" id="1_5kwxl"]
+[ext_resource type="PackedScene" uid="uid://d2tlvphqoq6ok" path="res://features/player/player.tscn" id="2_s5g1l"]
+[ext_resource type="PackedScene" uid="uid://crwgkc7df5lli" path="res://features/merchants/merchant.tscn" id="3_s5g1l"]
+[ext_resource type="PackedScene" uid="uid://1yiwylntb47y" path="res://features/arith/arith.tscn" id="4_lm4l5"]
+
+[node name="test_scene" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_5kwxl")
+
+[node name="Player" parent="." node_paths=PackedStringArray("target", "side_quest_targets") instance=ExtResource("2_s5g1l")]
+position = Vector2(97.35989, -20.555206)
+target = NodePath("../Marker2D")
+side_quest_targets = {
+"quest1": NodePath("../Marker2D2"),
+"quest2": NodePath("../Marker2D3"),
+"quest3": NodePath("../Marker2D4")
+}
+
+[node name="merchant" parent="." instance=ExtResource("3_s5g1l")]
+position = Vector2(32, 48)
+
+[node name="merchant2" parent="." instance=ExtResource("3_s5g1l")]
+position = Vector2(40, -40)
+
+[node name="merchant3" parent="." instance=ExtResource("3_s5g1l")]
+position = Vector2(104, 56)
+
+[node name="merchant4" parent="." instance=ExtResource("3_s5g1l")]
+position = Vector2(168, -24)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-184, -88)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(168, 176)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(240, 152)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(304, 96)
+
+[node name="Arith" parent="." node_paths=PackedStringArray("player_node") instance=ExtResource("4_lm4l5")]
+player_node = NodePath("../Player")

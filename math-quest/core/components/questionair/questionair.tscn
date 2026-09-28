@@ -1,0 +1,363 @@
+[gd_scene load_steps=9 format=3 uid="uid://bar0mm1l54wsx"]
+
+[ext_resource type="Script" uid="uid://cvhgrfs8o61sm" path="res://core/components/questionair/questionair.gd" id="1_kv7ik"]
+[ext_resource type="FontFile" uid="uid://dtymm3qpgc6ar" path="res://assets/fonts/Book.otf" id="3_wt8rx"]
+[ext_resource type="Texture2D" uid="uid://wv3l3r6447vt" path="res://assets/ui/fantasy_UI/RectangleBox_96x96.png" id="4_gugih"]
+[ext_resource type="PackedScene" uid="uid://dl45qm5g5l0pn" path="res://core/components/student_list/answering_stdnt_selct.tscn" id="4_lt2cl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lt2cl"]
+content_margin_top = 25.0
+content_margin_bottom = 25.0
+texture = ExtResource("4_gugih")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(0, 0, 96, 96)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s27yj"]
+texture = ExtResource("4_gugih")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(0, 0, 96, 96)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wt8rx"]
+texture = ExtResource("4_gugih")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(0, 0, 96, 96)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gugih"]
+texture = ExtResource("4_gugih")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(0, 0, 96, 96)
+
+[node name="Questionair" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kv7ik")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+draw_focus_border = true
+horizontal_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 597)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/HBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_lt2cl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/HBoxContainer/ScrollContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/HBoxContainer/ScrollContainer/PanelContainer/VBoxContainer"]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wt8rx")
+theme_override_font_sizes/font_size = 30
+text = "Student List"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="searchbar" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/ScrollContainer/PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/HBoxContainer/ScrollContainer/PanelContainer/VBoxContainer/searchbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search"
+
+[node name="Button" type="Button" parent="ScrollContainer/HBoxContainer/ScrollContainer/PanelContainer/VBoxContainer/searchbar"]
+texture_filter = 2
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "enter"
+
+[node name="student_list" type="VBoxContainer" parent="ScrollContainer/HBoxContainer/ScrollContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="answering_stdnt_selct" parent="ScrollContainer/HBoxContainer/ScrollContainer/PanelContainer/VBoxContainer/student_list" instance=ExtResource("4_lt2cl")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15.715, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_constants/separation = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_s27yj")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="question_text" type="RichTextLabel" parent="ScrollContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+texture_filter = 2
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "ajsdhkajhsdkhkahskdhkaskdhas
+asd
+a
+"
+fit_content = true
+scroll_following = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="option_a" type="Button" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+flat = true
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/option_a"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_wt8rx")
+
+[node name="Label" type="Label" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/option_a/PanelContainer"]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wt8rx")
+theme_override_font_sizes/font_size = 25
+text = "A."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gugih")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="option_a" type="RichTextLabel" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer"]
+unique_name_in_owner = true
+texture_filter = 2
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "asdasdasd"
+fit_content = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="option_b" type="Button" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+flat = true
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/option_b"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_wt8rx")
+
+[node name="Label" type="Label" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/option_b/PanelContainer"]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wt8rx")
+theme_override_font_sizes/font_size = 25
+text = "B."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gugih")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="option_b" type="RichTextLabel" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer2/MarginContainer"]
+unique_name_in_owner = true
+texture_filter = 2
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "asdasdasd"
+fit_content = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="option_c" type="Button" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+flat = true
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/option_c"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_wt8rx")
+
+[node name="Label" type="Label" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/option_c/PanelContainer"]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wt8rx")
+theme_override_font_sizes/font_size = 25
+text = "C."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gugih")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="option_c" type="RichTextLabel" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/PanelContainer2/MarginContainer"]
+unique_name_in_owner = true
+texture_filter = 2
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "asdasdasd"
+fit_content = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="option_d" type="Button" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+flat = true
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/option_d"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_wt8rx")
+
+[node name="Label" type="Label" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/option_d/PanelContainer"]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wt8rx")
+theme_override_font_sizes/font_size = 25
+text = "D."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gugih")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="option_d" type="RichTextLabel" parent="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/PanelContainer2/MarginContainer"]
+unique_name_in_owner = true
+texture_filter = 2
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "asdasdasd"
+fit_content = true
+
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/option_a" to="." method="_on_option_a_pressed"]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2/option_b" to="." method="_on_option_b_pressed"]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3/option_c" to="." method="_on_option_c_pressed"]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer4/option_d" to="." method="_on_option_d_pressed"]

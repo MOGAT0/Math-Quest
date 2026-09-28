@@ -1,0 +1,1045 @@
+[gd_scene load_steps=24 format=3 uid="uid://dn0hrii7hrb35"]
+
+[ext_resource type="Script" uid="uid://dw6nnr8gkalcg" path="res://core/components/handbook/hand_book.gd" id="1_uc3o8"]
+[ext_resource type="Texture2D" uid="uid://cw4iqu52ngd1" path="res://mathquest_logo(circle).png" id="2_6tkef"]
+[ext_resource type="Texture2D" uid="uid://pck4bm7vpyxh" path="res://assets/ui/icon/icons8-star-100-2.png" id="3_6tkef"]
+[ext_resource type="Texture2D" uid="uid://bt8mo0ytc3v61" path="res://assets/ui/icon/icons8-star-100.png" id="3_nwjl5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8w5w"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(1, 0.98039216, 0.9254902, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+shadow_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6tkef"]
+content_margin_left = 24.0
+content_margin_top = 8.0
+content_margin_right = 24.0
+content_margin_bottom = 8.0
+bg_color = Color(0.54509807, 0.7647059, 0.2901961, 1)
+border_width_bottom = 4
+border_color = Color(0.40784314, 0.62352943, 0.21960784, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uc3o8"]
+content_margin_left = 24.0
+content_margin_top = 8.0
+content_margin_right = 24.0
+content_margin_bottom = 8.0
+bg_color = Color(0.4497363, 0.51171875, 0.37779236, 1)
+border_width_bottom = 4
+border_color = Color(0.27765498, 0.36328125, 0.20292664, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uc3o8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwjl5"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.84313726, 0.8, 0.78431374, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxm81"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.84313726, 0.8, 0.78431374, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htfoj"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.84313726, 0.8, 0.78431374, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qf7rp"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.627451, 0.83137256, 0.40784314, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ccem"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.99215686, 0.9411765, 0.8352941, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfmpo"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.84313726, 0.8, 0.78431374, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07fqf"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.9882353, 0.89411765, 0.9254902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95686275, 0.56078434, 0.69411767, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qb4ev"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.84313726, 0.8, 0.78431374, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ls73"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.88235295, 0.9607843, 0.99607843, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.5058824, 0.83137256, 0.98039216, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x20l8"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(1, 0.9529412, 0.8784314, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.8, 0.5019608, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdx41"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.9529412, 0.8980392, 0.9607843, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.80784315, 0.5764706, 0.84705883, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oleom"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.84313726, 0.8, 0.78431374, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtqox"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.9764706, 0.9764706, 0.9764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xccrw"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.9764706, 0.9764706, 0.9764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28r0e"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.9764706, 0.9764706, 0.9764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="HandBook" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uc3o8")
+
+[node name="_MarginContainer_2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="_PanelContainer_3" type="PanelContainer" parent="_MarginContainer_2"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_m8w5w")
+
+[node name="_VBoxContainer_4" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="_HBoxContainer_9" type="HBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4"]
+layout_mode = 2
+alignment = 1
+
+[node name="_HBoxContainer_5" type="HBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_HBoxContainer_9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="_TextureRect_6" type="TextureRect" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_HBoxContainer_9/_HBoxContainer_5"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_6tkef")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="_Label_7" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_HBoxContainer_9/_HBoxContainer_5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7607843, 0.09411765, 0.35686275, 1)
+theme_override_font_sizes/font_size = 22
+text = "FOUNDATIONS OF COUNTING"
+
+[node name="close_btn" type="Button" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_HBoxContainer_9"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6tkef")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uc3o8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6tkef")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uc3o8")
+text = "CLOSE"
+
+[node name="_ScrollContainer_10" type="ScrollContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+vertical_scroll_mode = 3
+
+[node name="_VBoxContainer_11" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 24
+
+[node name="_Label_12" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 18
+text = " A Student Handbook for early learners."
+
+[node name="_PanelContainer_18" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_nwjl5")
+
+[node name="_VBoxContainer_13" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_18"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="_Label_14" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_18/_VBoxContainer_13"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.18039216, 0.49019608, 0.19607843, 1)
+theme_override_font_sizes/font_size = 18
+text = "THE THREE CORE RULES OF COUNTING"
+
+[node name="_Label_15" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_18/_VBoxContainer_13"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Before counting physical objects, every learner needs to understand three golden principles:"
+
+[node name="_RichTextLabel_17" type="RichTextLabel" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_18/_VBoxContainer_13"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+bbcode_enabled = true
+text = "
+	[color=#C2185B][b]1. STABLE ORDER PRINCIPLE:[/b][/color]
+	Numbers are always spoken in the exact same sequence every time: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10...
+
+	[color=#C2185B][b]2. ONE-TO-ONE CORRESPONDENCE:[/b][/color]
+	Touch or point to exactly one item for every number word spoken. Never count the same item twice, and never skip an item.
+
+	[color=#C2185B][b]3. CARDINALITY PRINCIPLE:[/b][/color]
+	The last number word spoken tells the total quantity of the group. For example, if you count three blocks (\"one, two, three\"), there are three blocks in total.
+	"
+fit_content = true
+
+[node name="_PanelContainer_70" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_jxm81")
+
+[node name="_VBoxContainer_19" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="_Label_20" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.18039216, 0.49019608, 0.19607843, 1)
+theme_override_font_sizes/font_size = 18
+text = "NUMBERS 0 THROUGH 10 (THE FOUNDATION)"
+
+[node name="_GridContainer_21" type="GridContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="_Label_22" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Number"
+
+[node name="_Label_23" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Word"
+
+[node name="_Label_24" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Visual Count"
+
+[node name="_Label_25" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Meaning / Description"
+
+[node name="_Label_26" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "0"
+
+[node name="_Label_27" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Zero"
+
+[node name="_Label_28" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.59607846, 0, 1)
+text = "[ Empty ]"
+
+[node name="_Label_29" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "None; the absence of any objects"
+
+[node name="_Label_30" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "1"
+
+[node name="_Label_31" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "One"
+
+[node name="_Label_32" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.59607846, 0, 1)
+text = "*"
+
+[node name="_Label_33" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "A single item"
+
+[node name="_Label_34" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "2"
+
+[node name="_Label_35" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Two"
+
+[node name="_Label_36" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.59607846, 0, 1)
+text = "**"
+
+[node name="_Label_37" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "A pair (one and one more)"
+
+[node name="_Label_38" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "3"
+
+[node name="_Label_39" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Three"
+
+[node name="_Label_40" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.59607846, 0, 1)
+text = "***"
+
+[node name="_Label_41" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "One more than two"
+
+[node name="_Label_42" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "4"
+
+[node name="_Label_43" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Four"
+
+[node name="_Label_44" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.59607846, 0, 1)
+text = "****"
+
+[node name="_Label_45" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Two pairs (two and two)"
+
+[node name="_Label_46" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "5"
+
+[node name="_Label_47" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Five"
+
+[node name="_Label_48" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.59607846, 0, 1)
+text = "*****"
+
+[node name="_Label_49" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "One full hand / half of ten"
+
+[node name="_Label_50" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "6"
+
+[node name="_Label_51" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Six"
+
+[node name="_Label_52" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.59607846, 0, 1)
+text = "******"
+
+[node name="_Label_53" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Five plus one more"
+
+[node name="_Label_54" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "7"
+
+[node name="_Label_55" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Seven"
+
+[node name="_Label_56" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.59607846, 0, 1)
+text = "*******"
+
+[node name="_Label_57" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Five plus two more"
+
+[node name="_Label_58" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "8"
+
+[node name="_Label_59" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Eight"
+
+[node name="_Label_60" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.59607846, 0, 1)
+text = "********"
+
+[node name="_Label_61" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Four pairs (two groups of four)"
+
+[node name="_Label_62" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "9"
+
+[node name="_Label_63" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Nine"
+
+[node name="_Label_64" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.59607846, 0, 1)
+text = "*********"
+
+[node name="_Label_65" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "One less than ten"
+
+[node name="_Label_66" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "10"
+
+[node name="_Label_67" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Ten"
+
+[node name="_Label_68" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.59607846, 0, 1)
+text = "**********"
+
+[node name="_Label_69" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_70/_VBoxContainer_19/_GridContainer_21"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Two full hands; our base building block"
+
+[node name="_PanelContainer_89" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_htfoj")
+
+[node name="_VBoxContainer_71" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="_Label_72" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.18039216, 0.49019608, 0.19607843, 1)
+theme_override_font_sizes/font_size = 18
+text = "USING A TEN-FRAME"
+
+[node name="_Label_73" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "A Ten-Frame is a 2x5 grid that helps learners 'see' quantities quickly without having to count each item individually (subitizing)."
+
+[node name="_PanelContainer_74" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_qf7rp")
+
+[node name="_VBoxContainer_75" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74"]
+layout_mode = 2
+alignment = 1
+
+[node name="_Label_76" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74/_VBoxContainer_75"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Interactive Blank Ten-Frame: Tap to place counters!"
+horizontal_alignment = 1
+
+[node name="_PanelContainer_77" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74/_VBoxContainer_75"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ccem")
+
+[node name="_GridContainer_78" type="GridContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74/_VBoxContainer_75/_PanelContainer_77"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 5
+
+[node name="_TextureButton_79" type="TextureButton" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74/_VBoxContainer_75/_PanelContainer_77/_GridContainer_78"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_nwjl5")
+texture_pressed = ExtResource("3_6tkef")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="_TextureButton_80" type="TextureButton" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74/_VBoxContainer_75/_PanelContainer_77/_GridContainer_78"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_nwjl5")
+texture_pressed = ExtResource("3_6tkef")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="_TextureButton_81" type="TextureButton" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74/_VBoxContainer_75/_PanelContainer_77/_GridContainer_78"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_nwjl5")
+texture_pressed = ExtResource("3_6tkef")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="_TextureButton_82" type="TextureButton" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74/_VBoxContainer_75/_PanelContainer_77/_GridContainer_78"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_nwjl5")
+texture_pressed = ExtResource("3_6tkef")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="_TextureButton_83" type="TextureButton" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74/_VBoxContainer_75/_PanelContainer_77/_GridContainer_78"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_nwjl5")
+texture_pressed = ExtResource("3_6tkef")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="_TextureButton_84" type="TextureButton" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74/_VBoxContainer_75/_PanelContainer_77/_GridContainer_78"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_nwjl5")
+texture_pressed = ExtResource("3_6tkef")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="_TextureButton_85" type="TextureButton" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74/_VBoxContainer_75/_PanelContainer_77/_GridContainer_78"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_nwjl5")
+texture_pressed = ExtResource("3_6tkef")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="_TextureButton_86" type="TextureButton" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74/_VBoxContainer_75/_PanelContainer_77/_GridContainer_78"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_nwjl5")
+texture_pressed = ExtResource("3_6tkef")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="_TextureButton_87" type="TextureButton" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74/_VBoxContainer_75/_PanelContainer_77/_GridContainer_78"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_nwjl5")
+texture_pressed = ExtResource("3_6tkef")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="_TextureButton_88" type="TextureButton" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_89/_VBoxContainer_71/_PanelContainer_74/_VBoxContainer_75/_PanelContainer_77/_GridContainer_78"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_nwjl5")
+texture_pressed = ExtResource("3_6tkef")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="_PanelContainer_105" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_sfmpo")
+
+[node name="_VBoxContainer_90" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="_Label_91" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.18039216, 0.49019608, 0.19607843, 1)
+theme_override_font_sizes/font_size = 18
+text = "NUMBERS 11 THROUGH 20 (THE 'TEEN' NUMBERS)"
+
+[node name="_Label_92" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Every teen number is made of ONE full group of ten plus extra ones."
+
+[node name="_GridContainer_93" type="GridContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="_Label_94" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90/_GridContainer_93"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "• 11 (Eleven) = 10 + 1"
+
+[node name="_Label_95" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90/_GridContainer_93"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "• 12 (Twelve) = 10 + 2"
+
+[node name="_Label_96" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90/_GridContainer_93"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "• 13 (Thirteen) = 10 + 3"
+
+[node name="_Label_97" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90/_GridContainer_93"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "• 14 (Fourteen) = 10 + 4"
+
+[node name="_Label_98" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90/_GridContainer_93"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "• 15 (Fifteen) = 10 + 5"
+
+[node name="_Label_99" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90/_GridContainer_93"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "• 16 (Sixteen) = 10 + 6"
+
+[node name="_Label_100" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90/_GridContainer_93"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "• 17 (Seventeen) = 10 + 7"
+
+[node name="_Label_101" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90/_GridContainer_93"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "• 18 (Eighteen) = 10 + 8"
+
+[node name="_Label_102" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90/_GridContainer_93"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "• 19 (Nineteen) = 10 + 9"
+
+[node name="_PanelContainer_104" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_07fqf")
+
+[node name="_Label_103" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_105/_VBoxContainer_90/_PanelContainer_104"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7607843, 0.09411765, 0.35686275, 1)
+text = "• 20 (Twenty) = 2 full groups of ten (10 + 10)"
+
+[node name="_PanelContainer_121" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_qb4ev")
+
+[node name="_VBoxContainer_106" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="_Label_107" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.18039216, 0.49019608, 0.19607843, 1)
+theme_override_font_sizes/font_size = 18
+text = "COUNTING PATTERNS & SKIP COUNTING"
+
+[node name="_Label_108" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Skip counting trains the brain to group numbers together efficiently."
+
+[node name="_PanelContainer_112" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ls73")
+
+[node name="_VBoxContainer_109" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106/_PanelContainer_112"]
+layout_mode = 2
+
+[node name="_Label_110" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106/_PanelContainer_112/_VBoxContainer_109"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.007843138, 0.46666667, 0.7411765, 1)
+text = "A. SKIP COUNTING BY 10s:"
+
+[node name="_Label_111" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106/_PanelContainer_112/_VBoxContainer_109"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "10, 20, 30, 40, 50, 60, 70, 80, 90, 100"
+
+[node name="_PanelContainer_116" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_x20l8")
+
+[node name="_VBoxContainer_113" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106/_PanelContainer_116"]
+layout_mode = 2
+
+[node name="_Label_114" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106/_PanelContainer_116/_VBoxContainer_113"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9019608, 0.31764707, 0, 1)
+text = "B. SKIP COUNTING BY 5s (Always ends in 5 or 0):"
+
+[node name="_Label_115" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106/_PanelContainer_116/_VBoxContainer_113"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100"
+
+[node name="_PanelContainer_120" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_cdx41")
+
+[node name="_VBoxContainer_117" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106/_PanelContainer_120"]
+layout_mode = 2
+
+[node name="_Label_118" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106/_PanelContainer_120/_VBoxContainer_117"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.41568628, 0.105882354, 0.6039216, 1)
+text = "C. SKIP COUNTING BY 2s (Even Numbers / Pairs):"
+
+[node name="_Label_119" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_121/_VBoxContainer_106/_PanelContainer_120/_VBoxContainer_117"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "2, 4, 6, 8, 10, 12, 14, 16, 18, 20..."
+
+[node name="_PanelContainer_137" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_oleom")
+
+[node name="_VBoxContainer_122" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="_Label_123" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.18039216, 0.49019608, 0.19607843, 1)
+theme_override_font_sizes/font_size = 18
+text = "COMPARING QUANTITIES"
+
+[node name="_Label_124" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Once counting is mastered, practice comparing two sets of objects:"
+
+[node name="_PanelContainer_128" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_wtqox")
+
+[node name="_VBoxContainer_125" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122/_PanelContainer_128"]
+layout_mode = 2
+
+[node name="_Label_126" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122/_PanelContainer_128/_VBoxContainer_125"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.050980393, 0.2784314, 0.6313726, 1)
+text = "> GREATER THAN:"
+
+[node name="_Label_127" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122/_PanelContainer_128/_VBoxContainer_125"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "The set with MORE items.
+Example: 7 > 4"
+
+[node name="_PanelContainer_132" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_xccrw")
+
+[node name="_VBoxContainer_129" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122/_PanelContainer_132"]
+layout_mode = 2
+
+[node name="_Label_130" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122/_PanelContainer_132/_VBoxContainer_129"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.050980393, 0.2784314, 0.6313726, 1)
+text = "< LESS THAN:"
+
+[node name="_Label_131" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122/_PanelContainer_132/_VBoxContainer_129"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "The set with FEWER items.
+Example: 3 < 8"
+
+[node name="_PanelContainer_136" type="PanelContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_28r0e")
+
+[node name="_VBoxContainer_133" type="VBoxContainer" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122/_PanelContainer_136"]
+layout_mode = 2
+
+[node name="_Label_134" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122/_PanelContainer_136/_VBoxContainer_133"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.050980393, 0.2784314, 0.6313726, 1)
+text = "= EQUAL TO:"
+
+[node name="_Label_135" type="Label" parent="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_ScrollContainer_10/_VBoxContainer_11/_PanelContainer_137/_VBoxContainer_122/_PanelContainer_136/_VBoxContainer_133"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3647059, 0.2509804, 0.21568628, 1)
+text = "Both sets have the SAME quantity.
+Example: 5 = 5"
+
+[connection signal="pressed" from="_MarginContainer_2/_PanelContainer_3/_VBoxContainer_4/_HBoxContainer_9/close_btn" to="." method="_on_close_btn_pressed"]

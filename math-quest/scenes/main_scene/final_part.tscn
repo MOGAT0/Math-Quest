@@ -1,0 +1,206 @@
+[gd_scene load_steps=15 format=3 uid="uid://dj0swiip84b0u"]
+
+[ext_resource type="Script" uid="uid://b615u01dhi31f" path="res://scenes/main_scene/final_part.gd" id="1_xmlde"]
+[ext_resource type="Shader" uid="uid://c6ybw3o3xr2g0" path="res://assets/shaders/fog.gdshader" id="2_4hsdk"]
+[ext_resource type="Texture2D" uid="uid://dnoaet08k8hd2" path="res://assets/ui/bg/forest_bg_night.jpg" id="2_j8o4t"]
+[ext_resource type="Shader" uid="uid://c71n5bdme4ecy" path="res://assets/shaders/bg.gdshader" id="3_4hsdk"]
+[ext_resource type="Texture2D" uid="uid://qv4s3575f7ek" path="res://assets/ui/entities/matthew-normal-bg.png" id="4_ychdf"]
+[ext_resource type="Texture2D" uid="uid://cycvscej8vgxk" path="res://assets/ui/entities/arith-normal.png" id="5_2boff"]
+[ext_resource type="Texture2D" uid="uid://bd1k5sixdfdp8" path="res://assets/ui/entities/wizard.png" id="6_d63lg"]
+[ext_resource type="Texture2D" uid="uid://pk4u70rvnbxy" path="res://assets/ui/borders/Border All 2.png" id="8_4hsdk"]
+[ext_resource type="FontFile" uid="uid://wbjufq0cuj84" path="res://assets/fonts/PressStart2P-Regular.ttf" id="9_ychdf"]
+[ext_resource type="PackedScene" uid="uid://t7gu33iy0wsx" path="res://core/components/transition/new/transitionFX.tscn" id="10_2boff"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ychdf"]
+shader = ExtResource("2_4hsdk")
+shader_parameter/speed = 0.1
+shader_parameter/scroll_direction = Vector2(0, 0)
+shader_parameter/scroll_speed = 0.05
+shader_parameter/pixelation = 1.0
+shader_parameter/zoom = 10.0
+shader_parameter/gradient_pixelation = 0.2
+shader_parameter/background_threshold = 0.0
+shader_parameter/color_low_threshold = 0.24
+shader_parameter/color_mid_threshold = 0.48
+shader_parameter/color_low = Color(0.39609918, 0.01176469, 0.50980395, 1)
+shader_parameter/color_mid = Color(0.5, 0.1, 0.3, 1)
+shader_parameter/color_high = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q7w2b"]
+shader = ExtResource("3_4hsdk")
+shader_parameter/blur_radius = 0.6450000306375
+shader_parameter/paint_stroke_size = 50.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j8o4t"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("8_4hsdk")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(129, 129, 62, 62)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ychdf"]
+
+[node name="FinalPart" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xmlde")
+
+[node name="bg" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_ychdf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j8o4t")
+expand_mode = 1
+
+[node name="bg_fx" type="Panel" parent="bg"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_q7w2b")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="entity1" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.22839506
+anchor_right = 0.3923611
+anchor_bottom = 1.0061729
+offset_bottom = -6.1035156e-05
+texture = ExtResource("4_ychdf")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="entity2" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5303819
+anchor_top = 0.18209876
+anchor_right = 0.9505208
+anchor_bottom = 0.9984568
+texture = ExtResource("5_2boff")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="entity3" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34635416
+anchor_top = -0.07098766
+anchor_right = 0.9565972
+anchor_bottom = 1.2731481
+texture = ExtResource("6_d63lg")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="title_label" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.0
+offset_right = 29.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "tittle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(500, 250)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2829861
+anchor_top = 0.30709878
+anchor_right = 0.7170139
+anchor_bottom = 0.69290125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_j8o4t")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="name_label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "name"
+
+[node name="dialogue" type="RichTextLabel" parent="Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/line_separation = 10
+theme_override_fonts/normal_font = ExtResource("9_ychdf")
+theme_override_font_sizes/normal_font_size = 12
+text = "In a corner inside the classroom, there was Matthew."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="next" type="Button" parent="Panel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("9_ychdf")
+theme_override_font_sizes/font_size = 11
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ychdf")
+text = "Next >"
+flat = true
+
+[node name="previous" type="Button" parent="Panel/HBoxContainer/VBoxContainer2"]
+visible = false
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Previous"
+
+[node name="TransitionFx" parent="." instance=ExtResource("10_2boff")]
+on_load_transition = true
+
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer2/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer2/previous" to="." method="_on_previous_pressed"]

@@ -1,0 +1,195 @@
+[gd_scene load_steps=13 format=3 uid="uid://c4axmyicaraxi"]
+
+[ext_resource type="Script" uid="uid://5qmgpakl1cuy" path="res://scenes/main_scene/mian_scene.gd" id="1_rfv8u"]
+[ext_resource type="Texture2D" uid="uid://crxshehqiqp2p" path="res://assets/ui/entities/alone.jpg" id="2_ee0ds"]
+[ext_resource type="Texture2D" uid="uid://qv4s3575f7ek" path="res://assets/ui/entities/matthew-normal-bg.png" id="2_jk05a"]
+[ext_resource type="Shader" uid="uid://c71n5bdme4ecy" path="res://assets/shaders/bg.gdshader" id="3_8xqnt"]
+[ext_resource type="Texture2D" uid="uid://bs34rdsfas13t" path="res://assets/ui/entities/teacher-bg.png" id="3_rfv8u"]
+[ext_resource type="Texture2D" uid="uid://co2xlect4bjhc" path="res://assets/ui/entities/matthew-sad-bg.png" id="5_ee0ds"]
+[ext_resource type="Shader" uid="uid://b8stk2g7mc7vm" path="res://assets/shaders/grunge_border.gdshader" id="7_4pe6s"]
+[ext_resource type="StyleBox" uid="uid://dvqky3dsh60s0" path="res://assets/shaders/dialogue_panel.tres" id="8_dwljc"]
+[ext_resource type="PackedScene" uid="uid://t7gu33iy0wsx" path="res://core/components/transition/new/transitionFX.tscn" id="9_cmxvp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4pe6s"]
+shader = ExtResource("3_8xqnt")
+shader_parameter/blur_radius = 4.0
+shader_parameter/paint_stroke_size = 15.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dwljc"]
+shader = ExtResource("7_4pe6s")
+shader_parameter/border_color = Color(0, 0, 0, 1)
+shader_parameter/fill_color = Color(0, 0, 0, 1)
+shader_parameter/fill_center = false
+shader_parameter/animation_speed = 0.01
+shader_parameter/smoke_speed = 0.5
+shader_parameter/rect_size = Vector2(512, 512)
+shader_parameter/border_left = 40.0
+shader_parameter/border_right = 40.0
+shader_parameter/border_top = 40.0
+shader_parameter/border_bottom = 150.000007125
+shader_parameter/jaggedness = 10.000000475
+shader_parameter/softness = 20.0
+shader_parameter/noise_scale = 0.02
+shader_parameter/smoke_color = Color(0.7, 0.7, 0.7, 1)
+shader_parameter/smoke_scale = 0.0010000000475
+shader_parameter/smoke_opacity = 0.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4pe6s"]
+
+[node name="MianScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rfv8u")
+
+[node name="bg" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ee0ds")
+expand_mode = 1
+
+[node name="bg_fx" type="Panel" parent="bg"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_4pe6s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="entity1" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.25925925
+anchor_right = 0.3220486
+anchor_bottom = 1.0061729
+offset_bottom = -6.1035156e-05
+texture = ExtResource("2_jk05a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="entity2" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5555556
+anchor_top = 0.086419754
+anchor_right = 0.8611111
+anchor_bottom = 0.9984569
+offset_bottom = -6.1035156e-05
+texture = ExtResource("3_rfv8u")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="entity3" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(267, 548)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -133.5
+offset_top = -548.0
+offset_right = 133.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_ee0ds")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="title_label" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.0
+offset_right = 29.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "tittle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="border" type="PanelContainer" parent="."]
+material = SubResource("ShaderMaterial_dwljc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.7037037
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("8_dwljc")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="name_label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "name"
+
+[node name="dialogue" type="RichTextLabel" parent="Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "In a corner inside the classroom, there was Matthew."
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="next" type="Button" parent="Panel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4pe6s")
+text = "Next >"
+flat = true
+
+[node name="previous" type="Button" parent="Panel/HBoxContainer/VBoxContainer2"]
+visible = false
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Previous"
+
+[node name="TransitionFx" parent="." instance=ExtResource("9_cmxvp")]
+on_load_transition = true
+
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer2/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer2/previous" to="." method="_on_previous_pressed"]

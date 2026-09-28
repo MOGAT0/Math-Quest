@@ -1,0 +1,2963 @@
+[gd_scene load_steps=27 format=3 uid="uid://bekqagcfx1iqq"]
+
+[ext_resource type="Script" uid="uid://5f4glx2u08ps" path="res://core/components/lectures/lectures.gd" id="1_dukg4"]
+[ext_resource type="ButtonGroup" uid="uid://y53768hlyxr4" path="res://core/components/lectures/page_tabs_btn.tres" id="2_fuosx"]
+[ext_resource type="StyleBox" uid="uid://cp65tokr8yeh6" path="res://core/components/lectures/star_normal.tres" id="3_jtvfj"]
+[ext_resource type="StyleBox" uid="uid://bkvm88m57otbw" path="res://core/components/lectures/star_pressed.tres" id="4_jtvfj"]
+[ext_resource type="StyleBox" uid="uid://bny3euip5et3t" path="res://core/components/lectures/baloon_normal.tres" id="5_8tdrp"]
+[ext_resource type="StyleBox" uid="uid://dat0caxj0gy1p" path="res://core/components/lectures/baloon_pressed.tres" id="6_wpia8"]
+[ext_resource type="StyleBox" uid="uid://dxgdsipjwf0w5" path="res://core/components/lectures/basketball_normal.tres" id="7_ng0va"]
+[ext_resource type="StyleBox" uid="uid://begl11yf543xs" path="res://core/components/lectures/basketball_pressed.tres" id="8_dprnl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dukg4"]
+content_margin_left = 100.0
+content_margin_top = 20.0
+content_margin_right = 100.0
+content_margin_bottom = 0.0
+bg_color = Color(0.9529412, 0.8862745, 0.72156864, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1nfi"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkg2t"]
+bg_color = Color(0.2502308, 0.671875, 0.115478516, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fuosx"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.5411765, 0.44313726, 0.2784314, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtvfj"]
+content_margin_left = 8.0
+content_margin_top = 5.0
+content_margin_right = 8.0
+content_margin_bottom = 5.0
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8tdrp"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wpia8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ng0va"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0io3i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpia8"]
+content_margin_top = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.3046875, 0.3046875, 0.3046875, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ng0va"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.3046875, 0.3046875, 0.3046875, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dprnl"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.30588236, 0.30588236, 0.30588236, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0io3i"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.2890625, 0.2890625, 0.2890625, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6vwa"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fars"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7il4h"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i74ik"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wimre"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+
+[node name="Lectures" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dukg4")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dukg4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="tab_btn_container" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -270
+
+[node name="page1" type="Button" parent="PanelContainer/VBoxContainer/tab_btn_container"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_u1nfi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fkg2t")
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("2_fuosx")
+text = "Page 1"
+
+[node name="page2" type="Button" parent="PanelContainer/VBoxContainer/tab_btn_container"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_u1nfi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fkg2t")
+toggle_mode = true
+button_group = ExtResource("2_fuosx")
+text = "Page 2"
+
+[node name="page3" type="Button" parent="PanelContainer/VBoxContainer/tab_btn_container"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_u1nfi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fkg2t")
+toggle_mode = true
+button_group = ExtResource("2_fuosx")
+text = "Page 3"
+
+[node name="page4" type="Button" parent="PanelContainer/VBoxContainer/tab_btn_container"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_u1nfi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fkg2t")
+toggle_mode = true
+button_group = ExtResource("2_fuosx")
+text = "Page 4"
+
+[node name="page1" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fuosx")
+scroll_vertical = 100
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jtvfj")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Chapter 1"
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Activity 1: Counting Small Objects"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_jtvfj")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+text = "Page 1 of 4"
+
+[node name="lesson" type="PanelContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer"]
+custom_minimum_size = Vector2(820, 162)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/lesson"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/lesson/VBoxContainer"]
+layout_mode = 2
+text = "Lesson: How to Count Objects"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/lesson/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Point to each object one at a time. Say one number name for each item. The last number you count tells how many items there are in total!
+
+
+ Tip: Tap on each item to place a counter sticker so you never count the same item twice!"
+
+[node name="panel1" type="PanelContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer"]
+custom_minimum_size = Vector2(820, 215)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel1"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+text = "1. How many stars are in the box?"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+text = "Count the pictures. How many stars are there?"
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel1/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = -450
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("3_jtvfj")
+theme_override_styles/pressed = ExtResource("4_jtvfj")
+theme_override_styles/hover = ExtResource("4_jtvfj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpia8")
+toggle_mode = true
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("3_jtvfj")
+theme_override_styles/pressed = ExtResource("4_jtvfj")
+theme_override_styles/hover = ExtResource("4_jtvfj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpia8")
+toggle_mode = true
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("3_jtvfj")
+theme_override_styles/pressed = ExtResource("4_jtvfj")
+theme_override_styles/hover = ExtResource("4_jtvfj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wpia8")
+toggle_mode = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Answer: "
+
+[node name="ans_1" type="SpinBox" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="check_ans1" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Check Answer"
+
+[node name="panel2" type="PanelContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer"]
+custom_minimum_size = Vector2(820, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+text = "2. How many baloons are in the box?"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+text = "Count the pictures. How many baloons are in the box?"
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = -70
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("5_8tdrp")
+theme_override_styles/pressed = ExtResource("6_wpia8")
+theme_override_styles/hover = ExtResource("6_wpia8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ng0va")
+toggle_mode = true
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("5_8tdrp")
+theme_override_styles/pressed = ExtResource("6_wpia8")
+theme_override_styles/hover = ExtResource("6_wpia8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ng0va")
+toggle_mode = true
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("5_8tdrp")
+theme_override_styles/pressed = ExtResource("6_wpia8")
+theme_override_styles/hover = ExtResource("6_wpia8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ng0va")
+toggle_mode = true
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("5_8tdrp")
+theme_override_styles/pressed = ExtResource("6_wpia8")
+theme_override_styles/hover = ExtResource("6_wpia8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ng0va")
+toggle_mode = true
+
+[node name="Button5" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("5_8tdrp")
+theme_override_styles/pressed = ExtResource("6_wpia8")
+theme_override_styles/hover = ExtResource("6_wpia8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ng0va")
+toggle_mode = true
+
+[node name="Button6" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("5_8tdrp")
+theme_override_styles/pressed = ExtResource("6_wpia8")
+theme_override_styles/hover = ExtResource("6_wpia8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ng0va")
+toggle_mode = true
+
+[node name="Button7" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("5_8tdrp")
+theme_override_styles/pressed = ExtResource("6_wpia8")
+theme_override_styles/hover = ExtResource("6_wpia8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ng0va")
+toggle_mode = true
+
+[node name="Button8" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("5_8tdrp")
+theme_override_styles/pressed = ExtResource("6_wpia8")
+theme_override_styles/hover = ExtResource("6_wpia8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ng0va")
+toggle_mode = true
+
+[node name="Button9" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("5_8tdrp")
+theme_override_styles/pressed = ExtResource("6_wpia8")
+theme_override_styles/hover = ExtResource("6_wpia8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ng0va")
+toggle_mode = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Answer: "
+
+[node name="ans_2" type="SpinBox" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="check_ans2" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Check Answer"
+
+[node name="panel3" type="PanelContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer"]
+custom_minimum_size = Vector2(820, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+text = "3. How many basketballs are in the box?"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+text = "Count the pictures. How many basketballs are in the frame?"
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel3/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = -440
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("7_ng0va")
+theme_override_styles/pressed = ExtResource("8_dprnl")
+theme_override_styles/hover = ExtResource("8_dprnl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0io3i")
+toggle_mode = true
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("7_ng0va")
+theme_override_styles/pressed = ExtResource("8_dprnl")
+theme_override_styles/hover = ExtResource("8_dprnl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0io3i")
+toggle_mode = true
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("7_ng0va")
+theme_override_styles/pressed = ExtResource("8_dprnl")
+theme_override_styles/hover = ExtResource("8_dprnl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0io3i")
+toggle_mode = true
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("7_ng0va")
+theme_override_styles/pressed = ExtResource("8_dprnl")
+theme_override_styles/hover = ExtResource("8_dprnl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0io3i")
+toggle_mode = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Answer: "
+
+[node name="ans_3" type="SpinBox" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="check_ans3" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/panel3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Check Answer"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page1/VBoxContainer"]
+layout_mode = 2
+
+[node name="next2page2" type="Button" parent="PanelContainer/VBoxContainer/page1/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Next Page >"
+
+[node name="page2" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fuosx")
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jtvfj")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Chapter 2"
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Activity 2: Choosing the Correct Number"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_jtvfj")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+text = "Page 2 of 4"
+
+[node name="lesson" type="PanelContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer"]
+custom_minimum_size = Vector2(820, 162)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/lesson"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/lesson/VBoxContainer"]
+layout_mode = 2
+text = "Lesson: Counting Rows and Adding Extras"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/lesson/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "When counting many items, look at how they are arranged in neat rows. Count by whole rows first, then add the leftovers!"
+
+[node name="panel1" type="PanelContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer"]
+custom_minimum_size = Vector2(820, 215)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+text = "1. Count all the yo-yos:"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+text = "Choose the correct number of items in the picture."
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wpia8")
+
+[node name="HBoxContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = -410
+theme_override_constants/v_separation = 12
+columns = 6
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button5" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button6" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button7" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button8" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button9" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button10" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button11" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button12" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Answer: "
+
+[node name="ans_1" type="SpinBox" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="check_ans1" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Check Answer"
+
+[node name="panel2" type="PanelContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer"]
+custom_minimum_size = Vector2(820, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+text = "2. Count all the hanging bulbs / balloons:"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+text = "Choose the correct count of balloons / light bulbs in the picture."
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ng0va")
+
+[node name="HBoxContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 10
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button5" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button6" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button7" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button8" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button9" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button10" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button11" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button12" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button13" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button14" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button15" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button16" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button17" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button18" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button19" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button20" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button21" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button22" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button23" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button24" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button25" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button26" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button27" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button28" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button29" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button30" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button31" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button32" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button33" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button34" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button35" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button36" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button37" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button38" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button39" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button40" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Answer: "
+
+[node name="ans_2" type="SpinBox" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="check_ans1" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Check Answer"
+
+[node name="panel3" type="PanelContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer"]
+custom_minimum_size = Vector2(820, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+text = "3. How many cartons are in the box?"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+text = "Count the pictures. How many boxes (cartons) are in the frame?"
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_dprnl")
+
+[node name="HBoxContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 10
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button5" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button6" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button7" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button8" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button9" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button10" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button11" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button12" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button13" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button14" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button15" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button16" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button17" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button18" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button19" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button20" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button21" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button22" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button23" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button24" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button25" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button26" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button27" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button28" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button29" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button30" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button31" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button32" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button33" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button34" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button35" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button36" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button37" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button38" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button39" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button40" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button41" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button42" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button43" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button44" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button45" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button46" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button47" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button48" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button49" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button50" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button51" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button52" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button53" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button54" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button55" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button56" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button57" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button58" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button59" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button60" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Answer: "
+
+[node name="ans_3" type="SpinBox" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="check_ans1" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/panel3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Check Answer"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page2/VBoxContainer"]
+layout_mode = 2
+
+[node name="next2page3" type="Button" parent="PanelContainer/VBoxContainer/page2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Next Page >"
+
+[node name="page3" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fuosx")
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jtvfj")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Chapter 3"
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Activity 3: Writing in Numerals and Words"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_jtvfj")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+text = "Page 3 of 4"
+
+[node name="lesson" type="PanelContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer"]
+custom_minimum_size = Vector2(820, 162)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/lesson"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/lesson/VBoxContainer"]
+layout_mode = 2
+text = "Lesson: Writing Numbers as Digits and Words"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/lesson/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Count the objects in each group carefully. You can tap each picture to put a star sticker on it! Once you know the total, write the answer bellow."
+
+[node name="panel1" type="PanelContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer"]
+custom_minimum_size = Vector2(820, 215)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+text = "1. How many strawberries are in the patch?"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+text = "Count the sweet strawberries and choose the correct number."
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0io3i")
+
+[node name="HBoxContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = -210
+theme_override_constants/v_separation = 20
+columns = 6
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button5" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button6" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button7" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button8" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button9" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button10" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button11" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button12" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Answer: "
+
+[node name="ans_1" type="SpinBox" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="check_ans1" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Check Answer"
+
+[node name="panel2" type="PanelContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer"]
+custom_minimum_size = Vector2(820, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+text = "2. How many pineapples are there in total?"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+text = "Count the pineapples in the grid and choose the correct number."
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_m6vwa")
+
+[node name="HBoxContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = -60
+theme_override_constants/v_separation = 30
+columns = 9
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button5" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button6" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button7" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button8" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button9" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button10" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button11" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button12" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button13" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button14" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button15" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button16" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button17" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button18" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button19" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button20" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button21" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button22" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button23" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button24" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button25" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button26" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button27" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button28" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button29" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button30" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button31" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button32" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button33" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button34" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button35" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button36" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button37" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button38" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button39" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button40" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button41" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button42" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button43" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button44" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button45" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button46" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button47" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button48" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button49" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button50" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Answer: "
+
+[node name="ans_2" type="SpinBox" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="check_ans2" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Check Answer"
+
+[node name="panel3" type="PanelContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer"]
+custom_minimum_size = Vector2(820, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+text = "3. How many apples are in the orchard?"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+text = "Count the orchard apples and choose the matching number."
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_4fars")
+
+[node name="HBoxContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = -40
+theme_override_constants/v_separation = 40
+columns = 8
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button5" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button6" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button7" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button8" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button9" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button10" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button11" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button12" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button13" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button14" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button15" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button16" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button17" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button18" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button19" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button20" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button21" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button22" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button23" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button24" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button25" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button26" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button27" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button28" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button29" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button30" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Answer: "
+
+[node name="ans_3" type="SpinBox" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="check_ans3" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/panel3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Check Answer"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page3/VBoxContainer"]
+layout_mode = 2
+
+[node name="next2page4" type="Button" parent="PanelContainer/VBoxContainer/page3/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Next Page >"
+
+[node name="page4" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fuosx")
+scroll_vertical = 100
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jtvfj")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Chapter 4"
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Bonus Challenge: Grade 1 Mastery Practice"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_jtvfj")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+text = "Page 4 of 4"
+
+[node name="lesson" type="PanelContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer"]
+custom_minimum_size = Vector2(820, 162)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/lesson"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/lesson/VBoxContainer"]
+layout_mode = 2
+text = "Lesson: Skip Counting by 2s, 5s, and 10s"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/lesson/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "You can count groups faster by skip counting! Try counting flowers in pairs (2, 4, 6...) or pencils in bundles of 5.
+
+
+Tip: Practice counting: 2, 4, 6, 8, 10... or 5, 10, 15, 20, 25!"
+
+[node name="panel1" type="PanelContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer"]
+custom_minimum_size = Vector2(820, 215)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+text = "1. How many flowers are in the garden?"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+text = "Skip count the colorful blooming flowers in pairs of 2."
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7il4h")
+
+[node name="HBoxContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = -220
+theme_override_constants/v_separation = 20
+columns = 8
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button5" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button6" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button7" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button8" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button9" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button10" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button11" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button12" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button13" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button14" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button15" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button16" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Answer: "
+
+[node name="ans_1" type="SpinBox" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="check_ans1" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Check Answer"
+
+[node name="panel2" type="PanelContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer"]
+custom_minimum_size = Vector2(820, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+text = "2. How many colored pencils are on the desk?"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+text = "Count the school pencils in groups of 5 and write the number."
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i74ik")
+
+[node name="HBoxContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = -220
+theme_override_constants/v_separation = 20
+columns = 5
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button5" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button6" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button7" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button8" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button9" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button10" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button11" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button12" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button13" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button14" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button15" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Answer: "
+
+[node name="ans_2" type="SpinBox" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="check_ans2" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Check Answer"
+
+[node name="panel3" type="PanelContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer"]
+custom_minimum_size = Vector2(820, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tdrp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+text = "3. How many apples are in the box?"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+text = "Count the apples and choose the matching number."
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wimre")
+
+[node name="HBoxContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = -50
+theme_override_constants/v_separation = 20
+columns = 10
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button5" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button6" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button7" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button8" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button9" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button10" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button11" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button12" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button13" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button14" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button15" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button16" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button17" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button18" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button19" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button20" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button21" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button22" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button23" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button24" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button25" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button26" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button27" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button28" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button29" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button30" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button31" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button32" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button33" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button34" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button35" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button36" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button37" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button38" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button39" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button40" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button41" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button42" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button43" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button44" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button45" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button46" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button47" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button48" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button49" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button50" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button51" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button52" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button53" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button54" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button55" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button56" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button57" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button58" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button59" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button60" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button61" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button62" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button63" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button64" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Answer: "
+
+[node name="ans_3" type="SpinBox" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="check_ans3" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/panel3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Check Answer"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/page4/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="next2page1" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Next Page >"
+
+[node name="close" type="Button" parent="PanelContainer/VBoxContainer/page4/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Close"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/page1/VBoxContainer/HBoxContainer2/next2page2" to="." method="_on_next_2_page_2_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/page2/VBoxContainer/HBoxContainer2/next2page3" to="." method="_on_next_2_page_3_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/page3/VBoxContainer/HBoxContainer2/next2page4" to="." method="_on_next_2_page_4_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/page4/VBoxContainer/HBoxContainer2/next2page1" to="." method="_on_next_2_page_1_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/page4/VBoxContainer/HBoxContainer2/close" to="." method="_on_close_pressed"]

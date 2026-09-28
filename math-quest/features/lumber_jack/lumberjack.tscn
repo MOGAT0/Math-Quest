@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=3 uid="uid://j6a0lrtf0fdx"]
+
+[ext_resource type="Texture2D" uid="uid://b1khythi3rhq5" path="res://assets/models/npc/Generic Male NPCs A.png" id="1_3pywc"]
+[ext_resource type="Script" uid="uid://dediun3lpe3x" path="res://features/lumber_jack/lumberjack.gd" id="1_gdt78"]
+[ext_resource type="Texture2D" uid="uid://cpbxkyflht1hn" path="res://assets/ui/keys/E.png" id="3_m3l0p"]
+[ext_resource type="Texture2D" uid="uid://dqos4fbrjqefm" path="res://assets/ui/borders/Border All 12.png" id="4_gdt78"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxe0b"]
+size = Vector2(15, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3pywc"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x2f3"]
+atlas = ExtResource("3_m3l0p")
+region = Rect2(0, 0, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nwe6"]
+atlas = ExtResource("3_m3l0p")
+region = Rect2(17, 0, 17, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cqsyu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x2f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nwe6")
+}],
+"loop": true,
+"name": &"key_anim",
+"speed": 3.0
+}]
+
+[node name="lumberjack" type="CharacterBody2D"]
+script = ExtResource("1_gdt78")
+
+[node name="character" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -4)
+scale = Vector2(0.34, 0.265)
+texture = ExtResource("1_3pywc")
+hframes = 12
+vframes = 8
+frame = 58
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_oxe0b")
+
+[node name="interact" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interact"]
+shape = SubResource("CircleShape2D_3pywc")
+
+[node name="key" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -19.88)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_cqsyu")
+animation = &"key_anim"
+autoplay = "key_anim"
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="Control" type="Control" parent="UI/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="dialogueContainer" type="NinePatchRect" parent="UI/CanvasLayer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(650, 265)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -325.0
+offset_top = -265.0
+offset_right = 325.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_gdt78")
+region_rect = Rect2(192, 256, 64, 64)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="dialogue" type="RichTextLabel" parent="UI/CanvasLayer/Control/dialogueContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(592, 216)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -108.0
+offset_right = 296.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Sample Text."
+scroll_following = true
+
+[connection signal="body_entered" from="interact" to="." method="_on_interact_body_entered"]
+[connection signal="body_exited" from="interact" to="." method="_on_interact_body_exited"]

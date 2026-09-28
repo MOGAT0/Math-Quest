@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceifepoc42ctr"]
+
+[ext_resource type="Script" uid="uid://bp2qjgcqghkpi" path="res://core/components/daylight/daylight_cycle.gd" id="1_hcv6s"]
+
+[node name="daylight_cycle" type="CanvasModulate"]
+script = ExtResource("1_hcv6s")

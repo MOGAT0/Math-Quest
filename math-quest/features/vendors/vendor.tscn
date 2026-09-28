@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dsrkxbe0hcxxr"]
+
+[node name="Vendor" type="CharacterBody2D"]

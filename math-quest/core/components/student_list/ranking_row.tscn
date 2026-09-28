@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxw00ae1auque"]
+
+[ext_resource type="FontFile" uid="uid://dtymm3qpgc6ar" path="res://assets/fonts/Book.otf" id="1_8c6s1"]
+[ext_resource type="Texture2D" uid="uid://vl64enkmbl1r" path="res://assets/ui/UI books & more.png" id="1_w5wh8"]
+[ext_resource type="Script" uid="uid://dxnwiumk13yho" path="res://core/components/student_list/ranking_row.gd" id="2_o7gqg"]
+[ext_resource type="Texture2D" uid="uid://deoe31l6jevu1" path="res://assets/models/avatar/1.png" id="2_w5wh8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4m68k"]
+texture = ExtResource("1_w5wh8")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(769, 65, 47, 47)
+
+[node name="leaderboard_row" type="PanelContainer"]
+custom_minimum_size = Vector2(360, 57)
+offset_right = 360.0
+offset_bottom = 57.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_4m68k")
+script = ExtResource("2_o7gqg")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="rank_no" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 2
+custom_minimum_size = Vector2(21.71, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.20703125, 0.20703125, 0.20703125, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.64705884)
+theme_override_fonts/font = ExtResource("1_8c6s1")
+theme_override_font_sizes/font_size = 30
+text = "1"
+vertical_alignment = 2
+
+[node name="avatar" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("2_w5wh8")
+expand_mode = 1
+
+[node name="std_name" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 2
+custom_minimum_size = Vector2(210, 34.175)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.20703125, 0.20703125, 0.20703125, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.64705884)
+theme_override_fonts/font = ExtResource("1_8c6s1")
+theme_override_font_sizes/font_size = 20
+text = "Sam Jefferson Mogato"
+
+[node name="score" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 2
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.20703125, 0.20703125, 0.20703125, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.64705884)
+theme_override_fonts/font = ExtResource("1_8c6s1")
+theme_override_font_sizes/font_size = 25
+text = "100"
+vertical_alignment = 2

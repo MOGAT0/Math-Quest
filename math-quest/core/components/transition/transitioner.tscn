@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://dpkr8jwyo7nki"]
+
+[ext_resource type="Script" uid="uid://d0mtfpxmxkdgt" path="res://core/components/transition/transitioner.gd" id="1_nlwk8"]
+[ext_resource type="Shader" uid="uid://cnmv572caelt" path="res://assets/shaders/transition_shader.gdshader" id="2_qhkcu"]
+
+[sub_resource type="Gradient" id="Gradient_qhkcu"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.16279072, 0.16279072, 0.16279072, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fc68s"]
+gradient = SubResource("Gradient_qhkcu")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nvpv4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_urff0"]
+noise = SubResource("FastNoiseLite_nvpv4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fc68s"]
+shader = ExtResource("2_qhkcu")
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/node_resolution = Vector2(10, 10)
+shader_parameter/factor = 0.999999977648
+shader_parameter/width = 0.4
+shader_parameter/gradient_texture = SubResource("GradientTexture2D_fc68s")
+shader_parameter/gradient_fixed = false
+shader_parameter/shape_texture = SubResource("NoiseTexture2D_urff0")
+shader_parameter/shape_tiling = 32.0
+shader_parameter/shape_rotation = 0.0
+shader_parameter/shape_scroll = Vector2(0, 0)
+shader_parameter/shape_feathering = 0.0
+shader_parameter/shape_treshold = 1.0
+
+[sub_resource type="Animation" id="Animation_fhfm2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:material:shader_parameter/factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.999999977648]
+}
+
+[sub_resource type="Animation" id="Animation_rni65"]
+resource_name = "_enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:material:shader_parameter/factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.999999977648, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1bs8a"]
+resource_name = "_exit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:material:shader_parameter/factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_slot1"]
+_data = {
+&"RESET": SubResource("Animation_fhfm2"),
+&"_enter": SubResource("Animation_rni65"),
+&"_exit": SubResource("Animation_1bs8a")
+}
+
+[node name="transitioner" type="Area2D"]
+script = ExtResource("1_nlwk8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+material = SubResource("ShaderMaterial_fc68s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_slot1")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

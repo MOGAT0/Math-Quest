@@ -1,0 +1,103 @@
+<svg xmlns="http://w3.org" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <!-- Rich Magical Gold Gradient -->
+    <linearGradient id="magic-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE57F"/>
+      <stop offset="30%" stop-color="#FFD54F"/>
+      <stop offset="70%" stop-color="#FFB300"/>
+      <stop offset="100%" stop-color="#FF8F00"/>
+    </linearGradient>
+    <!-- Deep Metallic Shadow Gradient -->
+    <linearGradient id="gold-shadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#B78103"/>
+      <stop offset="100%" stop-color="#5D4037"/>
+    </linearGradient>
+    <!-- Base / Stand Dark Stone Gradient -->
+    <linearGradient id="base-stone" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#37474F"/>
+      <stop offset="50%" stop-color="#212121"/>
+      <stop offset="100%" stop-color="#37474F"/>
+    </linearGradient>
+    <!-- Snitch Wing Gradient -->
+    <linearGradient id="wing-gold" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFA000"/>
+      <stop offset="50%" stop-color="#FFD54F"/>
+      <stop offset="100%" stop-color="#FFF9C4"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Magic Glow Sparks -->
+  <g id="magical-sparkles" fill="#FFE57F" opacity="0.8">
+    <!-- Star 1 -->
+    <path d="M 400,100 L 405,120 L 425,125 L 405,130 L 400,150 L 395,130 L 375,125 L 395,120 Z"/>
+    <!-- Star 2 -->
+    <path d="M 180,250 L 183,260 L 195,263 L 183,266 L 180,276 L 177,266 L 165,263 L 177,260 Z"/>
+    <!-- Star 3 -->
+    <path d="M 620,280 L 623,290 L 635,293 L 623,296 L 620,306 L 617,296 L 605,293 L 617,290 Z"/>
+    <!-- Small sparkles -->
+    <circle cx="250" cy="180" r="4"/>
+    <circle cx="550" cy="160" r="5"/>
+    <circle cx="300" cy="500" r="3"/>
+    <circle cx="500" cy="480" r="4"/>
+  </g>
+  <!-- MAIN TROPHY GROUP -->
+  <g id="harry-potter-trophy">
+    <!-- LEFT SNITCH WING HANDLE -->
+    <path id="left-wing" fill="url(#wing-gold)" stroke="#B78103" stroke-width="3" d="M 330,300 
+             C 250,260 180,200 120,120 
+             C 100,200 120,300 190,380 
+             C 230,425 280,440 328,410 
+             Z"/>
+    <!-- Left Wing Feathers / Detail Lines -->
+    <path d="M 140,150 C 180,220 240,290 328,330" fill="none" stroke="#B78103" stroke-width="2"/>
+    <path d="M 165,200 C 200,260 260,320 328,360" fill="none" stroke="#B78103" stroke-width="2"/>
+    <path d="M 190,260 C 220,300 270,350 328,380" fill="none" stroke="#B78103" stroke-width="2"/>
+    <!-- RIGHT SNITCH WING HANDLE -->
+    <path id="right-wing" fill="url(#wing-gold)" stroke="#B78103" stroke-width="3" d="M 470,300 
+             C 550,260 620,200 680,120 
+             C 700,200 680,300 610,380 
+             C 570,425 520,440 472,410 
+             Z"/>
+    <!-- Right Wing Feathers / Detail Lines -->
+    <path d="M 660,150 C 620,220 560,290 472,330" fill="none" stroke="#B78103" stroke-width="2"/>
+    <path d="M 635,200 C 600,260 540,320 472,360" fill="none" stroke="#B78103" stroke-width="2"/>
+    <path d="M 610,260 C 580,300 530,350 472,380" fill="none" stroke="#B78103" stroke-width="2"/>
+    <!-- TROPHY STEM / PEDESTAL -->
+    <path id="trophy-stem" fill="url(#magic-gold)" stroke="#B78103" stroke-width="4" d="M 360,420 
+             Q 400,450 400,560 
+             L 350,600 
+             L 450,600 
+             L 400,560 
+             Q 400,450 440,420 
+             Z"/>
+    <!-- Stem Shadow Shadow -->
+    <path d="M 385,470 Q 400,500 400,560 L 375,580 L 425,580 L 400,560 Q 400,500 415,470 Z" fill="url(#gold-shadow)" opacity="0.3"/>
+    <!-- MAIN GOBLET CUP BODY -->
+    <path id="cup-body" fill="url(#magic-gold)" stroke="#B78103" stroke-width="4" d="M 300,200 
+             C 300,380 340,440 400,440 
+             C 460,440 500,380 500,200 
+             Z"/>
+    <!-- Cup Rim / Lip -->
+    <ellipse cx="400" cy="200" rx="100" ry="20" fill="url(#magic-gold)" stroke="#B78103" stroke-width="4"/>
+    <ellipse cx="400" cy="200" rx="85" ry="12" fill="url(#gold-shadow)" opacity="0.6"/>
+    <!-- EMBEDDED HOGWARTS STYLE "H" EMBLEM -->
+    <g id="emblem-crest" transform="translate(0, -10)">
+      <!-- Shield Outline -->
+      <path d="M 370,260 C 370,260 400,250 400,250 C 400,250 430,260 430,260 C 430,290 435,320 400,350 C 365,320 370,290 370,260 Z" fill="url(#gold-shadow)" stroke="#FFF9C4" stroke-width="2"/>
+    </g>
+    <!-- GOBLET BODY HIGHLIGHT (Adds 3D Sheen) -->
+    <path d="M 315,230 C 312,330 335,400 370,422 C 350,390 330,320 330,230 Z" fill="#FFFFFF" opacity="0.4"/>
+    <!-- TROPHY BASE (Dark Wizarding Stone Platform) -->
+    <!-- Top Layer Base -->
+    <polygon points="310,600 490,600 510,630 290,630" fill="url(#base-stone)" stroke="#212121" stroke-width="3"/>
+    <!-- Bottom Tier Base -->
+    <polygon points="280,630 520,630 545,680 255,680" fill="url(#base-stone)" stroke="#111111" stroke-width="4"/>
+    <!-- Base Gold Plaque -->
+    <rect x="330" y="640" width="140" height="30" rx="4" fill="url(#magic-gold)" stroke="#B78103" stroke-width="2"/>
+    <!-- Decorative Screws on Plaque -->
+    <circle cx="340" cy="655" r="2" fill="#5D4037"/>
+    <circle cx="460" cy="655" r="2" fill="#5D4037"/>
+    <!-- Plaque Text Lines (Simulated Engraving) -->
+    <line x1="355" y1="650" x2="445" y2="650" stroke="#5D4037" stroke-width="3" stroke-linecap="round"/>
+    <line x1="370" y1="660" x2="430" y2="660" stroke="#5D4037" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

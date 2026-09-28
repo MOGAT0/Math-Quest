@@ -1,0 +1,329 @@
+[gd_scene load_steps=25 format=3 uid="uid://mexsnsd6c1h4"]
+
+[ext_resource type="Script" uid="uid://0b6awk5xxd7" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
+[ext_resource type="Texture2D" uid="uid://rsh5dl5daby5" path="res://assets/ui/bg/mainmenu bg.jpg" id="2_3ovsr"]
+[ext_resource type="Texture2D" uid="uid://57arucp745xy" path="res://assets/ui/bg/game__title.png" id="3_5seab"]
+[ext_resource type="Texture2D" uid="uid://bp6eet3gve1dx" path="res://assets/ui/btn/play.png" id="4_dn3lk"]
+[ext_resource type="Texture2D" uid="uid://cfywfo4drd51t" path="res://assets/ui/btn/newgame.png" id="4_thkx5"]
+[ext_resource type="Texture2D" uid="uid://c7s8ad0aj12x7" path="res://assets/ui/btn/quit.png" id="6_lqpn7"]
+[ext_resource type="Texture2D" uid="uid://u7bw1rvixpal" path="res://assets/ui/btn/setting.png" id="6_x2yjq"]
+[ext_resource type="Texture2D" uid="uid://dif7n46e1pcek" path="res://assets/ui/btn/x.png" id="7_5seab"]
+[ext_resource type="PackedScene" uid="uid://ba2hg2qsp88sg" path="res://core/components/setting/setting.tscn" id="8_4xg86"]
+[ext_resource type="Texture2D" uid="uid://ds8eiokubkr1n" path="res://assets/ui/borders/Border All 1.png" id="9_qel0l"]
+[ext_resource type="PackedScene" uid="uid://t7gu33iy0wsx" path="res://core/components/transition/new/transitionFX.tscn" id="9_thkx5"]
+[ext_resource type="FontFile" uid="uid://wbjufq0cuj84" path="res://assets/fonts/PressStart2P-Regular.ttf" id="10_rrgl4"]
+[ext_resource type="Texture2D" uid="uid://hdvo70ojmrcb" path="res://assets/ui/btn/cancel.png" id="11_dn3lk"]
+[ext_resource type="Texture2D" uid="uid://cw5m8yw4si6ml" path="res://assets/ui/btn/confirm.png" id="12_4ujhu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_thkx5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2yjq"]
+texture = ExtResource("4_dn3lk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_thkx5"]
+texture = ExtResource("4_thkx5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qel0l"]
+texture = ExtResource("6_x2yjq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lqpn7"]
+texture = ExtResource("6_lqpn7")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqpn7"]
+bg_color = Color(0, 0, 0, 0.3137255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thkx5"]
+content_margin_left = 350.0
+content_margin_top = 255.0
+content_margin_right = 350.0
+content_margin_bottom = 255.0
+bg_color = Color(0, 0, 0, 0.57254905)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn3lk"]
+content_margin_top = 50.0
+texture = ExtResource("9_qel0l")
+texture_margin_left = 17.0
+texture_margin_top = 17.0
+texture_margin_right = 17.0
+texture_margin_bottom = 17.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(256, 256, 64, 64)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vnpsp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1gy5"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fsom3")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3ovsr")
+expand_mode = 1
+
+[node name="title" type="TextureRect" parent="bg"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(688, 112.00001)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2013889
+anchor_top = 0.14660494
+anchor_right = 0.7986111
+anchor_bottom = 0.31944445
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_5seab")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="btns" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(296, 320)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -60.0
+offset_right = 148.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="continue" type="Button" parent="btns"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_thkx5")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="btns/continue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_x2yjq")
+
+[node name="play" type="Button" parent="btns"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(246.74, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_thkx5")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="btns/play"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_thkx5")
+
+[node name="setting" type="Button" parent="btns"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(246.74, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_thkx5")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="btns/setting"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qel0l")
+
+[node name="quit" type="Button" parent="btns"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_thkx5")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="btns/quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_lqpn7")
+
+[node name="save_slots" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_lqpn7")
+
+[node name="slot_container" type="HBoxContainer" parent="save_slots"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -450
+metadata/_edit_use_anchors_ = true
+
+[node name="slot1" type="Button" parent="save_slots/slot_container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 15
+text = "Slot 1"
+
+[node name="slot2" type="Button" parent="save_slots/slot_container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 15
+text = "Slot 2"
+
+[node name="slot3" type="Button" parent="save_slots/slot_container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 15
+text = "Slot 3"
+
+[node name="close_slots" type="Button" parent="save_slots"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8003472
+anchor_top = 0.27469134
+anchor_right = 0.8463542
+anchor_bottom = 0.3425926
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("7_5seab")
+flat = true
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="popup_bg" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_thkx5")
+
+[node name="popup" type="PanelContainer" parent="popup_bg"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dn3lk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="popup_bg/popup"]
+layout_mode = 2
+theme_override_constants/separation = 34
+
+[node name="Label" type="Label" parent="popup_bg/popup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("10_rrgl4")
+theme_override_font_sizes/font_size = 13
+text = "Are you sure you want to Quit?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="popup_bg/popup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 34
+
+[node name="cancel" type="Button" parent="popup_bg/popup/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vnpsp")
+icon = ExtResource("11_dn3lk")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="confirm" type="Button" parent="popup_bg/popup/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a1gy5")
+icon = ExtResource("12_4ujhu")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Setting" parent="." node_paths=PackedStringArray("external_button") instance=ExtResource("8_4xg86")]
+visible = false
+layout_mode = 1
+use_external_button = true
+external_button = NodePath("../btns/setting")
+
+[node name="TransitionFx" parent="." instance=ExtResource("9_thkx5")]
+unique_name_in_owner = true
+on_load_transition = true
+
+[connection signal="pressed" from="btns/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="btns/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="btns/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="save_slots/slot_container/slot1" to="." method="_on_slot_1_pressed"]
+[connection signal="pressed" from="save_slots/slot_container/slot2" to="." method="_on_slot_2_pressed"]
+[connection signal="pressed" from="save_slots/slot_container/slot3" to="." method="_on_slot_3_pressed"]
+[connection signal="pressed" from="save_slots/close_slots" to="." method="_on_close_slots_pressed"]
+[connection signal="pressed" from="popup_bg/popup/VBoxContainer/HBoxContainer/cancel" to="." method="_on_cancel_quit_pressed"]
+[connection signal="pressed" from="popup_bg/popup/VBoxContainer/HBoxContainer/confirm" to="." method="_on_quit_confirm_pressed"]
+[connection signal="transitionIn_complete" from="TransitionFx" to="." method="_on_transition_fx_transition_in_complete"]

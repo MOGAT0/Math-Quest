@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://g4l8u86qq4ra"]
+
+[ext_resource type="Script" uid="uid://wqt35bcnhslp" path="res://core/components/student_list/leaderboards_row.gd" id="1_cr341"]
+[ext_resource type="Texture2D" uid="uid://deoe31l6jevu1" path="res://assets/models/avatar/1.png" id="1_x2svq"]
+
+[node name="leaderboards_row" type="HBoxContainer"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_cr341")
+
+[node name="avatar" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("1_x2svq")
+expand_mode = 1
+
+[node name="name" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 2
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.26171875, 0.15199563, 0.11654663, 1)
+text = "student name"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 5

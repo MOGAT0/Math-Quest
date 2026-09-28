@@ -1,0 +1,1903 @@
+{
+  "prologue_classroom": {
+	"title": "Chapter 1: The Classroom Struggle",
+	"location": "Earth Classroom — Afternoon",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "In a corner of the notebooks and textbooks inside the classroom, there was Matthew."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Why can my classmates easily solve these real-life math problems? I look at these numbers and word problems, and I struggle so much... I just do not understand any of it!"
+	  },
+	  {
+		"name": "narrator",
+		"log": "In the afternoon, Matthew was called by one of his teachers, Ma'am Cruz."
+	  },
+	  {
+		"name": "ma'am cruz",
+		"log": "Matthew, I called you here to discuss your grades. You are about to fail your Math subject. To pass, you MUST pass the Math Test on our upcoming examination."
+	  },
+	  {
+		"name": "matthew",
+		"log": "The upcoming examination... I don't know what to do, Ma'am Cruz. I want to learn, but numbers confuse me!"
+	  },
+	  {
+		"name": "ma'am cruz",
+		"log": "You have curiosity and heart, Matthew. Practice diligently on the way home, learn the basic clues of every problem, and believe in yourself."
+	  }
+	],
+	"next": "alley_portal"
+  },
+  "alley_portal": {
+	"title": "Chapter 2: The Mysterious Portal",
+	"location": "Empty Alleyway — Sunset",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "One day on the way home in an empty alley, Matthew feels strange..."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Wait... what is that glowing light in the alley wall? It feels like the air is humming with magical energy!"
+	  },
+	  {
+		"name": "narrator",
+		"log": "He saw a shimmering portal floating in the air. He was scared and curious, so he stepped closer to the portal and touched it."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Whoaaa! The portal is pulling me in!"
+	  }
+	],
+	"next": "magical_forest"
+  },
+  "magical_forest": {
+	"title": "Chapter 3: Arrival in Magi-Mathica",
+	"location": "The Enchanted Forest of Magi-Mathica",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "On the other side of the portal is another world! Matthew arrived in a magical forest."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Where am I?! Glowing numbers floating in the trees? Geometric flowers? I feel completely overwhelmed by the things I am seeing!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "Oh no! The portal is closed! How will I ever get back home to prepare for my upcoming exam?!"
+	  },
+	  {
+		"name": "narrator",
+		"log": "While wandering in the forest, Matthew met Arith, a kind student of AcadeMath."
+	  },
+	  {
+		"name": "arith",
+		"log": "Hello there, traveler! You look lost. My name is Arith, a student at AcadeMath."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Hi Arith! I am Matthew. I came through a portal from Earth. I need to get back home to prepare for my school exam, but the portal closed!"
+	  },
+	  {
+		"name": "arith",
+		"log": "A portal huh, do not worry, Matthew! The only person that can help you open the portal is the Great Math Wizard at the castle. Come, I will guide and accompany you to see him!"
+	  }
+	],
+	"next": "wizard_castle_intro"
+  },
+  "wizard_castle_intro": {
+	"title": "Chapter 4: The Wizard's Condition",
+	"location": "The Great Math Wizard's Castle",
+	"dialogues": [
+	  {
+		"name": "the great math wizard",
+		"log": "Welcome, young Matthew from Earth! I sense your troubled heart about the mathematics of your world."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Great Wizard, please help me! I want to go home and prepare for my upcoming exam, but the portal is locked tight."
+	  },
+	  {
+		"name": "arith",
+		"log": "I will guide Matthew on how to gain the Learning Experience and how he will pass the Wizard's Quiz! We will enroll him at AcadeMath!"
+	  },
+	  {
+		"name": "the great math wizard",
+		"log": "Very well! Begin with the foundational magic of numbers. Return when you have mastered the four sacred operations and earned the medals of AcadeMath!"
+	  },
+	  {
+		"name": "arith",
+		"log": "Thank you, Great Wizard! Come on, Matthew. Let us head back to my house. I have the perfect magical book to start your training!"
+	  }
+	],
+	"next": "arith_study_book"
+  },
+  "arith_study_book": {
+	"title": "Chapter 5: Arith's Magical Book",
+	"location": "Arith's Study Room",
+	"dialogues": [
+	  {
+		"name": "arith",
+		"log": "Here is your first magical primer, Matthew! To apply at AcadeMath, the first requirement is to identify numbers and count objects with accuracy. Let us practice right here!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "Let me open the book! I am ready to learn number identification and counting!"
+	  }
+	],
+	"next": "academy_interview"
+  },
+  "academy_interview": {
+	"title": "Chapter 6: Application at AcadeMath",
+	"location": "AcadeMath Principal's Office",
+	"dialogues": [
+	  {
+		"name": "arith",
+		"log": "This is the office of our revered Principal, Mr. Archimedes. He will interview you and test your basic number knowledge!"
+	  },
+	  {
+		"name": "mr. archimedes",
+		"log": "Greetings, Matthew! To admit you into AcadeMath, I must interview you with questions about: How many are these objects? And arrange these numbers in order!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "I am ready, Mr. Archimedes! Let's begin the entrance test!"
+	  }
+	],
+	"next": "school_admission"
+  },
+  "school_admission": {
+	"title": "Chapter 7: Welcome to AcadeMath",
+	"location": "AcadeMath Principal's Office",
+	"dialogues": [
+	  {
+		"name": "mr. archimedes",
+		"log": "Splendid work, Matthew! You passed the entrance exam with remarkable precision."
+	  },
+	  {
+		"name": "mr. archimedes",
+		"log": "Your timing couldn't be more perfect. A new class officially begins tomorrow, and I am thrilled that you will be joining us."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Thank you, Mr. Archimedes! I will make sure to be here bright and early tomorrow."
+	  },
+	  {
+		"name": "arith",
+		"log": "I knew you could do it, Matthew! Congratulations on officially becoming a student here!"
+	  },
+	  {
+		"name": "arith",
+		"log": "Okay let's go home for now, you can stay at my place for a time being I'm alone anyway."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Thank you Arith!"
+	  }
+	],
+	"next": "market_food_1"
+  },
+  "market_food_1": {
+	"title": "Morning Routine: Pip's Magical Bakery",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Good morning, young scholar! Fresh star-fruit buns and mana pies are ready. Solve the price problem to buy your breakfast!"
+	  }
+	],
+	"next": "grade1_lesson1_class"
+  },
+  "grade1_lesson1_class": {
+	"title": "Grade 1 Lesson 1: Counting & Number Identification (1-10)",
+	"location": "AcadeMath — Counting Classroom",
+	"dialogues": [
+	  {
+		"name": "matthew",
+		"log": "Good morning! My name is Matthew, and I am eager to learn how to count and identify numbers!"
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome, Matthew! Today we explore counting from one to ten, finding totals, identifying what comes next, sorting numbers, and even counting backward. Remember: you can repeat my discussion anytime, and I can show you more samples whenever you need!"
+	  }
+	],
+	"next": "grade1_lesson1_test"
+  },
+  "grade1_lesson1_test": {
+	"title": "Counting & Number Identification Test (1-10)",
+	"location": "AcadeMath — Counting Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Now that we have explored counting forward, backward, and sorting numbers, let us take your first test! Show what you have learned about counting to ten!"
+	  }
+	],
+	"next": "home_sleep_1"
+  },
+  "home_sleep_1": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "matthew",
+		"log": "I really understood how to count today! Tomorrow I will learn about comparing numbers..."
+	  }
+	],
+	"next": "market_food_2"
+  },
+  "market_food_2": {
+	"title": "Morning Routine: Market Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Welcome back! Today we have honey clover biscuits. Calculate your change to purchase!"
+	  }
+	],
+	"next": "grade1_lesson2_class"
+  },
+  "grade1_lesson2_class": {
+	"title": "Grade 1 Lesson 2: Comparing Numbers (1-10)",
+	"location": "AcadeMath — Comparison Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Greetings, Matthew! Today we learn about greater than, less than, and equal to using the Magical Balance. We will discover which numbers are bigger, smaller, or exactly the same!"
+	  }
+	],
+	"next": "grade1_lesson2_test"
+  },
+  "grade1_lesson2_test": {
+	"title": "Comparing Numbers Test (1-10)",
+	"location": "AcadeMath — Comparison Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Time for your Comparing Numbers Test! Remember the clue words: greater than, less than, and equal to. Show your understanding of the Magical Balance!"
+	  }
+	],
+	"next": "home_sleep_2"
+  },
+  "home_sleep_2": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "matthew",
+		"log": "Comparing numbers makes so much sense now! Tomorrow I will learn to count to twenty..."
+	  }
+	],
+	"next": "market_food_3"
+  },
+  "market_food_3": {
+	"title": "Morning Routine: Nutritious Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for another day of learning, Matthew? Here are berry cluster rolls!"
+	  }
+	],
+	"next": "grade1_lesson3_class"
+  },
+  "grade1_lesson3_class": {
+	"title": "Grade 1 Lesson 3: Counting & Number Identification (1-20)",
+	"location": "AcadeMath — Counting Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew continues his journey deeper into the enchanted forest of numbers, expanding his counting range to twenty."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome back, Matthew! Today we count all the way to twenty—the 'teen' numbers! We will explore ten-frames, missing numbers, patterns, and even count backward from twenty!"
+	  }
+	],
+	"next": "grade1_lesson3_test"
+  },
+  "grade1_lesson3_test": {
+	"title": "Counting & Number Identification Test (1-20)",
+	"location": "AcadeMath — Counting Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your mastery of the teen numbers on this test! Demonstrate your understanding of counting to twenty, patterns, and sequences!"
+	  }
+	],
+	"next": "home_sleep_3"
+  },
+  "home_sleep_3": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps, dreaming of teen numbers and magical patterns."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Counting to twenty was so exciting! Tomorrow I will learn about shapes and their sides..."
+	  }
+	],
+	"next": "market_food_4"
+  },
+  "market_food_4": {
+	"title": "Morning Routine: Final Market Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "The forest adventure continues! Fuel up with our golden crystal waffles!"
+	  }
+	],
+	"next": "grade1_lesson4_class"
+  },
+  "grade1_lesson4_class": {
+	"title": "Grade 1 Lesson 4: Comparing & Ordering Numbers with Shapes (1-20)",
+	"location": "AcadeMath — Geometry Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew enters the realm of magical shapes, learning to count and compare based on the number of sides."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Greetings, Matthew! Today we apply your counting skills to magical shapes! We will count sides of triangles, squares, pentagons, and more, then compare and order them!"
+	  }
+	],
+	"next": "grade1_lesson4_test"
+  },
+  "grade1_lesson4_test": {
+	"title": "Comparing & Ordering Numbers with Shapes Test (1-20)",
+	"location": "AcadeMath — Geometry Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Here is your test on shape sides and number comparison! Show how you can count, compare, and order magical shapes!"
+	  }
+	],
+	"next": "home_sleep_4"
+  },
+  "home_sleep_4": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew sleeps peacefully. Tomorrow, he will expand his counting horizon even further."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Magical shapes are amazing! Tomorrow I will learn to count all the way to fifty..."
+	  }
+	],
+	"next": "market_food_5"
+  },
+  "market_food_5": {
+	"title": "Morning Routine: Baker Pip's Special",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Big numbers require big energy! Try our enchanted acorn muffins!"
+	  }
+	],
+	"next": "grade1_lesson5_class"
+  },
+  "grade1_lesson5_class": {
+	"title": "Grade 1 Lesson 5: Counting & Number Identification (1-50)",
+	"location": "AcadeMath — Counting Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew ventures deeper into the enchanted forest, where numbers grow larger and more magical."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome back, brave adventurer! Today we count all the way to fifty! We will discover big numbers, missing sequences, reading and comparing large numbers, and even sort Learning Experience rewards!"
+	  }
+	],
+	"next": "grade1_lesson5_test"
+  },
+  "grade1_lesson5_test": {
+	"title": "Counting & Number Identification Test (1-50)",
+	"location": "AcadeMath — Counting Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Demonstrate your big number mastery on this test! Show you can count, read, compare, and order numbers up to fifty!"
+	  }
+	],
+	"next": "home_sleep_5"
+  },
+  "home_sleep_5": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps, his mind expanding with larger numbers."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Counting to fifty is challenging but fun! Tomorrow I will learn about tens and ones..."
+	  }
+	],
+	"next": "market_food_6"
+  },
+  "market_food_6": {
+	"title": "Morning Routine: Market Delights",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for place value magic? Our crystal cluster cakes are perfect!"
+	  }
+	],
+	"next": "grade1_lesson6_class"
+  },
+  "grade1_lesson6_class": {
+	"title": "Grade 1 Lesson 6: Place Value - Tens & Ones (1-50)",
+	"location": "AcadeMath — Place Value Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew meets Mr. Tenz, who teaches him the magical secret of counting big numbers fast by grouping into tens and ones."
+	  },
+	  {
+		"name": "mr. tenz",
+		"log": "Greetings, Matthew! I am Mr. Tenz. Today we learn the magic of grouping items into chests of ten! Instead of counting one by one, we pack them into tens and count the leftovers as ones. This is called Place Value!"
+	  }
+	],
+	"next": "grade1_lesson6_test"
+  },
+  "grade1_lesson6_test": {
+	"title": "Place Value - Tens & Ones Test (1-50)",
+	"location": "AcadeMath — Place Value Classroom",
+	"dialogues": [
+	  {
+		"name": "mr. tenz",
+		"log": "Time for your Place Value Test! Show me you can count with chests of ten, break numbers apart, find expanded forms, and solve tricky combinations!"
+	  }
+	],
+	"next": "home_sleep_6"
+  },
+  "home_sleep_6": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps peacefully, understanding the magic of tens and ones."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Place value makes counting so much faster! Tomorrow I will learn to count to eighty..."
+	  }
+	],
+	"next": "market_food_7"
+  },
+  "market_food_7": {
+	"title": "Morning Routine: Energizing Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Numbers are getting bigger! Try our mana-infused pancakes!"
+	  }
+	],
+	"next": "grade1_lesson7_class"
+  },
+  "grade1_lesson7_class": {
+	"title": "Grade 1 Lesson 7: Counting & Number Identification (1-80)",
+	"location": "AcadeMath — Counting Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew's magical journey continues even deeper into the enchanted forest, expanding his counting range to eighty."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome back, brave student! Today we count all the way to eighty! We will explore number patterns, missing magic, sorting forest treasures, and face the Great Math Wizard's counting challenges!"
+	  }
+	],
+	"next": "grade1_lesson7_test"
+  },
+  "grade1_lesson7_test": {
+	"title": "Counting & Number Identification Test (1-80)",
+	"location": "AcadeMath — Counting Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your mastery of numbers up to eighty on this test! Demonstrate your understanding of patterns, sequences, and comparing larger numbers!"
+	  }
+	],
+	"next": "home_sleep_7"
+  },
+  "home_sleep_7": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps, dreaming of larger numbers and magical patterns."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Counting to eighty opens up so many possibilities! Tomorrow I will learn addition and subtraction..."
+	  }
+	],
+	"next": "market_food_8"
+  },
+  "market_food_8": {
+	"title": "Morning Routine: Operation Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for operations? Our sum-and-difference pastries are perfect!"
+	  }
+	],
+	"next": "grade1_lesson8_class"
+  },
+  "grade1_lesson8_class": {
+	"title": "Grade 1 Lesson 8: Basic Addition & Subtraction (1-80)",
+	"location": "AcadeMath — Operations Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew becomes a magical math detective, learning to hunt for clue words in story problems."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome, magical math detective! Today we use your counting magic to solve story problems! We hunt for clue words like 'sum', 'in all', 'total' for addition, and 'left', 'remaining', 'difference' for subtraction!"
+	  }
+	],
+	"next": "grade1_lesson8_test"
+  },
+  "grade1_lesson8_test": {
+	"title": "Basic Addition & Subtraction Test (1-80)",
+	"location": "AcadeMath — Operations Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your detective skills on this test! Find every clue word and solve addition and subtraction story problems using numbers up to eighty!"
+	  }
+	],
+	"next": "home_sleep_8"
+  },
+  "home_sleep_8": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps peacefully, proud of his detective work with clue words."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Addition and subtraction make so much sense with clue words! Tomorrow I will learn to count to one hundred..."
+	  }
+	],
+	"next": "market_food_9"
+  },
+  "market_food_9": {
+	"title": "Morning Routine: Century Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "The number mountain awaits! Our hundred-herb rolls will give you strength!"
+	  }
+	],
+	"next": "grade1_lesson9_class"
+  },
+  "grade1_lesson9_class": {
+	"title": "Grade 1 Lesson 9: Counting & Number Identification (1-100)",
+	"location": "AcadeMath — Counting Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew reaches the very top of the number mountain in the land of Magi-Mathica—counting to one hundred!"
+	  },
+	  {
+		"name": "teacher",
+		"log": "Hello, master math adventurer! Today we count all the way to one hundred! We will explore the magic of 99, number patterns and spelling, sort grand treasures, and face the Wizard's final doors!"
+	  }
+	],
+	"next": "grade1_lesson9_test"
+  },
+  "grade1_lesson9_test": {
+	"title": "Counting & Number Identification Test (1-100)",
+	"location": "AcadeMath — Counting Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Demonstrate your mastery of counting to one hundred! Show you understand the magic of 99, patterns, spelling, and sorting the grandest treasures!"
+	  }
+	],
+	"next": "home_sleep_9"
+  },
+  "home_sleep_9": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew sleeps peacefully. Tomorrow, he will face the Great Math Wizard's Final Trial for Grade 1."
+	  },
+	  {
+		"name": "matthew",
+		"log": "I can count all the way to one hundred! Tomorrow I will face the Wizard's ultimate challenge!"
+	  }
+	],
+	"next": "market_food_10"
+  },
+  "market_food_10": {
+	"title": "Morning Routine: Final Trial Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "The Final Trial awaits! Our champion's feast will give you the power to succeed!"
+	  }
+	],
+	"next": "grade1_lesson10_class"
+  },
+  "grade1_lesson10_class": {
+	"title": "Grade 1 Lesson 10: The Great Math Wizard's Final Trial (1-100)",
+	"location": "The Great Math Wizard's Castle",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew stands before the towering gates of the Great Math Wizard's castle for his Grade 1 Final Trial."
+	  },
+	  {
+		"name": "the great math wizard",
+		"log": "Welcome, master math adventurer! You have traveled through the Enchanted Forest and mastered numbers from one to one hundred. Today, you face a series of puzzles to test everything you have learned. If you solve them, you will earn the title of Grand Math Champion for Grade 1!"
+	  }
+	],
+	"next": "grade1_lesson10_test"
+  },
+  "grade1_lesson10_test": {
+	"title": "The Great Math Wizard's Final Trial (1-100)",
+	"location": "The Great Math Wizard's Castle",
+	"dialogues": [
+	  {
+		"name": "the great math wizard",
+		"log": "Let the Final Trial begin! Face the constellations, the Magical Balance, place value challenges, castle steps, library scrolls, artifacts, and the ultimate multi-step trial!"
+	  }
+	],
+	"next": "grade1_complete"
+  },
+  "grade1_complete": {
+	"title": "Grade 1 Completion: The Bronze Medal",
+	"location": "The Great Math Wizard's Castle",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew completed the Great Math Wizard's Final Trial for Grade 1 with extraordinary skill."
+	  },
+	  {
+		"name": "the great math wizard",
+		"log": "Sensational! You passed my Grade 1 Trial with extraordinary skill, Matthew! As promised, I award you the BRONZE MEDAL for mastering numbers 1-100! You are now ready to advance to Grade 2 and learn intermediate spells!"
+	  },
+	  {
+		"name": "arith",
+		"log": "You did it, Matthew! You mastered the foundational magic of numbers and collected your first medal!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "Thank you Arith, thank you Great Wizard! I am ready for Grade 2 and its intermediate challenges!"
+	  }
+	],
+	"next": "home_sleep_10"
+  },
+  "home_sleep_10": {
+	"title": "Evening Routine: Grade 1 Complete",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew sleeps peacefully with his Bronze Medal. Tomorrow, he begins Grade 2 and its intermediate magical challenges."
+	  },
+	  {
+		"name": "matthew",
+		"log": "I earned my Bronze Medal! Grade 2 with intermediate spells awaits me tomorrow!"
+	  }
+	],
+	"next": "market_food_11"
+  },
+  "market_food_11": {
+	"title": "Morning Routine: Grade 2 Beginning",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Welcome to Grade 2! Our intermediate wizard breakfast will prepare you for bigger numbers!"
+	  }
+	],
+	"next": "grade2_lesson1_class"
+  },
+  "grade2_lesson1_class": {
+	"title": "Grade 2 Lesson 1: 2-Digit Addition (No Regrouping)",
+	"location": "AcadeMath — Advanced Addition Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew enters the grand academy for Grade 2, learning to add big numbers without any magic spells—just his mind!"
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome, young wizard, to the grand academy! Today we learn how to add big numbers without regrouping. You will travel through enchanted forests, visit armories, and solve puzzles to master your magical mathematics!"
+	  }
+	],
+	"next": "grade2_lesson1_test"
+  },
+  "grade2_lesson1_test": {
+	"title": "2-Digit Addition (No Regrouping) Test",
+	"location": "AcadeMath — Advanced Addition Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your mastery of 2-digit addition without regrouping! Demonstrate you can line up tens and ones correctly and add straight down every time!"
+	  }
+	],
+	"next": "home_sleep_11"
+  },
+  "home_sleep_11": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps, his mind practicing lining up big numbers."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Adding big numbers is straightforward when I line them up correctly! Tomorrow I will learn the regrouping spell..."
+	  }
+	],
+	"next": "market_food_12"
+  },
+  "market_food_12": {
+	"title": "Morning Routine: Regrouping Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for the regrouping spell? Our carry-over croissants are perfect!"
+	  }
+	],
+	"next": "grade2_lesson2_class"
+  },
+  "grade2_lesson2_class": {
+	"title": "Grade 2 Lesson 2: 2-Digit Addition (With Regrouping)",
+	"location": "AcadeMath — Advanced Addition Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew explores the deep woods of the enchanted forest, learning the special math spell called 'Regrouping' when ones overflow."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Greetings, magical ecologist! Today we explore the deep woods where creatures are divided between north and south sides. When your ones column adds up to 10 or more, you must use the 'Regrouping' spell—carry the 'ten' to its proper place!"
+	  }
+	],
+	"next": "grade2_lesson2_test"
+  },
+  "grade2_lesson2_test": {
+	"title": "2-Digit Addition (With Regrouping) Test",
+	"location": "AcadeMath — Advanced Addition Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Demonstrate your mastery of the 'Regrouping' spell! Show you can carry the 'ten' whenever your ones column adds up to 10 or more!"
+	  }
+	],
+	"next": "home_sleep_12"
+  },
+  "home_sleep_12": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps peacefully, dreaming of carrying tens and regrouping magic."
+	  },
+	  {
+		"name": "matthew",
+		"log": "The regrouping spell is powerful! Tomorrow I will learn subtraction without regrouping..."
+	  }
+	],
+	"next": "market_food_13"
+  },
+  "market_food_13": {
+	"title": "Morning Routine: Subtraction Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for subtraction magic? Our take-away tarts are perfect!"
+	  }
+	],
+	"next": "grade2_lesson3_class"
+  },
+  "grade2_lesson3_class": {
+	"title": "Grade 2 Lesson 3: 2-Digit Subtraction (No Regrouping)",
+	"location": "AcadeMath — Advanced Subtraction Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew visits Wizard Alaric's study to learn subtraction, which means taking things away to find out what is left."
+	  },
+	  {
+		"name": "wizard alaric",
+		"log": "Welcome to my study! Today we learn subtraction—taking things away to find what remains. We set up numbers just like in addition: tens over tens, ones over ones. When the top number is always bigger, you just subtract straight down!"
+	  }
+	],
+	"next": "grade2_lesson3_test"
+  },
+  "grade2_lesson3_test": {
+	"title": "2-Digit Subtraction (No Regrouping) Test",
+	"location": "AcadeMath — Advanced Subtraction Classroom",
+	"dialogues": [
+	  {
+		"name": "wizard alaric",
+		"log": "Show your subtraction mastery! Demonstrate you can subtract straight down when the top number is always bigger in the ones place!"
+	  }
+	],
+	"next": "home_sleep_13"
+  },
+  "home_sleep_13": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps, his mind practicing straightforward subtraction."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Subtraction is simple when I can just subtract straight down! Tomorrow I will learn the borrowing charm..."
+	  }
+	],
+	"next": "market_food_14"
+  },
+  "market_food_14": {
+	"title": "Morning Routine: Borrowing Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for the borrowing charm? Our borrow-buns are perfectly prepared!"
+	  }
+	],
+	"next": "grade2_lesson4_class"
+  },
+  "grade2_lesson4_class": {
+	"title": "Grade 2 Lesson 4: 2-Digit Subtraction (With Regrouping)",
+	"location": "AcadeMath — Advanced Subtraction Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew enters the potion master's shop where the royal knights buy so many potions that the math gets tricky—requiring the 'Borrowing' charm."
+	  },
+	  {
+		"name": "potion master",
+		"log": "Hello, apprentice potion masters! Sometimes when we subtract, the top number in the ones column is smaller than the bottom number. We must use the 'Borrowing' charm—borrow one 'ten' from the tens column and bring it over to the ones!"
+	  }
+	],
+	"next": "grade2_lesson4_test"
+  },
+  "grade2_lesson4_test": {
+	"title": "2-Digit Subtraction (With Regrouping) Test",
+	"location": "AcadeMath — Advanced Subtraction Classroom",
+	"dialogues": [
+	  {
+		"name": "potion master",
+		"log": "Demonstrate your mastery of the 'Borrowing' charm! Show you can borrow from the tens place whenever the top number in the ones place is too small!"
+	  }
+	],
+	"next": "home_sleep_14"
+  },
+  "home_sleep_14": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps peacefully, dreaming of borrowing tens and magical charms."
+	  },
+	  {
+		"name": "matthew",
+		"log": "The borrowing charm is amazing! Tomorrow I will learn about multiplication arrays..."
+	  }
+	],
+	"next": "market_food_15"
+  },
+  "market_food_15": {
+	"title": "Morning Routine: Array Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for the armory? Our row-and-column rolls are arranged perfectly!"
+	  }
+	],
+	"next": "grade2_lesson5_class"
+  },
+  "grade2_lesson5_class": {
+	"title": "Grade 2 Lesson 5: Intro to Multiplication (Arrays)",
+	"location": "AcadeMath — Armory",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew enters the armory where magical items are arranged in neat rows and columns called arrays—the secret to multiplication!"
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome to the armory! Look at these crystal balls, spell books, and flying brooms arranged in neat rows and columns. This is called an array, and it's the secret to multiplication! Instead of counting one by one, we count rows and items in each row!"
+	  }
+	],
+	"next": "grade2_lesson5_test"
+  },
+  "grade2_lesson5_test": {
+	"title": "Intro to Multiplication (Arrays) Test",
+	"location": "AcadeMath — Armory",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your mastery of arrays! Demonstrate you can count items quickly by multiplying the number of rows by the number of items in each row!"
+	  }
+	],
+	"next": "home_sleep_15"
+  },
+  "home_sleep_15": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps, dreaming of rows, columns, and multiplication magic."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Arrays make multiplication so easy! Tomorrow I will learn about fractions..."
+	  }
+	],
+	"next": "market_food_16"
+  },
+  "market_food_16": {
+	"title": "Morning Routine: Fraction Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for the magical bakery? Our half-and-third pies are perfectly divided!"
+	  }
+	],
+	"next": "grade2_lesson6_class"
+  },
+  "grade2_lesson6_class": {
+	"title": "Grade 2 Lesson 6: Basic Fractions",
+	"location": "AcadeMath — Magical Bakery",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew steps into the magical bakery to learn about fractions—cutting shapes into equal pieces and sharing them perfectly."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Step into the magical bakery! Today we look at giant pumpkin pasties, cauldron cakes, and treacle tarts. When we cut a shape into equal pieces, we create fractions! We will learn halves, thirds, and quarters!"
+	  }
+	],
+	"next": "grade2_lesson6_test"
+  },
+  "grade2_lesson6_test": {
+	"title": "Basic Fractions Test",
+	"location": "AcadeMath — Magical Bakery",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your fraction mastery! Demonstrate you can identify halves, thirds, and quarters, and remember the golden rule that every piece must be exactly the same size!"
+	  }
+	],
+	"next": "home_sleep_16"
+  },
+  "home_sleep_16": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps peacefully, dreaming of equal pieces and magical fractions."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Fractions make sharing so fair! Tomorrow I will learn about 3D magical shapes..."
+	  }
+	],
+	"next": "market_food_17"
+  },
+  "market_food_17": {
+	"title": "Morning Routine: 3D Shapes Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for the artifact room? Our shape-shifting scones are delicious!"
+	  }
+	],
+	"next": "grade2_lesson7_class"
+  },
+  "grade2_lesson7_class": {
+	"title": "Grade 2 Lesson 7: 3D Magical Shapes",
+	"location": "AcadeMath — Artifact Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew enters the artifact room to learn about 3D shapes—shapes that pop out and take up space, unlike flat drawings."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome to the artifact room! Magical items come in many 3D shapes. Today we play a guessing game to identify cubes, spheres, cylinders, and cones by looking at mysterious artifacts!"
+	  }
+	],
+	"next": "grade2_lesson7_test"
+  },
+  "grade2_lesson7_test": {
+	"title": "3D Magical Shapes Test",
+	"location": "AcadeMath — Artifact Room",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your shape identification mastery! Demonstrate you can identify cubes, spheres, cylinders, and cones by examining magical artifacts!"
+	  }
+	],
+	"next": "home_sleep_17"
+  },
+  "home_sleep_17": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps, dreaming of 3D shapes and magical artifacts."
+	  },
+	  {
+		"name": "matthew",
+		"log": "3D shapes are everywhere in the magical world! Tomorrow I will learn to tell time..."
+	  }
+	],
+	"next": "market_food_18"
+  },
+  "market_food_18": {
+	"title": "Morning Routine: Time Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Time waits for no wizard! Our ticking-clock muffins are perfectly timed!"
+	  }
+	],
+	"next": "grade2_lesson8_class"
+  },
+  "grade2_lesson8_class": {
+	"title": "Grade 2 Lesson 8: Time (To the 5 Minutes)",
+	"location": "AcadeMath — Grand Clock Tower",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew visits the Grand Clock Tower to learn the critical skill of reading clock hands accurately."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Listen! The Grand Clock Tower is ticking. Time waits for no wizard! A clock has two hands: the short hour hand and the long minute hand. Always look at the short hand first, then count the minutes with the long hand by 5s!"
+	  }
+	],
+	"next": "grade2_lesson8_test"
+  },
+  "grade2_lesson8_test": {
+	"title": "Time (To the 5 Minutes) Test",
+	"location": "AcadeMath — Grand Clock Tower",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your timekeeping mastery! Demonstrate you can read the hour hand first and count minutes by 5s using the long minute hand!"
+	  }
+	],
+	"next": "home_sleep_18"
+  },
+  "home_sleep_18": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps peacefully, dreaming of clock hands and counting by fives."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Telling time is a useful skill! Tomorrow I will learn about Earth money..."
+	  }
+	],
+	"next": "market_food_19"
+  },
+  "market_food_19": {
+	"title": "Morning Routine: Money Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready to use Earth money? Our change-calculating cakes are perfect!"
+	  }
+	],
+	"next": "grade2_lesson9_class"
+  },
+  "grade2_lesson9_class": {
+	"title": "Grade 2 Lesson 9: Earth Money & Currency",
+	"location": "AcadeMath — Baker Pip's Shop",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew visits Baker Pip's shop to learn about Earth money—counting coins, making change, and solving basic price problems."
+	  },
+	  {
+		"name": "baker pip",
+		"log": "Let's visit my shop to buy some elven bread! Today we use Earth money—cents! When you buy something, you often give more money than the cost, so the shopkeeper must give you 'change' back. We subtract the cost from what you handed over!"
+	  }
+	],
+	"next": "grade2_lesson9_test"
+  },
+  "grade2_lesson9_test": {
+	"title": "Earth Money & Currency Test",
+	"location": "AcadeMath — Baker Pip's Shop",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Show your shopping mastery! Demonstrate you can calculate change correctly by subtracting the cost from the amount you handed over!"
+	  }
+	],
+	"next": "home_sleep_19"
+  },
+  "home_sleep_19": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps peacefully, dreaming of coins and making perfect change."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Counting money and making change is practical magic! Tomorrow I will learn to read potion graphs..."
+	  }
+	],
+	"next": "market_food_20"
+  },
+  "market_food_20": {
+	"title": "Morning Routine: Graph Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for the laboratory? Our bar-graph biscuits are data-rich!"
+	  }
+	],
+	"next": "grade2_lesson10_class"
+  },
+  "grade2_lesson10_class": {
+	"title": "Grade 2 Lesson 10: Reading Potion Graphs",
+	"location": "AcadeMath — Potions Laboratory",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew enters the potions laboratory to learn about reading bar graphs and pictographs of collected items."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome to the potions laboratory! We collected many red and blue potions today. To easily compare them, we put the numbers into a bar graph. A bar graph uses tall rectangles to show how many of each item we have!"
+	  }
+	],
+	"next": "grade2_lesson10_test"
+  },
+  "grade2_lesson10_test": {
+	"title": "Reading Potion Graphs Test",
+	"location": "AcadeMath — Potions Laboratory",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your data reading mastery! Demonstrate you can interpret bar graphs to find how many more or how many fewer potions we have of each color!"
+	  }
+	],
+	"next": "grade2_complete"
+  },
+  "grade2_complete": {
+	"title": "Grade 2 Completion: The Silver Medal",
+	"location": "The Great Math Wizard's Castle",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew completed all Grade 2 lessons and returns to the Great Math Wizard's castle."
+	  },
+	  {
+		"name": "the great math wizard",
+		"log": "Magnificent! You have mastered all intermediate spells of Grade 2—2-digit addition and subtraction, multiplication arrays, fractions, 3D shapes, time, money, and graphs! I award you the SILVER MEDAL! You are now ready for Grade 3 and its advanced wizardry!"
+	  },
+	  {
+		"name": "arith",
+		"log": "You did it, Matthew! You mastered the intermediate magic and earned your Silver Medal!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "Thank you Arith, thank you Great Wizard! I am ready for Grade 3 and its advanced challenges!"
+	  }
+	],
+	"next": "home_sleep_20"
+  },
+  "home_sleep_20": {
+	"title": "Evening Routine: Grade 2 Complete",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew sleeps peacefully with his Silver Medal. Tomorrow, he begins Grade 3 and its advanced magical challenges."
+	  },
+	  {
+		"name": "matthew",
+		"log": "I earned my Silver Medal! Grade 3 with advanced wizardry awaits me tomorrow!"
+	  }
+	],
+	"next": "market_food_21"
+  },
+  "market_food_21": {
+	"title": "Morning Routine: Grade 3 Beginning",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Welcome to Grade 3! Our advanced wizard breakfast will prepare you for the Diamond Medal!"
+	  }
+	],
+	"next": "grade3_lesson1_class"
+  },
+  "grade3_lesson1_class": {
+	"title": "Grade 3 Lesson 1: Multiplication Tables (1-10)",
+	"location": "AcadeMath — Advanced Multiplication Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew enters the highest tier of QuizBee—Grade 3 Advanced Wizardry—preparing for his Diamond Medal."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome to the highest tier, advanced wizards! You have trained hard, and now it is time to prepare for your Diamond Medal. Today we master rapid recall of basic multiplication facts—the power of products!"
+	  }
+	],
+	"next": "grade3_lesson1_test"
+  },
+  "grade3_lesson1_test": {
+	"title": "Multiplication Tables (1-10) Test",
+	"location": "AcadeMath — Advanced Multiplication Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your multiplication mastery! Demonstrate rapid recall of all basic multiplication facts from 1 to 10!"
+	  }
+	],
+	"next": "home_sleep_21"
+  },
+  "home_sleep_21": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps, his mind rapidly recalling multiplication facts."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Multiplication tables are becoming automatic! Tomorrow I will learn multiplication word problems..."
+	  }
+	],
+	"next": "market_food_22"
+  },
+  "market_food_22": {
+	"title": "Morning Routine: Word Problem Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for clue words? Our each-and-product pastries are perfectly prepared!"
+	  }
+	],
+	"next": "grade3_lesson2_class"
+  },
+  "grade3_lesson2_class": {
+	"title": "Grade 3 Lesson 2: Multiplication Word Problems",
+	"location": "AcadeMath — Advanced Word Problems Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew tackles multiplication word problems, learning to hunt for clue words like 'each' and 'product' in magical scrolls."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome back, advanced wizards! Today we tackle Multiplication Word Problems. When reading a quest on a magical scroll, how do you know you need to multiply? You hunt for clue words like 'each' and 'product'—secret signs telling you to use multiplication spells!"
+	  }
+	],
+	"next": "grade3_lesson2_test"
+  },
+  "grade3_lesson2_test": {
+	"title": "Multiplication Word Problems Test",
+	"location": "AcadeMath — Advanced Word Problems Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your clue word hunting mastery! Demonstrate you can identify 'each' and 'product' and solve multiplication word problems perfectly!"
+	  }
+	],
+	"next": "home_sleep_22"
+  },
+  "home_sleep_22": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps peacefully, dreaming of clue words and magical quests."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Finding clue words makes multiplication word problems easy! Tomorrow I will learn division concepts..."
+	  }
+	],
+	"next": "market_food_23"
+  },
+  "market_food_23": {
+	"title": "Morning Routine: Division Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for equal sharing? Our fair-share muffins are perfectly divided!"
+	  }
+	],
+	"next": "grade3_lesson3_class"
+  },
+  "grade3_lesson3_class": {
+	"title": "Grade 3 Lesson 3: Division Concepts (Equal Sharing)",
+	"location": "AcadeMath — Advanced Division Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew learns the powerful magic of Division—splitting large amounts into fair groups so everyone gets exactly the same amount."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome back to the academy! Today we learn Division—all about equal sharing. When we have a large amount of magical items, we must split them into fair groups so everyone gets the exact same amount. If even one wizard gets more, our magic could become unbalanced!"
+	  }
+	],
+	"next": "grade3_lesson3_test"
+  },
+  "grade3_lesson3_test": {
+	"title": "Division Concepts (Equal Sharing) Test",
+	"location": "AcadeMath — Advanced Division Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your equal sharing mastery! Demonstrate you can split totals into fair groups and ensure everyone gets exactly the same amount!"
+	  }
+	],
+	"next": "home_sleep_23"
+  },
+  "home_sleep_23": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps, dreaming of fair sharing and perfect balance."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Equal sharing keeps the magical world in harmony! Tomorrow I will learn division word problems..."
+	  }
+	],
+	"next": "market_food_24"
+  },
+  "market_food_24": {
+	"title": "Morning Routine: Division Word Problem Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for more clue words? Our quotient-and-per-person quiches are perfect!"
+	  }
+	],
+	"next": "grade3_lesson4_class"
+  },
+  "grade3_lesson4_class": {
+	"title": "Grade 3 Lesson 4: Division Word Problems",
+	"location": "AcadeMath — Advanced Word Problems Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew continues mastering division by solving magical word problems, hunting for the words 'quotient' and 'per person'."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome back! Today we continue mastering division by solving magical word problems. Sometimes scrolls use special code words like 'quotient' and 'per person'. The 'quotient' is simply the magical math word for the answer to a division problem!"
+	  }
+	],
+	"next": "grade3_lesson4_test"
+  },
+  "grade3_lesson4_test": {
+	"title": "Division Word Problems Test",
+	"location": "AcadeMath — Advanced Word Problems Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your decoding mastery! Demonstrate you can spot the words 'quotient' and 'per person' to solve tricky division word problems!"
+	  }
+	],
+	"next": "home_sleep_24"
+  },
+  "home_sleep_24": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps peacefully, dreaming of quotients and fair distribution."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Decoding division words is fun! Tomorrow I will learn about equivalent fractions..."
+	  }
+	],
+	"next": "market_food_25"
+  },
+  "market_food_25": {
+	"title": "Morning Routine: Fraction Comparison Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for advanced fractions? Our equivalent-potion pies are perfectly measured!"
+	  }
+	],
+	"next": "grade3_lesson5_class"
+  },
+  "grade3_lesson5_class": {
+	"title": "Grade 3 Lesson 5: Equivalent & Comparing Fractions",
+	"location": "AcadeMath — Potion Blending Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew enters the potion blending room to work with magical fractions—learning that pieces that look different can be the same size, and determining which is larger."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome to the potion blending room! Today we work with magical fractions. Fractions tell us about parts of a whole. But beware! Sometimes pieces that look different are actually the same size, and sometimes we need to know which piece is larger!"
+	  }
+	],
+	"next": "grade3_lesson5_test"
+  },
+  "grade3_lesson5_test": {
+	"title": "Equivalent & Comparing Fractions Test",
+	"location": "AcadeMath — Potion Blending Room",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your fraction vision mastery! Demonstrate you can compare fractions, find equivalent fractions, and see past the numbers to the true size of potion ingredients!"
+	  }
+	],
+	"next": "home_sleep_25"
+  },
+  "home_sleep_25": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps, dreaming of equivalent fractions and magical comparisons."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Fraction vision is powerful! Tomorrow I will learn about area..."
+	  }
+	],
+	"next": "market_food_26"
+  },
+  "market_food_26": {
+	"title": "Morning Routine: Area Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for measurement? Our area-calculating cakes are perfectly sized!"
+	  }
+	],
+	"next": "grade3_lesson6_class"
+  },
+  "grade3_lesson6_class": {
+	"title": "Grade 3 Lesson 6: Area of Rectangles & Squares",
+	"location": "AcadeMath — Measurement Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew learns the spell of Measurement—specifically Area, the amount of inside space a flat shape takes up."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome back, advanced wizards! Today we learn the spell of Area—the inside space a flat shape takes up. To find the area of rectangles and squares, we use a powerful multiplication spell: multiply the length by the width!"
+	  }
+	],
+	"next": "grade3_lesson6_test"
+  },
+  "grade3_lesson6_test": {
+	"title": "Area of Rectangles & Squares Test",
+	"location": "AcadeMath — Measurement Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your area calculation mastery! Demonstrate you can multiply length by width to find the inside space of any rectangle or square!"
+	  }
+	],
+	"next": "home_sleep_26"
+  },
+  "home_sleep_26": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps peacefully, dreaming of measuring magical spaces."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Calculating area is useful for magical gardens and rooms! Tomorrow I will learn about perimeter..."
+	  }
+	],
+	"next": "market_food_27"
+  },
+  "market_food_27": {
+	"title": "Morning Routine: Perimeter Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for borders? Our perimeter-calculating pastries are perfectly edged!"
+	  }
+	],
+	"next": "grade3_lesson7_class"
+  },
+  "grade3_lesson7_class": {
+	"title": "Grade 3 Lesson 7: Perimeter of Polygons",
+	"location": "AcadeMath — Measurement Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew learns a brand-new spell: Perimeter—the total distance around the outside edge of a shape, like building a magical fence."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome back! Today we learn Perimeter—the total distance around the outside edge of a shape. Think of it like building a magical fence to protect a garden. To cast the Perimeter spell, add the lengths of every single outside side together!"
+	  }
+	],
+	"next": "grade3_lesson7_test"
+  },
+  "grade3_lesson7_test": {
+	"title": "Perimeter of Polygons Test",
+	"location": "AcadeMath — Measurement Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your perimeter mastery! Demonstrate you can add the lengths of all outside edges—or use multiplication for equal sides—to measure borders around any polygon!"
+	  }
+	],
+	"next": "home_sleep_27"
+  },
+  "home_sleep_27": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps, dreaming of magical fences and borders."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Perimeter spells protect our magical spaces! Tomorrow I will learn about elapsed time..."
+	  }
+	],
+	"next": "market_food_28"
+  },
+  "market_food_28": {
+	"title": "Morning Routine: Elapsed Time Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for time magic? Our elapsed-time eclairs are perfectly timed!"
+	  }
+	],
+	"next": "grade3_lesson8_class"
+  },
+  "grade3_lesson8_class": {
+	"title": "Grade 3 Lesson 8: Elapsed Time",
+	"location": "AcadeMath — Chronomancy Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew learns one of the most critical spells in wizardry—Elapsed Time, exactly how much time passes from the beginning of an event to the end."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome back, chronomancers! Today we learn Elapsed Time—exactly how much time passes from beginning to end. Whether brewing potions, flying broomsticks, or casting invisibility spells, knowing exactly how much time has passed can save you from magical disasters!"
+	  }
+	],
+	"next": "grade3_lesson8_test"
+  },
+  "grade3_lesson8_test": {
+	"title": "Elapsed Time Test",
+	"location": "AcadeMath — Chronomancy Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your timekeeping mastery! Demonstrate you can find end times, calculate durations, and even measure time that crosses overnight!"
+	  }
+	],
+	"next": "home_sleep_28"
+  },
+  "home_sleep_28": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps peacefully, dreaming of flowing time and perfect timing."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Elapsed time is crucial for magical safety! Tomorrow I will learn about volume and mass..."
+	  }
+	],
+	"next": "market_food_29"
+  },
+  "market_food_29": {
+	"title": "Morning Routine: Volume & Mass Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for alchemy? Our measured-mass muffins are perfectly weighed!"
+	  }
+	],
+	"next": "grade3_lesson9_class"
+  },
+  "grade3_lesson9_class": {
+	"title": "Grade 3 Lesson 9: Volume & Mass",
+	"location": "AcadeMath — Alchemy Lab",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew enters the alchemy lab to master measuring magical ingredients by learning about Volume and Mass."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome to the alchemy lab! When brewing powerful potions, guessing is far too dangerous! We must know exactly how much liquid we are pouring and exactly how heavy our solid ingredients are. Today we master liters, milliliters, grams, and kilograms!"
+	  }
+	],
+	"next": "grade3_lesson9_test"
+  },
+  "grade3_lesson9_test": {
+	"title": "Volume & Mass Test",
+	"location": "AcadeMath — Alchemy Lab",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your measurement mastery! Demonstrate you can track volume of liquids, mass of solids, and perform alchemical conversions perfectly!"
+	  }
+	],
+	"next": "home_sleep_29"
+  },
+  "home_sleep_29": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps peacefully, dreaming of measured potions and perfect balance."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Precise measurement keeps potions safe! Tomorrow I will face the ultimate multi-step challenges..."
+	  }
+	],
+	"next": "market_food_30"
+  },
+  "market_food_30": {
+	"title": "Morning Routine: Final Challenge Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "The Ultimate Challenge awaits! Our multi-step meal will prepare you for the Diamond Medal!"
+	  }
+	],
+	"next": "grade3_lesson10_class"
+  },
+  "grade3_lesson10_class": {
+	"title": "Grade 3 Lesson 10: Multi-Step Wizard Challenges",
+	"location": "AcadeMath — Ultimate Challenge Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew faces the most powerful magic of all—Multi-Step Wizard Challenges where he must combine addition, subtraction, multiplication, and division into single, complex word problems."
+	  },
+	  {
+		"name": "teacher",
+		"log": "Welcome, advanced wizards, to your Final Trial for the Diamond Medal! Sometimes a single math spell is not enough—you might need to multiply and add, or subtract and divide, all in the same problem! The secret is to take them one step at a time!"
+	  }
+	],
+	"next": "grade3_lesson10_test"
+  },
+  "grade3_lesson10_test": {
+	"title": "Multi-Step Wizard Challenges Test",
+	"location": "AcadeMath — Ultimate Challenge Classroom",
+	"dialogues": [
+	  {
+		"name": "teacher",
+		"log": "Show your ultimate mastery! Demonstrate you can weave addition, subtraction, multiplication, and division together to solve the most complex magical challenges in the realm!"
+	  }
+	],
+	"next": "grade3_complete"
+  },
+  "grade3_complete": {
+	"title": "Grade 3 Completion: The Diamond Medal",
+	"location": "The Great Math Wizard's Castle",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew completed all Grade 3 lessons and returns to the Great Math Wizard's castle for his final recognition."
+	  },
+	  {
+		"name": "the great math wizard",
+		"log": "Magnificent! You have conquered all advanced wizardry of Grade 3—multiplication tables, word problems, division, fractions, area, perimeter, elapsed time, volume, mass, and multi-step challenges! I award you the DIAMOND MEDAL! You have mastered all three grades and become a Grand Math Champion!"
+	  },
+	  {
+		"name": "arith",
+		"log": "You did it, Matthew! You mastered all the curriculum and earned all three medals—Bronze, Silver, and Diamond!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "Thank you Arith, thank you Great Wizard! I have mastered everything from counting to one hundred all the way to advanced multi-step challenges!"
+	  }
+	],
+	"next": "library_ms_richie"
+  },
+  "library_ms_richie": {
+	"title": "Chapter 7: Ms. Richie and the Grand Reviewer Book",
+	"location": "The Grand AcadeMath Library",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "After earning his Diamond Medal and completing all three grades, Principal Archimedes personally assisted Matthew to the Grand AcadeMath Library."
+	  },
+	  {
+		"name": "mr. archimedes",
+		"log": "Ms. Richie, meet Matthew! He has earned all three medals—Bronze, Silver, and Diamond—and mastered the complete curriculum from Grade 1 through Grade 3!"
+	  },
+	  {
+		"name": "ms. richie",
+		"log": "Welcome, Grand Math Champion Matthew! I have prepared this Ultimate Grand Reviewer Book for you. It contains comprehensive notes, clue words, and practice questions covering everything from counting to 100 through advanced multi-step challenges!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "Thank you, Ms. Richie! With my complete mastery of all three grades, I am ready to face the Great Math Wizard's ultimate challenge and earn the Portal Key!"
+	  }
+	],
+	"next": "interactive_review"
+  },
+  "interactive_review": {
+	"title": "Grand Library Interactive Practice",
+	"location": "The Grand AcadeMath Library",
+	"dialogues": [
+	  {
+		"name": "arith",
+		"log": "Let us solve these ultimate interactive reviewer problems together! Once we finish this comprehensive review, we will proceed to the Wizard's Castle for the final challenge!"
+	  }
+	],
+	"next": "wizard_final_trial"
+  },
+  "wizard_final_trial": {
+	"title": "Chapter 8: The Great Math Wizard's Ultimate Challenge",
+	"location": "The Great Math Wizard's Castle",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew and Arith went to the Great Math Wizard to test his complete knowledge and learnings from all three grades during his time at Magi-Mathica."
+	  },
+	  {
+		"name": "the great math wizard",
+		"log": "Welcome back, Matthew and Arith! I see the brilliance of the Bronze, Silver, and Diamond medals on your chest. You have mastered foundational counting, intermediate spells, and advanced wizardry. Are you ready for the ultimate test of Magi-Mathica?"
+	  },
+	  {
+		"name": "matthew",
+		"log": "I am ready, Great Wizard! I understand everything from basic counting to complex multi-step problems. I can identify clue words, perform all operations, and solve any mathematical challenge!"
+	  },
+	  {
+		"name": "the great math wizard",
+		"log": "Let the Ultimate Challenge begin! This will test everything you have learned across all three grades!"
+	  }
+	],
+	"next": "portal_key_awarded"
+  },
+  "portal_key_awarded": {
+	"title": "Chapter 9: The Portal Key Bestowed",
+	"location": "The Great Math Wizard's Castle",
+	"dialogues": [
+	  {
+		"name": "the great math wizard",
+		"log": "Sensational! You passed my Ultimate Challenge with extraordinary skill, Matthew! You have mastered the complete curriculum from counting to 100 through advanced multi-step wizardry. As promised, here is the Magical Portal Key to open your pathway home!"
+	  },
+	  {
+		"name": "arith",
+		"log": "You did it, Matthew! You mastered all 30 lessons across three grades and collected all the Learning Experience!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "Thank you Arith, thank you Great Wizard, and thank you AcadeMath! I am ready to return home and face my Earth examination with complete confidence!"
+	  }
+	],
+	"next": "return_earth_exam"
+  },
+  "return_earth_exam": {
+	"title": "Chapter 10: Return to Earth & The Examination",
+	"location": "Earth Classroom — Examination Day",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew stepped through the magical portal and arrived back home. He was now completely confident to take the examination that he needed to pass."
+	  },
+	  {
+		"name": "ma'am cruz",
+		"log": "Welcome to your Math Examination, Matthew. Here is your test paper. Take a deep breath and do your best!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "I can do this! I can identify clue words, perform all operations, and solve any problem step by step. My journey through Magi-Mathica has prepared me perfectly!"
+	  }
+	],
+	"next": "victory_epilogue"
+  },
+  "victory_epilogue": {
+	"title": "Epilogue: Complete Mastery and Confidence",
+	"location": "Earth Classroom — Celebration",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew stepped through the magical portal, the vibrant colors of Magi-Mathica fading into the familiar walls of his classroom. He was finally home."
+	  },
+	  {
+		"name": "narrator",
+		"log": "The real world isn't a game, and there are no magical wands to solve your problems. But the magic you've learned here—the logic, the patience, and the understanding—is very real."
+	  },
+	  {
+		"name": "narrator",
+		"log": "By guiding Matthew through this journey, you've unlocked something far greater than any in-game achievement. You have conquered the fear of numbers."
+	  },
+	  {
+		"name": "narrator",
+		"log": "Armed with utmost knowledge, you and Matthew are now ready to face any equation, any test, and any challenge step by step. Go forth, and solve without fear!"
+	  }
+	],
+	"next": null
+  }
+}

@@ -1,0 +1,4465 @@
+{
+	"g1": [
+		{
+			"id": "g1-l1",
+			"grade": 1.0,
+			"title": "Lesson 1: Counting & Number Identification 1. (1-10)",
+			"lecture": "Hello, young adventurers, and welcome to your very first math quest! Today we are going to learn how to count from one all the way to ten. Counting helps us know exactly how much of something we have.\n\nLet's warm up our counting voices together, nice and loud: one, two, three, four, five, six, seven, eight, nine, ten! Wonderful!\n\nNow let's imagine we are walking through an enchanted forest. On the path in front of us, there are ten golden acorns lying in a row. Let's count them together, one at a time: one, two, three, four, five, six, seven, eight, nine, ten. Ten golden acorns in total!\n\nA little further along, we find some magic boxes. Some boxes are empty, and some boxes are glowing because they have a shining orb inside. There are ten boxes altogether, but only six of them are glowing. When we count, we only count the glowing ones: one, two, three, four, five, six. So there are six glowing boxes, even though there are ten boxes in total.\n\nRemember: counting means saying each number once, in order, without skipping any. The last number you say tells you how many things there are.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Count the golden acorn from left to right.",
+					"answer": "10",
+					"visual": {
+						"type": "grid",
+						"items": [
+							{
+								"icon": "🌕",
+								"count": 10.0
+							}
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "How would you arrange these floating numbers in the correct counting order from least to greatest: 2, 5, 4, 8?",
+					"answer": "2, 4, 5, 8",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"8",
+							"5",
+							"4",
+							"2"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Count how many boxes have a glowing orb? (6 boxes are filled 4 are empty)",
+					"answer": "6",
+					"visual": {
+						"type": "grid",
+						"items": [
+							{
+								"icon": "🌟",
+								"count": 6.0
+							},
+							{
+								"icon": " ",
+								"count": 4.0
+							}
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "How do you arrange the numbers 9, 3, 7, and 1 in descending order (from biggest to smallest)?",
+					"answer": "9, 7, 3, 1",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"3",
+							"1",
+							"9",
+							"7"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Arith has a collection of 7 magical books. If you count them starting from 1, what is the last number you will say?",
+					"answer": "7",
+					"visual": {
+						"type": "grid",
+						"items": [
+							{
+								"icon": "📔",
+								"count": 7.0
+							}
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "Matthew sees glowing numbers floating in the trees in the enchanted forest. If the sequence is 3, 4, 5, what number comes next?",
+					"answer": "6",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"3",
+							"4",
+							"5",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "If you count the flowers in the garden one by one (1 pink tulips , 2 yellow sunflowers, 3 red roses, and 4 blue lilies), What number comes after the total of blue lilies?",
+					"answer": "5",
+					"visual": {
+						"type": "grid",
+						"items": [
+							{
+								"icon": "🌷",
+								"count": 1.0
+							},
+							{
+								"icon": "🌻",
+								"count": 2.0
+							},
+							{
+								"icon": "🌹",
+								"count": 3.0
+							},
+							{
+								"icon": "🪻",
+								"count": 4.0
+							}
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "Count how many shards Matthew have? (5 shards)",
+					"answer": "5",
+					"visual": {
+						"type": "grid",
+						"items": [
+							{
+								"icon": "💠",
+								"count": 5.0
+							}
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "Mr. Minus brought 5 ancient spell scrolls to class. If he counts them backward starting from 5, what is the last number he says?",
+					"answer": "1",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"5",
+							"4",
+							"3",
+							"2",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "If Matthew counts his 5 pencils, what comes after 5?",
+					"answer": "6",
+					"visual": {
+						"type": "grid",
+						"items": [
+							{
+								"icon": "✏️",
+								"count": 5.0
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g1-l2",
+			"grade": 1.0,
+			"title": "Lesson 2: Comparing Numbers",
+			"lecture": "Welcome back, young wizards! Last time we learned to count all the way to ten. Today we are going to learn how to compare numbers, so we can tell which number is bigger, which is smaller, and when two numbers are exactly the same.\n\nImagine a magic balance, like a seesaw. Whichever side has more things on it becomes the heavier side and dips down low. The side with fewer things stays up high. If both sides have the exact same amount, the balance stays perfectly flat and even.\n\nHere is an example. Mr. Archimedes puts 4 glowing runes on the left side of the balance, and 7 glowing runes on the right side. Which side is heavier? Let's think about it: when we count, 7 comes after 4, so 7 is the bigger number. That means the right side has more runes, so the right side dips down.\n\nRemember three important words: 'greater than' means bigger, 'less than' means smaller, and 'equal to' means exactly the same. We use these words every time we compare two numbers.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "If Mr. Archimedes places 4 glowing runes on the left side of a magical balance and 6 glowing runes on the right, which side has a greater amount?",
+					"answer": "right",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "✨",
+							"count": 4.0
+						},
+						"rightItems": {
+							"icon": "✨",
+							"count": 6.0
+						}
+					}
+				},
+				{
+					"id": "q2",
+					"text": "Matthew has 5 golden acorns, and Arith has 3 golden acorns. Is the number of acorns Matthew has greater than, less than, or equal to Arith's acorns?",
+					"answer": "greater than",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "🌕",
+							"count": 5.0
+						},
+						"rightItems": {
+							"icon": "🌕",
+							"count": 3.0
+						}
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Ms. Addria places 6 crystal shards on one side of the magical balance. How many crystal shards must she place on the other side so that the balance is perfectly equal?",
+					"answer": "6",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "💠",
+							"count": 6.0
+						},
+						"rightItems": {
+							"icon": "❓",
+							"count": 1.0
+						}
+					}
+				},
+				{
+					"id": "q4",
+					"text": "You are brewing a potion that needs 3 mana drops. If you have 2 mana drops, is your amount greater than or less than what the potion needs?",
+					"answer": "less than",
+					"visual": {
+						"type": "grid",
+						"items": [
+							{
+								"icon": "💧",
+								"count": 2.0
+							},
+							{
+								"icon": "🤍",
+								"count": 1.0
+							}
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Baker Pip sells 6 crescent-fruit buns and 6 mana pies. Which symbol would you use to compare the number of buns to the number of pies? (>, <, or =)",
+					"answer": "=",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "🥐",
+							"count": 5.0
+						},
+						"rightItems": {
+							"icon": "🥧",
+							"count": 5.0
+						}
+					}
+				},
+				{
+					"id": "q6",
+					"text": "The magical balance tips downward on the side that is heavier. If one side has 5 coins and the other has 3 coins, which number makes the balance tip down because it is greater?",
+					"answer": "5",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "🪙",
+							"count": 5.0
+						},
+						"rightItems": {
+							"icon": "🪙",
+							"count": 3.0
+						}
+					}
+				},
+				{
+					"id": "q7",
+					"text": "Look at the numbers 5 and 3. Which magical phrase correctly compares them: '5 is greater than 3' or '5 is less than 3'?",
+					"answer": "5 is greater than 3",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "🌟",
+							"count": 5.0
+						},
+						"rightItems": {
+							"icon": "🌟",
+							"count": 3.0
+						}
+					}
+				},
+				{
+					"id": "q8",
+					"text": "Arith finds a chest with 3 magic stars and another chest with 6 magic stars. Which chest contains a number of stars that is less than the other?",
+					"answer": "3",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "⭐",
+							"count": 3.0
+						},
+						"rightItems": {
+							"icon": "⭐",
+							"count": 6.0
+						}
+					}
+				},
+				{
+					"id": "q9",
+					"text": "If the Great Math Wizard asks you to choose a number that is greater than 7 but less than 9, what number must you choose?",
+					"answer": "8",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"7",
+							"?",
+							"9"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "Matthew places 3 fire crystals on the left side of the balance and he places 4 ice crystals on the right side. Is the left side greater than, less than, or equal to the right side?",
+					"answer": "less than",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "🔥",
+							"count": 3.0
+						},
+						"rightItems": {
+							"icon": "❄️",
+							"count": 4.0
+						}
+					}
+				}
+			]
+		},
+		{
+			"id": "g1-l3",
+			"grade": 1.0,
+			"title": "Lesson 3: Counting & Number Identification 2. (1-20)",
+			"lecture": "Hello again, young wizards! You already know how to count to ten and compare numbers. Today we are going to count even further: all the way up to twenty! Numbers eleven through nineteen are sometimes called the 'teen' numbers.\n\nLet's count together, nice and loud, starting right after ten: eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty!\n\nHere is a story to help us practice. Our friend Arith has one full group of ten magic stars, and six more magic stars next to that group. To find the total, we start at ten and keep counting up by ones for each extra star: ten, then eleven, twelve, thirteen, fourteen, fifteen, sixteen. Ten stars plus six more stars makes sixteen stars in total.\n\nHere's a helpful trick: any time you have a full group of ten, plus some extra ones, you just start counting from ten and keep going up, one extra number for every extra item.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Matthew counts a pile of glowing fire crystals. If he has 14 crystals and finds one more, what number comes immediately after 14?",
+					"answer": "15",
+					"visual": {
+						"type": "grid",
+						"items": [
+							{
+								"icon": "🔥",
+								"count": 14.0
+							},
+							{
+								"icon": "✨",
+								"count": 1.0
+							}
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "If Mr. Archimedes places 18 golden acorns on his desk, how do you write the number 'eighteen'?",
+					"answer": "18",
+					"visual": {
+						"type": "grid",
+						"items": [
+							{
+								"icon": "🌕",
+								"count": 18.0
+							}
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Matthew sees glowing numbers floating in the trees in the enchanted forest. If the sequence is 11, 12, 13, what are the next two numbers he will see?",
+					"answer": "14, 15",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"11",
+							"12",
+							"13",
+							"?",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "Arith has a ten-frame completely filled with 10 magic stars, plus another ten-frame with 6 magic stars. How many magic stars does he have in total?",
+					"answer": "16",
+					"visual": {
+						"type": "grid",
+						"items": [
+							{
+								"icon": "⭐",
+								"count": 10.0
+							},
+							{
+								"icon": "⭐",
+								"count": 6.0
+							}
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Which list shows these magical numbers in the correct counting order: 15, 12, 17, 14?",
+					"answer": "12, 14, 15, 17",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"12",
+							"14",
+							"15",
+							"17"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "The Great Math Wizard asks you to count backward to unlock a door. If you start at 20, what are the next three numbers you say?",
+					"answer": "19, 18, 17",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"20",
+							"?",
+							"?",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "Matthew is organizing his spell scrolls. What number is missing from this sequence: 16, 17, __, 19, 20?",
+					"answer": "18",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"16",
+							"17",
+							"?",
+							"19",
+							"20"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "Look at the numbers 13 and 19. Which number is greater?",
+					"answer": "19",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "💠",
+							"count": 3.0
+						},
+						"rightItems": {
+							"icon": "💠",
+							"count": 6.0
+						}
+					}
+				},
+				{
+					"id": "q9",
+					"text": "If Matthew counts 15 blue lilies in the AcadeMath garden, what number did he say right before 15?",
+					"answer": "14",
+					"visual": {
+						"type": "grid",
+						"items": [
+							{
+								"icon": "🪻",
+								"count": 14.0
+							},
+							{
+								"icon": "❓",
+								"count": 1.0
+							}
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "How do you arrange the floating numbers 18, 11, 20, and 16 in descending order (from biggest to smallest)?",
+					"answer": "20, 18, 16, 11",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"20",
+							"18",
+							"16",
+							"11"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g1-l4",
+			"grade": 1.0,
+			"title": "Lesson 4: Comparing & Ordering Numbers",
+			"lecture": "Welcome back, math explorers! You already know how to count to twenty and compare numbers using greater than, less than, and equal to. Today we are going to use that same skill to talk about shapes, by counting their straight sides.\n\nA triangle is a shape with three straight sides. Say it with me: one, two, three — a triangle has three sides.\nA square is a shape with four straight sides: one, two, three, four — a square has four sides.\n\nNow let's compare them, just like we compared numbers before. A triangle has three sides, and a square has four sides. Since four is a bigger number than three, the square has more sides than the triangle.\n\nHere's the big idea: every shape has a certain number of straight sides, and we can compare shapes the exact same way we compare numbers — by asking which number of sides is greater, which is smaller, or if they are equal.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Professor Bound draws a magic triangle with exactly 3 straight sides. He also draws a magic square with 4 sides. Which shape has a greater number of sides?",
+					"answer": "square",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "🔺",
+							"count": 3.0
+						},
+						"rightItems": {
+							"icon": "🟦",
+							"count": 4.0
+						}
+					}
+				},
+				{
+					"id": "q2",
+					"text": "Matthew finds a magical star rune with 10 sides and an ice crystal with 12 sides. Is the number of sides on the star rune less than, greater than, or equal to the crystal?",
+					"answer": "less than",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "⭐",
+							"count": 4.0
+						},
+						"rightItems": {
+							"icon": "❄️",
+							"count": 6.0
+						}
+					}
+				},
+				{
+					"id": "q3",
+					"text": "If you place a 15-sided geometric flower on the left side of a magical balance and a 12-sided flower on the right, which side tips down because it is greater?",
+					"answer": "left",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "🌸",
+							"count": 5.0
+						},
+						"rightItems": {
+							"icon": "🌸",
+							"count": 2.0
+						}
+					}
+				},
+				{
+					"id": "q4",
+					"text": "Arith has a magical polygon with 18 sides, and Matthew has a shape with 20 sides. Who has the shape with the number of sides that is less than the other?",
+					"answer": "Arith",
+					"visual": {
+						"type": "grid",
+						"items": [
+							{
+								"icon": "🛑",
+								"count": 4.0
+							},
+							{
+								"icon": "🛑",
+								"count": 2.0
+							}
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Order these magical shapes from least to greatest based on their sides: A hexagon (6 sides), a triangle (3 sides), and an octagon (8 sides).",
+					"answer": "3, 6, 8",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"3",
+							"6",
+							"8"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "Matthew draws a large geometric shape with 17 sides. Which magical phrase correctly compares it to a 14-sided shape: '17 is greater than 14' or '17 is less than 14'?",
+					"answer": "17 is greater than 14",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "💠",
+							"count": 7.0
+						},
+						"rightItems": {
+							"icon": "💠",
+							"count": 4.0
+						}
+					}
+				},
+				{
+					"id": "q7",
+					"text": "Ms. Addria places a shape with 16 sides on one side of the magical balance. How many sides must a shape have on the other side so that the balance is perfectly equal?",
+					"answer": "16",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "♦️",
+							"count": 6.0
+						},
+						"rightItems": {
+							"icon": "❓",
+							"count": 1.0
+						}
+					}
+				},
+				{
+					"id": "q8",
+					"text": "The Great Math Wizard asks you to choose a shape with a number of sides greater than 11 but less than 13. How many sides must the shape have?",
+					"answer": "12",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"11",
+							"?",
+							"13"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "Arrange these magical shapes in descending order (greatest to least) based on their sides: A 19-sided crystal, a 15-sided gem, and a 20-sided rune.",
+					"answer": "20, 19, 15",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"20",
+							"19",
+							"15"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "Baker Pip bakes a pie in a magical pan shaped like a pentagon (5 sides). Matthew buys a box shaped like a square (4 sides). Which symbol (>, <, or =) would you use to compare the pan's sides to the box's sides (5 __ 4)?",
+					"answer": ">",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "🥧",
+							"count": 5.0
+						},
+						"rightItems": {
+							"icon": "📦",
+							"count": 4.0
+						}
+					}
+				}
+			]
+		},
+		{
+			"id": "g1-l5",
+			"grade": 1.0,
+			"title": "Lesson 5: Counting & Number Identification 3. (1-50)",
+			"lecture": "Welcome back, brave adventurers! You have counted all the way to twenty. Today we are climbing even higher, all the way up to fifty! After twenty, the numbers follow a pattern: twenty-one, twenty-two, twenty-three, and so on, until we reach thirty, then forty, then fifty.\n\nHere's a story to practice with. Matthew finds a treasure chest with 42 shiny silver coins inside. Then he finds one more coin hiding in the grass. What comes right after 42, when we count up by one? If you said 43, you are exactly right! Adding one more to a number simply means saying the very next number when counting.\n\nHere's another example. If we are counting up and we just said 49, and we find one more item, the next number is 50. Every number has a number that comes right before it, and a number that comes right after it. Counting up means saying the next number, and counting down means saying the number before it.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Matthew finds a chest in the Enchanted Forest. If he counts 42 silver coins and finds one more, what number comes next?",
+					"answer": "43",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"42 🪙",
+							"+",
+							"1 🪙",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "Mr. Archimedes asks you to fill in the blank. What is the missing number in the sequence 38, 39, __, 41, 42?",
+					"answer": "40",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"38",
+							"39",
+							"?",
+							"41",
+							"42"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Baker Pip sells fresh star-fruit buns and mana pies. If he counts a batch of 50 pies, what number did he count right before 50?",
+					"answer": "49",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"?",
+							"50"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "Ms. Addria teaches counting in the AcadeMath classroom. How do you write the number 'forty-seven' using digits?",
+					"answer": "47",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"forty",
+							"seven",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Matthew sees glowing numbers floating in the trees. How do you arrange 25, 29, 22, and 27 in the correct counting order?",
+					"answer": "22, 25, 27, 29",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"22",
+							"25",
+							"27",
+							"29"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "Arith is a kind student who guides Matthew. If Arith starts at 38 and counts forward three steps, what number does he reach?",
+					"answer": "41",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"38",
+							"+",
+							"3",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "The Great Math Wizard needs you to count backward from 30. What are the next three numbers you will say?",
+					"answer": "29, 28, 27",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"30",
+							"?",
+							"?",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "Mr. Archimedes is the Principal of AcadeMath. If he has 49 golden acorns and finds one more, how many does he have in total?",
+					"answer": "50",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"49 🌕",
+							"+",
+							"1 🌕",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "Matthew learns to identify numbers with accuracy. Which number is greater: 43 or 34?",
+					"answer": "43",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "🔸",
+							"count": 6.0
+						},
+						"rightItems": {
+							"icon": "🔸",
+							"count": 4.0
+						}
+					}
+				},
+				{
+					"id": "q10",
+					"text": "Matthew must collect Learning Experience (EXP). If he receives 50 EXP, 15 EXP, and 35 EXP, how do you arrange these amounts from greatest to least?",
+					"answer": "50, 35, 15",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"50",
+							"35",
+							"15"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g1-l6",
+			"grade": 1.0,
+			"title": "Lesson 6: Place Value - Tens & Ones",
+			"lecture": "Welcome back, magical explorers! You can count all the way to fifty now. But counting a giant pile of treasure one coin at a time takes a very long time. Today we'll learn a faster way: grouping numbers into tens and ones.\n\nHere's how it works. Instead of counting every single coin one by one, we pack coins into groups of exactly ten. Any coins left over that don't make a full group of ten are called the 'ones'.\n\nLet's try it with a story. Mr. Tenz has two full groups of ten gold coins, plus five loose coins sitting by themselves. First, we count the groups of ten: ten, twenty. That's two groups of ten, which makes twenty. Then we add the five loose ones by counting up: twenty-one, twenty-two, twenty-three, twenty-four, twenty-five. So altogether, there are twenty-five gold coins.\n\nHere's the big idea: any two-digit number is made of tens and ones. The number of full groups of ten tells you the tens digit, and the leftover items tell you the ones digit.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Mr. Tenz shows you 2 chests that each hold exactly 10 gold coins, plus 5 loose coins. How many gold coins are there in total?",
+					"answer": "25",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 2.0,
+							"itemsPerGroup": 10.0,
+							"icon": "🪙"
+						}
+					}
+				},
+				{
+					"id": "q2",
+					"text": "What is the expanded magical form of the number 42?",
+					"answer": "40 + 2",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"42",
+							"=",
+							"40",
+							"+",
+							"2"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Look at this 3 chests, how many stars are there in total?",
+					"answer": "30",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 3.0,
+							"itemsPerGroup": 10.0,
+							"icon": "⭐"
+						}
+					}
+				},
+				{
+					"id": "q4",
+					"text": "Arith finds 4 full chests of 10 ice crystals. How many ice crystals does he have in all?",
+					"answer": "40",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 4.0,
+							"itemsPerGroup": 10.0,
+							"icon": "❄️"
+						}
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Which amount is greater: 3 boxes, or 5 gold coins?",
+					"answer": "5 gold coins",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "📦",
+							"count": 3.0
+						},
+						"rightItems": {
+							"icon": "🪙",
+							"count": 5.0
+						}
+					}
+				},
+				{
+					"id": "q6",
+					"text": "Baker Pip bakes buns. If he has 18 buns, how many complete sets of 10 can he make?",
+					"answer": "1",
+					"visual": {
+						"type": "grid",
+						"items": [
+							{
+								"icon": "🥐",
+								"count": 10.0
+							},
+							{
+								"icon": "🥐",
+								"count": 8.0
+							}
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "If Matthew has 4 tens and 9 ones, what is his total number?",
+					"answer": "49",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"40",
+							"+",
+							"9",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "If you have 2 boxes of gold coins, first box has 24 gold coins and second box have 16 gold coins how much gold coins you have in total?",
+					"answer": "40",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"24",
+							"+",
+							"16",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "To unlock a door, you need 36 EXP. You currently have 30 exp how much do you need more?",
+					"answer": "6",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"30",
+							"+",
+							"?",
+							"=",
+							"36"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "Matthew collects 2 chests of ten gold coins, 1 chest of ten crystals, and 4 loose coins. How many total items does he have?",
+					"answer": "34",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"20",
+							"+",
+							"10",
+							"+",
+							"4",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g1-l7",
+			"grade": 1.0,
+			"title": "Lesson 7: Counting & Number Identification 4. (1-80)",
+			"lecture": "Welcome back, brave students! You've already learned to count all the way to fifty. Today, we are counting even higher: all the way up to eighty!\n\nHere's a story. Matthew is counting a big pile of fire crystals. He counts 67 crystals, and then finds one more. What comes right after 67? If we count up one more step, we land on 68.\n\nHere's another puzzle. Numbers float by in order: fifty-nine, then a gap, then sixty-one. What number is missing between them? Since counting goes fifty-nine, sixty, sixty-one, the missing number in between is 60.\n\nRemember: when counting up, each number is exactly one more than the number before it. So if you know the number before a gap and the number after a gap, you can always figure out what's missing by counting up one step at a time.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Matthew counts a large pile of glowing fire crystals. If he counts 67 crystals and finds one more, what number comes immediately after 67?",
+					"answer": "68",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"67",
+							"+",
+							"1",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "Mr. Archimedes points to a sequence on the chalkboard. What is the missing number in this pattern: 71, 72, __, 74, 75?",
+					"answer": "73",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"71",
+							"72",
+							"?",
+							"74",
+							"75"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Baker Pip just baked a massive batch of 80 star-fruit buns. What number did he count right before he reached 80?",
+					"answer": "79",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"?",
+							"80"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "How do you write the magical number 'seventy-six' using digits?",
+					"answer": "76",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"seventy",
+							"six",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Arith finds scattered spell scrolls with numbers on them. How do you arrange 55, 68, 42, and 79 from least to greatest?",
+					"answer": "42, 55, 68, 79",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"42",
+							"55",
+							"68",
+							"79"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "If Matthew starts counting at 77 and takes three steps forward, what is the final number he will say?",
+					"answer": "80",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"77",
+							"+",
+							"3",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "The Great Math Wizard challenges you to count backward. Starting from 60, what are the next three numbers you will say?",
+					"answer": "59, 58, 57",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"60",
+							"?",
+							"?",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "Look at the numbers 7 and 3. Which number is greater?",
+					"answer": "73",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "💠",
+							"count": 7.0
+						},
+						"rightItems": {
+							"icon": "💠",
+							"count": 3.0
+						}
+					}
+				},
+				{
+					"id": "q9",
+					"text": "Matthew sees glowing numbers floating in the trees in the enchanted forest. What number comes between 59 and 61?",
+					"answer": "60",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"59",
+							"?",
+							"61"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "To unlock the library door, you must arrange these values in descending order (greatest to least): 61, 78, 54, 80. What is the correct order?",
+					"answer": "80, 78, 61, 54",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"80",
+							"78",
+							"61",
+							"54"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g1-l8",
+			"grade": 1.0,
+			"title": "Lesson 8: Basic Addition & Subtraction",
+			"lecture": "Welcome back, math detectives! You know how to count all the way to eighty, and you know how to put numbers in order. Today, we are going to solve story problems using addition and subtraction.\n\nWhen we hear a math story, we listen closely for clue words. If we hear words like 'sum', 'in all', or 'total', that's our clue to add numbers together to make a bigger number. If we hear words like 'left', 'remaining', or 'difference', that's our clue to subtract, or take away, to make a smaller number.\n\nHere's an example of adding. Matthew gathers 45 fire crystals, and then Arith gives him 20 more. Since we want to know how many he has in all, we add: 45 plus 20 equals 65.\n\nHere's an example of subtracting. Baker Pip bakes 78 buns, and sells 30 of them. Since we want to know how many are left, we subtract: 78 minus 30 equals 48.\n\nRemember: listen for the clue words first, decide whether to add or subtract, and then solve the problem one step at a time.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Matthew gathers 45 fire crystals in the Enchanted Forest, and Arith gives him 20 more. How many fire crystals does Matthew have in all?",
+					"answer": "65",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"45",
+							"+",
+							"20",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "Baker Pip baked a large batch of 78 star-fruit buns. If he sold 30 of them to the students of AcadeMath, how many buns are left?",
+					"answer": "48",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"78",
+							"-",
+							"30",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Ms. Addria asks you to calculate the sum of 32 magic stars and 14 magic stars. What is the correct answer?",
+					"answer": "46",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"32",
+							"+",
+							"14",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "The Great Math Wizard has a collection of 65 ancient spell scrolls in his castle. He safely archives 12 of them in the vault. What is the number of remaining scrolls?",
+					"answer": "53",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"65",
+							"-",
+							"12",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Matthew finds 50 golden acorns near the academy and another 25 in the forest. What is the total number of golden acorns he found?",
+					"answer": "75",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"50",
+							"+",
+							"25",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "Mr. Minus asks the class to find the difference between 80 ice crystals and 50 ice crystals. What is the correct number?",
+					"answer": "30",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"80",
+							"-",
+							"50",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "Arith has a flask with 60 mana drops. He uses 20 mana drops to brew a basic potion. How many mana drops are left in his flask?",
+					"answer": "40",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"60",
+							"-",
+							"20",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "At the morning market, Matthew buys 44 honey clover biscuits and 22 berry cluster rolls. How many breakfast treats did he buy in all?",
+					"answer": "66",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"44",
+							"+",
+							"22",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "A magical chest contains 75 silver coins. If Matthew takes out 40 coins to buy a new study book, how many coins are remaining in the chest?",
+					"answer": "35",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"75",
+							"-",
+							"40",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "Mr. Archimedes points to the chalkboard. What is the sum of 55 glowing runes and 24 glowing runes?",
+					"answer": "79",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"55",
+							"+",
+							"24",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g1-l9",
+			"grade": 1.0,
+			"title": "Lesson 9: Counting & Number Identification 5. (1-100)",
+			"lecture": "Hello, master math adventurers! You have counted past fifty, then past eighty. Today, we are reaching the very top: counting all the way to one hundred!\n\nHere's a story to practice with. Matthew gathers a huge pile of fire crystals. He counts 98 crystals, then finds one more hiding under a leaf. What comes right after 98? That's right, it's 99! And if he finds one more after that, the very next number is 100.\n\nHere's another puzzle. Numbers float by in a pattern: eighty-nine, ninety, then a gap, then ninety-two, ninety-three. What number fills the gap? Counting up from ninety gives us ninety-one, so the missing number is 91.\n\nRemember: counting to one hundred uses the exact same pattern we've been practicing all along. After each group of ten, like ninety, we start the next group: ninety-one, ninety-two, all the way up to one hundred.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Matthew gathers a massive pile of glowing fire crystals in the Enchanted Forest. If he counts 98 crystals and finds one more, what number comes immediately after 98?",
+					"answer": "99",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"98",
+							"+",
+							"1",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "Mr. Archimedes writes a number pattern on the chalkboard to test your knowledge. What is the missing number in this sequence: 89, 90, __, 92, 93?",
+					"answer": "91",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"89",
+							"90",
+							"?",
+							"92",
+							"93"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Baker Pip is busy baking an enormous batch of 100 star-fruit buns for the students of AcadeMath. What number did he count right before reaching 100?",
+					"answer": "99",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"?",
+							"100"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "To read an ancient spell scroll, you must identify its number. How do you write the number 'ninety-seven' using digits?",
+					"answer": "97",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"ninety",
+							"seven",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Arith finds scattered magical books with numbers on their covers. How do you arrange 84, 99, 81, and 93 from least to greatest?",
+					"answer": "81, 84, 93, 99",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"81",
+							"84",
+							"93",
+							"99"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "If Matthew starts counting at 95 and takes four steps forward to reach the castle gates, what is the final number he will say?",
+					"answer": "99",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"95",
+							"+",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "The Great Math Wizard asks you to count backward as a warm-up exercise. Starting from 90, what are the next three numbers you will say?",
+					"answer": "89, 88, 87",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"90",
+							"?",
+							"?",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "Look carefully at the floating numbers 6 and 3. Which number is greater?",
+					"answer": "96",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "✨",
+							"count": 6.0
+						},
+						"rightItems": {
+							"icon": "✨",
+							"count": 3.0
+						}
+					}
+				},
+				{
+					"id": "q9",
+					"text": "Matthew sees glowing numbers floating in the trees of Magi-Mathica. What number comes exactly between 98 and 100?",
+					"answer": "99",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"98",
+							"?",
+							"100"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "To unlock the final door to the Wizard's chamber, you must arrange these values in descending order (greatest to least): 91, 100, 88, 97. What is the correct order?",
+					"answer": "100, 97, 91, 88",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"100",
+							"97",
+							"91",
+							"88"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g1-l10",
+			"grade": 1.0,
+			"title": "Lesson 10: The Great Math Wizard's Final Trial",
+			"lecture": "Welcome, master math adventurers, to the grand finale of our journey! You have counted, compared, added, and subtracted numbers all the way up to one hundred. Today is your Final Trial, where we'll use everything you've learned.\n\nHere's your first challenge, spoken aloud: if you are counting up and you just said 98, what are the next two numbers you must say to reach exactly 100? Let's say them together: 99, then 100!\n\nHere's another challenge using place value. Ten magic chests each hold exactly ten gold coins. To find the total, we count the chests by tens: ten, twenty, thirty, forty, fifty, sixty, seventy, eighty, ninety, one hundred. Ten groups of ten coins makes exactly one hundred coins.\n\nAnd here's a subtraction challenge. If you start with 100 coins and spend 50 coins on one item and 40 coins on another item, first add what you spent: 50 plus 40 equals 90. Then subtract: 100 minus 90 equals 10. You'd have 10 coins left.\n\nYou have used counting, comparing, place value, addition, and subtraction to solve every puzzle. Congratulations, Grand Math Champion!",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "The Great Math Wizard conjures a grand constellation. If you are counting the stars and reach 98, what are the final two numbers you must say to reach 100?",
+					"answer": "99, 100",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"98",
+							"?",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "The Wizard places 100 pure mana crystals on the left side of the magical balance and 99 on the right. Which symbol (>, <, or =) makes this statement true: 5 __ 2?",
+					"answer": ">",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "💠",
+							"count": 5.0
+						},
+						"rightItems": {
+							"icon": "💠",
+							"count": 2.0
+						}
+					}
+				},
+				{
+					"id": "q3",
+					"text": "To test your knowledge of place value, the Wizard reveals 10 magical chests. If each chest holds exactly 10 gold coins, how many gold coins are there in total?",
+					"answer": "100",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 10.0,
+							"itemsPerGroup": 10.0,
+							"icon": "🪙"
+						}
+					}
+				},
+				{
+					"id": "q4",
+					"text": "Matthew starts the trial with 80 Learning Experience (EXP). The Wizard grants him 10 more EXP for his courage, and another 10 EXP for his wisdom. What is the sum of his EXP?",
+					"answer": "100",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"80",
+							"+",
+							"10",
+							"+",
+							"10",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "To unlock the chest holding the Portal Key, you must fill in the missing numbers on the castle steps. What numbers complete this pattern: 95, 96, __, 98, __, 100?",
+					"answer": "97, 99",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"95",
+							"96",
+							"?",
+							"98",
+							"?",
+							"100"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "The Wizard's grand library contains exactly 100 ancient spell scrolls. If he archives 20 of them into the restricted vault, how many scrolls are remaining?",
+					"answer": "80",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"100",
+							"-",
+							"20",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "The Wizard asks you to arrange four glowing artifacts by their magical power levels. How do you order these values from greatest to least (descending): 88, 100, 79, 93?",
+					"answer": "100, 93, 88, 79",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"100",
+							"93",
+							"88",
+							"79"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "The Wizard conjures a floating number made of 9 tens and 9 ones. What is this number, and what must you add to it to reach exactly 100?",
+					"answer": "99, 1",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"9 tens",
+							"9 ones",
+							"->",
+							"?",
+							"+ ? = 100"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "Arith brings 5 golden acorns to the castle, and Matthew brings 100 golden acorns. Who brought the greater amount of acorns?",
+					"answer": "Matthew",
+					"visual": {
+						"type": "balance",
+						"leftItems": {
+							"icon": "🌕",
+							"count": 5.0
+						},
+						"rightItems": {
+							"icon": "🌕",
+							"count": 6.0
+						}
+					}
+				},
+				{
+					"id": "q10",
+					"text": "Matthew wants to buy a final reviewer book for 50 gold coins and a stack of mana pies for 40 coins for his journey home. If he hands the Wizard a 100-coin pouch, how much change will he get back?",
+					"answer": "10",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"100",
+							"-",
+							"(50 + 40)",
+							"= ?"
+						]
+					}
+				}
+			]
+		}
+	],
+	"g2": [
+		{
+			"id": "g2-l1",
+			"grade": 2.0,
+			"title": "Lesson 1: 2-Digit Addition (No Regrouping)",
+			"lecture": "Welcome, young wizards, to the grand academy! Today we are learning how to add two-digit numbers, using just our minds.\n\nA two-digit number has a tens part and a ones part. For example, in the number 61, the 6 stands for six tens, and the 1 stands for one one. When we add two two-digit numbers, we add the ones together first, and then we add the tens together.\n\nHere's an example. Apprentice Pip gathers 61 star dust pouches in the morning, and 15 more in the afternoon. First, add the ones: 1 plus 5 equals 6. Then add the tens: 6 tens plus 1 ten equals 7 tens. Put them together: 7 tens and 6 ones makes 76. So Apprentice Pip has 76 pouches in total.\n\nRemember: always add the ones first, then add the tens, and put the two answers together to get your final total.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Apprentice Pip gathered 61 star dust pouches in the morning and 15 star dust pouches in the afternoon. How many did he gather in total?",
+					"answer": "76",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"61",
+							"+",
+							"15",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "Apprentice Pip gathered 24 magic feathers in the morning and 14 magic feathers in the afternoon. How many did he gather in total?",
+					"answer": "38",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"24",
+							"+",
+							"14",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Apprentice Pip gathered 53 dragon scales in the morning and 15 dragon scales in the afternoon. How many did he gather in total?",
+					"answer": "68",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"53",
+							"+",
+							"15",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "Apprentice Pip gathered 31 star dust pouches in the morning and 34 star dust pouches in the afternoon. How many did he gather in total?",
+					"answer": "65",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"31",
+							"+",
+							"34",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Apprentice Pip gathered 74 magic feathers in the morning and 24 magic feathers in the afternoon. How many did he gather in total?",
+					"answer": "98",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"74",
+							"+",
+							"24",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "Apprentice Pip gathered 42 magic feathers in the morning and 21 magic feathers in the afternoon. How many did he gather in total?",
+					"answer": "63",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"42",
+							"+",
+							"21",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "Apprentice Pip gathered 21 magic feathers in the morning and 65 magic feathers in the afternoon. How many did he gather in total?",
+					"answer": "86",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"21",
+							"+",
+							"65",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "Apprentice Pip gathered 64 dragon scales in the morning and 15 dragon scales in the afternoon. How many did he gather in total?",
+					"answer": "79",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"64",
+							"+",
+							"15",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "Apprentice Pip gathered 32 dragon scales in the morning and 41 dragon scales in the afternoon. How many did he gather in total?",
+					"answer": "73",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"32",
+							"+",
+							"41",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "Apprentice Pip gathered 12 dragon scales in the morning and 81 dragon scales in the afternoon. How many did he gather in total?",
+					"answer": "93",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"12",
+							"+",
+							"81",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g2-l2",
+			"grade": 2.0,
+			"title": "Lesson 2: 2-Digit Addition (With Regrouping)",
+			"lecture": "Greetings, magical explorers! Today we are still adding two-digit numbers, but sometimes something special happens: the ones add up to ten or more! When that happens, we use a trick called regrouping.\n\nHere's an example. The enchanted forest has 56 pixies on one side and 14 pixies on the other side. First, add the ones: 6 plus 4 equals 10. But wait — ten ones is the same as one full ten! So we write down a 0 in the ones place, and we carry that extra ten over to the tens column. Now add the tens: 5 tens, plus 1 ten, plus the 1 ten we carried over, equals 7 tens. Put it together: 70. So there are 70 pixies in all.\n\nRemember: whenever the ones add up to ten or more, that's your signal to regroup — carry one ten over to the tens column, and keep the leftover ones in the ones place.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "The enchanted forest has 56 pixies on the north side and 14 pixies on the south side. How many pixies are there in all?",
+					"answer": "70",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"56",
+							"+",
+							"14",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "The enchanted forest has 48 goblins on the north side and 22 goblins on the south side. How many goblins are there in all?",
+					"answer": "70",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"48",
+							"+",
+							"22",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "The enchanted forest has 29 goblins on the north side and 55 goblins on the south side. How many goblins are there in all?",
+					"answer": "84",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"29",
+							"+",
+							"55",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "The enchanted forest has 19 fire salamanders on the north side and 34 fire salamanders on the south side. How many fire salamanders are there in all?",
+					"answer": "53",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"19",
+							"+",
+							"34",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "The enchanted forest has 66 pixies on the north side and 15 pixies on the south side. How many pixies are there in all?",
+					"answer": "81",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"66",
+							"+",
+							"15",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "The enchanted forest has 35 goblins on the north side and 35 goblins on the south side. How many goblins are there in all?",
+					"answer": "70",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"35",
+							"+",
+							"35",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "The enchanted forest has 68 pixies on the north side and 12 pixies on the south side. How many pixies are there in all?",
+					"answer": "80",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"68",
+							"+",
+							"12",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "The enchanted forest has 48 crystal frogs on the north side and 17 crystal frogs on the south side. How many crystal frogs are there in all?",
+					"answer": "65",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"48",
+							"+",
+							"17",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "The enchanted forest has 36 goblins on the north side and 19 goblins on the south side. How many goblins are there in all?",
+					"answer": "55",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"36",
+							"+",
+							"19",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "The enchanted forest has 46 goblins on the north side and 47 goblins on the south side. How many goblins are there in all?",
+					"answer": "93",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"46",
+							"+",
+							"47",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g2-l3",
+			"grade": 2.0,
+			"title": "Lesson 3: 2-Digit Subtraction (No Regrouping)",
+			"lecture": "Welcome to Wizard Alaric's study! Today we are learning subtraction with two-digit numbers, which means taking one number away from another to find out what's left.\n\nJust like with addition, we subtract the ones first, and then we subtract the tens.\n\nHere's an example. Wizard Alaric has 54 spell scrolls, and gives away 21 of them. First, subtract the ones: 4 minus 1 equals 3. Then subtract the tens: 5 tens minus 2 tens equals 3 tens. Put them together: 33. So Wizard Alaric has 33 spell scrolls left.\n\nIn today's lesson, the top ones number is always bigger than the bottom ones number, so you can subtract straight down without any extra tricks. Remember: subtract the ones column first, then subtract the tens column, and combine the results.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Wizard Alaric had 54 spell scrolls. He gave 21 to his students. How many spell scrolls does he have left?",
+					"answer": "33",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"54",
+							"-",
+							"21",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "Wizard Alaric had 79 healing potions. He gave 46 to his students. How many healing potions does he have left?",
+					"answer": "33",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"79",
+							"-",
+							"46",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Wizard Alaric had 77 spell scrolls. He gave 24 to his students. How many spell scrolls does he have left?",
+					"answer": "53",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"77",
+							"-",
+							"24",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "Wizard Alaric had 99 enchanted berries. He gave 56 to his students. How many enchanted berries does he have left?",
+					"answer": "43",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"99",
+							"-",
+							"56",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Wizard Alaric had 54 silver coins. He gave 42 to his students. How many silver coins does he have left?",
+					"answer": "12",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"54",
+							"-",
+							"42",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "Wizard Alaric had 54 spell scrolls. He gave 13 to his students. How many spell scrolls does he have left?",
+					"answer": "41",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"54",
+							"-",
+							"13",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "Wizard Alaric had 86 silver coins. He gave 31 to his students. How many silver coins does he have left?",
+					"answer": "55",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"86",
+							"-",
+							"31",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "Wizard Alaric had 74 silver coins. He gave 61 to his students. How many silver coins does he have left?",
+					"answer": "13",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"74",
+							"-",
+							"61",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "Wizard Alaric had 86 silver coins. He gave 72 to his students. How many silver coins does he have left?",
+					"answer": "14",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"86",
+							"-",
+							"72",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "Wizard Alaric had 69 healing potions. He gave 28 to his students. How many healing potions does he have left?",
+					"answer": "41",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"69",
+							"-",
+							"28",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g2-l4",
+			"grade": 2.0,
+			"title": "Lesson 4: 2-Digit Subtraction (With Regrouping)",
+			"lecture": "Hello, apprentice potion masters! Today, our subtraction gets trickier. Sometimes, when we try to subtract, the top ones number is smaller than the bottom ones number. When that happens, we need a special trick called borrowing.\n\nHere's an example. The potion master brewed 73 strength draughts, and the royal knights bought 44 of them. Let's subtract the ones first: 3 minus 4. But 3 is smaller than 4, so we can't subtract yet! We need to borrow. We take one ten from the 7 tens, making it 6 tens, and we add that borrowed ten to our ones, turning 3 into 13. Now we can subtract the ones: 13 minus 4 equals 9. Then subtract the tens: 6 tens minus 4 tens equals 2 tens. Put it together: 29. So 29 strength draughts remain.\n\nRemember: whenever the top ones number is smaller than the bottom ones number, borrow one ten from the tens column, add it to the ones, and then subtract as usual.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "The potion master brewed 73 strength draughts. The royal knights bought 44 of them. How many strength draughts remain in the shop?",
+					"answer": "29",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"73",
+							"-",
+							"44",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "The potion master brewed 82 strength draughts. The royal knights bought 36 of them. How many strength draughts remain in the shop?",
+					"answer": "46",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"82",
+							"-",
+							"36",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "The potion master brewed 84 levitation elixirs. The royal knights bought 36 of them. How many levitation elixirs remain in the shop?",
+					"answer": "48",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"84",
+							"-",
+							"36",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "The potion master brewed 92 levitation elixirs. The royal knights bought 36 of them. How many levitation elixirs remain in the shop?",
+					"answer": "56",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"92",
+							"-",
+							"36",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "The potion master brewed 54 strength draughts. The royal knights bought 29 of them. How many strength draughts remain in the shop?",
+					"answer": "25",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"54",
+							"-",
+							"29",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "The potion master brewed 44 invisibility potions. The royal knights bought 18 of them. How many invisibility potions remain in the shop?",
+					"answer": "26",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"44",
+							"-",
+							"18",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "The potion master brewed 71 strength draughts. The royal knights bought 43 of them. How many strength draughts remain in the shop?",
+					"answer": "28",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"71",
+							"-",
+							"43",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "The potion master brewed 44 truth serums. The royal knights bought 19 of them. How many truth serums remain in the shop?",
+					"answer": "25",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"44",
+							"-",
+							"19",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "The potion master brewed 54 levitation elixirs. The royal knights bought 17 of them. How many levitation elixirs remain in the shop?",
+					"answer": "37",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"54",
+							"-",
+							"17",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "The potion master brewed 93 strength draughts. The royal knights bought 49 of them. How many strength draughts remain in the shop?",
+					"answer": "44",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"93",
+							"-",
+							"49",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g2-l5",
+			"grade": 2.0,
+			"title": "Lesson 5: Intro to Multiplication (Arrays)",
+			"lecture": "Welcome to the armory! Today, we are learning about arrays, which is the secret behind multiplication. An array is when items are arranged neatly into equal rows, with the same number of items in every row.\n\nInstead of counting every single item one at a time, we can count how many rows there are, and how many items are in each row, and multiply those two numbers together.\n\nHere's an example. In the armory, crystal balls are arranged in 4 rows, with 4 crystal balls in each row. To find the total, we count by fours, one row at a time: 4, 8, 12, 16. So there are 16 crystal balls in total.\n\nHere's another example. Spell books are arranged in 5 rows, with 3 spell books in each row. Counting by threes, five times: 3, 6, 9, 12, 15. So there are 15 spell books.\n\nRemember: multiplication means adding the same number over and over, once for every equal row or group.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "In the wizard academy armory, crystal balls are arranged in 4 rows. If there are 4 crystal balls in each row, how many crystal balls are there in total?",
+					"answer": "16",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 4.0,
+							"itemsPerGroup": 4.0,
+							"icon": "🔮"
+						}
+					}
+				},
+				{
+					"id": "q2",
+					"text": "In the wizard academy armory, spell books are arranged in 5 rows. If there are 3 spell books in each row, how many spell books are there in total?",
+					"answer": "15",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 5.0,
+							"itemsPerGroup": 3.0,
+							"icon": "📘"
+						}
+					}
+				},
+				{
+					"id": "q3",
+					"text": "In the wizard academy armory, spell books are arranged in 5 rows. If there are 5 spell books in each row, how many spell books are there in total?",
+					"answer": "25",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 5.0,
+							"itemsPerGroup": 5.0,
+							"icon": "📘"
+						}
+					}
+				},
+				{
+					"id": "q4",
+					"text": "In the wizard academy armory, crystal balls are arranged in 2 rows. If there are 5 crystal balls in each row, how many crystal balls are there in total?",
+					"answer": "10",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 2.0,
+							"itemsPerGroup": 5.0,
+							"icon": "🔮"
+						}
+					}
+				},
+				{
+					"id": "q5",
+					"text": "In the wizard academy armory, flying brooms are arranged in 3 rows. If there are 5 flying brooms in each row, how many flying brooms are there in total?",
+					"answer": "15",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 3.0,
+							"itemsPerGroup": 5.0,
+							"icon": "🧹"
+						}
+					}
+				},
+				{
+					"id": "q6",
+					"text": "In the wizard academy armory, magic wands are arranged in 5 rows. If there are 5 magic wands in each row, how many magic wands are there in total?",
+					"answer": "25",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 5.0,
+							"itemsPerGroup": 5.0,
+							"icon": "🪄"
+						}
+					}
+				},
+				{
+					"id": "q7",
+					"text": "In the wizard academy armory, magic wands are arranged in 3 rows. If there are 2 magic wands in each row, how many magic wands are there in total?",
+					"answer": "6",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 3.0,
+							"itemsPerGroup": 2.0,
+							"icon": "🪄"
+						}
+					}
+				},
+				{
+					"id": "q8",
+					"text": "In the wizard academy armory, crystal balls are arranged in 5 rows. If there are 4 crystal balls in each row, how many crystal balls are there in total?",
+					"answer": "20",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 5.0,
+							"itemsPerGroup": 4.0,
+							"icon": "🔮"
+						}
+					}
+				},
+				{
+					"id": "q9",
+					"text": "In the wizard academy armory, crystal balls are arranged in 2 rows. If there are 5 crystal balls in each row, how many crystal balls are there in total?",
+					"answer": "10",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 2.0,
+							"itemsPerGroup": 5.0,
+							"icon": "🔮"
+						}
+					}
+				},
+				{
+					"id": "q10",
+					"text": "In the wizard academy armory, crystal balls are arranged in 2 rows. If there are 3 crystal balls in each row, how many crystal balls are there in total?",
+					"answer": "6",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 2.0,
+							"itemsPerGroup": 3.0,
+							"icon": "🔮"
+						}
+					}
+				}
+			]
+		},
+		{
+			"id": "g2-l6",
+			"grade": 2.0,
+			"title": "Lesson 6: Basic Fractions",
+			"lecture": "Step into the magical bakery! Today we are learning about fractions, which are the equal parts we get when we cut something into pieces of the exact same size.\n\nWhen you cut something into two equal pieces, each piece is called a half, and there are 2 halves in total.\nWhen you cut something into three equal pieces, each piece is called a third, and there are 3 thirds in total.\n\nHere's an example. A giant pumpkin pasty is cut into halves. That means it is divided into 2 equal pieces.\n\nHere's another example. A giant cauldron cake is cut into thirds, so three hungry wizards can share it fairly. That means it's divided into 3 equal pieces.\n\nRemember: the fraction name tells you exactly how many equal pieces the whole shape has been cut into. Halves means two pieces, and thirds means three pieces, and every piece must be exactly the same size.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "A giant pumpkin pasty is divided into halves. How many equal pieces is the pumpkin pasty cut into?",
+					"answer": "2",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"halves",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "A giant cauldron cake is divided into thirds. How many equal pieces is the cauldron cake cut into?",
+					"answer": "3",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"thirds",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "A giant treacle tart is divided into thirds. How many equal pieces is the treacle tart cut into?",
+					"answer": "3",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"thirds",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "A giant cauldron cake is divided into thirds. How many equal pieces is the cauldron cake cut into?",
+					"answer": "3",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"thirds",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "A giant magic melon is divided into halves. How many equal pieces is the magic melon cut into?",
+					"answer": "2",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"halves",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "A giant magic melon is divided into thirds. How many equal pieces is the magic melon cut into?",
+					"answer": "3",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"thirds",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "A giant cauldron cake is divided into thirds. How many equal pieces is the cauldron cake cut into?",
+					"answer": "3",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"thirds",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "A giant cauldron cake is divided into thirds. How many equal pieces is the cauldron cake cut into?",
+					"answer": "3",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"thirds",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "A giant treacle tart is divided into thirds. How many equal pieces is the treacle tart cut into?",
+					"answer": "3",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"thirds",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "A giant cauldron cake is divided into halves. How many equal pieces is the cauldron cake cut into?",
+					"answer": "2",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"halves",
+							"->",
+							"?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g2-l7",
+			"grade": 2.0,
+			"title": "Lesson 7: 3D Magical Shapes",
+			"lecture": "Welcome to the artifact room! Today we are learning about 3D shapes — shapes that take up space, instead of being flat like a drawing on paper.\n\nA sphere is perfectly round in every direction, with no flat sides at all — just like a crystal ball or a bouncy ball.\nA cube has six flat, square faces, and looks like a box you could stack — just like a puzzle box or a dice.\nA cylinder has a flat circle on the top, a flat circle on the bottom, and a smooth, curved side in between — just like a potion vial or a can.\nA cone has a flat circle on the bottom and comes to a single point at the top — just like a wizard's pointy hat or an ice cream cone.\n\nHere's a quick way to remember them: if it's round all over with no flat parts, it's a sphere. If it's boxy with flat square sides, it's a cube. If it's round like a tube with flat circles on the ends, it's a cylinder. And if it comes to a point at the top, it's a cone.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "A magical artifact looks exactly like a crystal ball. Which 3D shape is this artifact?",
+					"answer": "sphere",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"crystal ball",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "A magical artifact looks exactly like a potion vial. Which 3D shape is this artifact?",
+					"answer": "cylinder",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"potion vial",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "A magical artifact looks exactly like a magical puzzle box. Which 3D shape is this artifact?",
+					"answer": "cube",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"puzzle box",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "A magical artifact looks exactly like a potion vial. Which 3D shape is this artifact?",
+					"answer": "cylinder",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"potion vial",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "A magical artifact looks exactly like a wizard's hat. Which 3D shape is this artifact?",
+					"answer": "cone",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"wizard's hat",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "A magical artifact looks exactly like a magical puzzle box. Which 3D shape is this artifact?",
+					"answer": "cube",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"puzzle box",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "A magical artifact looks exactly like a crystal ball. Which 3D shape is this artifact?",
+					"answer": "sphere",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"crystal ball",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "A magical artifact looks exactly like a wizard's hat. Which 3D shape is this artifact?",
+					"answer": "cone",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"wizard's hat",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "A magical artifact looks exactly like a potion vial. Which 3D shape is this artifact?",
+					"answer": "cylinder",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"potion vial",
+							"->",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "A magical artifact looks exactly like a magical puzzle box. Which 3D shape is this artifact?",
+					"answer": "cube",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"puzzle box",
+							"->",
+							"?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g2-l8",
+			"grade": 2.0,
+			"title": "Lesson 8: Time (To the 5 Minutes)",
+			"lecture": "Listen! The Grand Clock Tower is ticking, and it's time to learn to read a clock! A clock has two hands: a short hand and a long hand. The short hand tells us the hour, and the long hand tells us the minutes. Every time the long hand moves from one number to the next, five minutes have passed. So we count the long hand's position by fives: 5, 10, 15, 20, and so on.\n\nHere's an example. The short hand is just past the 12, so the hour is 12. The long hand is pointing at the 4. Counting by fives for each number the long hand passes: 5, 10, 15, 20. So the time is 12:20.\n\nHere's another example. The short hand is just past the 12, and the long hand points at the 1. Counting by fives just once gives us 5. So the time is exactly 12:05.\n\nRemember: always read the short hour hand first, and then count the long minute hand by fives, one jump of five minutes for every number it has passed.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "The Grand Clock Tower strikes. The hour hand is just past 12, and the minute hand points to the 4. What time is the clock showing?",
+					"answer": "12:20",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"hour: 12",
+							"minute: 4 x 5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "The Grand Clock Tower strikes. The hour hand is just past 10, and the minute hand points to the 11. What time is the clock showing?",
+					"answer": "10:55",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"hour: 10",
+							"minute: 11 x 5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "The Grand Clock Tower strikes. The hour hand is just past 8, and the minute hand points to the 11. What time is the clock showing?",
+					"answer": "8:55",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"hour: 8",
+							"minute: 11 x 5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "The Grand Clock Tower strikes. The hour hand is just past 8, and the minute hand points to the 7. What time is the clock showing?",
+					"answer": "8:35",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"hour: 8",
+							"minute: 7 x 5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "The Grand Clock Tower strikes. The hour hand is just past 10, and the minute hand points to the 1. What time is the clock showing?",
+					"answer": "10:05",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"hour: 10",
+							"minute: 1 x 5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "The Grand Clock Tower strikes. The hour hand is just past 12, and the minute hand points to the 1. What time is the clock showing?",
+					"answer": "12:05",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"hour: 12",
+							"minute: 1 x 5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "The Grand Clock Tower strikes. The hour hand is just past 8, and the minute hand points to the 11. What time is the clock showing?",
+					"answer": "8:55",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"hour: 8",
+							"minute: 11 x 5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "The Grand Clock Tower strikes. The hour hand is just past 10, and the minute hand points to the 4. What time is the clock showing?",
+					"answer": "10:20",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"hour: 10",
+							"minute: 4 x 5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "The Grand Clock Tower strikes. The hour hand is just past 4, and the minute hand points to the 9. What time is the clock showing?",
+					"answer": "4:45",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"hour: 4",
+							"minute: 9 x 5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "The Grand Clock Tower strikes. The hour hand is just past 4, and the minute hand points to the 1. What time is the clock showing?",
+					"answer": "4:05",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"hour: 4",
+							"minute: 1 x 5",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g2-l9",
+			"grade": 2.0,
+			"title": "Lesson 9: Earth Money & Currency",
+			"lecture": "Let's visit Baker Pip's shop! Today we are learning about earning change with Earth money, using cents. When you pay with more money than something costs, the shopkeeper gives you back the extra amount, which we call change. To find out how much change you should get, we subtract the price of the item from the amount of money you handed over.\n\nHere's an example. A loaf of elven bread costs 39 cents, and you hand Baker Pip 59 cents. Subtract the ones: 9 minus 9 equals 0. Subtract the tens: 5 tens minus 3 tens equals 2 tens. Put it together: 20. So Baker Pip should give you 20 cents in change.\n\nHere's another example. The bread costs 62 cents, and you hand him 72 cents. Subtract the ones: 2 minus 2 equals 0. Subtract the tens: 7 tens minus 6 tens equals 1 ten. Put it together: 10. So you should get 10 cents back.\n\nRemember: change is always found by subtracting the cost of the item from the amount of money you paid.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "At Baker Pip's shop, a loaf of elven bread costs 39 cents. You hand him 59 cents. How much change should Baker Pip give you?",
+					"answer": "20",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"59",
+							"-",
+							"39",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "At Baker Pip's shop, a loaf of elven bread costs 62 cents. You hand him 72 cents. How much change should Baker Pip give you?",
+					"answer": "10",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"72",
+							"-",
+							"62",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "At Baker Pip's shop, a loaf of elven bread costs 74 cents. You hand him 84 cents. How much change should Baker Pip give you?",
+					"answer": "10",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"84",
+							"-",
+							"74",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "At Baker Pip's shop, a loaf of elven bread costs 21 cents. You hand him 41 cents. How much change should Baker Pip give you?",
+					"answer": "20",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"41",
+							"-",
+							"21",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "At Baker Pip's shop, a loaf of elven bread costs 45 cents. You hand him 55 cents. How much change should Baker Pip give you?",
+					"answer": "10",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"55",
+							"-",
+							"45",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "At Baker Pip's shop, a loaf of elven bread costs 29 cents. You hand him 39 cents. How much change should Baker Pip give you?",
+					"answer": "10",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"39",
+							"-",
+							"29",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "At Baker Pip's shop, a loaf of elven bread costs 21 cents. You hand him 41 cents. How much change should Baker Pip give you?",
+					"answer": "20",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"41",
+							"-",
+							"21",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "At Baker Pip's shop, a loaf of elven bread costs 51 cents. You hand him 56 cents. How much change should Baker Pip give you?",
+					"answer": "5",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"56",
+							"-",
+							"51",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "At Baker Pip's shop, a loaf of elven bread costs 59 cents. You hand him 79 cents. How much change should Baker Pip give you?",
+					"answer": "20",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"79",
+							"-",
+							"59",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "At Baker Pip's shop, a loaf of elven bread costs 45 cents. You hand him 50 cents. How much change should Baker Pip give you?",
+					"answer": "5",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"50",
+							"-",
+							"45",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g2-l10",
+			"grade": 2.0,
+			"title": "Lesson 10: Reading Potion Graphs",
+			"lecture": "Welcome to the potions laboratory! Today we are learning to read bar graphs, which use tall bars to show how many of each item we have collected. The taller the bar, the more items it represents. To find how many more or how many fewer of one thing there are compared to another, we subtract the smaller amount from the bigger amount.\n\nHere's an example. We collected 13 red potions and 3 blue potions. To find how many more red potions there are, we subtract the smaller number from the bigger number: 13 minus 3 equals 10. So there are 10 more red potions than blue potions.\n\nHere's another example. We collected 8 red potions and 10 blue potions. Since 10 is bigger than 8, we subtract 8 from 10: 10 minus 8 equals 2. So there are 2 fewer red potions than blue potions.\n\nRemember: whether the question asks how many 'more' or how many 'fewer', the way to solve it is always the same — subtract the smaller number from the bigger number.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "A bar graph shows 8 red potions and 10 blue potions collected. How many fewer red potions were collected than blue potions?",
+					"answer": "2",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"10",
+							"-",
+							"8",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "A bar graph shows 13 red potions and 3 blue potions collected. How many more red potions were collected than blue potions?",
+					"answer": "10",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"13",
+							"-",
+							"3",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "A bar graph shows 14 red potions and 7 blue potions collected. How many more red potions were collected than blue potions?",
+					"answer": "7",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"14",
+							"-",
+							"7",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "A bar graph shows 12 red potions and 8 blue potions collected. How many more red potions were collected than blue potions?",
+					"answer": "4",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"12",
+							"-",
+							"8",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "A bar graph shows 7 red potions and 6 blue potions collected. How many more red potions were collected than blue potions?",
+					"answer": "1",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"7",
+							"-",
+							"6",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "A bar graph shows 15 red potions and 3 blue potions collected. How many more red potions were collected than blue potions?",
+					"answer": "12",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"15",
+							"-",
+							"3",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "A bar graph shows 6 red potions and 4 blue potions collected. How many more red potions were collected than blue potions?",
+					"answer": "2",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"6",
+							"-",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "A bar graph shows 12 red potions and 9 blue potions collected. How many more red potions were collected than blue potions?",
+					"answer": "3",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"12",
+							"-",
+							"9",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "A bar graph shows 11 red potions and 9 blue potions collected. How many more red potions were collected than blue potions?",
+					"answer": "2",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"11",
+							"-",
+							"9",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "A bar graph shows 7 red potions and 12 blue potions collected. How many fewer red potions were collected than blue potions?",
+					"answer": "5",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"12",
+							"-",
+							"7",
+							"= ?"
+						]
+					}
+				}
+			]
+		}
+	],
+	"g3": [
+		{
+			"id": "g3-l1",
+			"grade": 3.0,
+			"title": "Lesson 1: Multiplication Tables (1-10)",
+			"lecture": "Welcome to the highest tier of QuizBee, advanced wizards! Today we begin mastering multiplication tables from one through ten.\n\nMultiplication is simply fast addition of equal groups. For example, if something costs 5 coins, and you buy 5 of them, you could add 5 plus 5 plus 5 plus 5 plus 5, or you could simply multiply 5 times 5, which gives you 25 much faster. The answer to a multiplication problem is called the product.\n\nDivision works the opposite way: it means sharing a total equally into groups. If you have 40 items and share them equally among 8 friends, each friend gets 5. The answer to a division problem is called the quotient.\n\nHere are two important clue words to remember: the word 'each' and the word 'product' usually mean you should multiply. The words 'per person' or 'split equally' usually mean you should divide. Keep practicing your multiplication facts from 1 times 1 all the way up to 10 times 10, since they are the foundation for everything else in Grade 3 math.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "What is 3 x 7?",
+					"answer": "21",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 3.0,
+							"itemsPerGroup": 7.0,
+							"icon": "🌟"
+						}
+					}
+				},
+				{
+					"id": "q2",
+					"text": "What is 6 x 8?",
+					"answer": "48",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 6.0,
+							"itemsPerGroup": 8.0,
+							"icon": "💠"
+						}
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Calculate: 9 x 4",
+					"answer": "36",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 9.0,
+							"itemsPerGroup": 4.0,
+							"icon": "🔥"
+						}
+					}
+				},
+				{
+					"id": "q4",
+					"text": "What is the product of 5 and 5?",
+					"answer": "25",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 5.0,
+							"itemsPerGroup": 5.0,
+							"icon": "⚡"
+						}
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Solve: 7 x 7",
+					"answer": "49",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 7.0,
+							"itemsPerGroup": 7.0,
+							"icon": "🔮"
+						}
+					}
+				},
+				{
+					"id": "q6",
+					"text": "What is 8 x 4?",
+					"answer": "32",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 8.0,
+							"itemsPerGroup": 4.0,
+							"icon": "🪄"
+						}
+					}
+				},
+				{
+					"id": "q7",
+					"text": "Calculate: 10 x 9",
+					"answer": "90",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"10",
+							"x",
+							"9",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "What is 2 x 8?",
+					"answer": "16",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 2.0,
+							"itemsPerGroup": 8.0,
+							"icon": "🛡️"
+						}
+					}
+				},
+				{
+					"id": "q9",
+					"text": "Solve: 6 x 6",
+					"answer": "36",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 6.0,
+							"itemsPerGroup": 6.0,
+							"icon": "🗡️"
+						}
+					}
+				},
+				{
+					"id": "q10",
+					"text": "What is 9 x 8?",
+					"answer": "72",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"9",
+							"x",
+							"8",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g3-l2",
+			"grade": 3.0,
+			"title": "Lesson 2: Multiplication Word Problems",
+			"lecture": "Welcome back, third-grade wizards! Today we are solving multiplication word problems by hunting for clue words hidden inside the story.\n\nThe word 'each' is a big clue. It tells us that every single group has the exact same amount, which means we should multiply.\n\nHere's an example. Matthew buys 4 packs of trading cards, and each pack has 5 cards. Since every pack has the same amount, we multiply: 4 times 5 equals 20 cards in total.\n\nAnother clue word is 'product'. The product is simply the answer you get after multiplying two numbers together.\n\nHere's an example. A wizard's spell produces 6 sparklers, and 3 wizards cast the same spell. To find the product, we multiply 6 by 3, which equals 18 sparklers.\n\nRemember: whenever a story says 'each' or asks for the 'product', that's your signal to multiply the two numbers in the problem.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Matthew buys 4 packs of magical trading cards. Each pack has 5 cards. How many cards does he have in total?",
+					"answer": "20",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 4.0,
+							"itemsPerGroup": 5.0,
+							"icon": "🃏"
+						}
+					}
+				},
+				{
+					"id": "q2",
+					"text": "A wizard casts a spell that produces 6 sparklers. If 3 wizards cast the same spell, what is the product of sparklers created?",
+					"answer": "18",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 3.0,
+							"itemsPerGroup": 6.0,
+							"icon": "✨"
+						}
+					}
+				},
+				{
+					"id": "q3",
+					"text": "There are 8 shelves of potion bottles in the dungeon. Each shelf holds 7 bottles. How many bottles are there in all?",
+					"answer": "56",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"8",
+							"x",
+							"7",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "A dragon eats 9 sheep a day. How many sheep does it eat in 5 days?",
+					"answer": "45",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"9",
+							"x",
+							"5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Matthew plants 6 rows of magical beans. Each row has 9 beans. How many beans did he plant?",
+					"answer": "54",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"6",
+							"x",
+							"9",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "A magical broomstick costs 10 gold coins. How much would 8 broomsticks cost?",
+					"answer": "80",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"10",
+							"x",
+							"8",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "The crystal cavern has 7 chambers. Each chamber contains 4 glowing crystals. How many crystals are there altogether?",
+					"answer": "28",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"7",
+							"x",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "If a healing spell takes 3 minutes to learn, how long does it take to learn 9 healing spells?",
+					"answer": "27",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"3",
+							"x",
+							"9",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "Each griffin has 4 legs. If there are 8 griffins in the courtyard, how many legs are there in total?",
+					"answer": "32",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"4",
+							"x",
+							"8",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "A wizard's cloak has 5 pockets, and each pocket holds 6 enchanted coins. How many coins are in the cloak?",
+					"answer": "30",
+					"visual": {
+						"type": "groups",
+						"groups": {
+							"count": 5.0,
+							"itemsPerGroup": 6.0,
+							"icon": "🪙"
+						}
+					}
+				}
+			]
+		},
+		{
+			"id": "g3-l3",
+			"grade": 3.0,
+			"title": "Lesson 3: Division Concepts (Equal Sharing)",
+			"lecture": "Welcome back, third-grade wizards! Today we are learning division, which is all about sharing a total equally, so that every person or group gets the exact same amount.\n\nHere's an example. We need to share 20 magical gems equally among 4 wizards. To divide fairly, we ask: what number, when multiplied by 4, gives us 20? Since 4 times 5 equals 20, each wizard gets 5 gems.\n\nHere's another example. We share 15 fairy wings equally among 3 fairies. Since 3 times 5 equals 15, each fairy gets 5 wings.\n\nRemember: division means splitting a total number into equal groups, so that every single group ends up with the exact same amount. One easy way to solve a division problem is to think of it as a multiplication problem in reverse.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Share 20 magical gems equally among 4 wizards. How many gems does each wizard get?",
+					"answer": "5",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"20",
+							"÷",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "Divide 36 golden apples into 6 equal baskets. How many apples are in each basket?",
+					"answer": "6",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"36",
+							"÷",
+							"6",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "If 15 fairy wings are shared equally by 3 fairies, how many wings does each get?",
+					"answer": "5",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"15",
+							"÷",
+							"3",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "Split 40 potion vials into 8 equal groups. How many vials in each group?",
+					"answer": "5",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"40",
+							"÷",
+							"8",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "24 silver coins are divided equally among 3 enchanted chests. How many coins per chest?",
+					"answer": "8",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"24",
+							"÷",
+							"3",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "Share 45 dragon scales among 5 knights. How many scales per knight?",
+					"answer": "9",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"45",
+							"÷",
+							"5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "Divide 18 magic wands equally between 2 students. How many wands each?",
+					"answer": "9",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"18",
+							"÷",
+							"2",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "Split 50 glowing orbs into 10 equal piles. How many orbs in each pile?",
+					"answer": "5",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"50",
+							"÷",
+							"10",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "Share 28 spell scrolls equally among 4 libraries. How many scrolls per library?",
+					"answer": "7",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"28",
+							"÷",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "Divide 32 crystal shards into 8 equal parts. How many shards in each part?",
+					"answer": "4",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"32",
+							"÷",
+							"8",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g3-l4",
+			"grade": 3.0,
+			"title": "Lesson 4: Division Word Problems",
+			"lecture": "Welcome back, third-grade wizards! Today we continue practicing division by solving word problems that use the special word 'quotient'. The quotient is just the math word for the answer to a division problem.\n\nHere's an example. Matthew has 42 enchanted rings, and wants to share them equally among 6 friends. To find the quotient, we divide 42 by 6. Since 6 times 7 equals 42, the quotient is 7 — each friend gets 7 rings.\n\nHere's another example. Matthew collects 27 stardust particles and puts them equally into 3 jars. Since 3 times 9 equals 27, the quotient is 9 — each jar holds 9 particles.\n\nRemember: whenever you hear the word 'quotient', or a story asks how much each person gets after sharing equally, that means you need to divide the total by the number of equal groups.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Matthew has 42 enchanted rings and wants to give them to 6 friends. What is the quotient of rings per person?",
+					"answer": "7",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"42",
+							"÷",
+							"6",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "The potion master brewed 54 ounces of elixir. If he pours it into flasks that hold 9 ounces each, how many flasks does he need?",
+					"answer": "6",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"54",
+							"÷",
+							"9",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "A wizard finds 48 gold coins and splits them equally among his 8 apprentices. How many coins does each apprentice receive?",
+					"answer": "6",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"48",
+							"÷",
+							"8",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "There are 35 unicorn hairs to be shared among 7 wand makers. How many hairs does each wand maker get?",
+					"answer": "5",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"35",
+							"÷",
+							"7",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "The castle kitchen baked 60 levitation cupcakes for 10 students. How many cupcakes per person?",
+					"answer": "6",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"60",
+							"÷",
+							"10",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "Matthew collects 27 stardust particles and puts them into 3 jars equally. What is the quotient per jar?",
+					"answer": "9",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"27",
+							"÷",
+							"3",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "A flock of 36 owls needs to deliver letters. If they are split into 4 equal teams, how many owls are on each team?",
+					"answer": "9",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"36",
+							"÷",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "The knight's armory has 72 shields divided equally across 9 racks. How many shields per rack?",
+					"answer": "8",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"72",
+							"÷",
+							"9",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "21 magical seeds are planted equally in 7 pots. How many seeds are in each pot?",
+					"answer": "3",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"21",
+							"÷",
+							"7",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "Matthew has 64 spell components and divides them into groups of 8. How many groups can he make?",
+					"answer": "8",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"64",
+							"÷",
+							"8",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g3-l5",
+			"grade": 3.0,
+			"title": "Lesson 5: Equivalent & Comparing Fractions",
+			"lecture": "Welcome, advanced wizards, to the potion blending room! Today we are learning to compare fractions and find equivalent fractions. A fraction has two numbers: the bottom number, called the denominator, tells us how many equal pieces the whole is cut into, and the top number, called the numerator, tells us how many of those pieces we have.\n\nWhen two fractions have the same denominator, comparing them is easy — we just compare the numerators, the top numbers. For example, between 3 fourths and 1 fourth, since the pieces are the same size, 3 pieces is more than 1 piece, so 3 fourths is bigger.\n\nEquivalent fractions are fractions that look different but represent the exact same amount. For example, imagine a potion flask that is half full. If we imagine that same amount split into smaller pieces, one half is the same amount as two fourths. So 1 half and 2 fourths are equivalent fractions — they are equal in size, even though the numbers look different.\n\nRemember: when the denominators match, compare the numerators directly. And two fractions are equivalent whenever they represent the exact same amount, even if their numbers are different.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Which fraction is equivalent to 1/2: 2/4 or 1/3?",
+					"answer": "2/4",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"1/2",
+							"==",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "Compare: Which is larger, 3/4 or 1/4?",
+					"answer": "3/4",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"3/4",
+							"vs",
+							"1/4"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Is 2/6 equivalent to 1/3? (Yes or No)",
+					"answer": "Yes",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"2/6",
+							"==",
+							"1/3 ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "Which is smaller: 1/8 or 5/8?",
+					"answer": "1/8",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"1/8",
+							"vs",
+							"5/8"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Find an equivalent fraction for 1/4 using a denominator of 8.",
+					"answer": "2/8",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"1/4",
+							"=",
+							"?/8"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "Compare: Which is larger, 1/2 or 3/6? (Or are they equal?)",
+					"answer": "equal",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"1/2",
+							"vs",
+							"3/6"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "Which fraction represents a larger piece of the magical pie: 4/5 or 2/5?",
+					"answer": "4/5",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"4/5",
+							"vs",
+							"2/5"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "What is equivalent to 2/2?",
+					"answer": "1",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"2/2",
+							"=",
+							"?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "Compare: Which is smaller, 1/3 or 2/3?",
+					"answer": "1/3",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"1/3",
+							"vs",
+							"2/3"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "If Matthew has 4/8 of a potion and his friend has 1/2, who has more?",
+					"answer": "equal",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"4/8",
+							"vs",
+							"1/2"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g3-l6",
+			"grade": 3.0,
+			"title": "Lesson 6: Area of Rectangles & Squares",
+			"lecture": "Welcome back, advanced wizards! Today we are learning to measure area, which tells us how much flat space is inside a shape, like a garden bed or a floor. For rectangles and squares, we find the area by multiplying the length by the width.\n\nHere's an example. A garden bed is 4 meters long and 3 meters wide. To find its area, we multiply length by width: 4 times 3 equals 12. Since we're measuring area, we say the answer in square units: 12 square meters.\n\nHere's another example, using a room. A potion room floor is 8 meters by 5 meters. Multiply 8 times 5, which equals 40 square meters.\n\nSquares are special because all four sides are the exact same length, so to find their area, you multiply the side length by itself. For example, a square spellbook cover has sides of 5 inches. Multiply 5 times 5, which equals 25 square inches.\n\nRemember: for any rectangle or square, area equals length multiplied by width, and the answer is always measured in square units.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "A magical garden bed is 4 meters long and 3 meters wide. What is its area?",
+					"answer": "12",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"4",
+							"x",
+							"3",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "The wizard's square spellbook has sides of 5 inches. What is the area of the cover?",
+					"answer": "25",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"5",
+							"x",
+							"5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "A rectangular invisibility cloak is 6 feet long and 4 feet wide. Find the area.",
+					"answer": "24",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"6",
+							"x",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "The potion room floor is 8 meters by 5 meters. What is the area?",
+					"answer": "40",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"8",
+							"x",
+							"5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "A square flying carpet has a side length of 7 feet. What is its area?",
+					"answer": "49",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"7",
+							"x",
+							"7",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "The dragon's rectangular lair is 10 meters long and 9 meters wide. What is the area?",
+					"answer": "90",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"10",
+							"x",
+							"9",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "Calculate the area of a rectangular spell board that is 2 feet wide and 8 feet long.",
+					"answer": "16",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"2",
+							"x",
+							"8",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "A square window in the tower has sides of 4 feet. What is its area?",
+					"answer": "16",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"4",
+							"x",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "The royal rectangular banner is 9 feet long and 3 feet wide. What is the area?",
+					"answer": "27",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"9",
+							"x",
+							"3",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "A magical map is 6 inches by 7 inches. What is the area of the map?",
+					"answer": "42",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"6",
+							"x",
+							"7",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g3-l7",
+			"grade": 3.0,
+			"title": "Lesson 7: Perimeter of Polygons",
+			"lecture": "Welcome back, advanced wizards! Last time we measured the inside space of a shape. Today we are measuring the perimeter, which is the total distance all the way around the outside edge of a shape. To find the perimeter, you simply add up the length of every single side.\n\nHere's an example with a triangle. A triangular rune stone has sides measuring 3 centimeters, 4 centimeters, and 5 centimeters. Add them together: 3 plus 4 plus 5 equals 12. So the perimeter is 12 centimeters.\n\nHere's an example with a square, which has four equal sides. A square fence has a side length of 6 meters. Since all four sides are equal, we can multiply instead of adding: 4 sides times 6 meters equals a perimeter of 24 meters.\n\nHere's an example with a rectangle, which has two long sides and two short sides. A rectangular garden is 5 meters long and 2 meters wide. Add the two lengths together, 5 plus 5 equals 10, and add the two widths together, 2 plus 2 equals 4. Then add those two totals: 10 plus 4 equals 14 meters.\n\nRemember: perimeter always means adding up the lengths of every side of the shape.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "What is the perimeter of a triangular rune stone with sides measuring 3cm, 4cm, and 5cm?",
+					"answer": "12",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"3",
+							"+",
+							"4",
+							"+",
+							"5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "A square magical fence has a side length of 6 meters. What is the perimeter?",
+					"answer": "24",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"6",
+							"x",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "The border of a rectangular garden is 5 meters long and 2 meters wide. Calculate the perimeter.",
+					"answer": "14",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"5+5",
+							"+",
+							"2+2",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "A pentagon-shaped shield has equal sides of 4 inches each. What is its perimeter?",
+					"answer": "20",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"5",
+							"x",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "Calculate the perimeter of a rectangle with a length of 8 feet and a width of 3 feet.",
+					"answer": "22",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"8+8",
+							"+",
+							"3+3",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "A hexagonal crystal has 6 equal sides, each measuring 2 cm. What is the perimeter?",
+					"answer": "12",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"6",
+							"x",
+							"2",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "What is the perimeter of a triangle with sides 7 cm, 7 cm, and 5 cm?",
+					"answer": "19",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"7",
+							"+",
+							"7",
+							"+",
+							"5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "The castle's square courtyard has a side of 10 meters. What is the total distance around it?",
+					"answer": "40",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"10",
+							"x",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "An octagonal amulet has 8 sides, each 3 mm long. What is the perimeter?",
+					"answer": "24",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"8",
+							"x",
+							"3",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "Find the perimeter of a rectangular spellbook that is 10 inches high and 6 inches wide.",
+					"answer": "32",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"10+10",
+							"+",
+							"6+6",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g3-l8",
+			"grade": 3.0,
+			"title": "Lesson 8: Elapsed Time",
+			"lecture": "Welcome back, third-grade chronomancers! Today we are learning to measure elapsed time — exactly how much time passes between the start and the end of an event.\n\nSometimes we know the start time and how long something takes, and we need to find the end time. Here's an example: a potion takes 45 minutes to brew, and Matthew starts it at 2:00 PM. To find the finish time, we add 45 minutes to 2:00, which gives us 2:45 PM.\n\nOther times, we know the start time and the end time, and we need to find how much time passed in between. Here's an example: magic class starts at 9:00 AM and ends at 10:20 AM. From 9:00 to 10:00 is exactly 1 hour. Then, from 10:00 to 10:20 is 20 more minutes. Adding those together, 1 hour plus 20 minutes means 1 hour and 20 minutes has elapsed.\n\nRemember: to find an end time, add the amount of time onto the start time. To find how much time has elapsed, figure out the difference between the start time and the end time.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "A potion takes 45 minutes to brew. If Matthew starts at 2:00 PM, when will it be finished?",
+					"answer": "2:45",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"2:00",
+							"+ 45m",
+							"-> ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "A broomstick flight leaves at 3:15 PM and arrives at 4:30 PM. How long was the flight (in hours and minutes)?",
+					"answer": "1 hour 15 minutes",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"3:15",
+							"->",
+							"4:30"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Magic class starts at 9:00 AM and ends at 10:20 AM. How much time has elapsed?",
+					"answer": "1 hour 20 minutes",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"9:00",
+							"->",
+							"10:20"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "If an invisibility spell lasts for 2 hours and 15 minutes, and is cast at 1:00 PM, when does it wear off?",
+					"answer": "3:15",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"1:00",
+							"+ 2h 15m",
+							"-> ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "A dragon sleeps from 8:00 PM until 6:00 AM. How many hours did the dragon sleep?",
+					"answer": "10",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"8pm",
+							"->",
+							"12am",
+							"->",
+							"6am"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "Matthew starts studying spellbooks at 4:30 PM and finishes at 6:15 PM. How long did he study?",
+					"answer": "1 hour 45 minutes",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"4:30",
+							"->",
+							"6:15"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "The wizard tournament begins at 10:45 AM and lasts for 3 hours. What time does it end?",
+					"answer": "1:45",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"10:45",
+							"+ 3h",
+							"-> ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "A magical hourglass runs out in 90 minutes. If it is flipped at 12:00 PM, when is it empty?",
+					"answer": "1:30",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"12:00",
+							"+ 90m",
+							"-> ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "The sun sets at 7:25 PM and the stars align at 8:10 PM. How many minutes passed?",
+					"answer": "45",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"7:25",
+							"->",
+							"8:10"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "If a potion needs to simmer for 1 hour and 10 minutes, and it is 5:50 PM now, when should it be taken off the fire?",
+					"answer": "7:00",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"5:50",
+							"+ 1h 10m",
+							"-> ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g3-l9",
+			"grade": 3.0,
+			"title": "Lesson 9: Volume & Mass",
+			"lecture": "Welcome to the alchemy lab, third-grade wizards! Today we are learning about volume and mass, so we can measure our magical ingredients precisely.\n\nVolume tells us how much space a liquid takes up. We measure large amounts in liters, and small amounts in milliliters. Here's an example: a cauldron holds 15 liters of water, and Matthew adds 5 more liters of magical sap. Adding them together, 15 plus 5 equals 20 liters in total.\n\nMass tells us how heavy something is. We measure light items in grams, and heavy items in kilograms. The important rule to remember is: 1 kilogram is exactly equal to 1,000 grams.\n\nHere's an example: a bag of fairy dust has a mass of 450 grams, and a second bag has a mass of 300 grams. Adding them together, 450 plus 300 equals 750 grams combined.\n\nRemember: volume measures how much space a liquid fills, and mass measures how heavy something is. When comparing kilograms and grams, always remember that 1 kilogram equals 1,000 grams.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "A cauldron holds 15 liters of water. Matthew adds 5 liters of magical sap. What is the total volume?",
+					"answer": "20",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"15",
+							"+",
+							"5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "A bag of fairy dust has a mass of 450 grams. A second bag has 300 grams. What is their combined mass?",
+					"answer": "750",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"450",
+							"+",
+							"300",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "Which is heavier: A 2 kilogram dragon egg or a 1,500 gram crystal? (Remember 1kg = 1000g)",
+					"answer": "dragon egg",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"2kg",
+							"vs",
+							"1500g"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "Matthew pours 8 liters of potion equally into 4 flasks. What is the volume in each flask?",
+					"answer": "2",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"8",
+							"÷",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "The wizard needs 2 kilograms of troll strength powder. He only has 1,200 grams. How many more grams does he need?",
+					"answer": "800",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"2000",
+							"-",
+							"1200",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "A magical stone has a mass of 50 grams. What is the mass of 8 stones?",
+					"answer": "400",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"50",
+							"x",
+							"8",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "A large vat holds 50 liters of goblin juice. 23 liters spill out. How much is left?",
+					"answer": "27",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"50",
+							"-",
+							"23",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "Convert 3 kilograms of dragon scales into grams.",
+					"answer": "3000",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"3",
+							"x",
+							"1000",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "A tiny vial holds 15 milliliters of liquid luck. How much do 3 vials hold in total?",
+					"answer": "45",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"15",
+							"x",
+							"3",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "If a block of enchanted ice has a mass of 4 kilograms and melts by half, what is the new mass?",
+					"answer": "2",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"4",
+							"÷",
+							"2",
+							"= ?"
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "g3-l10",
+			"grade": 3.0,
+			"title": "Lesson 10: Multi-Step Wizard Challenges",
+			"lecture": "Welcome, advanced wizards, to your Final Trial for the Diamond Medal! Today we are solving multi-step problems, where you need more than one math step to find the answer. The secret is to solve one step at a time, in the correct order.\n\nHere's an example. Matthew buys 3 wands for 5 coins each, plus a spellbook for 10 coins. Step one: find the cost of the wands by multiplying, 3 times 5 equals 15 coins. Step two: add the cost of the spellbook, 15 plus 10 equals 25. So Matthew spent 25 coins in total.\n\nHere's another example. A wizard has 50 gems, gives 14 away, and then splits the rest equally into 4 bags. Step one: subtract, 50 minus 14 equals 36 gems remaining. Step two: divide those 36 gems equally into 4 bags, 36 divided by 4 equals 9. So each bag holds 9 gems.\n\nRemember: for any multi-step problem, read the story carefully, solve the first step completely, and then use that answer to solve the next step, one step at a time until you reach the final answer.",
+			"questions": [
+				{
+					"id": "q1",
+					"text": "Matthew buys 3 wands for 5 coins each and a spellbook for 10 coins. How many coins did he spend in total?",
+					"answer": "25",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"(3 x 5)",
+							"+",
+							"10",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q2",
+					"text": "A wizard has 50 gems. He gives 14 to his apprentice and splits the rest equally into 4 bags. How many gems are in each bag?",
+					"answer": "9",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"(50 - 14)",
+							"÷",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q3",
+					"text": "The potion master brews 4 cauldrons of potion. Each cauldron holds 6 liters. If he bottles the potion in 2-liter flasks, how many flasks does he need?",
+					"answer": "12",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"(4 x 6)",
+							"÷",
+							"2",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q4",
+					"text": "Matthew finds a chest with 30 gold coins. He doubles his coins by casting a spell, then spends 15 coins. How many coins does he have left?",
+					"answer": "45",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"(30 x 2)",
+							"-",
+							"15",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q5",
+					"text": "A dragon has a hoard of 100 treasures. A knight steals 25, and the dragon finds 40 more. How many treasures does the dragon have now?",
+					"answer": "115",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"100",
+							"-",
+							"25",
+							"+",
+							"40",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q6",
+					"text": "Matthew plants a rectangular magical garden that is 4 meters by 5 meters. He wants to put a magical fence around the perimeter. How many meters of fence does he need?",
+					"answer": "18",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"(4+4)",
+							"+",
+							"(5+5)",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q7",
+					"text": "There are 3 classes of young wizards. Each class has 8 students. If they are divided into teams of 4 for a tournament, how many teams are there?",
+					"answer": "6",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"(3 x 8)",
+							"÷",
+							"4",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q8",
+					"text": "A flying carpet travels 10 miles in 1 hour. How far does it travel in 3 hours and 30 minutes?",
+					"answer": "35",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"10",
+							"x",
+							"3.5",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q9",
+					"text": "Matthew has a 500-gram block of enchanted metal. He uses 150 grams for a sword and 200 grams for a shield. How much metal is left?",
+					"answer": "150",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"500",
+							"-",
+							"150",
+							"-",
+							"200",
+							"= ?"
+						]
+					}
+				},
+				{
+					"id": "q10",
+					"text": "The ultimate challenge: Matthew earns 5 points for every potion brewed and 10 points for every spell cast. If he brews 6 potions and casts 4 spells, what is his total score for the Diamond Medal?",
+					"answer": "70",
+					"visual": {
+						"type": "sequence",
+						"sequence": [
+							"(6 x 5)",
+							"+",
+							"(4 x 10)",
+							"= ?"
+						]
+					}
+				}
+			]
+		}
+	]
+}

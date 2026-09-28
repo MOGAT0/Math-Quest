@@ -1,0 +1,254 @@
+[
+  {
+	"id": "chapter-1",
+	"pageNumber": 1,
+	"titleEn": "Activity 1: Counting Small Objects",
+	"titleTl": "Gawain 1: Bilangin ang mga larawan",
+	"subtitle": "Numbers 1 to 10 with One-to-One Counting",
+	"lessonContent": {
+	  "conceptTitle": "Lesson: How to Count Objects",
+	  "explanation": "Point to each object one at a time. Say one number name for each item. The last number you count tells how many items there are in total!",
+	  "keyTip": "💡 Tip: Tap on each item to place a counter sticker so you never count the same item twice!",
+	  "visualExample": {
+		"itemType": "star",
+		"count": 3,
+		"groupingText": "1, 2, 3 → Total of 3 stars ⭐"
+	  }
+	},
+	"exercises": [
+	  {
+		"id": "ex-1-1",
+		"type": "number-input",
+		"instructionEn": "Count the pictures. How many stars are there?",
+		"instructionTl": "Bilangin ang mga larawan. Ilan ang mga tala?",
+		"questionEn": "How many stars are in the box?",
+		"questionTl": "Ilan ang mga tala?",
+		"itemType": "star",
+		"count": 3,
+		"layout": { "rows": [3] },
+		"correctAnswer": 3,
+		"hint": "Touch each star from left to right: one, two, three!",
+		"sourceReference": "Gawain 1 - Item 1 (Image 2)"
+	  },
+	  {
+		"id": "ex-1-2",
+		"type": "number-input",
+		"instructionEn": "Count the pictures. How many cans are in the box?",
+		"instructionTl": "Bilangin ang mga larawan. Ilan ang mga lata sa kahon?",
+		"questionEn": "How many cans are in the box?",
+		"questionTl": "Ilan ang mga lata sa kahon?",
+		"itemType": "can",
+		"count": 9,
+		"layout": { "rows": [9] },
+		"correctAnswer": 9,
+		"hint": "Count the row of cans starting from the tallest one: 1, 2, 3, 4, 5, 6, 7, 8, 9.",
+		"sourceReference": "Gawain 1 - Item 2 (Image 2)"
+	  },
+	  {
+		"id": "ex-1-3",
+		"type": "number-input",
+		"instructionEn": "Count the pictures. How many boxes (cartons) are in the frame?",
+		"instructionTl": "Bilangin ang mga larawan. Ilan ang mga karton sa kahon?",
+		"questionEn": "How many cartons are in the box?",
+		"questionTl": "Ilan ang mga karton sa kahon?",
+		"itemType": "box",
+		"count": 4,
+		"layout": { "rows": [4] },
+		"correctAnswer": 4,
+		"hint": "Count all four 3D blocks inside the frame.",
+		"sourceReference": "Gawain 1 - Item 3 (Image 2)"
+	  }
+	]
+  },
+  {
+	"id": "chapter-2",
+	"pageNumber": 2,
+	"titleEn": "Activity 2: Choosing the Correct Number",
+	"titleTl": "Pagsasanay A: Piliin ang tamang bilang",
+	"subtitle": "Multiple Choice Counting (Numbers 10 to 70)",
+	"lessonContent": {
+	  "conceptTitle": "Lesson: Counting Rows and Adding Extras",
+	  "explanation": "When counting many items, look at how they are arranged in neat rows. Count by whole rows first, then add the leftovers!",
+	  "keyTip": "💡 Tip: Look for complete rows of 10 or 12 to count much faster!",
+	  "visualExample": {
+		"itemType": "yoyo",
+		"count": 12,
+		"groupingText": "Top row has 9 + bottom row has 3 = 12 Yo-yos 🪀"
+	  }
+	},
+	"exercises": [
+	  {
+		"id": "ex-2-1",
+		"type": "multiple-choice",
+		"instructionEn": "Choose the correct number of items in the picture.",
+		"instructionTl": "Piliin ang tamang bilang ng mga nasa larawan at isulat ang sagot.",
+		"questionEn": "Count all the yo-yos:",
+		"questionTl": "Bilangin ang mga yoyo:",
+		"itemType": "yoyo",
+		"count": 12,
+		"layout": { "rows": [9, 3] },
+		"options": [10, 12, 14],
+		"correctAnswer": 12,
+		"hint": "Row 1 has 9 yo-yos. Row 2 has 3 yo-yos. 9 + 3 = 12.",
+		"sourceReference": "Part A - Item 1 (Image 1)"
+	  },
+	  {
+		"id": "ex-2-2",
+		"type": "multiple-choice",
+		"instructionEn": "Choose the correct count of balloons / light bulbs in the picture.",
+		"instructionTl": "Piliin ang tamang bilang ng mga nasa larawan at isulat ang sagot.",
+		"questionEn": "Count all the hanging bulbs / balloons:",
+		"questionTl": "Bilangin ang mga bumbilya / lobo:",
+		"itemType": "balloon",
+		"count": 42,
+		"layout": { "rows": [11, 11, 11, 9] },
+		"options": [40, 41, 42],
+		"correctAnswer": 42,
+		"hint": "3 rows of 11 (33) plus 9 in the bottom row = 42 in total.",
+		"sourceReference": "Part A - Item 2 (Image 1)"
+	  },
+	  {
+		"id": "ex-2-3",
+		"type": "multiple-choice",
+		"instructionEn": "Choose the correct count of school backpacks.",
+		"instructionTl": "Piliin ang tamang bilang ng mga nasa larawan at isulat ang sagot.",
+		"questionEn": "Count all the yellow school bags:",
+		"questionTl": "Bilangin ang mga bag:",
+		"itemType": "backpack",
+		"count": 62,
+		"layout": { "rows": [13, 13, 13, 13, 10] },
+		"options": [60, 62, 64],
+		"correctAnswer": 62,
+		"hint": "4 rows of 13 = 52 bags. Add 10 bags in the last row = 62 bags.",
+		"sourceReference": "Part A - Item 3 (Image 1)"
+	  }
+	]
+  },
+  {
+	"id": "chapter-3",
+	"pageNumber": 3,
+	"titleEn": "Activity 3: Count and Choose the Correct Number",
+	"titleTl": "Gawain 3: Pagbilang at Pagpili ng Tamang Bilang",
+	"subtitle": "Simple Multiple-Choice Counting Practice for Grade 1",
+	"lessonContent": {
+	  "conceptTitle": "Lesson: Counting and Choosing Numbers",
+	  "explanation": "Count the objects in each group carefully. You can tap each picture to put a star sticker on it! Once you know the total, tap the matching number button below.",
+	  "keyTip": "💡 Quick Tip: Count row by row! Then tap the big matching number (A, B, or C).",
+	  "visualExample": {
+		"itemType": "strawberry",
+		"count": 12,
+		"groupingText": "12 sweet strawberries 🍓"
+	  }
+	},
+	"exercises": [
+	  {
+		"id": "ex-3-1",
+		"type": "multiple-choice",
+		"instructionEn": "Count the sweet strawberries and choose the correct number.",
+		"instructionTl": "Bilangin ang mga strawberry at piliin ang tamang bilang.",
+		"questionEn": "1. How many strawberries are in the patch?",
+		"questionTl": "1. Ilan ang mga strawberry?",
+		"itemType": "strawberry",
+		"count": 12,
+		"layout": { "rows": [8, 4] },
+		"options": [10, 12, 14],
+		"correctAnswer": 12,
+		"hint": "Count the top row (8) and bottom row (4): 8 + 4 = 12 strawberries.",
+		"sourceReference": "Activity 3 - Item 1 (Image 3)"
+	  },
+	  {
+		"id": "ex-3-2",
+		"type": "multiple-choice",
+		"instructionEn": "Count the pineapples in the grid and choose the correct number.",
+		"instructionTl": "Bilangin ang mga pinya at piliin ang tamang sagot.",
+		"questionEn": "2. How many pineapples are there in total?",
+		"questionTl": "2. Ilan lahat ang mga pinya?",
+		"itemType": "pineapple",
+		"count": 50,
+		"layout": { "rows": [5, 5, 5, 5, 5, 5, 5, 5, 5, 5] },
+		"options": [40, 50, 60],
+		"correctAnswer": 50,
+		"hint": "There are 10 rows of 5 pineapples each. Skip-count by 5s: 5, 10, 15... up to 50!",
+		"sourceReference": "Activity 3 - Item 2 (Image 4)"
+	  },
+	  {
+		"id": "ex-3-3",
+		"type": "multiple-choice",
+		"instructionEn": "Count the orchard apples and choose the matching number.",
+		"instructionTl": "Bilangin ang mga mansanas at piliin ang tamang sagot.",
+		"questionEn": "3. How many apples are in the orchard?",
+		"questionTl": "3. Ilan lahat ang mga mansanas?",
+		"itemType": "apple",
+		"count": 71,
+		"layout": { "rows": [10, 10, 10, 10, 10, 10, 10, 1] },
+		"options": [61, 71, 81],
+		"correctAnswer": 71,
+		"hint": "There are 7 rows of 10 apples (= 70) plus 1 single apple at the bottom = 71 apples!",
+		"sourceReference": "Activity 3 - Item 3 (Image 5)"
+	  },
+	  {
+		"id": "ex-3-4",
+		"type": "multiple-choice",
+		"instructionEn": "Count all the strawberries in the box and choose the correct number.",
+		"instructionTl": "Bilangin ang mga strawberry sa kahon at piliin ang tamang sagot.",
+		"questionEn": "4. How many strawberries are inside the box?",
+		"questionTl": "4. Ilan ang mga strawberry sa kahon?",
+		"itemType": "strawberry",
+		"count": 25,
+		"layout": { "rows": [9, 9, 7] },
+		"options": [20, 25, 30],
+		"correctAnswer": 25,
+		"hint": "Top two rows have 9 + 9 = 18. Add 7 in the bottom row: 18 + 7 = 25 strawberries.",
+		"sourceReference": "Activity 3 - Item 4 (Image 5)"
+	  }
+	]
+  },
+  {
+	"id": "chapter-4",
+	"pageNumber": 4,
+	"titleEn": "Bonus Challenge: Grade 1 Mastery Practice",
+	"titleTl": "Karagdagang Pagsasanay: Hamon sa Pagbibilang",
+	"subtitle": "Extra Practice: Quick Counting & Skip Counting",
+	"lessonContent": {
+	  "conceptTitle": "Lesson: Skip Counting by 2s, 5s, and 10s",
+	  "explanation": "You can count groups faster by skip counting! Try counting flowers in pairs (2, 4, 6...) or pencils in bundles of 5.",
+	  "keyTip": "💡 Practice counting: 2, 4, 6, 8, 10... or 5, 10, 15, 20, 25!",
+	  "visualExample": {
+		"itemType": "flower",
+		"count": 8,
+		"groupingText": "2, 4, 6, 8 → 8 blooming flowers 🌸"
+	  }
+	},
+	"exercises": [
+	  {
+		"id": "ex-4-1",
+		"type": "multiple-choice",
+		"instructionEn": "Skip count the colorful blooming flowers in pairs of 2.",
+		"instructionTl": "Bilangin ang mga bulaklak ng dala-dalawa.",
+		"questionEn": "How many flowers are in the garden?",
+		"questionTl": "Ilan ang mga bulaklak sa hardin?",
+		"itemType": "flower",
+		"count": 16,
+		"layout": { "rows": [8, 8] },
+		"options": [14, 16, 18],
+		"correctAnswer": 16,
+		"hint": "Two rows of 8 flowers = 16 flowers.",
+		"sourceReference": "Bonus Additional Exercise"
+	  },
+	  {
+		"id": "ex-4-2",
+		"type": "number-input",
+		"instructionEn": "Count the school pencils in groups of 5 and write the number.",
+		"instructionTl": "Bilangin ang mga lapis at isulat ang bilang.",
+		"questionEn": "How many colored pencils are on the desk?",
+		"questionTl": "Ilan ang mga lapis sa mesa?",
+		"itemType": "pencil",
+		"count": 15,
+		"layout": { "rows": [5, 5, 5] },
+		"correctAnswer": 15,
+		"hint": "3 rows of 5 pencils: 5, 10, 15!",
+		"sourceReference": "Bonus Additional Exercise"
+	  }
+	]
+  }
+]

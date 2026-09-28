@@ -1,0 +1,570 @@
+{
+  "prologue_classroom": {
+	"title": "Chapter 1: The Classroom Struggle",
+	"location": "Earth Classroom — Afternoon",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "In a corner of the notebooks and textbooks inside the classroom, there was Matthew."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Why can my classmates easily solve these real-life math problems? I look at these numbers and word problems, and I struggle so much... I just do not understand any of it!"
+	  },
+	  {
+		"name": "narrator",
+		"log": "In the afternoon, Matthew was called by one of his teachers, Ma'am Cruz."
+	  },
+	  {
+		"name": "ma'am cruz",
+		"log": "Matthew, I called you here to discuss your grades. You are about to fail your Math subject. To pass, you MUST pass the Math Test on our upcoming examination."
+	  },
+	  {
+		"name": "matthew",
+		"log": "The upcoming examination... I don't know what to do, Ma'am Cruz. I want to learn, but numbers confuse me!"
+	  },
+	  {
+		"name": "ma'am cruz",
+		"log": "You have curiosity and heart, Matthew. Practice diligently on the way home, learn the basic clues of every problem, and believe in yourself."
+	  }
+	],
+	"next": "alley_portal"
+  },
+  "alley_portal": {
+	"title": "Chapter 2: The Mysterious Portal",
+	"location": "Empty Alleyway — Sunset",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "One day on the way home in an empty alley, Matthew feels strange..."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Wait... what is that glowing light in the alley wall? It feels like the air is humming with magical energy!"
+	  },
+	  {
+		"name": "narrator",
+		"log": "He saw a shimmering portal floating in the air. He was scared and curious, so he stepped closer to the portal and touched it."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Whoaaa! The portal is pulling me in!"
+	  }
+	],
+	"next": "magical_forest"
+  },
+  "magical_forest": {
+	"title": "Chapter 3: Arrival in Magi-Mathica",
+	"location": "The Enchanted Forest of Magi-Mathica",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "On the other side of the portal is another world! Matthew arrived in a magical forest."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Where am I?! Glowing numbers floating in the trees? Geometric flowers? I feel completely overwhelmed by the things I am seeing!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "Oh no! The portal is closed! How will I ever get back home to prepare for my upcoming exam?!"
+	  },
+	  {
+		"name": "narrator",
+		"log": "While wandering in the forest, Matthew met Arith, a kind student of AcadeMath."
+	  },
+	  {
+		"name": "arith",
+		"log": "Hello there, traveler! You look lost. My name is Arith, a student at AcadeMath."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Hi Arith! I am Matthew. I came through a portal from Earth. I need to get back home to prepare for my school exam, but the portal closed!"
+	  },
+	  {
+		"name": "arith",
+		"log": "A portal huh, do not worry, Matthew! The only person that can help you open the portal is the Great Math Wizard at the castle. Come, I will guide and accompany you to see him!"
+	  }
+	],
+	"next": "wizard_castle_intro"
+  },
+  "wizard_castle_intro": {
+	"title": "Chapter 4: The Wizard's Condition",
+	"location": "The Great Math Wizard's Castle",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Arith guided and accompanied Matthew to Magi-Mathica's Castle. When they arrived, they talked to the Great Math Wizard."
+	  },
+	  {
+		"name": "the great math wizard",
+		"log": "Welcome, young Matthew from Earth! I sense your troubled heart about the mathematics of your world."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Great Wizard, please help me! I want to go home and prepare for my upcoming exam, but the portal is locked tight."
+	  },
+	  {
+		"name": "the great math wizard",
+		"log": "The portal is bound by the laws of mathematical truth. You need to collect a Learning Experience (EXP) here at Magi-Mathica and pass my Test so that I can give you the Key to open the Portal!"
+	  },
+	  {
+		"name": "arith",
+		"log": "I will guide Matthew on how to gain the Learning Experience and how he will pass the Wizard's Quiz! We will enroll him at AcadeMath!"
+	  },
+	  {
+		"name": "the great math wizard",
+		"log": "Very well! Begin with the foundational magic of numbers. Return when you have mastered the four sacred operations and earned the medals of AcadeMath!"
+	  },
+	  {
+		"name": "arith",
+		"log": "Thank you, Great Wizard! Come on, Matthew. Let us head back to my house. I have the perfect magical book to start your training!"
+	  },
+	  {
+		"name": "narrator",
+		"log": "With their quest officially set, Arith guided Matthew out of the castle and straight to his study room to retrieve the Magical Book."
+	  }
+	],
+	"next": "arith_study_book"
+  },
+  "arith_study_book": {
+	"title": "Chapter 5: Arith's Magical Book",
+	"location": "Arith's Study Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Arith and Matthew reached their distination, Arith handled Matthew a magical book containing basic understanding for numbers, like counting."
+	  },
+	  {
+		"name": "arith",
+		"log": "Here is your first magical primer, Matthew! To apply at AcadeMath, the first requirement is to identify numbers and count objects with accuracy. Let us practice right here!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "Let me open the book! I am ready to learn number identification and counting!"
+	  }
+	],
+	"next": "academy_interview"
+  },
+  "academy_interview": {
+	"title": "Chapter 6: Application at AcadeMath",
+	"location": "AcadeMath Principal's Office",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew learned how to identify numbers and count objects. Matthew and Arith then went to the Academy to process Matthew's application."
+	  },
+	  {
+		"name": "arith",
+		"log": "This is the office of our revered Principal, Mr. Archimedes. He will interview you and test your basic number knowledge!"
+	  },
+	  {
+		"name": "mr. archimedes",
+		"log": "Greetings, Matthew! To admit you into AcadeMath, I must interview you with questions about: How many are these objects? And arrange these numbers in order!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "I am ready, Mr. Archimedes! Let's begin the entrance test!"
+	  }
+	],
+	"next": "market_food_1"
+  },
+  "market_food_1": {
+	"title": "Morning Routine: Pip's Magical Bakery",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Routine of Matthew: Before going to Arith's house and heading to school, Matthew must buy food for energy!"
+	  },
+	  {
+		"name": "baker pip",
+		"log": "Good morning, young scholar! Fresh star-fruit buns and mana pies are ready. Solve the price problem to buy your breakfast!"
+	  }
+	],
+	"next": "addition_class"
+  },
+  "addition_class": {
+	"title": "Chapter 7: Ms. Addria and Addition up to 10",
+	"location": "AcadeMath — Addition Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "The next day the school starts. Matthew was excited and still felt overwhelmed. He went to his classroom and met his teacher, Ms. Addria. He introduced himself."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Good morning! My name is Matthew, and I am eager to learn how to add numbers!"
+	  },
+	  {
+		"name": "ms. addria",
+		"log": "Welcome, Matthew! Today we discuss basic counting up to 10 and adding numbers up to 10. Remember: you can repeat my discussion or tutorial anytime, and I can show you more samples whenever you need!"
+	  }
+	],
+	"next": "addition_test"
+  },
+  "addition_test": {
+	"title": "Addition Classroom Examination",
+	"location": "AcadeMath — Addition Classroom",
+	"dialogues": [
+	  {
+		"name": "ms. addria",
+		"log": "Now that we have discussed our lesson and explored visual examples, let us take the Addition Test! Show what you have learned!"
+	  }
+	],
+	"next": "principal_gold_medal"
+  },
+  "principal_gold_medal": {
+	"title": "Chapter 8: The Gold Medal Proof",
+	"location": "AcadeMath Principal's Office",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "After completing the Addition Class, Matthew went to the principal and showed his papers as proof of mastery."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Principal Archimedes! Here are my test papers from Ms. Addria's Addition class with all the clue words!"
+	  },
+	  {
+		"name": "mr. archimedes",
+		"log": "Outstanding work, Matthew! By the authority of AcadeMath, I award you this GOLD MEDAL and the Addition Clue Words Book! This unlocks your next subject: Subtraction!"
+	  }
+	],
+	"next": "home_sleep_1"
+  },
+  "home_sleep_1": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps, his mind absorbing the addition formulas and clue words."
+	  },
+	  {
+		"name": "matthew",
+		"log": "I really understood how addition joins things together today! Tomorrow is Subtraction class with Mr. Minus..."
+	  }
+	],
+	"next": "market_food_2"
+  },
+  "market_food_2": {
+	"title": "Morning Routine: Market Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Morning arrives! Matthew visits Baker Pip to buy food before heading to class."
+	  },
+	  {
+		"name": "baker pip",
+		"log": "Welcome back! Today we have honey clover biscuits. Calculate your change to purchase!"
+	  }
+	],
+	"next": "subtraction_class"
+  },
+  "subtraction_class": {
+	"title": "Chapter 9: Mr. Minus and Subtraction",
+	"location": "AcadeMath — Subtraction Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "After passing the Addition class, Matthew needs to learn how to subtract, where his new teacher is Mr. Minus."
+	  },
+	  {
+		"name": "mr. minus",
+		"log": "Greetings, Matthew! I am Mr. Minus. Subtraction is the art of taking away, finding differences, and counting what remains. Let us begin our tutorial!"
+	  }
+	],
+	"next": "subtraction_test"
+  },
+  "subtraction_test": {
+	"title": "Subtraction Classroom Examination",
+	"location": "AcadeMath — Subtraction Classroom",
+	"dialogues": [
+	  {
+		"name": "mr. minus",
+		"log": "Time for your Subtraction Test! Remember the clue words: difference, remaining, left, and how many more!"
+	  }
+	],
+	"next": "principal_platinum_medal"
+  },
+  "principal_platinum_medal": {
+	"title": "Chapter 10: The Platinum Medal",
+	"location": "AcadeMath Principal's Office",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew completed the Subtraction class, talked to the principal, and presented his completed papers."
+	  },
+	  {
+		"name": "mr. archimedes",
+		"log": "Splendid achievement! For mastering subtraction, I bestow upon you the PLATINUM MEDAL and the Subtraction Clue Words Book! You may now enter Multiplication Class with Ms. Timi!"
+	  }
+	],
+	"next": "home_sleep_2"
+  },
+  "home_sleep_2": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps peacefully, preparing for the magic of equal groups."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Subtraction makes so much sense now! Tomorrow I will meet Ms. Timi for Multiplication!"
+	  }
+	],
+	"next": "market_food_3"
+  },
+  "market_food_3": {
+	"title": "Morning Routine: Nutritious Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "Ready for another day of learning, Matthew? Here are berry cluster rolls!"
+	  }
+	],
+	"next": "multiplication_class"
+  },
+  "multiplication_class": {
+	"title": "Chapter 11: Ms. Timi and Multiplication",
+	"location": "AcadeMath — Multiplication Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "For Multiplication, Matthew's teacher was Ms. Timi."
+	  },
+	  {
+		"name": "ms. timi",
+		"log": "Welcome, Matthew! Multiplication is repeated addition with equal groups! When you see rows, arrays, or the words \"each\" and \"product\", multiplication is your best friend!"
+	  }
+	],
+	"next": "multiplication_test"
+  },
+  "multiplication_test": {
+	"title": "Multiplication Classroom Examination",
+	"location": "AcadeMath — Multiplication Classroom",
+	"dialogues": [
+	  {
+		"name": "ms. timi",
+		"log": "Show your multiplication mastery on this examination to earn your third medal!"
+	  }
+	],
+	"next": "principal_emerald_medal"
+  },
+  "principal_emerald_medal": {
+	"title": "Chapter 12: The Emerald Medal",
+	"location": "AcadeMath Principal's Office",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew showed his multiplication proof papers to Principal Archimedes."
+	  },
+	  {
+		"name": "mr. archimedes",
+		"log": "Remarkable! You have earned the EMERALD MEDAL and the Multiplication Clue Words Book! Now, you advance to your final subject: Division with Mr. David!"
+	  }
+	],
+	"next": "home_sleep_3"
+  },
+  "home_sleep_3": {
+	"title": "Evening Routine: Rest & Dream",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew goes home and sleeps, dreaming of arrays and number multiplications."
+	  },
+	  {
+		"name": "matthew",
+		"log": "Multiplication was so fun! One more class left: Division with Mr. David!"
+	  }
+	],
+	"next": "market_food_4"
+  },
+  "market_food_4": {
+	"title": "Morning Routine: Final Market Breakfast",
+	"location": "Magi-Mathica Town Market",
+	"dialogues": [
+	  {
+		"name": "baker pip",
+		"log": "The final class day is here! Fuel up with our golden crystal waffles!"
+	  }
+	],
+	"next": "division_class"
+  },
+  "division_class": {
+	"title": "Chapter 13: Mr. David and Division",
+	"location": "AcadeMath — Division Classroom",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "For Division, Matthew's teacher was Mr. David."
+	  },
+	  {
+		"name": "mr. david",
+		"log": "Greetings, Matthew! Division is the fair sharing of an entire total into equal portions. When you see clue words like \"shared equally\", \"per person\", and \"quotient\", think Division!"
+	  }
+	],
+	"next": "division_test"
+  },
+  "division_test": {
+	"title": "Division Classroom Examination",
+	"location": "AcadeMath — Division Classroom",
+	"dialogues": [
+	  {
+		"name": "mr. david",
+		"log": "Here is your Division and Multi-Step problem test. Solve each problem step by step!"
+	  }
+	],
+	"next": "principal_diamond_medal"
+  },
+  "principal_diamond_medal": {
+	"title": "Chapter 14: The Diamond Medal",
+	"location": "AcadeMath Principal's Office",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew showed his division test papers to Principal Archimedes."
+	  },
+	  {
+		"name": "mr. archimedes",
+		"log": "Magnificent! You have conquered all four arithmetic classes! I award you the DIAMOND MEDAL! Now that you have completed all of your classes, I shall personally assist you to our Academy Library!"
+	  }
+	],
+	"next": "home_sleep_4"
+  },
+  "home_sleep_4": {
+	"title": "Evening Routine: All Classes Completed",
+	"location": "Matthew's Cozy Guest Room",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew sleeps peacefully. Tomorrow, he will visit the librarian Ms. Richie and face the Great Wizard's challenge."
+	  },
+	  {
+		"name": "matthew",
+		"log": "I have earned all four medals: Gold, Platinum, Emerald, and Diamond! I feel so much more confident about math now!"
+	  }
+	],
+	"next": "library_ms_richie"
+  },
+  "library_ms_richie": {
+	"title": "Chapter 15: Ms. Richie and the Reviewer Book",
+	"location": "The Grand AcadeMath Library",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "After he completed all of his classes, the principal assisted Matthew to the librarian named Ms. Richie."
+	  },
+	  {
+		"name": "mr. archimedes",
+		"log": "Ms. Richie, meet Matthew! He has collected all four arithmetic medals and is preparing for the Wizard's ultimate challenge."
+	  },
+	  {
+		"name": "ms. richie",
+		"log": "Welcome, young scholar Matthew! I have prepared this Grand Reviewer Book for you. It contains comprehensive notes, clue words, and practice questions covering all the possible challenges the Wizard might present!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "Thank you, Ms. Richie! Let us review the clue words and practice multi-step problems before meeting the Wizard!"
+	  }
+	],
+	"next": "interactive_review"
+  },
+  "interactive_review": {
+	"title": "Grand Library Interactive Practice",
+	"location": "The Grand AcadeMath Library",
+	"dialogues": [
+	  {
+		"name": "arith",
+		"log": "Let us solve these interactive reviewer problems together! Once we finish, we will proceed to the Wizard's Castle!"
+	  }
+	],
+	"next": "wizard_final_trial"
+  },
+  "wizard_final_trial": {
+	"title": "Chapter 16: The Great Math Wizard's Final Trial",
+	"location": "The Great Math Wizard's Castle",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew and Arith went to the Great Math Wizard to test his knowledge and learnings during his time at Magi-Mathica."
+	  },
+	  {
+		"name": "the great math wizard",
+		"log": "Welcome back, Matthew and Arith! I see the brilliance of the Gold, Platinum, Emerald, and Diamond medals on your chest. Are you ready for the ultimate test of Magi-Mathica?"
+	  },
+	  {
+		"name": "matthew",
+		"log": "I am ready, Great Wizard! I understand the clue words, the operations, and how to solve multi-step real-life math problems!"
+	  },
+	  {
+		"name": "the great math wizard",
+		"log": "Let the Final Trial begin!"
+	  }
+	],
+	"next": "portal_key_awarded"
+  },
+  "portal_key_awarded": {
+	"title": "Chapter 17: The Portal Key Bestowed",
+	"location": "The Great Math Wizard's Castle",
+	"dialogues": [
+	  {
+		"name": "the great math wizard",
+		"log": "Sensational! You passed my Test with extraordinary skill, Matthew! As promised, here is the Magical Portal Key to open your pathway home!"
+	  },
+	  {
+		"name": "arith",
+		"log": "You did it, Matthew! You mastered all the curriculum concepts and collected all the Learning Experience!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "Thank you Arith, thank you Great Wizard, and thank you AcadeMath! I am ready to return home!"
+	  }
+	],
+	"next": "return_earth_exam"
+  },
+  "return_earth_exam": {
+	"title": "Chapter 18: Return to Earth & The Examination",
+	"location": "Earth Classroom — Examination Day",
+	"dialogues": [
+	  {
+		"name": "narrator",
+		"log": "Matthew stepped through the magical portal and arrived back home. He was now confident to take the examination that he needed to pass."
+	  },
+	  {
+		"name": "ma'am cruz",
+		"log": "Welcome to your Math Examination, Matthew. Here is your test paper. Take a deep breath and do your best!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "I can do this! I can identify the clue words and break down every problem step by step!"
+	  }
+	],
+	"next": "victory_epilogue"
+  },
+  "victory_epilogue": {
+	"title": "Epilogue: Mastery and Confidence",
+	"location": "Earth Classroom — Celebration",
+	"dialogues": [
+	  {
+		"name": "ma'am cruz",
+		"log": "Matthew... this is extraordinary! You scored a PERFECT grade on the Math Examination! You have truly mastered elementary mathematics!"
+	  },
+	  {
+		"name": "matthew",
+		"log": "I did it! Math is no longer a scary mystery. It is a wonderful puzzle with clues in every sentence!"
+	  },
+	  {
+		"name": "narrator",
+		"log": "And so, Matthew was no longer struggling. He was confident and inspired, ready to conquer any math problem in life. The end."
+	  }
+	],
+	"next": null
+  }
+}

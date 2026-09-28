@@ -1,0 +1,764 @@
+{
+	"data": {
+		"checklist": [
+			{
+				"chapter": "prologue_classroom",
+				"id": 1.0,
+				"is_done": true
+			},
+			{
+				"chapter": "alley_portal",
+				"id": 2.0,
+				"is_done": true
+			},
+			{
+				"chapter": "magical_forest",
+				"id": 3.0,
+				"is_done": true
+			},
+			{
+				"chapter": "wizard_castle_intro",
+				"id": 4.0,
+				"is_done": true
+			},
+			{
+				"chapter": "arith_study_book",
+				"id": 5.0,
+				"is_done": true
+			},
+			{
+				"chapter": "academy_interview",
+				"id": 6.0,
+				"is_done": true
+			},
+			{
+				"chapter": "school_admission",
+				"id": 7.0,
+				"is_done": true
+			},
+			{
+				"chapter": "market_food_1",
+				"id": 8.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson1_class",
+				"id": 9.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson1_test",
+				"id": 10.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_1",
+				"id": 11.0,
+				"is_done": true
+			},
+			{
+				"chapter": "market_food_2",
+				"id": 12.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson2_class",
+				"id": 13.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson2_test",
+				"id": 14.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_2",
+				"id": 15.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_3",
+				"id": 16.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson3_class",
+				"id": 17.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson3_test",
+				"id": 18.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_3",
+				"id": 19.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_4",
+				"id": 20.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson4_class",
+				"id": 21.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson4_test",
+				"id": 22.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_4",
+				"id": 23.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_5",
+				"id": 24.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson5_class",
+				"id": 25.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson5_test",
+				"id": 26.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_5",
+				"id": 27.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_6",
+				"id": 28.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson6_class",
+				"id": 29.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson6_test",
+				"id": 30.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_6",
+				"id": 31.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_7",
+				"id": 32.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson7_class",
+				"id": 33.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson7_test",
+				"id": 34.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_7",
+				"id": 35.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_8",
+				"id": 36.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson8_class",
+				"id": 37.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson8_test",
+				"id": 38.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_8",
+				"id": 39.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_9",
+				"id": 40.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson9_class",
+				"id": 41.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson9_test",
+				"id": 42.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_9",
+				"id": 43.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_10",
+				"id": 44.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson10_class",
+				"id": 45.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_lesson10_test",
+				"id": 46.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade1_complete",
+				"id": 47.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_10",
+				"id": 48.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_11",
+				"id": 49.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson1_class",
+				"id": 50.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson1_test",
+				"id": 51.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_11",
+				"id": 52.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_12",
+				"id": 53.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson2_class",
+				"id": 54.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson2_test",
+				"id": 55.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_12",
+				"id": 56.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_13",
+				"id": 57.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson3_class",
+				"id": 58.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson3_test",
+				"id": 59.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_13",
+				"id": 60.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_14",
+				"id": 61.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson4_class",
+				"id": 62.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson4_test",
+				"id": 63.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_14",
+				"id": 64.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_15",
+				"id": 65.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson5_class",
+				"id": 66.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson5_test",
+				"id": 67.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_15",
+				"id": 68.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_16",
+				"id": 69.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson6_class",
+				"id": 70.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson6_test",
+				"id": 71.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_16",
+				"id": 72.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_17",
+				"id": 73.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson7_class",
+				"id": 74.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson7_test",
+				"id": 75.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_17",
+				"id": 76.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_18",
+				"id": 77.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson8_class",
+				"id": 78.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson8_test",
+				"id": 79.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_18",
+				"id": 80.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_19",
+				"id": 81.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson9_class",
+				"id": 82.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson9_test",
+				"id": 83.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_19",
+				"id": 84.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_20",
+				"id": 85.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson10_class",
+				"id": 86.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_lesson10_test",
+				"id": 87.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade2_complete",
+				"id": 88.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_20",
+				"id": 89.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_21",
+				"id": 90.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson1_class",
+				"id": 91.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson1_test",
+				"id": 92.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_21",
+				"id": 93.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_22",
+				"id": 94.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson2_class",
+				"id": 95.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson2_test",
+				"id": 96.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_22",
+				"id": 97.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_23",
+				"id": 98.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson3_class",
+				"id": 99.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson3_test",
+				"id": 100.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_23",
+				"id": 101.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_24",
+				"id": 102.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson4_class",
+				"id": 103.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson4_test",
+				"id": 104.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_24",
+				"id": 105.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_25",
+				"id": 106.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson5_class",
+				"id": 107.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson5_test",
+				"id": 108.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_25",
+				"id": 109.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_26",
+				"id": 110.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson6_class",
+				"id": 111.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson6_test",
+				"id": 112.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_26",
+				"id": 113.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_27",
+				"id": 114.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson7_class",
+				"id": 115.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson7_test",
+				"id": 116.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_27",
+				"id": 117.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_28",
+				"id": 118.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson8_class",
+				"id": 119.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson8_test",
+				"id": 120.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_28",
+				"id": 121.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_29",
+				"id": 122.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson9_class",
+				"id": 123.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson9_test",
+				"id": 124.0,
+				"is_done": false
+			},
+			{
+				"chapter": "home_sleep_29",
+				"id": 125.0,
+				"is_done": false
+			},
+			{
+				"chapter": "market_food_30",
+				"id": 126.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson10_class",
+				"id": 127.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_lesson10_test",
+				"id": 128.0,
+				"is_done": false
+			},
+			{
+				"chapter": "grade3_complete",
+				"id": 129.0,
+				"is_done": true
+			},
+			{
+				"chapter": "library_ms_richie",
+				"id": 130.0,
+				"is_done": false
+			},
+			{
+				"chapter": "interactive_review",
+				"id": 131.0,
+				"is_done": false
+			},
+			{
+				"chapter": "wizard_final_trial",
+				"id": 132.0,
+				"is_done": false
+			},
+			{
+				"chapter": "portal_key_awarded",
+				"id": 133.0,
+				"is_done": false
+			},
+			{
+				"chapter": "return_earth_exam",
+				"id": 134.0,
+				"is_done": false
+			},
+			{
+				"chapter": "victory_epilogue",
+				"id": 135.0,
+				"is_done": false
+			}
+		],
+		"progress": [
+			{
+				"arith_pos": {
+					"__type__": "Vector2",
+					"x": -2608.02197265625,
+					"y": 376.815887451172
+				},
+				"current_chapter": "home_sleep_1",
+				"current_grade": "g3",
+				"current_lesson": "g3-l10",
+				"current_location": {
+					"__type__": "Vector2",
+					"x": 251.467803955078,
+					"y": -1030.32800292969
+				},
+				"id": 1.0,
+				"is_active": true,
+				"open_portal": true
+			}
+		],
+		"streak": []
+	},
+	"schemas": {
+		"checklist": {
+			"chapter": {
+				"data_type": "text",
+				"not_null": true
+			},
+			"id": {
+				"auto_increment": true,
+				"data_type": "int",
+				"not_null": true,
+				"primary_key": true
+			},
+			"is_done": {
+				"data_type": "bool"
+			}
+		},
+		"progress": {
+			"arith_pos": {
+				"data_type": "vector2"
+			},
+			"current_chapter": {
+				"data_type": "text",
+				"not_null": true
+			},
+			"current_grade": {
+				"data_type": "text",
+				"default": "g1"
+			},
+			"current_lesson": {
+				"data_type": "text"
+			},
+			"current_location": {
+				"data_type": "vector2"
+			},
+			"id": {
+				"auto_increment": true,
+				"data_type": "int",
+				"not_null": true,
+				"primary_key": true
+			},
+			"is_active": {
+				"data_type": "bool"
+			},
+			"open_portal": {
+				"data_type": "bool"
+			}
+		},
+		"streak": {
+			"date": {
+				"data_type": "text"
+			},
+			"days": {
+				"data_type": "int"
+			},
+			"id": {
+				"auto_increment": true,
+				"data_type": "int",
+				"not_null": true,
+				"primary_key": true
+			}
+		}
+	}
+}

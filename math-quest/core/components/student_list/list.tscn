@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://byrmutg2oph3h"]
+
+[ext_resource type="Script" uid="uid://bvomrc78cslou" path="res://core/components/student_list/list.gd" id="1_ao3f6"]
+[ext_resource type="Texture2D" uid="uid://deoe31l6jevu1" path="res://assets/models/avatar/1.png" id="2_ao3f6"]
+[ext_resource type="FontFile" uid="uid://dtymm3qpgc6ar" path="res://assets/fonts/Book.otf" id="3_av5uw"]
+
+[node name="list" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+size_flags_vertical = 4
+script = ExtResource("1_ao3f6")
+
+[node name="avatar" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("2_ao3f6")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="name" type="Label" parent="."]
+texture_filter = 2
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_av5uw")
+theme_override_font_sizes/font_size = 30
+text = "name"

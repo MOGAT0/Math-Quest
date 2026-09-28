@@ -1,0 +1,187 @@
+[gd_scene load_steps=12 format=3 uid="uid://cw4dsriy373bp"]
+
+[ext_resource type="Script" uid="uid://cknf1h7kf05x" path="res://scenes/main_scene/chapter_7.gd" id="1_7o6tt"]
+[ext_resource type="Texture2D" uid="uid://balcykhmk7utj" path="res://assets/ui/bg/innerview_school.jpg" id="2_4ybid"]
+[ext_resource type="Shader" uid="uid://c71n5bdme4ecy" path="res://assets/shaders/bg.gdshader" id="3_xfwrj"]
+[ext_resource type="Texture2D" uid="uid://qv4s3575f7ek" path="res://assets/ui/entities/matthew-normal-bg.png" id="4_kohxx"]
+[ext_resource type="Texture2D" uid="uid://cycvscej8vgxk" path="res://assets/ui/entities/arith-normal.png" id="5_daacu"]
+[ext_resource type="Texture2D" uid="uid://ccj6rptgdw3ob" path="res://assets/ui/entities/MrArchimedes.png" id="6_g2iya"]
+[ext_resource type="Shader" uid="uid://b8stk2g7mc7vm" path="res://assets/shaders/grunge_border.gdshader" id="7_kohxx"]
+[ext_resource type="StyleBox" uid="uid://dvqky3dsh60s0" path="res://assets/shaders/dialogue_panel.tres" id="8_daacu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6bggy"]
+shader = ExtResource("3_xfwrj")
+shader_parameter/blur_radius = 4.0
+shader_parameter/paint_stroke_size = 15.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g2iya"]
+shader = ExtResource("7_kohxx")
+shader_parameter/border_color = Color(0, 0, 0, 1)
+shader_parameter/fill_color = Color(0, 0, 0, 1)
+shader_parameter/fill_center = false
+shader_parameter/animation_speed = 0.01
+shader_parameter/smoke_speed = 0.5
+shader_parameter/rect_size = Vector2(512, 512)
+shader_parameter/border_left = 40.0
+shader_parameter/border_right = 40.0
+shader_parameter/border_top = 40.0
+shader_parameter/border_bottom = 150.000007125
+shader_parameter/jaggedness = 10.000000475
+shader_parameter/softness = 20.0
+shader_parameter/noise_scale = 0.02
+shader_parameter/smoke_color = Color(0.7, 0.7, 0.7, 1)
+shader_parameter/smoke_scale = 0.0010000000475
+shader_parameter/smoke_opacity = 0.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6bggy"]
+
+[node name="Chapter7" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7o6tt")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4ybid")
+expand_mode = 1
+
+[node name="bg_fx" type="Panel" parent="bg"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_6bggy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="entity1" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.25925925
+anchor_right = 0.3220486
+anchor_bottom = 1.0061729
+offset_bottom = -6.1035156e-05
+texture = ExtResource("4_kohxx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="entity2" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5303819
+anchor_top = 0.15277778
+anchor_right = 0.9505208
+anchor_bottom = 0.9984568
+texture = ExtResource("5_daacu")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="entity3" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48958334
+anchor_top = 0.09259259
+anchor_right = 1.0086806
+anchor_bottom = 1.382716
+texture = ExtResource("6_g2iya")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="title_label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.0
+offset_right = 29.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "tittle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="border" type="PanelContainer" parent="."]
+material = SubResource("ShaderMaterial_g2iya")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(1152, 192)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.7037037
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("8_daacu")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="name_label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "name"
+
+[node name="dialogue" type="RichTextLabel" parent="Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "In a corner inside the classroom, there was Matthew."
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="next" type="Button" parent="Panel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6bggy")
+text = "Next >"
+flat = true
+
+[node name="previous" type="Button" parent="Panel/HBoxContainer/VBoxContainer2"]
+visible = false
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Previous"
+
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer2/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer2/previous" to="." method="_on_previous_pressed"]

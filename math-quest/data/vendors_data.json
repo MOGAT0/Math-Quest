@@ -1,0 +1,410 @@
+{
+  "dialogue": "Greetings, traveler! Come, warm your hands by the cart. The road is long and treacherous, but an empty belly only makes it harder. Care to browse my fresh provisions? Guaranteed to keep your strength up for whatever lies ahead!",
+  "products": {
+    "apple_pie": {
+      "icon": "🥧",
+      "stamina": 10,
+      "price": 50
+    },
+    "crusty_rye_bread": {
+      "icon": "🍞",
+      "stamina": 8,
+      "price": 35
+    },
+    "smoked_sausage": {
+      "icon": "🌭",
+      "stamina": 15,
+      "price": 75
+    },
+    "roasted_fowl": {
+      "icon": "🍗",
+      "stamina": 25,
+      "price": 120
+    },
+    "hearty_beef_stew": {
+      "icon": "🍲",
+      "stamina": 35,
+      "price": 180
+    },
+    "sweetberry_tart": {
+      "icon": "🧁",
+      "stamina": 12,
+      "price": 60
+    },
+    "pickled_eggs": {
+      "icon": "🥚",
+      "stamina": 6,
+      "price": 25
+    },
+    "trail_rations": {
+      "icon": "🍱",
+      "stamina": 18,
+      "price": 85
+    },
+    "spiced_cider": {
+      "icon": "🍺",
+      "stamina": 14,
+      "price": 65
+    },
+    "honey_oat_cake": {
+      "icon": "🧇",
+      "stamina": 9,
+      "price": 40
+    },
+    "cheese_wedge": {
+      "icon": "🧀",
+      "stamina": 11,
+      "price": 55
+    },
+    "raisin_clusters": {
+      "icon": "🍇",
+      "stamina": 7,
+      "price": 30
+    },
+    "roasted_chestnuts": {
+      "icon": "🌰",
+      "stamina": 8,
+      "price": 32
+    },
+    "buttered_corn": {
+      "icon": "🌽",
+      "stamina": 10,
+      "price": 45
+    },
+    "baked_potato": {
+      "icon": "🥔",
+      "stamina": 12,
+      "price": 50
+    },
+    "carrot_sticks": {
+      "icon": "🥕",
+      "stamina": 5,
+      "price": 20
+    },
+    "garlic_flatbread": {
+      "icon": "🫓",
+      "stamina": 9,
+      "price": 38
+    },
+    "fresh_pretzel": {
+      "icon": "🥨",
+      "stamina": 7,
+      "price": 28
+    },
+    "mutton_skewer": {
+      "icon": "🍢",
+      "stamina": 20,
+      "price": 95
+    },
+    "grilled_trout": {
+      "icon": "🐟",
+      "stamina": 22,
+      "price": 105
+    },
+    "fried_shrimp": {
+      "icon": "🍤",
+      "stamina": 16,
+      "price": 80
+    },
+    "honeyed_ham": {
+      "icon": "🍖",
+      "stamina": 28,
+      "price": 135
+    },
+    "venison_steak": {
+      "icon": "🥩",
+      "stamina": 32,
+      "price": 160
+    },
+    "bacon_strips": {
+      "icon": "🥓",
+      "stamina": 13,
+      "price": 60
+    },
+    "dumpling_pouch": {
+      "icon": "🥟",
+      "stamina": 15,
+      "price": 70
+    },
+    "mushroom_broth": {
+      "icon": "🥣",
+      "stamina": 17,
+      "price": 78
+    },
+    "onion_soup": {
+      "icon": "🧅",
+      "stamina": 16,
+      "price": 72
+    },
+    "shepherds_pie": {
+      "icon": "🥧",
+      "stamina": 30,
+      "price": 145
+    },
+    "boar_roast": {
+      "icon": "🍖",
+      "stamina": 38,
+      "price": 195
+    },
+    "lamb_stew": {
+      "icon": "🍲",
+      "stamina": 34,
+      "price": 175
+    },
+    "fish_chowder": {
+      "icon": "🥣",
+      "stamina": 26,
+      "price": 125
+    },
+    "pumpkin_porridge": {
+      "icon": "🎃",
+      "stamina": 14,
+      "price": 62
+    },
+    "oat_porridge": {
+      "icon": "🥣",
+      "stamina": 10,
+      "price": 42
+    },
+    "rice_bowl": {
+      "icon": "🍚",
+      "stamina": 13,
+      "price": 58
+    },
+    "noodle_broth": {
+      "icon": "🍜",
+      "stamina": 19,
+      "price": 90
+    },
+    "curry_pot": {
+      "icon": "🍛",
+      "stamina": 24,
+      "price": 115
+    },
+    "stuffed_peppers": {
+      "icon": "🫑",
+      "stamina": 18,
+      "price": 84
+    },
+    "baked_beans": {
+      "icon": "🫘",
+      "stamina": 14,
+      "price": 60
+    },
+    "sweet_yam": {
+      "icon": "🍠",
+      "stamina": 12,
+      "price": 52
+    },
+    "apple_slices": {
+      "icon": "🍎",
+      "stamina": 4,
+      "price": 15
+    },
+    "pear_preserves": {
+      "icon": "🍐",
+      "stamina": 8,
+      "price": 34
+    },
+    "peach_cobbler": {
+      "icon": "🍑",
+      "stamina": 13,
+      "price": 58
+    },
+    "cherry_turnover": {
+      "icon": "🍒",
+      "stamina": 9,
+      "price": 40
+    },
+    "plum_jam_roll": {
+      "icon": "🥐",
+      "stamina": 10,
+      "price": 44
+    },
+    "lemon_biscuit": {
+      "icon": "🍋",
+      "stamina": 6,
+      "price": 26
+    },
+    "banana_bread": {
+      "icon": "🍌",
+      "stamina": 11,
+      "price": 46
+    },
+    "orange_wedges": {
+      "icon": "🍊",
+      "stamina": 5,
+      "price": 18
+    },
+    "strawberry_shortcake": {
+      "icon": "🍓",
+      "stamina": 12,
+      "price": 55
+    },
+    "watermelon_slice": {
+      "icon": "🍉",
+      "stamina": 6,
+      "price": 22
+    },
+    "coconut_macaroon": {
+      "icon": "🥥",
+      "stamina": 9,
+      "price": 42
+    },
+    "melon_chunks": {
+      "icon": "🍈",
+      "stamina": 5,
+      "price": 20
+    },
+    "blueberry_muffin": {
+      "icon": "🫐",
+      "stamina": 10,
+      "price": 45
+    },
+    "chocolate_square": {
+      "icon": "🍫",
+      "stamina": 15,
+      "price": 68
+    },
+    "honey_pot": {
+      "icon": "🍯",
+      "stamina": 16,
+      "price": 72
+    },
+    "candied_nuts": {
+      "icon": "🥜",
+      "stamina": 12,
+      "price": 54
+    },
+    "gingerbread": {
+      "icon": "🍪",
+      "stamina": 11,
+      "price": 47
+    },
+    "sugared_doughnut": {
+      "icon": "🍩",
+      "stamina": 10,
+      "price": 44
+    },
+    "custard_pudding": {
+      "icon": "🍮",
+      "stamina": 13,
+      "price": 57
+    },
+    "frost_sorbet": {
+      "icon": "🍧",
+      "stamina": 8,
+      "price": 38
+    },
+    "warm_milk": {
+      "icon": "🥛",
+      "stamina": 9,
+      "price": 36
+    },
+    "herbal_tea": {
+      "icon": "🍵",
+      "stamina": 7,
+      "price": 30
+    },
+    "mulled_wine": {
+      "icon": "🍷",
+      "stamina": 15,
+      "price": 70
+    },
+    "dark_ale": {
+      "icon": "🍻",
+      "stamina": 16,
+      "price": 74
+    },
+    "fresh_goat_milk": {
+      "icon": "🥛",
+      "stamina": 10,
+      "price": 40
+    },
+    "ginger_tonic": {
+      "icon": "🫚",
+      "stamina": 12,
+      "price": 55
+    },
+    "berry_cordial": {
+      "icon": "🧃",
+      "stamina": 11,
+      "price": 50
+    },
+    "hot_cocoa": {
+      "icon": "☕",
+      "stamina": 14,
+      "price": 64
+    },
+    "black_coffee": {
+      "icon": "☕",
+      "stamina": 8,
+      "price": 34
+    },
+    "mead_flagon": {
+      "icon": "🍶",
+      "stamina": 17,
+      "price": 80
+    },
+    "spring_water": {
+      "icon": "💧",
+      "stamina": 3,
+      "price": 10
+    },
+    "elixir_of_vigor": {
+      "icon": "🧪",
+      "stamina": 40,
+      "price": 250
+    },
+    "hunters_feast": {
+      "icon": "🍽️",
+      "stamina": 45,
+      "price": 280
+    },
+    "travelers_platter": {
+      "icon": "🍽️",
+      "stamina": 42,
+      "price": 260
+    },
+    "royal_banquet": {
+      "icon": "👑",
+      "stamina": 50,
+      "price": 350
+    },
+    "dragon_pepper_chili": {
+      "icon": "🌶️",
+      "stamina": 22,
+      "price": 110
+    },
+    "salted_jerky": {
+      "icon": "🍖",
+      "stamina": 14,
+      "price": 62
+    },
+    "hardtack_biscuit": {
+      "icon": "🍘",
+      "stamina": 5,
+      "price": 15
+    },
+    "smoked_cheese_wheel": {
+      "icon": "🧀",
+      "stamina": 20,
+      "price": 92
+    },
+    "egg_and_ham_pie": {
+      "icon": "🥧",
+      "stamina": 21,
+      "price": 100
+    },
+    "herb_omelette": {
+      "icon": "🍳",
+      "stamina": 13,
+      "price": 56
+    },
+    "sunrise_flapjacks": {
+      "icon": "🥞",
+      "stamina": 15,
+      "price": 66
+    }
+  }
+}

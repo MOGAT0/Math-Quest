@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://crwgkc7df5lli"]
+
+[ext_resource type="Script" uid="uid://b0uq7gdae842v" path="res://features/merchants/merchant.gd" id="1_iq53o"]
+[ext_resource type="Shader" uid="uid://c8ati8ffrm6o4" path="res://assets/shaders/color_swap.gdshader" id="2_wbwwx"]
+[ext_resource type="PackedScene" uid="uid://dmwwbfq8ne10u" path="res://core/components/vendors/vendors_UI.tscn" id="3_wbwwx"]
+[ext_resource type="Texture2D" uid="uid://cpbxkyflht1hn" path="res://assets/ui/keys/E.png" id="4_rpukg"]
+[ext_resource type="Texture2D" uid="uid://bjhoy02veiaxu" path="res://icon.svg" id="5_u17vp"]
+[ext_resource type="Texture2D" uid="uid://di7ealxbqi0v1" path="res://animation_controller_node_icon_.png" id="6_avhkf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wbwwx"]
+shader = ExtResource("2_wbwwx")
+shader_parameter/tolerance = 0.01
+shader_parameter/color_to_find_1 = Color(0, 0, 0, 1)
+shader_parameter/replacement_color_1 = Color(0, 0, 0, 1)
+shader_parameter/color_to_find_2 = Color(0, 0, 0, 1)
+shader_parameter/replacement_color_2 = Color(0, 0, 0, 1)
+shader_parameter/color_to_find_3 = Color(0, 0, 0, 1)
+shader_parameter/replacement_color_3 = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sm12h"]
+load_path = "res://.godot/imported/Generic Male NPCs.png-0985862a66c2049bc1d16827d7f61ac4.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sm12h"]
+radius = 1.8027756
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rpukg"]
+radius = 12.0
+
+[node name="merchant" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_iq53o")
+
+[node name="merchant_sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_wbwwx")
+scale = Vector2(0.34, 0.265)
+texture = SubResource("CompressedTexture2D_sm12h")
+offset = Vector2(0, -45.865)
+hframes = 12
+vframes = 8
+frame = 58
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -2)
+shape = SubResource("CircleShape2D_sm12h")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_rpukg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="VendorsUi" parent="CanvasLayer" instance=ExtResource("3_wbwwx")]
+unique_name_in_owner = true
+
+[node name="key" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+position = Vector2(0, -11)
+scale = Vector2(0.36764705, 0.375)
+texture = ExtResource("4_rpukg")
+hframes = 2
+
+[node name="interact" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 4096
+y_sort_enabled = true
+position = Vector2(-7, -20)
+scale = Vector2(0.109375, 0.1640625)
+texture_normal = ExtResource("5_u17vp")
+texture_pressed = ExtResource("6_avhkf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="interact" to="." method="_on_interact_pressed"]
+[connection signal="released" from="interact" to="." method="_on_interact_released"]
