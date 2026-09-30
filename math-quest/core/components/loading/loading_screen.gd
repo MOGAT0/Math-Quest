@@ -38,7 +38,6 @@ func _process(_delta: float) -> void:
 			_update_progress()
 		ResourceLoader.THREAD_LOAD_FAILED, ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
 			push_error("Failed to load scene: %s" % req_scene_path)
-			# maybe show an error UI / retry button instead of hanging forever
 		ResourceLoader.THREAD_LOAD_LOADED:
 			_update_progress()
 			_is_transitioning = true
@@ -52,10 +51,8 @@ func _update_progress() -> void:
 	load_percentage.text = str(percent) + "%"
 
 func _on_transition_fx_transition_in_complete() -> void:
-	# NEW CODE: Retrieve the loaded scene and switch to it ONLY after the transition animation finishes
 	var new_scene = ResourceLoader.load_threaded_get(req_scene_path)
 	get_tree().change_scene_to_packed(new_scene)
-	print("transitioned")
 
 #extends Control
 #class_name LoadingScreen

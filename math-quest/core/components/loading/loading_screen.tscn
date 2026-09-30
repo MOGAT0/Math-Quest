@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dw6vygkcma2c8"]
+[gd_scene load_steps=9 format=3 uid="uid://dw6vygkcma2c8"]
 
 [ext_resource type="Script" uid="uid://0wnquo2ehf2e" path="res://core/components/loading/loading_screen.gd" id="1_o0jqy"]
 [ext_resource type="Shader" uid="uid://c6ybw3o3xr2g0" path="res://assets/shaders/fog.gdshader" id="2_62p0d"]
 [ext_resource type="Texture2D" uid="uid://cw4iqu52ngd1" path="res://mathquest_logo(circle).png" id="2_h5gtl"]
-[ext_resource type="FontFile" uid="uid://wbjufq0cuj84" path="res://assets/fonts/PressStart2P-Regular.ttf" id="3_u2egr"]
 [ext_resource type="PackedScene" uid="uid://t7gu33iy0wsx" path="res://core/components/transition/new/transitionFX.tscn" id="5_rpqkn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u2egr"]
@@ -69,7 +68,6 @@ offset_right = 574.0
 offset_bottom = 35.25
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("3_u2egr")
 theme_override_font_sizes/normal_font_size = 45
 bbcode_enabled = true
 text = "[pulse][wave]loading...[/wave][/pulse]"

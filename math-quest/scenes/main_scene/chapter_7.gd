@@ -54,6 +54,7 @@ func _ready() -> void:
 	GameManager.current_chapter_id = current_chapter_id
 
 func start_typewriter(dialogue_text: String) -> void:
+	MusicPlayer.one_shot = true
 	text_label.text = dialogue_text
 	text_label.visible_characters = 0
 	
@@ -65,7 +66,10 @@ func start_typewriter(dialogue_text: String) -> void:
 	var duration: float = dialogue_text.length() * type_speed
 	
 	tween.tween_property(text_label, "visible_characters", dialogue_text.length(), duration)
-
+	tween.finished.connect(func():
+		MusicPlayer.one_shot = false
+	)
+	
 
 func trigger_signal(value : signalType) -> void:
 	match value:

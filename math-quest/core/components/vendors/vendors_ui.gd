@@ -446,6 +446,7 @@ func _update_money() -> void:
 # ------------------------------------------------------------------ DIALOGUE
 
 func _play_dialogue() -> void:
+	MusicPlayer.one_shot = true
 	_dialogue_label.text = _dialogue
 	_dialogue_label.visible_ratio = 0.0
 	if _typing_tween:
@@ -457,6 +458,7 @@ func _play_dialogue() -> void:
 
 
 func _on_dialogue_finished() -> void:
+	MusicPlayer.one_shot = false
 	_dialogue_label.visible_ratio = 1.0
 	_button_row.show()
 

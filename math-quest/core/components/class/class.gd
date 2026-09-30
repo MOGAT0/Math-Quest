@@ -74,6 +74,7 @@ func _ready() -> void:
 	_setup_database()
 	_build_ui_nodes()
 	_prepare_tts()
+	
 
 
 	_lesson_available = _lesson_exists(current_grade, current_lesson)
@@ -215,6 +216,7 @@ func _build_ui_nodes() -> void:
 	trophy_bg.add_theme_stylebox_override("panel", trophy_style)
 	trophy_bg.custom_minimum_size = Vector2(120, 120)
 	trophy_bg.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	trophy_bg.mouse_filter = Control.MOUSE_FILTER_PASS
 	lesson_complete_container.add_child(trophy_bg)
 	
 	var trophy_icon = TextureRect.new()
@@ -246,6 +248,7 @@ func _build_ui_nodes() -> void:
 	bp_style.border_width_top = 2
 	bp_style.border_color = COLOR_SLATE_200
 	bottom_panel.add_theme_stylebox_override("panel", bp_style)
+	bottom_panel.mouse_filter = Control.MOUSE_FILTER_PASS
 	main_container.add_child(bottom_panel)
 	
 	bottom_panel_margin = MarginContainer.new()
@@ -322,7 +325,7 @@ func _build_lecture_nodes() -> void:
 	lbp_style.border_width_top = 4
 	lbp_style.border_color = COLOR_AMBER_500
 	lecture_bottom_panel.add_theme_stylebox_override("panel", lbp_style)
-	lecture_bottom_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	lecture_bottom_panel.mouse_filter = Control.MOUSE_FILTER_PASS
 	lecture_container.add_child(lecture_bottom_panel)
 
 	var lbp_margin = MarginContainer.new()
@@ -641,6 +644,7 @@ func _load_current_question() -> void:
 	qc_style.content_margin_bottom = 24
 	qc_style.border_color = COLOR_AMBER_500
 	q_card.add_theme_stylebox_override("panel", qc_style)
+	q_card.mouse_filter = Control.MOUSE_FILTER_PASS
 	exam_container.add_child(q_card)
 	
 	var q_margin = MarginContainer.new()
@@ -812,6 +816,7 @@ func _build_groups_visual(group_data: Dictionary, parent: Container) -> void:
 		# PanelContainer sizes itself to its contents (a Button does NOT),
 		# so the bundle now reserves real space instead of overlapping the options.
 		var bundle = PanelContainer.new()
+		bundle.mouse_filter = Control.MOUSE_FILTER_PASS
 		bundle.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
 
 		var normal = StyleBoxFlat.new()

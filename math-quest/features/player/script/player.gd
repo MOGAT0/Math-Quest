@@ -6,6 +6,8 @@ const T_avatar_default : String = "res://assets/models/teacher/"
 var current_avatar: String
 @onready var fps_disp: Label = %fps
 
+@onready var step_anim: AnimationPlayer = %step_anim
+
 @onready var target_indicator: TargetIndicator = %target_indicator
 @export var target : Marker2D
 @export var side_quest_targets : Dictionary[String, Marker2D]
@@ -36,6 +38,11 @@ func setup_navigation() -> void:
 	navigation_agent_2d.target_desired_distance = 8.0
 
 func _physics_process(_delta: float) -> void:
+	if velocity.length() > 0.01:
+		step_anim.play("step")
+	else:
+		step_anim.stop()
+	
 	fps_disp.text = str(Engine.get_frames_per_second())
 	
 	var keyboard_dir = Input.get_vector("a", "d", "w", "s")

@@ -28,6 +28,7 @@ GameManager="*res://core/managers/GameManager.gd"
 StoryLineManager="*res://core/managers/StoryLine_Manager.gd"
 DataManager="*res://core/DataManager.gd"
 db="*res://core/managers/db_editor/db_editor.gd"
+MusicPlayer="*res://core/managers/MusicPlayer.gd"
 
 [debug]
 
@@ -43,6 +44,10 @@ mouse_cursor/custom_image="uid://bn3dw5aeg2kqq"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/virtual_joystick_plus/plugin.cfg")
+
+[gui]
+
+theme/custom_font="uid://cn4nnu0v2a8i8"
 
 [input]
 

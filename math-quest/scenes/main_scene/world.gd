@@ -52,6 +52,11 @@ func _ready() -> void:
 	if is_done:
 		GameManager.game_time_enabled = true
 	
+	MusicPlayer.play_playlist([
+		preload("uid://gxi3ibqe3cki"),
+		preload("uid://cecfi3ldn4pn8"),
+		preload("uid://dbuw7fumbxllh"),
+	])
 
 #region save/load
 

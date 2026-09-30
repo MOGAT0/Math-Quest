@@ -101,6 +101,7 @@ func load_chapter(chapter_id: String) -> void:
 	show_next_dialogue()
 
 func start_typewriter(dialogue_text: String) -> void:
+	MusicPlayer.one_shot = true
 	text_label.text = dialogue_text
 	text_label.visible_characters = 0
 	
@@ -112,7 +113,10 @@ func start_typewriter(dialogue_text: String) -> void:
 	var duration: float = dialogue_text.length() * type_speed
 	
 	tween.tween_property(text_label, "visible_characters", dialogue_text.length(), duration)
-
+	tween.finished.connect(func():
+		MusicPlayer.one_shot = false
+	)
+	
 func show_next_dialogue() -> void:
 	if dialogue_index < current_dialogues.size():
 		var line_data = current_dialogues[dialogue_index]

@@ -217,7 +217,9 @@ theme_override_icons/grabber = ExtResource("7_f78r7")
 theme_override_icons/grabber_highlight = ExtResource("7_f78r7")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_7llbh")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_7llbh")
-value = 100.0
+max_value = 1.0
+step = 0.1
+value = 1.0
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="panel_cont/VBoxContainer"]
@@ -243,7 +245,9 @@ theme_override_icons/grabber = ExtResource("7_f78r7")
 theme_override_icons/grabber_highlight = ExtResource("7_f78r7")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_7llbh")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_7llbh")
-value = 100.0
+max_value = 0.5
+step = 0.1
+value = 0.5
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="panel_cont/VBoxContainer"]
@@ -269,11 +273,14 @@ theme_override_icons/grabber = ExtResource("7_f78r7")
 theme_override_icons/grabber_highlight = ExtResource("7_f78r7")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_1nh0a")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_1nh0a")
-value = 100.0
+max_value = 1.0
+step = 0.1
+value = 1.0
 metadata/_edit_use_anchors_ = true
 
 [node name="pause_cont" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -363,6 +370,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_tc0nr")
 
 [node name="credit_cont" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

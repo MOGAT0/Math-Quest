@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://d2tlvphqoq6ok"]
+[gd_scene load_steps=47 format=3 uid="uid://d2tlvphqoq6ok"]
 
 [ext_resource type="Script" uid="uid://ddchdq6sjtre7" path="res://features/player/script/player.gd" id="1_sjcu7"]
 [ext_resource type="Texture2D" uid="uid://daeplqk8xxe5y" path="res://assets/environment/shadow.png" id="2_emvbc"]
@@ -14,8 +14,8 @@
 [ext_resource type="Script" uid="uid://bomudbohmjmfa" path="res://features/player/target_indicator.gd" id="12_5rlqq"]
 [ext_resource type="Script" uid="uid://b6e3rl7h66vvx" path="res://features/player/touch_control.gd" id="13_1ncrl"]
 [ext_resource type="Script" uid="uid://crjlkg2q7arjn" path="res://addons/virtual_joystick_plus/virtual_joystick_plus.gd" id="13_4kvd7"]
-[ext_resource type="Texture2D" uid="uid://bqrl1tfugklvx" path="res://addons/virtual_joystick_plus/resources/textures/joystick_texture_5.png" id="14_m333p"]
-[ext_resource type="Texture2D" uid="uid://853skcmfj2mw" path="res://addons/virtual_joystick_plus/resources/textures/stick_texture_4.png" id="15_4kvd7"]
+[ext_resource type="Texture2D" uid="uid://d1l0y5ecmoj8y" path="res://addons/virtual_joystick_plus/resources/textures/joystick_texture_2.png" id="15_d5tpd"]
+[ext_resource type="Texture2D" uid="uid://fpayei7lkptc" path="res://addons/virtual_joystick_plus/resources/textures/stick_texture_5.png" id="16_d5tpd"]
 [ext_resource type="PackedScene" uid="uid://ba2hg2qsp88sg" path="res://core/components/setting/setting.tscn" id="16_m333p"]
 [ext_resource type="Texture2D" uid="uid://cbr6abwxmc1ja" path="res://assets/ui/icon/crystalspng.png" id="18_8m8b1"]
 [ext_resource type="Script" uid="uid://b8p5734srdsqq" path="res://features/player/reward_UI.gd" id="19_mhvub"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://brj8ih3w38hx4" path="res://assets/ui/bg/panel-reward.png" id="20_x3ag6"]
 [ext_resource type="FontFile" uid="uid://wbjufq0cuj84" path="res://assets/fonts/PressStart2P-Regular.ttf" id="22_lrnek"]
 [ext_resource type="Texture2D" uid="uid://dif7n46e1pcek" path="res://assets/ui/btn/x.png" id="23_d5tpd"]
+[ext_resource type="AudioStream" uid="uid://1a03jg0ndnjw" path="res://assets/audio/step.mp3" id="24_ocbvg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fcb3x"]
 radius = 2.0
@@ -139,6 +140,44 @@ _data = {
 &"walk_up": SubResource("Animation_7mbft")
 }
 
+[sub_resource type="Animation" id="Animation_lna2h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("step:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ocbvg"]
+resource_name = "step"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("step:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ftx3j"]
+_data = {
+&"RESET": SubResource("Animation_lna2h"),
+&"step": SubResource("Animation_ocbvg")
+}
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5rlqq"]
 shader = ExtResource("9_uqugw")
 shader_parameter/tolerance = 0.01
@@ -194,6 +233,11 @@ region_rect = Rect2(534, 180, 262, 374)
 texture = ExtResource("18_8m8b1")
 region_rect = Rect2(68, 204, 402.59467, 340)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lna2h"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("24_ocbvg")
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
@@ -219,7 +263,7 @@ position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_fcb3x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(5, 5)
 process_callback = 0
 position_smoothing_enabled = true
 
@@ -234,6 +278,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_47rrt")
 }
 autoplay = "idle"
+
+[node name="step_anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_ftx3j")
+}
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
@@ -376,10 +426,14 @@ grow_vertical = 0
 pivot_offset = Vector2(238, 150)
 mouse_filter = 1
 script = ExtResource("13_4kvd7")
-only_mobile = true
-joystick_texture = ExtResource("14_m333p")
-stick_preset_texture = 4
-stick_texture = ExtResource("15_4kvd7")
+joystick_mode = 1
+visibility_mode = 1
+joystick_preset_texture = 2
+joystick_texture = ExtResource("15_d5tpd")
+joystick_opacity = 0.407
+stick_use_textures = false
+stick_texture = ExtResource("16_d5tpd")
+stick_opacity = 0.104
 metadata/_custom_type_script = "uid://crjlkg2q7arjn"
 
 [node name="fps" type="Label" parent="UI/hud"]
@@ -606,6 +660,10 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
+
+[node name="step" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_lna2h")
+bus = &"SFX"
 
 [connection signal="analogic_changed" from="UI/hud/touch_control/joystick" to="." method="_on_virtual_joystick_plus_analogic_changed"]
 [connection signal="pressed" from="UI/hud/reward/exit" to="UI/hud/reward" method="_on_exit_pressed"]

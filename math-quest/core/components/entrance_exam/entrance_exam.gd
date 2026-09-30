@@ -106,6 +106,11 @@ func _ready() -> void:
 	hide()
 	#_trigger(SignalType.Open)
 
+func _set_panels_pass(node: Node) -> void:
+	if node is PanelContainer:
+		(node as PanelContainer).mouse_filter = Control.MOUSE_FILTER_PASS
+	for child in node.get_children():
+		_set_panels_pass(child)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -314,7 +319,9 @@ func render() -> void:
 	main.add_child(_spacer(14))
 	main.add_child(_build_footer())
 	main.add_child(_spacer(24))
-
+	
+	_set_panels_pass(_scroll)
+	
 	if show_certificate:
 		add_child(_build_certificate_overlay())
 
