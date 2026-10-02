@@ -36,14 +36,15 @@ gdscript/warnings/integer_division=0
 
 [display]
 
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/size/viewport_width=1252
+window/stretch/mode="viewport"
+window/handheld/orientation=4
 window/vsync/vsync_mode=2
 mouse_cursor/custom_image="uid://bn3dw5aeg2kqq"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/virtual_joystick_plus/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_gif/plugin.cfg", "res://addons/virtual_joystick_plus/plugin.cfg")
 
 [gui]
 

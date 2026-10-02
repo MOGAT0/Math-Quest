@@ -72,8 +72,8 @@ func _setup_child_hover_scale(button: Button) -> void:
 	var child_node = button.get_child(0)
 	var base_scale = child_node.scale 
 	
-	button.get_child(0).pivot_offset.x = button.get_child(0).size.x / 2
-	button.get_child(0).pivot_offset.y = button.get_child(0).size.y / 2
+	#button.get_child(0).pivot_offset.x = button.get_child(0).size.x / 2
+	#button.get_child(0).pivot_offset.y = button.get_child(0).size.y / 2
 	
 	button.mouse_entered.connect(func():
 		if button.disabled:

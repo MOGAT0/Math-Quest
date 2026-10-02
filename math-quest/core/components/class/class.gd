@@ -6,6 +6,18 @@ signal class_end(currentGrade: String, currentLesson : String)
 @export var current_lesson : String = "g1-l1"
 @export var current_grade : String = "g1"
 
+@export_range(0.5, 3.0, 0.05) var font_scale : float = 1.0
+@export_range(0.5, 3.0, 0.05) var icon_scale : float = 1.0
+
+const _NUMBER_WORDS := [
+	"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+	"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+	"seventeen", "eighteen", "nineteen"
+]
+const _TENS_WORDS := ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+
+
+
 var lesson_database : Dictionary = {}
 
 var main_container : VBoxContainer
@@ -15,6 +27,8 @@ var title_label : Label
 var lecture_display : RichTextLabel
 var exam_container : VBoxContainer
 var action_button : Button
+var next_button : Button
+var bottom_buttons : HBoxContainer
 var options_grid : GridContainer
 
 var lesson_complete_container : VBoxContainer 
@@ -68,6 +82,14 @@ const COLOR_RED_50 = Color("#f7e3df")
 const COLOR_RED_500 = Color("#8c2f1a")    
 const COLOR_AMBER_100 = Color("#f0dfa0")  
 const COLOR_AMBER_500 = Color("#a8781a")  
+
+## Scales a base font size by the global font_scale.
+func _fs(base: int) -> int:
+	return roundi(base * font_scale)
+
+## Scales a base icon/visual size by the global icon_scale.
+func _ics(base: float) -> float:
+	return base * icon_scale
 
 func _ready() -> void:
 	_load_active_curriculum()
@@ -258,12 +280,25 @@ func _build_ui_nodes() -> void:
 	bottom_panel_margin.add_theme_constant_override("margin_right", 40)
 	bottom_panel.add_child(bottom_panel_margin)
 
+	bottom_buttons = HBoxContainer.new()
+	bottom_buttons.alignment = BoxContainer.ALIGNMENT_END
+	bottom_buttons.add_theme_constant_override("separation", 15)
+	bottom_panel_margin.add_child(bottom_buttons)
+
 	action_button = Button.new()
 	action_button.text = "CAST"
 	action_button.custom_minimum_size = Vector2(150, 50)
 	action_button.size_flags_horizontal = Control.SIZE_SHRINK_END
 	action_button.pressed.connect(_on_action_button_pressed)
-	bottom_panel_margin.add_child(action_button)
+	bottom_buttons.add_child(action_button)
+
+	next_button = Button.new()
+	next_button.text = "NEXT SPELL"
+	next_button.custom_minimum_size = Vector2(150, 50)
+	next_button.size_flags_horizontal = Control.SIZE_SHRINK_END
+	next_button.disabled = true
+	next_button.pressed.connect(_on_next_button_pressed)
+	bottom_buttons.add_child(next_button)
 
 	_build_lecture_nodes()
 	_build_relearn_nodes()
@@ -340,7 +375,7 @@ func _build_lecture_nodes() -> void:
 	lbp_margin.add_child(lecture_vbox)
 
 	lecture_title_label = Label.new()
-	lecture_title_label.add_theme_font_size_override("font_size", 20)
+	lecture_title_label.add_theme_font_size_override("font_size", _fs(20))
 	lecture_title_label.add_theme_color_override("font_color", COLOR_SLATE_800)
 	lecture_title_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	lecture_vbox.add_child(lecture_title_label)
@@ -358,7 +393,7 @@ func _build_lecture_nodes() -> void:
 	lecture_display.fit_content = true
 	lecture_display.scroll_active = false
 	lecture_display.selection_enabled = false
-	lecture_display.add_theme_font_size_override("normal_font_size", 14)
+	lecture_display.add_theme_font_size_override("normal_font_size", _fs(14))
 	lecture_display.add_theme_color_override("default_color", COLOR_SLATE_800)
 	lecture_display.add_theme_constant_override("line_separation", 2)
 	lecture_display.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -527,6 +562,17 @@ func _prepare_tts() -> void:
 	#if voices.size() > 0:
 		#_tts_voice_id = voices[0]
 
+func _number_to_word(n: int) -> String:
+	if n < 0:
+		return str(n)
+	if n < 20:
+		return _NUMBER_WORDS[n]
+	if n < 100:
+		var tens: String = _TENS_WORDS[n / 10]
+		var ones := n % 10
+		return tens if ones == 0 else "%s %s" % [tens, _NUMBER_WORDS[ones]]
+	return str(n)
+	
 func _speak(text: String) -> void:
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_TEXT_TO_SPEECH):
 		return
@@ -594,10 +640,11 @@ func _start_lesson() -> void:
 	# The action button may still be sitting inside lesson_complete_container
 	# from a previous lesson's trophy screen - put it back in the normal
 	# lesson footer before presenting anything.
-	if action_button.get_parent() != bottom_panel_margin:
+	if action_button.get_parent() != bottom_buttons:
 		if action_button.get_parent():
 			action_button.get_parent().remove_child(action_button)
-		bottom_panel_margin.add_child(action_button)
+		bottom_buttons.add_child(action_button)
+		bottom_buttons.move_child(action_button, 0)   # keep CAST on the left of NEXT
 	action_button.size_flags_horizontal = Control.SIZE_SHRINK_END
 	action_button.custom_minimum_size = Vector2(150, 50)
 
@@ -660,7 +707,7 @@ func _load_current_question() -> void:
 	q_label.fit_content = true
 	q_label.scroll_active = false
 	q_label.selection_enabled = false
-	q_label.add_theme_font_size_override("normal_font_size", 16)
+	q_label.add_theme_font_size_override("normal_font_size", _fs(16))
 	q_label.add_theme_color_override("default_color", COLOR_SLATE_800)
 	q_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	q_label.gui_input.connect(func(event: InputEvent):
@@ -683,7 +730,7 @@ func _load_current_question() -> void:
 		btn.text = opts[i]
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		btn.custom_minimum_size = Vector2(0, 60)
-		btn.add_theme_font_size_override("font_size", 18)
+		btn.add_theme_font_size_override("font_size", _fs(18))
 		btn.add_theme_color_override("font_color", COLOR_SLATE_800)
 		btn.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
 		btn.pressed.connect(_on_option_selected.bind(opts[i]))
@@ -740,12 +787,13 @@ func _make_hint_label(text: String) -> Label:
 	return lbl
 
 func _make_icon_chip(display_text: String, iocn_size: float = 52.0, font_size: int = 24) -> Button:
+	var chip_size := _ics(iocn_size)
 	var btn = Button.new()
 	btn.text = display_text
 	btn.focus_mode = Control.FOCUS_NONE
-	btn.custom_minimum_size = Vector2(iocn_size, iocn_size)
-	btn.pivot_offset = Vector2(iocn_size, iocn_size) / 2.0
-	btn.add_theme_font_size_override("font_size", font_size)
+	btn.custom_minimum_size = Vector2(chip_size, chip_size)
+	btn.pivot_offset = Vector2(chip_size, chip_size) / 2.0
+	btn.add_theme_font_size_override("font_size", roundi(_ics(font_size)))
 
 	var normal = StyleBoxFlat.new()
 	normal.bg_color = COLOR_WHITE
@@ -791,6 +839,9 @@ func _build_grid_visual(items: Array, parent: Container) -> void:
 				counted["n"] += 1 if is_on else -1
 				tally.text = "Tap each charm as you count it! (%d / %d)" % [counted["n"], total]
 				_pop_animation(chip)
+				# Say the running count when a charm is counted
+				if is_on:
+					_speak(_number_to_word(counted["n"]))
 			)
 			flow.add_child(chip)
 
@@ -860,10 +911,10 @@ func _build_groups_visual(group_data: Dictionary, parent: Container) -> void:
 		for i in range(per_group):
 			var lbl = Label.new()
 			lbl.text = icon
-			lbl.custom_minimum_size = Vector2(30, 30)
+			lbl.custom_minimum_size = Vector2(_ics(30), _ics(30))
 			lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-			lbl.add_theme_font_size_override("font_size", 20)
+			lbl.add_theme_font_size_override("font_size", roundi(_ics(20)))
 			lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			grid.add_child(lbl)
 
@@ -1037,13 +1088,18 @@ func _build_balance_visual(left_items: Dictionary, right_items: Dictionary, pare
 	var right_icon = str(right_items.get("icon", "❔"))
 	var right_count = int(right_items.get("count", 0))
 
-	var beam_x = (BALANCE_STAGE_WIDTH - BALANCE_BEAM_WIDTH) / 2.0
+	# Pans grow with icon_scale; the stage grows with them so nothing is clipped.
+	var pan_w := _ics(BALANCE_PAN_WIDTH)
+	var stage_w := BALANCE_STAGE_WIDTH + (pan_w - BALANCE_PAN_WIDTH)
+	var stage_h := BALANCE_STAGE_HEIGHT + (icon_scale - 1.0) * 80.0
+
+	var beam_x = (stage_w - BALANCE_BEAM_WIDTH) / 2.0
 	var beam_left_x = beam_x
 	var beam_right_x = beam_x + BALANCE_BEAM_WIDTH
-	var center_x = BALANCE_STAGE_WIDTH / 2.0
+	var center_x = stage_w / 2.0
 
 	var stage = Control.new()
-	stage.custom_minimum_size = Vector2(BALANCE_STAGE_WIDTH, BALANCE_STAGE_HEIGHT)
+	stage.custom_minimum_size = Vector2(stage_w, stage_h)
 	stage.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	parent.add_child(stage)
 
@@ -1085,21 +1141,21 @@ func _build_balance_visual(left_items: Dictionary, right_items: Dictionary, pare
 
 	var tally = _make_hint_label("Tap each pan to weigh it!")
 
-	var left_pan = _make_balance_pan(left_icon, left_count, tally, "Left")
-	left_pan.position = Vector2(beam_left_x - BALANCE_PAN_WIDTH / 2.0, BALANCE_PAN_Y)
+	var left_pan = _make_balance_pan(left_icon, left_count, tally, "Left", pan_w)
+	left_pan.position = Vector2(beam_left_x - pan_w / 2.0, BALANCE_PAN_Y)
 	stage.add_child(left_pan)
 
-	var right_pan = _make_balance_pan(right_icon, right_count, tally, "Right")
-	right_pan.position = Vector2(beam_right_x - BALANCE_PAN_WIDTH / 2.0, BALANCE_PAN_Y)
+	var right_pan = _make_balance_pan(right_icon, right_count, tally, "Right", pan_w)
+	right_pan.position = Vector2(beam_right_x - pan_w / 2.0, BALANCE_PAN_Y)
 	stage.add_child(right_pan)
 
 	#parent.add_child(tally)
 
-func _make_balance_pan(icon: String, count: int, tally_label: Label, side_name: String) -> Control:
+func _make_balance_pan(icon: String, count: int, tally_label: Label, side_name: String, pan_w: float = BALANCE_PAN_WIDTH) -> Control:
 	var pan = Button.new()
 	pan.text = ""
 	pan.focus_mode = Control.FOCUS_NONE
-	pan.custom_minimum_size = Vector2(BALANCE_PAN_WIDTH, 0)
+	pan.custom_minimum_size = Vector2(pan_w, 0)
 
 	var style = StyleBoxFlat.new()
 	style.bg_color = COLOR_WHITE
@@ -1127,14 +1183,14 @@ func _make_balance_pan(icon: String, count: int, tally_label: Label, side_name: 
 	pan.add_child(margin)
 
 	var flow = _make_flow(6, 6)
-	flow.custom_minimum_size = Vector2(BALANCE_PAN_WIDTH - 24, 0)
+	flow.custom_minimum_size = Vector2(pan_w - 24, 0)
 	flow.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	margin.add_child(flow)
 
 	for i in range(count):
 		var lbl = Label.new()
 		lbl.text = icon
-		lbl.add_theme_font_size_override("font_size", 22)
+		lbl.add_theme_font_size_override("font_size", roundi(_ics(22)))
 		lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		flow.add_child(lbl)
 
@@ -1235,58 +1291,60 @@ func _refresh_option_styles() -> void:
 		btn.add_theme_stylebox_override("hover", style)
 		btn.add_theme_stylebox_override("pressed", style)
 
-func _update_action_button() -> void:
+func _apply_action_style(btn: Button, bg: Color, border: Color, font_color: Color) -> void:
 	var style = StyleBoxFlat.new()
-	style.corner_radius_top_left = 10
-	style.corner_radius_bottom_right = 10
-	style.corner_radius_top_right = 10
-	style.corner_radius_bottom_left = 10
+	style.set_corner_radius_all(10)
 	style.border_width_bottom = 4
-	
-	if exam_status == "complete":
-		action_button.text = "RETURN TO THE HALL"
-		action_button.disabled = false
-		style.bg_color = COLOR_BLUE_500
-		style.border_color = COLOR_BLUE_600
-		action_button.add_theme_color_override("font_color", COLOR_WHITE)
-	elif exam_status == "curriculum_complete":
-		action_button.text = "Exit"
-		action_button.disabled = false
-		style.bg_color = COLOR_BLUE_500
-		style.border_color = COLOR_BLUE_600
-		action_button.add_theme_color_override("font_color", COLOR_WHITE)
-	elif exam_status == "idle":
-		action_button.text = "CAST"
-		if selected_answer == "":
-			action_button.disabled = true
-			style.bg_color = COLOR_SLATE_200
-			style.border_color = COLOR_SLATE_300
-			action_button.add_theme_color_override("font_color", COLOR_SLATE_400)
-		else:
-			action_button.disabled = false
-			style.bg_color = COLOR_BLUE_500
-			style.border_color = COLOR_BLUE_600
-			action_button.add_theme_color_override("font_color", COLOR_WHITE)
-	elif exam_status == "correct":
-		action_button.text = "NEXT SPELL"
-		action_button.disabled = false
-		style.bg_color = COLOR_GREEN_500
-		style.border_color = COLOR_GREEN_500.darkened(0.2)
-		action_button.add_theme_color_override("font_color", COLOR_WHITE)
-	elif exam_status == "incorrect":
-		action_button.text = "ONCE MORE"
-		action_button.disabled = false
-		style.bg_color = COLOR_RED_500
-		style.border_color = COLOR_RED_500.darkened(0.2)
-		action_button.add_theme_color_override("font_color", COLOR_WHITE)
+	style.bg_color = bg
+	style.border_color = border
+	btn.add_theme_stylebox_override("normal", style)
+	btn.add_theme_stylebox_override("disabled", style)
+	btn.add_theme_stylebox_override("hover", style)
 
-	action_button.add_theme_stylebox_override("normal", style)
-	action_button.add_theme_stylebox_override("disabled", style)
-	
 	var pressed_style = style.duplicate()
 	pressed_style.border_width_bottom = 0
 	pressed_style.content_margin_top = 4
-	action_button.add_theme_stylebox_override("pressed", pressed_style)
+	btn.add_theme_stylebox_override("pressed", pressed_style)
+
+	btn.add_theme_color_override("font_color", font_color)
+	btn.add_theme_color_override("font_disabled_color", font_color)
+
+func _update_action_button() -> void:
+	var next_enabled := false
+
+	match exam_status:
+		"complete":
+			action_button.text = "RETURN TO THE HALL"
+			action_button.disabled = false
+			_apply_action_style(action_button, COLOR_BLUE_500, COLOR_BLUE_600, COLOR_WHITE)
+		"curriculum_complete":
+			action_button.text = "Exit"
+			action_button.disabled = false
+			_apply_action_style(action_button, COLOR_BLUE_500, COLOR_BLUE_600, COLOR_WHITE)
+		"idle":
+			action_button.text = "CAST"
+			if selected_answer == "":
+				action_button.disabled = true
+				_apply_action_style(action_button, COLOR_SLATE_200, COLOR_SLATE_300, COLOR_SLATE_400)
+			else:
+				action_button.disabled = false
+				_apply_action_style(action_button, COLOR_BLUE_500, COLOR_BLUE_600, COLOR_WHITE)
+		"correct":
+			# Answer is locked in: CAST is done, NEXT becomes available
+			action_button.text = "CAST"
+			action_button.disabled = true
+			_apply_action_style(action_button, COLOR_SLATE_200, COLOR_SLATE_300, COLOR_SLATE_400)
+			next_enabled = true
+		"incorrect":
+			action_button.text = "ONCE MORE"
+			action_button.disabled = false
+			_apply_action_style(action_button, COLOR_RED_500, COLOR_RED_500.darkened(0.2), COLOR_WHITE)
+
+	next_button.disabled = not next_enabled
+	if next_enabled:
+		_apply_action_style(next_button, COLOR_GREEN_500, COLOR_GREEN_500.darkened(0.2), COLOR_WHITE)
+	else:
+		_apply_action_style(next_button, COLOR_SLATE_200, COLOR_SLATE_300, COLOR_SLATE_400)
 
 func _on_action_button_pressed() -> void:
 	if exam_status == "complete":
@@ -1309,32 +1367,30 @@ func _on_action_button_pressed() -> void:
 		return
 
 	var questions = current_lesson_data.get("questions", [])
-	
+
 	if exam_status == "idle":
 		if selected_answer == "": return
 		var correct_ans = str(questions[current_question_idx]["answer"]).to_lower().strip_edges()
 		var user_ans = selected_answer.to_lower().strip_edges()
-		
-		if user_ans == correct_ans:
-			exam_status = "correct"
-		else:
-			exam_status = "incorrect"
-			
+
+		exam_status = "correct" if user_ans == correct_ans else "incorrect"
 		_refresh_option_styles()
 		_update_action_button()
-		
-	elif exam_status == "correct":
-		current_question_idx += 1
-		if current_question_idx >= questions.size():
-			_show_lesson_complete()
-		else:
-			_load_current_question()
-			
+
 	elif exam_status == "incorrect":
 		exam_status = "idle"
 		selected_answer = ""
 		_refresh_option_styles()
 		_update_action_button()
+
+func _on_next_button_pressed() -> void:
+	if exam_status != "correct": return
+	var questions = current_lesson_data.get("questions", [])
+	current_question_idx += 1
+	if current_question_idx >= questions.size():
+		_show_lesson_complete()
+	else:
+		_load_current_question()
 
 func _persist_next_progress() -> void:
 	var grade_num = current_grade.trim_prefix("g").to_int()

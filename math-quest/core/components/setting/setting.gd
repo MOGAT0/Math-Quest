@@ -48,8 +48,8 @@ func _on_setting_btn_pressed() -> void:
 		pop_tween.kill()
 		
 	pop_tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-
-	if current_scn == "world":
+	print(current_scn)
+	if current_scn != "mainmenu":
 		pause_cont.show()
 		pop_tween.tween_property(pause_cont, "scale", Vector2.ONE, 0.3)
 	else:

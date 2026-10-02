@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://mexsnsd6c1h4"]
 
 [ext_resource type="Script" uid="uid://0b6awk5xxd7" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
-[ext_resource type="Texture2D" uid="uid://rsh5dl5daby5" path="res://assets/ui/bg/mainmenu bg.jpg" id="2_3ovsr"]
+[ext_resource type="Texture2D" uid="uid://cidrtawfa105g" path="res://assets/img/bg.gif" id="2_dn3lk"]
 [ext_resource type="Texture2D" uid="uid://57arucp745xy" path="res://assets/ui/bg/game__title.png" id="3_5seab"]
 [ext_resource type="Texture2D" uid="uid://bp6eet3gve1dx" path="res://assets/ui/btn/play.png" id="4_dn3lk"]
 [ext_resource type="Texture2D" uid="uid://cfywfo4drd51t" path="res://assets/ui/btn/newgame.png" id="4_thkx5"]
@@ -34,9 +34,9 @@ bg_color = Color(0, 0, 0, 0.3137255)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thkx5"]
 content_margin_left = 350.0
-content_margin_top = 255.0
+content_margin_top = 250.0
 content_margin_right = 350.0
-content_margin_bottom = 255.0
+content_margin_bottom = 250.0
 bg_color = Color(0, 0, 0, 0.57254905)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn3lk"]
@@ -63,53 +63,49 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fsom3")
 
-[node name="bg" type="TextureRect" parent="."]
+[node name="bg" type="GIFPlayer" parent="."]
+gif = ExtResource("2_dn3lk")
+expand_mode = 1
+stretch_mode = 0
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_3ovsr")
-expand_mode = 1
 
 [node name="title" type="TextureRect" parent="bg"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(688, 112.00001)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2013889
 anchor_top = 0.14660494
 anchor_right = 0.7986111
 anchor_bottom = 0.31944445
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_5seab")
 expand_mode = 1
-stretch_mode = 5
 
 [node name="btns" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(296, 320)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -148.0
-offset_top = -60.0
-offset_right = 148.0
-offset_bottom = 260.0
+anchors_preset = -1
+anchor_left = 0.3871528
+anchor_top = 0.40123457
+anchor_right = 0.6128472
+anchor_bottom = 0.89506173
+offset_bottom = 3.0517578e-05
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="continue" type="Button" parent="btns"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(220, 100)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_thkx5")
 flat = true
 metadata/_edit_use_anchors_ = true
@@ -121,6 +117,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(148, 52)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_x2yjq")
 
@@ -147,10 +144,8 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_thkx5")
 
 [node name="setting" type="Button" parent="btns"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(246.74, 100)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_thkx5")
 flat = true
 metadata/_edit_use_anchors_ = true
@@ -162,15 +157,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(148, 52)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_qel0l")
 
 [node name="quit" type="Button" parent="btns"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(220, 100)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_thkx5")
 flat = true
 metadata/_edit_use_anchors_ = true
@@ -182,6 +176,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(148, 52)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_lqpn7")
 
@@ -257,8 +252,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -25.0
-offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_thkx5")

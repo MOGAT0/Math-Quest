@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw6vygkcma2c8"]
+[gd_scene load_steps=10 format=3 uid="uid://dw6vygkcma2c8"]
 
 [ext_resource type="Script" uid="uid://0wnquo2ehf2e" path="res://core/components/loading/loading_screen.gd" id="1_o0jqy"]
 [ext_resource type="Shader" uid="uid://c6ybw3o3xr2g0" path="res://assets/shaders/fog.gdshader" id="2_62p0d"]
 [ext_resource type="Texture2D" uid="uid://cw4iqu52ngd1" path="res://mathquest_logo(circle).png" id="2_h5gtl"]
+[ext_resource type="Texture2D" uid="uid://cidrtawfa105g" path="res://assets/img/bg.gif" id="2_rpqkn"]
 [ext_resource type="PackedScene" uid="uid://t7gu33iy0wsx" path="res://core/components/transition/new/transitionFX.tscn" id="5_rpqkn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u2egr"]
@@ -44,7 +45,19 @@ script = ExtResource("1_o0jqy")
 extend_loading_time = true
 extended_time = 3.0
 
+[node name="TextureRect" type="GIFPlayer" parent="."]
+gif = ExtResource("2_rpqkn")
+expand_mode = 1
+stretch_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="ColorRect" type="TextureRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_u2egr")
 layout_mode = 1
 anchors_preset = 15
@@ -68,6 +81,7 @@ offset_right = 574.0
 offset_bottom = 35.25
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 45
 bbcode_enabled = true
 text = "[pulse][wave]loading...[/wave][/pulse]"
@@ -80,14 +94,10 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.48828125
-anchor_top = 0.63271606
-anchor_right = 0.51171875
-anchor_bottom = 0.6851852
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+anchor_left = 0.47092015
+anchor_top = 0.61496913
+anchor_right = 0.52907985
+anchor_bottom = 0.7029321
 grow_horizontal = 2
 grow_vertical = 2
 text = "0%"

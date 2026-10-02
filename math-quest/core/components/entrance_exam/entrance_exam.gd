@@ -7,7 +7,6 @@ signal isChapter_Done
 # ---------------------------------------------------------------------------
 const DATA_PATH := "res://data/book_data.json"
 #const SAVE_PATH := "user://entranceExam_data.json"
-const PAGE_WIDTH := 900.0
 
 const ITEM_EMOJI := {
 	"star": "⭐", "can": "🥫", "box": "📦", "yoyo": "🪀", "balloon": "🎈",
@@ -16,6 +15,7 @@ const ITEM_EMOJI := {
 }
 
 const ROMAN := {1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI", 7: "VII", 8: "VIII"}
+
 
 # ---------------------------------------------------------------------------
 # COLOR PALETTE (lifted from index.css)
@@ -74,11 +74,6 @@ var ex_state: Dictionary = {}   # exercise_id -> Dictionary of per-exercise UI s
 
 var _confirm_dialog: ConfirmationDialog = null
 
-# Persistent top-level nodes so re-rendering the book doesn't blow away and
-# recreate the ScrollContainer every time -- that was what reset the scroll
-# position to the top on every single button press. We only rebuild the
-# CONTENT inside the scroll container; the scroll container itself (and its
-# scroll_vertical value) survives across render() calls.
 var _scroll: ScrollContainer = null
 var _bg: ColorRect = null
 var _pending_reset_scroll: bool = false
@@ -86,6 +81,39 @@ var _pending_reset_scroll: bool = false
 enum SignalType {
 	Open, Close
 }
+
+
+# ---------------------------------------------------------------------------
+# TEXT-TO-SPEECH (reads the counter number when an icon is tapped)
+# ---------------------------------------------------------------------------
+@export var tts_enabled: bool = true
+@export_range(0.1, 10.0, 0.1) var tts_rate: float = 0.9     # 1.0 = normal speed
+@export_range(0.0, 2.0, 0.1) var tts_pitch: float = 1.1     # slightly higher suits kids
+@export_range(0, 100, 1) var tts_volume: int = 100
+
+var _tts_voice: String = ""
+
+func _init_tts() -> void:
+	# Pick the first English voice once. Falls back to the system default if none exist.
+	var voices := DisplayServer.tts_get_voices_for_language("en")
+	if voices.size() > 0:
+		_tts_voice = voices[0]
+
+func _speak_number(n: int) -> void:
+	if not tts_enabled:
+		return
+	# interrupt = true so rapid taps cut off the previous number
+	# instead of queueing up a long backlog of speech.
+	DisplayServer.tts_speak(str(n), _tts_voice, tts_volume, tts_pitch, tts_rate, 0, true)
+
+@export_range(0.5, 3.0, 0.05) var font_scale: float = 1.0   # all text
+@export_range(0.5, 3.0, 0.05) var icon_scale: float = 1.0   # emoji icons, badges, item buttons
+
+func _fsz(size: int) -> int:
+	return maxi(1, int(round(size * font_scale)))
+
+func _isz(size: float) -> int:
+	return maxi(1, int(round(size * icon_scale)))
 
 func _trigger(value : SignalType) -> void:
 	match value:
@@ -100,9 +128,8 @@ func _trigger(value : SignalType) -> void:
 # ---------------------------------------------------------------------------
 func _ready() -> void:
 	set_anchors_preset(Control.PRESET_FULL_RECT)
+	_init_tts()
 	_load_data()
-	#_load_progress()
-	#render()
 	hide()
 	#_trigger(SignalType.Open)
 
@@ -206,19 +233,11 @@ func _flat_style(bg: Color, border: Color = Color(0, 0, 0, 0), border_w: int = 0
 	return sb
 
 
-func _make_label(text: String, size: int = 14, color: String = COL_PARCHMENT_TEXT,
-		bold: bool = false, italic: bool = false, autowrap: bool = false) -> Label:
-	# IMPORTANT: autowrap defaults to OFF. A Label with autowrap ON reports a
-	# minimum width of ~0px to its parent Container. Inside an HBoxContainer,
-	# or as the lone child of a PanelContainer, that makes the parent shrink
-	# to near-zero width too, so the label ends up wrapping after every
-	# single letter (the vertical "one letter per line" bug). Only pass
-	# autowrap=true for genuinely long paragraph text that lives as a direct
-	# child of a VBoxContainer, which always stretches children to the full
-	# available width regardless of their reported minimum size.
+func _make_label(text: String, size: int = 14, color: String = COL_PARCHMENT_TEXT, bold: bool = false, italic: bool = false, autowrap: bool = false) -> Label:
+
 	var l := Label.new()
 	l.text = text
-	l.add_theme_font_size_override("font_size", size)
+	l.add_theme_font_size_override("font_size", _fsz(size))
 	l.add_theme_color_override("font_color", _c(color))
 	if autowrap:
 		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -228,12 +247,11 @@ func _make_label(text: String, size: int = 14, color: String = COL_PARCHMENT_TEX
 	return l
 
 
-func _make_btn(text: String, bg: String, border: String, txt_color: String,
-		hover_bg: String = "", font_size: int = 13) -> Button:
+func _make_btn(text: String, bg: String, border: String, txt_color: String, hover_bg: String = "", font_size: int = 13) -> Button:
 	var b := Button.new()
 	b.text = text
 	b.focus_mode = Control.FOCUS_NONE
-	b.add_theme_font_size_override("font_size", font_size)
+	b.add_theme_font_size_override("font_size", _fsz(font_size))
 	b.add_theme_color_override("font_color", _c(txt_color))
 	b.add_theme_color_override("font_hover_color", _c(txt_color))
 	b.add_theme_color_override("font_pressed_color", _c(txt_color))
@@ -245,6 +263,13 @@ func _make_btn(text: String, bg: String, border: String, txt_color: String,
 	b.add_theme_stylebox_override("disabled", _flat_style(_c(bg).darkened(0.15), _c(border).darkened(0.2), 2, 4, 10))
 	return b
 
+func _make_icon_label(text: String, size: int = 20, color: String = COL_PARCHMENT_TEXT, bold: bool = false) -> Label:
+	var l := Label.new()
+	l.text = text
+	l.add_theme_font_size_override("font_size", _isz(size))
+	l.add_theme_color_override("font_color", _c(color))
+	l.autowrap_mode = TextServer.AUTOWRAP_OFF
+	return l
 
 func _gold_button(text: String, font_size: int = 13) -> Button:
 	return _make_btn(text, COL_GOLD_BTN_BOT, COL_GOLD_BTN_BORDER, COL_GOLD_BTN_TEXT, COL_GOLD_BTN_TOP, font_size)
@@ -302,15 +327,20 @@ func render() -> void:
 			if child != _bg and child != _scroll:
 				child.queue_free()
 
-	var center := CenterContainer.new()
-	center.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	center.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	_scroll.add_child(center)
+	# Small outer margin so the book doesn't touch the screen edges.
+	# MarginContainer + EXPAND_FILL makes the content use the full window width.
+	var margin := MarginContainer.new()
+	margin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	margin.add_theme_constant_override("margin_left", 12)
+	margin.add_theme_constant_override("margin_right", 12)
+	margin.add_theme_constant_override("margin_top", 0)
+	margin.add_theme_constant_override("margin_bottom", 0)
+	_scroll.add_child(margin)
 
 	var main := VBoxContainer.new()
-	main.custom_minimum_size = Vector2(PAGE_WIDTH, 0)
+	main.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	main.add_theme_constant_override("separation", 0)
-	center.add_child(main)
+	margin.add_child(main)
 
 	main.add_child(_build_header())
 	main.add_child(_spacer(14))
@@ -346,9 +376,9 @@ func _build_header() -> Control:
 	brand.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 	var icon_box := PanelContainer.new()
-	icon_box.custom_minimum_size = Vector2(38, 38)
+	icon_box.custom_minimum_size = Vector2(_isz(38), _isz(38))
 	icon_box.add_theme_stylebox_override("panel", _flat_style(_c("#3b2012"), _c("#a17838"), 1, 2, 0))
-	var icon_lbl := _make_label("📖", 18, COL_GOLD_LIGHT)
+	var icon_lbl := _make_icon_label("📖", 18, COL_GOLD_LIGHT)
 	icon_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	icon_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	icon_box.add_child(icon_lbl)
@@ -395,7 +425,7 @@ func _on_toggle_tagalog() -> void:
 func _build_chapter_tabs() -> Control:
 	var scroll := ScrollContainer.new()
 	scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	scroll.custom_minimum_size = Vector2(0, 44)
+	scroll.custom_minimum_size = Vector2(0, _fsz(44))
 
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 6)
@@ -411,7 +441,7 @@ func _build_chapter_tabs() -> Control:
 		var btn := Button.new()
 		btn.focus_mode = Control.FOCUS_NONE
 		btn.text = ("★ " if done else "") + "Tab " + roman
-		btn.add_theme_font_size_override("font_size", 12)
+		btn.add_theme_font_size_override("font_size", _fsz(12))
 		if is_current:
 			btn.add_theme_color_override("font_color", _c(COL_TAB_ACTIVE_TEXT))
 			btn.add_theme_color_override("font_hover_color", _c(COL_TAB_ACTIVE_TEXT))
@@ -632,26 +662,23 @@ func _build_lesson_header(chapter: Dictionary) -> Control:
 
 
 func _build_static_item_icon(item_type: String, count_index: int) -> Control:
-	# Non-interactive "already counted" icon used in lesson illustration plates.
-	# Built entirely from real Containers (VBoxContainer/PanelContainer) so
-	# every child is correctly auto-sized -- plain Control parents in Godot
-	# do NOT auto-size their children, so we deliberately avoid that pattern.
 	var stack := VBoxContainer.new()
 	stack.alignment = BoxContainer.ALIGNMENT_CENTER
 	stack.add_theme_constant_override("separation", 0)
 
-	var lbl := _make_label(ITEM_EMOJI.get(item_type, "❓"), 20)
-	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	stack.add_child(lbl)
-
 	var badge := PanelContainer.new()
 	badge.add_theme_stylebox_override("panel", _flat_style(_c("#8f191e"), _c("#dfbe76"), 1, 8, 2))
-	var badge_lbl := _make_label(str(count_index), 9, "#fef9eb", true)
+	var badge_lbl := _make_icon_label(str(count_index), 9, "#fef9eb", true)
 	badge_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	badge.add_child(badge_lbl)
 	var badge_center := CenterContainer.new()
 	badge_center.add_child(badge)
 	stack.add_child(badge_center)
+
+	var lbl := _make_icon_label(ITEM_EMOJI.get(item_type, "❓"), 20)
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	stack.add_child(lbl)
+
 	return stack
 
 
@@ -782,15 +809,24 @@ func _build_exercise_card(exercise: Dictionary, index: int) -> Control:
 
 
 func _build_interactive_item_icon(item_type: String, index: int, st: Dictionary, ex_id: String, small: bool) -> Control:
-	# Built from a VBoxContainer (a real Container) rather than a plain
-	# Control with manually-positioned children, so both the icon button and
-	# the little counter badge are always sized and laid out correctly.
 	var is_counted: bool = st["counted"].has(index)
-	var size := 26 if small else 34
+	var size := _isz(26 if small else 34)
 
 	var stack := VBoxContainer.new()
 	stack.alignment = BoxContainer.ALIGNMENT_CENTER
 	stack.add_theme_constant_override("separation", 1)
+
+	var badge := PanelContainer.new()
+	badge.custom_minimum_size = Vector2(_isz(14), _isz(14))
+	badge.add_theme_stylebox_override("panel", _flat_style(_c("#8f191e"), _c("#dfbe76"), 1, 8, 1))
+	var badge_lbl := _make_icon_label(str(index + 1), 8, "#fef9eb", true)
+	badge_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	badge_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	badge.add_child(badge_lbl)
+	badge.modulate.a = 1.0 if is_counted else 0.0
+	var badge_center := CenterContainer.new()
+	badge_center.add_child(badge)
+	stack.add_child(badge_center)
 
 	var btn := Button.new()
 	btn.custom_minimum_size = Vector2(size, size)
@@ -804,21 +840,6 @@ func _build_interactive_item_icon(item_type: String, index: int, st: Dictionary,
 	btn.add_theme_stylebox_override("pressed", _flat_style(bg.darkened(0.05), border, 2, size, 0))
 	btn.pressed.connect(_on_toggle_item.bind(ex_id, index))
 	stack.add_child(btn)
-
-	if is_counted:
-		var badge := PanelContainer.new()
-		# Explicit minimum size so the counter badge never collapses down to
-		# nothing (that's what made the number invisible before) -- it now
-		# also comfortably fits two-digit counts like "10" or "71".
-		badge.custom_minimum_size = Vector2(14, 14)
-		badge.add_theme_stylebox_override("panel", _flat_style(_c("#8f191e"), _c("#dfbe76"), 1, 8, 1))
-		var badge_lbl := _make_label(str(index + 1), 8, "#fef9eb", true)
-		badge_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		badge_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		badge.add_child(badge_lbl)
-		var badge_center := CenterContainer.new()
-		badge_center.add_child(badge)
-		stack.add_child(badge_center)
 
 	return stack
 
@@ -847,9 +868,9 @@ func _build_mc_answer(exercise: Dictionary, st: Dictionary, id: String) -> Contr
 		var btn := Button.new()
 		btn.focus_mode = Control.FOCUS_NONE
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		btn.custom_minimum_size = Vector2(0, 60)
+		btn.custom_minimum_size = Vector2(0, _fsz(60))
 		btn.text = "%s\n%d" % [letters[i] if i < letters.size() else str(i + 1), option]
-		btn.add_theme_font_size_override("font_size", 20)
+		btn.add_theme_font_size_override("font_size", _fsz(20))
 
 		var bg: Color; var border: Color; var txt: Color
 		if is_selected:
@@ -887,9 +908,9 @@ func _build_number_answer(exercise: Dictionary, st: Dictionary, id: String) -> C
 	var line_edit := LineEdit.new()
 	line_edit.text = str(st["typed_number"])
 	line_edit.placeholder_text = "0"
-	line_edit.custom_minimum_size = Vector2(90, 36)
+	line_edit.custom_minimum_size = Vector2(_fsz(90), _fsz(36))
 	line_edit.alignment = HORIZONTAL_ALIGNMENT_CENTER
-	line_edit.add_theme_font_size_override("font_size", 20)
+	line_edit.add_theme_font_size_override("font_size", _fsz(20))
 	line_edit.editable = st["is_correct"] != true
 	line_edit.add_theme_stylebox_override("normal", _flat_style(_c("#fefcf8"), _c("#bda376"), 2, 3, 6))
 	line_edit.text_changed.connect(_on_number_typed.bind(id))
@@ -970,13 +991,13 @@ func _build_place_value_counter(title: String, value: int, unit: int, ex_id: Str
 	var stepper := HBoxContainer.new()
 	stepper.add_theme_constant_override("separation", 6)
 	var minus_btn := _make_btn("-", "#f5ecda", "#bfa576", "#38200f", "#ffffff", 14)
-	minus_btn.custom_minimum_size = Vector2(28, 28)
+	minus_btn.custom_minimum_size = Vector2(_fsz(28), _fsz(28))
 	minus_btn.disabled = value <= 0 or st["is_correct"] == true
 	minus_btn.pressed.connect(_on_place_value_step.bind(ex_id, field, -1))
 	stepper.add_child(minus_btn)
 	stepper.add_child(_make_label(str(value), 18, "#281508", true))
 	var plus_btn := _make_btn("+", "#f5ecda", "#bfa576", "#38200f", "#ffffff", 14)
-	plus_btn.custom_minimum_size = Vector2(28, 28)
+	plus_btn.custom_minimum_size = Vector2(_fsz(28), _fsz(28))
 	plus_btn.disabled = value >= 9 or st["is_correct"] == true
 	plus_btn.pressed.connect(_on_place_value_step.bind(ex_id, field, 1))
 	stepper.add_child(plus_btn)
@@ -1235,6 +1256,7 @@ func _on_close_certificate() -> void:
 # NAVIGATION LOGIC
 # ---------------------------------------------------------------------------
 func _go_to_page(target: int) -> void:
+	DisplayServer.tts_stop()
 	var total_pages := book_data.size() * 2
 	if target < 0 or target >= total_pages or target == current_page:
 		return
@@ -1258,8 +1280,10 @@ func _on_toggle_item(ex_id: String, index: int) -> void:
 	var st := _get_ex_state(ex_id)
 	if st["counted"].has(index):
 		st["counted"].erase(index)
+		DisplayServer.tts_stop()          # un-tapping stays silent
 	else:
 		st["counted"].append(index)
+		_speak_number(index + 1)          # same number shown on the badge
 	render()
 
 

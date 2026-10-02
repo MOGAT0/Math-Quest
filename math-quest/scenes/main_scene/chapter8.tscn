@@ -161,6 +161,7 @@ text = "name"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 20
 text = "In a corner inside the classroom, there was Matthew."
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer"]

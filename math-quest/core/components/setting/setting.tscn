@@ -86,6 +86,7 @@ script = ExtResource("1_su6v8")
 
 [node name="panel_cont" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -432,16 +433,15 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -65.0
-offset_top = 15.0
-offset_right = -15.0
-offset_bottom = 65.0
+anchors_preset = -1
+anchor_left = 0.9435764
+anchor_top = 0.023148147
+anchor_right = 0.9869792
+anchor_bottom = 0.10030864
 grow_horizontal = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7llbh")
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="setting_btn"]
 show_behind_parent = true

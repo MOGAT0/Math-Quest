@@ -29,6 +29,7 @@ class_name World
 	"matthew_pos":%matthew_pos
 }
 
+@onready var popup_alert: Control = %popup_alert
 
 var player_in_zone: Player = null
 var current_destination_key: String = ""
@@ -40,9 +41,45 @@ const STARTING_CHAPTER : String = "chapter_1"
 
 @export var default_bg_color : Color
 
+
+var _popup_tween: Tween
+var _popup_rest_pos: Vector2
+
+func show_popup_alert(duration: float = 2.0) -> void:
+	if not popup_alert:
+		return
+
+	if _popup_tween and _popup_tween.is_valid():
+		_popup_tween.kill()
+
+	var hidden_pos := _popup_rest_pos + Vector2(0, -40)
+
+	popup_alert.position = hidden_pos
+	popup_alert.modulate.a = 0.0
+	popup_alert.show()
+
+	_popup_tween = create_tween()
+
+	# Slide in + fade in
+	_popup_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	_popup_tween.tween_property(popup_alert, "position", _popup_rest_pos, 0.35)
+	_popup_tween.parallel().tween_property(popup_alert, "modulate:a", 1.0, 0.25)
+
+	# Hold
+	_popup_tween.tween_interval(duration)
+
+	# Slide out + fade out
+	_popup_tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	_popup_tween.tween_property(popup_alert, "position", hidden_pos, 0.3)
+	_popup_tween.parallel().tween_property(popup_alert, "modulate:a", 0.0, 0.3)
+
+	_popup_tween.tween_callback(popup_alert.hide)
+
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(default_bg_color)
 	indicator.hide()
+	_popup_rest_pos = popup_alert.position
+	popup_alert.hide()
 	#_ensure_save_tables()
 	_load_progress()
 	
@@ -62,9 +99,7 @@ func _ready() -> void:
 
 func _ensure_save_tables() -> void:
 	pass
-	#db.query("CREATE TABLE progress (id int primary_key auto_increment, current_location vector2, current_chapter text, is_active bool)")
-	#db.query("CREATE TABLE checklist (id int primary_key auto_increment, chapter text not_null, is_done bool)")
-
+	
 func _sql_str(value: String) -> String:
 	return "\"" + value.replace("\"", "\\\"") + "\""
 
@@ -162,8 +197,6 @@ func _mark_chapter_done(chapter: String) -> void:
 
 	if existing != null:
 		db.query("UPDATE checklist SET is_done = true WHERE chapter = %s" % _sql_str(chapter))
-	#else:
-		#db.query("INSERT INTO checklist (chapter, is_done) VALUES (%s, true)" % _sql_str(chapter))
 
 #endregion
 
@@ -172,7 +205,7 @@ func _process(_delta: float) -> void:
 	var has_visible_child: bool = false
 
 	for i in game_ui.get_children():
-		if i.name.to_lower() != "extra_ui":
+		if i.name.to_lower() != "extra_ui" and i != popup_alert:
 			if i is CanvasItem and i.visible:
 				has_visible_child = true
 				break
@@ -199,7 +232,8 @@ func _on_academy_entrance_body_entered(body: Node2D) -> void:
 	var done_status = _is_chapter_done("school_admission")
 	
 	if GameManager.current_time > 21 or GameManager.current_time <= 4:
-		#{to-do} add a pop up alert
+		if body is Player:
+			show_popup_alert()
 		return
 	
 	if body is Arith:
@@ -311,3 +345,9 @@ func _on_matthew_sleep_is_chapter_done(chapter: String) -> void:
 
 
 #endregion monitor finished chapters
+
+
+@onready var hand_book_2: StarterHandBook = %HandBook2
+
+func _on_fndnl_book_pressed() -> void:
+	hand_book_2.show()

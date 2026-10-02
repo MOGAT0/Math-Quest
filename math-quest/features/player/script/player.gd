@@ -59,6 +59,8 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 
 	move_and_slide()
+	set_target_indicator()
+	
 
 func set_target_indicator() -> void:
 	target_indicator.main_target = GameManager.target_location

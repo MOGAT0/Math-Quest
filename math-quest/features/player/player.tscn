@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://d2tlvphqoq6ok"]
+[gd_scene load_steps=51 format=3 uid="uid://d2tlvphqoq6ok"]
 
 [ext_resource type="Script" uid="uid://ddchdq6sjtre7" path="res://features/player/script/player.gd" id="1_sjcu7"]
 [ext_resource type="Texture2D" uid="uid://daeplqk8xxe5y" path="res://assets/environment/shadow.png" id="2_emvbc"]
@@ -14,8 +14,9 @@
 [ext_resource type="Script" uid="uid://bomudbohmjmfa" path="res://features/player/target_indicator.gd" id="12_5rlqq"]
 [ext_resource type="Script" uid="uid://b6e3rl7h66vvx" path="res://features/player/touch_control.gd" id="13_1ncrl"]
 [ext_resource type="Script" uid="uid://crjlkg2q7arjn" path="res://addons/virtual_joystick_plus/virtual_joystick_plus.gd" id="13_4kvd7"]
-[ext_resource type="Texture2D" uid="uid://d1l0y5ecmoj8y" path="res://addons/virtual_joystick_plus/resources/textures/joystick_texture_2.png" id="15_d5tpd"]
-[ext_resource type="Texture2D" uid="uid://fpayei7lkptc" path="res://addons/virtual_joystick_plus/resources/textures/stick_texture_5.png" id="16_d5tpd"]
+[ext_resource type="Texture2D" uid="uid://cw4iqu52ngd1" path="res://mathquest_logo(circle).png" id="13_lna2h"]
+[ext_resource type="Texture2D" uid="uid://cbwgqi3t7uf2y" path="res://addons/virtual_joystick_plus/resources/textures/joystick_texture_1.png" id="14_lna2h"]
+[ext_resource type="Texture2D" uid="uid://mp7d4sd5s0ks" path="res://addons/virtual_joystick_plus/resources/textures/stick_texture_1.png" id="15_ftx3j"]
 [ext_resource type="PackedScene" uid="uid://ba2hg2qsp88sg" path="res://core/components/setting/setting.tscn" id="16_m333p"]
 [ext_resource type="Texture2D" uid="uid://cbr6abwxmc1ja" path="res://assets/ui/icon/crystalspng.png" id="18_8m8b1"]
 [ext_resource type="Script" uid="uid://b8p5734srdsqq" path="res://features/player/reward_UI.gd" id="19_mhvub"]
@@ -233,6 +234,48 @@ region_rect = Rect2(534, 180, 262, 374)
 texture = ExtResource("18_8m8b1")
 region_rect = Rect2(68, 204, 402.59467, 340)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocbvg"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.60861856, 0.44627932, 0.24827306, 1)
+border_width_bottom = 2
+border_color = Color(0.42532474, 0.2732096, 0.08399326, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lna2h"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftx3j"]
+bg_color = Color(0.034796007, 0.69687116, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 3
+anti_aliasing = false
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lna2h"]
 random_pitch = 1.5
 streams_count = 1
@@ -263,7 +306,7 @@ position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_fcb3x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+zoom = Vector2(4, 4)
 process_callback = 0
 position_smoothing_enabled = true
 
@@ -314,12 +357,12 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="clock" type="Control" parent="UI/hud"]
-visible = false
 custom_minimum_size = Vector2(150, 80)
 layout_mode = 1
 anchors_preset = 0
 offset_right = 150.0
 offset_bottom = 80.0
+scale = Vector2(1.5, 1.5)
 script = ExtResource("8_uqugw")
 
 [node name="TextureRect" type="TextureRect" parent="UI/hud/clock"]
@@ -345,7 +388,7 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
-rotation = 3.1415927
+rotation = 1.7715092
 scale = Vector2(0.8, 0.8)
 
 [node name="TextureRect2" type="TextureRect" parent="UI/hud/clock/claw"]
@@ -382,27 +425,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_47rrt")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 21
 text = "10:00 AM"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="target_indicator" type="Control" parent="UI/hud"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("12_5rlqq")
-indicator_size = 0.0
-border_width = 0.0
-icon_padding = 0.0
-arrow_length = 25.0
-arrow_width = 12.0
-arrow_gap = 0.0
-hide_when_on_screen = true
 
 [node name="touch_control" type="Control" parent="UI/hud"]
 layout_mode = 1
@@ -428,42 +454,42 @@ mouse_filter = 1
 script = ExtResource("13_4kvd7")
 joystick_mode = 1
 visibility_mode = 1
-joystick_preset_texture = 2
-joystick_texture = ExtResource("15_d5tpd")
-joystick_opacity = 0.407
+only_mobile = true
+joystick_preset_texture = 1
+joystick_texture = ExtResource("14_lna2h")
+joystick_opacity = 0.5
 stick_use_textures = false
-stick_texture = ExtResource("16_d5tpd")
-stick_opacity = 0.104
+stick_preset_texture = 1
+stick_texture = ExtResource("15_ftx3j")
+stick_opacity = 0.5
 metadata/_custom_type_script = "uid://crjlkg2q7arjn"
 
 [node name="fps" type="Label" parent="UI/hud"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -104.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_right = 52.0
 offset_bottom = 40.0
-grow_horizontal = 0
+grow_horizontal = 2
 text = "000"
-horizontal_alignment = 2
-
-[node name="Setting" parent="UI/hud" instance=ExtResource("16_m333p")]
-visible = false
-layout_mode = 1
+horizontal_alignment = 1
 
 [node name="crystals" type="VBoxContainer" parent="UI/hud"]
 unique_name_in_owner = true
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.010416667
-anchor_top = 0.1095679
+anchor_top = 0.1574074
 anchor_right = 0.067708336
-anchor_bottom = 0.3472222
-offset_bottom = 1.5258789e-05
+anchor_bottom = 0.4074074
+offset_bottom = -4.0000153
+metadata/_edit_use_anchors_ = true
 
 [node name="emerald" type="PanelContainer" parent="UI/hud/crystals"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(40, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -473,7 +499,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_mhvub")
 
 [node name="ruby" type="PanelContainer" parent="UI/hud/crystals"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(40, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -483,7 +508,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_x3ag6")
 
 [node name="diamond" type="PanelContainer" parent="UI/hud/crystals"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(45, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -493,7 +517,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_jec2r")
 
 [node name="currency" type="HBoxContainer" parent="UI/hud"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -661,8 +684,60 @@ icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
+[node name="PanelContainer" type="PanelContainer" parent="UI/hud"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9479167
+anchor_top = 0.11265432
+anchor_right = 0.9826389
+anchor_bottom = 0.33487654
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ocbvg")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/hud/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/hud/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/hud/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_lna2h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ftx3j")
+value = 49.48
+fill_mode = 3
+show_percentage = false
+
+[node name="target_indicator" type="Control" parent="UI/hud"]
+unique_name_in_owner = true
+z_index = 20
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_5rlqq")
+main_icon = ExtResource("13_lna2h")
+indicator_size = 0.0
+border_width = 0.0
+icon_padding = 0.0
+arrow_length = 50.0
+arrow_width = 40.0
+
+[node name="Setting" parent="UI/hud" instance=ExtResource("16_m333p")]
+layout_mode = 1
+
 [node name="step" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_lna2h")
+volume_db = -80.0
 bus = &"SFX"
 
 [connection signal="analogic_changed" from="UI/hud/touch_control/joystick" to="." method="_on_virtual_joystick_plus_analogic_changed"]

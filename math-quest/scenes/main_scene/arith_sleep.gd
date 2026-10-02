@@ -19,4 +19,3 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _on_matthew_sleep_woke_up() -> void:
 	arith_sleeping.hide()
-	print("woke")

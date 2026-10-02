@@ -14,6 +14,10 @@ var wake_timer: Timer
 var wait_time : float = 5.0
 
 func _ready() -> void:
+	var check_status = db.query("SELECT is_done FROM checklist WHERE chapter = home_sleep_1")
+	if check_status.data[0].is_done:
+		is_chapterDone.emit("home_sleep_1")
+		
 	matthew_sleeping.hide()
 
 	wake_timer = Timer.new()

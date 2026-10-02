@@ -80,10 +80,6 @@ func trigger_signal(value : signalType) -> void:
 		signalType.End:
 			if nex_pos:
 				GameManager.arith_goto = nex_pos.global_position
-				print("-_-_-_-_-_-")
-				print(GameManager.arith_goto)
-				print(nex_pos.global_position)
-				print("-_-_-_-_-_-")
 				GameManager.target_location = nex_pos
 			if _optional:
 				_optional._trigger(StarterHandBook.SignalType.Open)
