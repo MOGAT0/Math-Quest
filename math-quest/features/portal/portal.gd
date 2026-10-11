@@ -32,7 +32,8 @@ func _update_state() -> void:
 
 func _on_portal_detector_body_entered(body: Node2D) -> void:
 	if body is Player:
-		get_tree().change_scene_to_file("res://scenes/main_scene/final_part.tscn")
+		GameManager.next_scene = "res://scenes/main_scene/final_class.tscn"
+		get_tree().change_scene_to_file("res://core/components/loading/loading_screen.tscn")
 
 
 func _place_crystal() -> void:

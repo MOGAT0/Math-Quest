@@ -4,6 +4,7 @@ class_name Merchant
 @onready var merchant_sprite: Sprite2D = %merchant_sprite
 @onready var vendors_ui: VendorShop = %VendorsUi
 @onready var key: Sprite2D = %key
+@onready var key_label: Label = %key_label
 
 #merchant main color
 var color_find1 : Color = Color("#966888")
@@ -11,6 +12,7 @@ var color_find2 : Color = Color("#654956")
 
 func _ready() -> void:
 	key.hide()
+	key_label.hide()
 	randomize_merchant_style()
 
 func randomize_merchant_style() -> void:
@@ -37,17 +39,19 @@ func _unhandled_input(_event: InputEvent) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		key.show()
+		if OS.get_name().to_lower() not in ["android", "ios"]:
+			key_label.show()
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
 		key.hide()
+		key_label.hide()
 		vendors_ui._leave_shop()
 
 
 func _on_interact_pressed() -> void:
 	Input.action_press("interact")
-	print("pressed")
 
 func _on_interact_released() -> void:
 	Input.action_release("interact")

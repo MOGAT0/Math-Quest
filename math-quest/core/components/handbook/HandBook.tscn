@@ -342,7 +342,6 @@ text = "FOUNDATIONS OF COUNTING"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-scroll_vertical = 570
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 

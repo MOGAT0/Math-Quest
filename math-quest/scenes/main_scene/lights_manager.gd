@@ -9,7 +9,7 @@ func _ready() -> void:
 func _on_hour_changed(time : int) -> void:
 	for c in get_children():
 		if c is Node2D:
-			if time >= 18 or time <= 2:
+			if time >= 18 or time <= 1:
 				c.show()
 			else:
 				c.hide()

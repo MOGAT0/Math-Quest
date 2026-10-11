@@ -54,7 +54,8 @@ func _ready() -> void:
 	GameManager.current_chapter_id = current_chapter_id
 
 func start_typewriter(dialogue_text: String) -> void:
-	MusicPlayer.one_shot = true
+	if visible:
+		MusicPlayer.one_shot = true
 	text_label.text = dialogue_text
 	text_label.visible_characters = 0
 	
@@ -171,6 +172,7 @@ func advance_to_next_chapter() -> void:
 func _on_next_pressed() -> void:
 	if tween and tween.is_running():
 		tween.kill()
+		MusicPlayer.one_shot = false
 		text_label.visible_characters = -1
 	else:
 		show_next_dialogue()

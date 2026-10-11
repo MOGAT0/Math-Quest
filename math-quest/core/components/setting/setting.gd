@@ -4,6 +4,7 @@ extends Control
 @onready var setting_btn: Button = %setting_btn
 @onready var pause_cont: Control = %pause_cont
 @onready var credit_cont: Control = %credit_cont
+@onready var music_slider: HSlider = %music_slider
 
 @export var use_external_button : bool = false
 @export var external_button : Button
@@ -37,6 +38,14 @@ func _ready() -> void:
 			external_button.pressed.connect(_on_setting_btn_pressed)
 	# -----------------------------------------------
 
+	AudioServer.set_bus_volume_db(SFX, linear_to_db(1.0))
+	AudioServer.set_bus_volume_db(Master, linear_to_db(1.0))
+	AudioServer.set_bus_volume_db(Music, linear_to_db(MusicPlayer.NORMAL_VOLUME))
+	music_slider.max_value = MusicPlayer.NORMAL_VOLUME
+	music_slider.value = MusicPlayer.NORMAL_VOLUME
+	
+
+
 func _on_setting_btn_pressed() -> void:
 	var current_scn = get_tree().current_scene.name.to_lower()
 	
@@ -48,7 +57,6 @@ func _on_setting_btn_pressed() -> void:
 		pop_tween.kill()
 		
 	pop_tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	print(current_scn)
 	if current_scn != "mainmenu":
 		pause_cont.show()
 		pop_tween.tween_property(pause_cont, "scale", Vector2.ONE, 0.3)
@@ -154,3 +162,36 @@ func _on_close_credit_pressed() -> void:
 	pop_tween.tween_callback(panel_cont.show)
 	pop_tween.tween_property(panel_cont, "scale", Vector2.ONE, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	# --------------------------------------------------------------------
+
+
+func _on_export_analysis_pressed() -> void:
+	if AnalysisReport.get_attempts().is_empty():
+		_show_message("No analysis data yet. Finish a few lessons first!")
+		return
+
+	if not AnalysisReport.report_exported.is_connected(_on_report_exported):
+		AnalysisReport.report_exported.connect(_on_report_exported)
+	if not AnalysisReport.share_requested.is_connected(_on_share_requested):
+		AnalysisReport.share_requested.connect(_on_share_requested)
+
+	AnalysisReport.pick_folder_and_export()
+
+
+func _on_report_exported(summary_path: String) -> void:
+	if AnalysisReport._fell_back_to_private:
+		return   # share_requested handles this case
+	_show_message("Report saved to:\n%s" % summary_path.get_base_dir())
+
+
+func _on_share_requested(paths: PackedStringArray) -> void:
+	_show_message("Report Saved to %s" % paths)
+
+
+func _show_message(text: String) -> void:
+	var dialog := AcceptDialog.new()
+	dialog.title = "Export Analysis"
+	dialog.dialog_text = text
+	add_child(dialog)
+	dialog.confirmed.connect(dialog.queue_free)
+	dialog.canceled.connect(dialog.queue_free)
+	dialog.popup_centered()

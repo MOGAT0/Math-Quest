@@ -410,7 +410,7 @@ func _build_header() -> Control:
 	stars_panel.add_child(stars_lbl)
 	controls.add_child(stars_panel)
 
-	row.add_child(controls)
+	#row.add_child(controls)
 	return panel
 
 

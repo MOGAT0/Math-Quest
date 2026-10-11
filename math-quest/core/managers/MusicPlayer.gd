@@ -17,7 +17,7 @@ var one_shot: bool = false:
 		_apply_one_shot()
 
 const TUNED_DOWN_VOLUME := 0.1
-const NORMAL_VOLUME := 0.5
+const NORMAL_VOLUME := 0.4
 
 var current_index: int = 0
 var _player: AudioStreamPlayer
@@ -56,18 +56,24 @@ func stop() -> void:
 	_player.stop()
 
 
-## Convenience: set the stream and start it in one call.
-func play_one_shot(stream: AudioStream) -> void:
+func play_one_shot(stream: AudioStream, volume_db: float = 0.0) -> void:
+	_one_shot_player.volume_db = volume_db
 	one_shot_stream = stream
 	one_shot = true
+	
+func set_one_shot_volume_db(db: float) -> void:
+	if _one_shot_player == null:
+		return
+	_one_shot_player.volume_db = db
 
+#func set_one_shot_volume_linear(linear: float) -> void:
+	#set_one_shot_volume_db(linear_to_db(linear))
 
 func _play_current() -> void:
 	if playlist.is_empty():
 		return
 	_player.stream = playlist[current_index]
 	_player.play()
-	print("playing")
 
 
 func _on_track_finished() -> void:
@@ -93,23 +99,19 @@ func _apply_one_shot() -> void:
 
 
 func _on_one_shot_finished() -> void:
-	# Sound ended on its own, so reset the flag.
 	one_shot = false
 
 
 func _apply_volume() -> void:
 	if _player == null:
 		return
-
-	# Cancel any fade that's still running
+		
 	if _volume_tween and _volume_tween.is_valid():
 		_volume_tween.kill()
 
 	if tune_down:
-		# Instant drop
 		_player.volume_db = linear_to_db(TUNED_DOWN_VOLUME)
 	else:
-		# Gradual return to normal volume
 		var from_linear := db_to_linear(_player.volume_db)
 		_volume_tween = create_tween()
 		_volume_tween.tween_method(_set_music_volume, from_linear, NORMAL_VOLUME, FADE_UP_TIME)

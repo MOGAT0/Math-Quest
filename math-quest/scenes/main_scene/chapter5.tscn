@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cqepjb17ed60w" path="res://scenes/main_scene/chapter_5.gd" id="1_q284y"]
 [ext_resource type="Texture2D" uid="uid://b24rpe0ojersj" path="res://assets/environment/house_bg.jpg" id="2_q284y"]
 [ext_resource type="Shader" uid="uid://c71n5bdme4ecy" path="res://assets/shaders/bg.gdshader" id="3_u4lta"]
-[ext_resource type="Texture2D" uid="uid://qv4s3575f7ek" path="res://assets/ui/entities/matthew-normal-bg.png" id="4_oehtj"]
+[ext_resource type="Texture2D" uid="uid://bx0uoq0084k8k" path="res://assets/ui/entities/matthew-smille-bg.png" id="4_no2ue"]
 [ext_resource type="Texture2D" uid="uid://cycvscej8vgxk" path="res://assets/ui/entities/arith-normal.png" id="6_gwhj5"]
 [ext_resource type="Shader" uid="uid://b8stk2g7mc7vm" path="res://assets/shaders/grunge_border.gdshader" id="6_no2ue"]
 [ext_resource type="StyleBox" uid="uid://dvqky3dsh60s0" path="res://assets/shaders/dialogue_panel.tres" id="7_u4lta"]
@@ -65,7 +65,6 @@ grow_vertical = 2
 
 [node name="entity1" type="TextureRect" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.125
@@ -73,13 +72,12 @@ anchor_top = 0.25925925
 anchor_right = 0.3220486
 anchor_bottom = 1.0061729
 offset_bottom = -6.1035156e-05
-texture = ExtResource("4_oehtj")
+texture = ExtResource("4_no2ue")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="entity2" type="TextureRect" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5303819

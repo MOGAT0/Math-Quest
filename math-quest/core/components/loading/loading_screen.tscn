@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dw6vygkcma2c8"]
+[gd_scene load_steps=17 format=3 uid="uid://dw6vygkcma2c8"]
 
 [ext_resource type="Script" uid="uid://0wnquo2ehf2e" path="res://core/components/loading/loading_screen.gd" id="1_o0jqy"]
 [ext_resource type="Shader" uid="uid://c6ybw3o3xr2g0" path="res://assets/shaders/fog.gdshader" id="2_62p0d"]
 [ext_resource type="Texture2D" uid="uid://cw4iqu52ngd1" path="res://mathquest_logo(circle).png" id="2_h5gtl"]
 [ext_resource type="Texture2D" uid="uid://cidrtawfa105g" path="res://assets/img/bg.gif" id="2_rpqkn"]
 [ext_resource type="PackedScene" uid="uid://t7gu33iy0wsx" path="res://core/components/transition/new/transitionFX.tscn" id="5_rpqkn"]
+[ext_resource type="Texture2D" uid="uid://rmhy78w1haou" path="res://assets/img/bootsplash2.jpg" id="6_wfnrt"]
+[ext_resource type="Texture2D" uid="uid://bap8ln7ibg6tk" path="res://assets/img/bootsplash.jpg" id="7_l1ns0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u2egr"]
 shader = ExtResource("2_62p0d")
@@ -34,6 +36,152 @@ font_size = 55
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfnrt"]
+bg_color = Color(0.37101543, 0.37101543, 0.37101543, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29634023, 0.2884899, 0.2884899, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1ns0"]
+content_margin_left = 2.0
+content_margin_top = 10.0
+content_margin_right = 2.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 0.77262443, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8765876, 0.63247854, 0.028986583, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="Animation" id="Animation_k7yhb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect2:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5cnvh"]
+resource_name = "intro"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.5333333, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect2:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3, 4.5333333, 5.5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_188b5"]
+_data = {
+&"RESET": SubResource("Animation_k7yhb"),
+&"intro": SubResource("Animation_5cnvh")
+}
+
 [node name="LoadingScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -42,8 +190,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o0jqy")
-extend_loading_time = true
-extended_time = 3.0
+custom_loading_text = "Loading..."
+bootsplash_next_scene = "uid://mexsnsd6c1h4"
 
 [node name="TextureRect" type="GIFPlayer" parent="."]
 gif = ExtResource("2_rpqkn")
@@ -70,24 +218,20 @@ texture = SubResource("GradientTexture2D_q7ync")
 [node name="loading_txt" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -574.0
-offset_top = -35.25
-offset_right = 574.0
-offset_bottom = 35.25
+anchors_preset = -1
+anchor_left = 0.2777778
+anchor_top = 0.7083333
+anchor_right = 0.7222222
+anchor_bottom = 0.75617284
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 45
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[pulse][wave]loading...[/wave][/pulse]"
 fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="load_percentage" type="Label" parent="."]
 unique_name_in_owner = true
@@ -106,8 +250,28 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="loading_bar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(528, 8)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.27083334
+anchor_top = 0.7469132
+anchor_right = 0.7291667
+anchor_bottom = 0.796296
+offset_top = 6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_wfnrt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_l1ns0")
+value = 33.1
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -130,4 +294,44 @@ texture_progress = ExtResource("2_h5gtl")
 unique_name_in_owner = true
 on_load_transition = true
 
+[node name="BootSplash" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="BootSplash"]
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_wfnrt")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="BootSplash"]
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_l1ns0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BootSplash"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_188b5")
+}
+
 [connection signal="transitionIn_complete" from="TransitionFx" to="." method="_on_transition_fx_transition_in_complete"]
+[connection signal="animation_finished" from="BootSplash/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

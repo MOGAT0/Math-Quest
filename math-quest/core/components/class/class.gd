@@ -3,6 +3,8 @@ class_name Scholl
 
 signal class_end(currentGrade: String, currentLesson : String)
 
+var save_path = "user://analysis_data.json"
+
 @export var current_lesson : String = "g1-l1"
 @export var current_grade : String = "g1"
 
@@ -37,6 +39,11 @@ var bottom_panel_margin : MarginContainer
 
 const LESSONS_PER_GRADE := 10
 
+# The final exam is exclusive: it only runs for progress that is exactly
+# grade "g4" + lesson "final", and it is never listed on the relearn page.
+const FINAL_EXAM_GRADE := "g4"
+const FINAL_EXAM_LESSON := "final"
+
 var lecture_container : VBoxContainer
 var lecture_title_label : Label
 var lecture_continue_button : Button
@@ -49,6 +56,8 @@ var _tw_timer : Timer = null
 var _tw_target : RichTextLabel = null
 var _tts_voice_id : String = ""
 
+var _session_id : String = ""
+var _question_start_ms : int = 0
 var current_question_idx : int = 0
 var selected_answer : String = ""
 var exam_status : String = "idle"
@@ -112,6 +121,7 @@ func _load_active_curriculum():
 
 func start_class() -> void:
 	_load_active_curriculum()
+	_lesson_available = _lesson_exists(current_grade, current_lesson)
 	show()
 	GameManager.game_time_enabled = false
 	if _lesson_available:
@@ -529,38 +539,15 @@ func _on_lecture_display_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		_skip_typewriter()
 
-func _get_male_english_voice() -> String:
-	var all_voices = DisplayServer.tts_get_voices()
-
-	for voice in all_voices:
-		if voice["language"].begins_with("en") and "male" in voice["name"].to_lower():
-			return voice["id"]
-			
-	return ""
-
 func _prepare_tts() -> void:
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_TEXT_TO_SPEECH):
 		return
-		
-	# Added: Call the helper function to search for a male voice ID
-	var male_voice_id = _get_male_english_voice()
-	
-	# Added: Check if a male voice was successfully found
-	if male_voice_id != "":
-		# Added: Assign the specific male voice to your variable
-		_tts_voice_id = male_voice_id
-	else:
-		# Added: Fallback to the original logic if no male voice exists on the phone
-		var voices = DisplayServer.tts_get_voices_for_language("en")
-		if voices.size() > 0:
-			_tts_voice_id = voices[0]
-
-#func _prepare_tts() -> void:
-	#if not DisplayServer.has_feature(DisplayServer.FEATURE_TEXT_TO_SPEECH):
-		#return
-	#var voices = DisplayServer.tts_get_voices_for_language("en")
-	#if voices.size() > 0:
-		#_tts_voice_id = voices[0]
+	var voices = DisplayServer.tts_get_voices_for_language("en")
+	if voices.size() > 0:
+		if current_grade == "g4" and current_lesson == "final":
+			_tts_voice_id = voices[0] if OS.get_name().to_lower() in ["android", "ios"] else voices[1]
+		else:
+			_tts_voice_id = voices[1] if OS.get_name().to_lower() in ["android", "ios"] else voices[0]
 
 func _number_to_word(n: int) -> String:
 	if n < 0:
@@ -651,6 +638,8 @@ func _start_lesson() -> void:
 	main_container.hide()
 	lesson_complete_container.hide()
 	current_question_idx = 0
+	
+	_session_id = str(int(Time.get_unix_time_from_system()))
 	_show_lecture()
 
 func _load_current_question() -> void:
@@ -716,6 +705,7 @@ func _load_current_question() -> void:
 	)
 	q_vbox.add_child(q_label)
 	_typewrite_and_speak(q_label, str(q["text"]))
+	_question_start_ms = Time.get_ticks_msec()
 	
 	if q.has("visual"):
 		_build_visual(q["visual"], q_vbox, str(q.get("answer", "")))
@@ -1336,10 +1326,12 @@ func _update_action_button() -> void:
 			_apply_action_style(action_button, COLOR_SLATE_200, COLOR_SLATE_300, COLOR_SLATE_400)
 			next_enabled = true
 		"incorrect":
-			action_button.text = "ONCE MORE"
-			action_button.disabled = false
-			_apply_action_style(action_button, COLOR_RED_500, COLOR_RED_500.darkened(0.2), COLOR_WHITE)
-
+			# Answer is saved and locked: no retry, the player moves on
+			action_button.text = "CAST"
+			action_button.disabled = true
+			_apply_action_style(action_button, COLOR_SLATE_200, COLOR_SLATE_300, COLOR_SLATE_400)
+			next_enabled = true
+			
 	next_button.disabled = not next_enabled
 	if next_enabled:
 		_apply_action_style(next_button, COLOR_GREEN_500, COLOR_GREEN_500.darkened(0.2), COLOR_WHITE)
@@ -1348,12 +1340,11 @@ func _update_action_button() -> void:
 
 func _on_action_button_pressed() -> void:
 	if exam_status == "complete":
-		# A relearned lesson doesn't advance saved progress; just hop back
-		# to the curriculum-complete screen instead of closing the module.
 		if _is_relearning:
 			_is_relearning = false
 			_show_curriculum_complete()
 			return
+		_player_reward(_get_reward_amount(current_grade, current_lesson))
 		class_end.emit(current_grade, current_lesson)
 		_persist_next_progress()
 		hide()
@@ -1370,21 +1361,36 @@ func _on_action_button_pressed() -> void:
 
 	if exam_status == "idle":
 		if selected_answer == "": return
-		var correct_ans = str(questions[current_question_idx]["answer"]).to_lower().strip_edges()
+		var q = questions[current_question_idx]
+		var correct_ans = str(q["answer"]).to_lower().strip_edges()
 		var user_ans = selected_answer.to_lower().strip_edges()
+		var is_correct = user_ans == correct_ans
 
-		exam_status = "correct" if user_ans == correct_ans else "incorrect"
+		_record_answer(q, is_correct)
+
+		exam_status = "correct" if is_correct else "incorrect"
 		_refresh_option_styles()
 		_update_action_button()
 
-	elif exam_status == "incorrect":
-		exam_status = "idle"
-		selected_answer = ""
-		_refresh_option_styles()
-		_update_action_button()
+func _record_answer(q: Dictionary, is_correct: bool) -> void:
+	AnalysisReport.record_answer({
+		"timestamp": int(Time.get_unix_time_from_system()),
+		"datetime": Time.get_datetime_string_from_system(false, true),
+		"session": _session_id,
+		"grade": current_grade,
+		"lesson": current_lesson,
+		"lesson_title": str(current_lesson_data.get("title", current_lesson)),
+		"question_idx": current_question_idx,
+		"question": str(q.get("text", "")),
+		"selected_answer": selected_answer,
+		"correct_answer": str(q.get("answer", "")),
+		"is_correct": is_correct,
+		"time_ms": Time.get_ticks_msec() - _question_start_ms,
+		"relearn": _is_relearning
+	})
 
 func _on_next_button_pressed() -> void:
-	if exam_status != "correct": return
+	if exam_status != "correct" and exam_status != "incorrect": return
 	var questions = current_lesson_data.get("questions", [])
 	current_question_idx += 1
 	if current_question_idx >= questions.size():
@@ -1396,22 +1402,40 @@ func _persist_next_progress() -> void:
 	var grade_num = current_grade.trim_prefix("g").to_int()
 	var lesson_num = 1
 
-	var lesson_parts = current_lesson.split("-l")
-	if lesson_parts.size() > 1:
-		lesson_num = lesson_parts[1].to_int()
+	var next_grade : String
+	var next_lesson : String
 
-	lesson_num += 1
-	if lesson_num > LESSONS_PER_GRADE:
-		lesson_num = 1
+	if _is_final_exam(current_grade, current_lesson):
+		# Final exam passed: move past the last grade. Nothing exists there,
+		# so the class will show the "all classes completed" screen from now on.
 		grade_num += 1
+		next_grade = "g%d" % grade_num
+		next_lesson = "g%d-l1" % grade_num
+	else:
+		var lesson_parts = current_lesson.split("-l")
+		if lesson_parts.size() > 1:
+			lesson_num = lesson_parts[1].to_int()
 
-	var next_grade = "g%d" % grade_num
-	var next_lesson = "g%d-l%d" % [grade_num, lesson_num]
+		lesson_num += 1
+		if lesson_num > LESSONS_PER_GRADE:
+			lesson_num = 1
+			grade_num += 1
+
+		next_grade = "g%d" % grade_num
+		if next_grade == FINAL_EXAM_GRADE:
+			# Finished the last regular lesson (g3-l10): the final exam is next.
+			next_lesson = FINAL_EXAM_LESSON
+		else:
+			next_lesson = "g%d-l%d" % [grade_num, lesson_num]
 
 	db.query("UPDATE progress SET current_grade = '%s', current_lesson = '%s' WHERE is_active = true" % [next_grade, next_lesson])
 
 ## Checks whether a given grade/lesson id is present in the loaded curriculum.
 func _lesson_exists(grade: String, lesson_id: String) -> bool:
+	# The final exam only counts as available for exactly g4 + "final".
+	# Anything else falls through to the "all classes completed" screen.
+	if lesson_id == FINAL_EXAM_LESSON and grade != FINAL_EXAM_GRADE:
+		return false
 	if not lesson_database.has(grade):
 		return false
 	for lesson in lesson_database[grade]:
@@ -1419,9 +1443,20 @@ func _lesson_exists(grade: String, lesson_id: String) -> bool:
 			return true
 	return false
 
+## True only for the exclusive final exam (grade 4, lesson "final").
+func _is_final_exam(grade: String, lesson_id: String) -> bool:
+	return grade == FINAL_EXAM_GRADE and lesson_id == FINAL_EXAM_LESSON
+
 func _show_lesson_complete() -> void:
 	_cancel_typewriter()
 	exam_status = "complete"
+	
+	if _is_relearning:
+		lesson_complete_label.text = "Spell Mastered!"
+	else:
+		lesson_complete_label.text = "Spell Mastered!\n+%d KP" % _get_reward_amount(current_grade, current_lesson)
+		
+	
 	main_container.hide()
 	relearn_button.hide()
 
@@ -1485,6 +1520,14 @@ func _populate_relearn_grid() -> void:
 		if typeof(lessons) != TYPE_ARRAY or lessons.is_empty():
 			continue
 
+		# The final exam is exclusive and is never offered for relearning.
+		var relearn_lessons : Array = []
+		for lesson in lessons:
+			if lesson.has("id") and not _is_final_exam(String(grade), str(lesson["id"])):
+				relearn_lessons.append(lesson)
+		if relearn_lessons.is_empty():
+			continue
+
 		var grade_label = Label.new()
 		grade_label.text = "Grade %s" % String(grade).trim_prefix("g")
 		grade_label.add_theme_font_size_override("font_size", 20)
@@ -1497,7 +1540,7 @@ func _populate_relearn_grid() -> void:
 		grid.add_theme_constant_override("v_separation", 14)
 		relearn_grades_vbox.add_child(grid)
 
-		for lesson in lessons:
+		for lesson in relearn_lessons:
 			if not lesson.has("id"):
 				continue
 			var lesson_id = str(lesson["id"])
@@ -1519,6 +1562,8 @@ func _populate_relearn_grid() -> void:
 ## Enters a lesson chosen from the relearn grid without touching saved
 ## progress (see _is_relearning usage in _on_action_button_pressed()).
 func _on_relearn_lesson_selected(grade: String, lesson_id: String) -> void:
+	if _is_final_exam(grade, lesson_id):
+		return
 	_is_relearning = true
 	current_grade = grade
 	current_lesson = lesson_id
@@ -1556,3 +1601,24 @@ func _spawn_confetti() -> void:
 		emitter.emitting = true
 
 		get_tree().create_timer(3.5).timeout.connect(emitter.queue_free)
+
+func _get_reward_amount(grade: String, lesson_id: String) -> int:
+	var grade_num := grade.trim_prefix("g").to_int()
+	var lesson_num := 1
+	var parts := lesson_id.split("-l")
+	if parts.size() > 1:
+		lesson_num = parts[1].to_int()
+	if _is_final_exam(grade, lesson_id):
+		lesson_num = LESSONS_PER_GRADE
+
+	var reward := 50                  
+	reward += (grade_num - 1) * 10  
+	reward += (lesson_num - 1) * 2   
+	if lesson_num == LESSONS_PER_GRADE:
+		reward += 50                
+	return reward
+
+func _player_reward(KP_amount):
+	var total_kp = GameManager.kp_amount + KP_amount
+	db.query("UPDATE progress SET kp = %d WHERE is_active = true" % total_kp)
+	GameManager._update_KP()

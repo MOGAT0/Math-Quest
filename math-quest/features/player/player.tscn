@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://d2tlvphqoq6ok"]
+[gd_scene load_steps=52 format=3 uid="uid://d2tlvphqoq6ok"]
 
 [ext_resource type="Script" uid="uid://ddchdq6sjtre7" path="res://features/player/script/player.gd" id="1_sjcu7"]
 [ext_resource type="Texture2D" uid="uid://daeplqk8xxe5y" path="res://assets/environment/shadow.png" id="2_emvbc"]
@@ -22,9 +22,10 @@
 [ext_resource type="Script" uid="uid://b8p5734srdsqq" path="res://features/player/reward_UI.gd" id="19_mhvub"]
 [ext_resource type="Shader" uid="uid://c71n5bdme4ecy" path="res://assets/shaders/bg.gdshader" id="20_jec2r"]
 [ext_resource type="Texture2D" uid="uid://brj8ih3w38hx4" path="res://assets/ui/bg/panel-reward.png" id="20_x3ag6"]
+[ext_resource type="Texture2D" uid="uid://cp5vp73mute24" path="res://assets/ui/icon/energy_icon.png" id="22_ftx3j"]
 [ext_resource type="FontFile" uid="uid://wbjufq0cuj84" path="res://assets/fonts/PressStart2P-Regular.ttf" id="22_lrnek"]
 [ext_resource type="Texture2D" uid="uid://dif7n46e1pcek" path="res://assets/ui/btn/x.png" id="23_d5tpd"]
-[ext_resource type="AudioStream" uid="uid://1a03jg0ndnjw" path="res://assets/audio/step.mp3" id="24_ocbvg"]
+[ext_resource type="AudioStream" uid="uid://doebjty8g56s8" path="res://assets/audio/step.ogg" id="26_ftx3j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fcb3x"]
 radius = 2.0
@@ -240,8 +241,11 @@ content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
 bg_color = Color(0.60861856, 0.44627932, 0.24827306, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.42532474, 0.2732096, 0.08399326, 1)
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -254,8 +258,8 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
+border_width_bottom = 4
+border_color = Color(0.4117474, 0.28500313, 0.12734567, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -277,9 +281,9 @@ corner_detail = 3
 anti_aliasing = false
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lna2h"]
-random_pitch = 1.5
+random_pitch = 1.2
 streams_count = 1
-stream_0/stream = ExtResource("24_ocbvg")
+stream_0/stream = ExtResource("26_ftx3j")
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -357,6 +361,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="clock" type="Control" parent="UI/hud"]
+visible = false
 custom_minimum_size = Vector2(150, 80)
 layout_mode = 1
 anchors_preset = 0
@@ -441,6 +446,7 @@ mouse_filter = 1
 script = ExtResource("13_1ncrl")
 
 [node name="joystick" type="Control" parent="UI/hud/touch_control"]
+visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 1
 anchors_preset = 2
@@ -479,6 +485,7 @@ horizontal_alignment = 1
 
 [node name="crystals" type="VBoxContainer" parent="UI/hud"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.010416667
@@ -523,7 +530,7 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -209.0
+offset_left = -71.0
 offset_top = -40.0
 offset_right = -7.0
 offset_bottom = -5.0
@@ -541,6 +548,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="kp" type="Label" parent="UI/hud/currency"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.95484024, 0.76781565, 0.18856215, 1)
@@ -684,29 +692,29 @@ icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/hud"]
-visible = false
+[node name="stamina" type="PanelContainer" parent="UI/hud"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.9479167
-anchor_top = 0.11265432
+anchor_left = 0.94791675
+anchor_top = 0.13580246
 anchor_right = 0.9826389
-anchor_bottom = 0.33487654
+anchor_bottom = 0.3580247
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ocbvg")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/hud/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/hud/stamina"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/hud/PanelContainer/VBoxContainer"]
+[node name="Label" type="TextureRect" parent="UI/hud/stamina/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-text = "E"
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("22_ftx3j")
+expand_mode = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/hud/PanelContainer/VBoxContainer"]
+[node name="stamina_bar" type="ProgressBar" parent="UI/hud/stamina/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/background = SubResource("StyleBoxFlat_lna2h")
@@ -726,6 +734,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_5rlqq")
 main_icon = ExtResource("13_lna2h")
+main_color = Color(0.11764706, 0.5647059, 1, 1)
 indicator_size = 0.0
 border_width = 0.0
 icon_padding = 0.0
@@ -737,7 +746,7 @@ layout_mode = 1
 
 [node name="step" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_lna2h")
-volume_db = -80.0
+volume_db = -8.0
 bus = &"SFX"
 
 [connection signal="analogic_changed" from="UI/hud/touch_control/joystick" to="." method="_on_virtual_joystick_plus_analogic_changed"]
