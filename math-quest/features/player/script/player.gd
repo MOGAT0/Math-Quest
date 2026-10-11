@@ -6,6 +6,8 @@ const T_avatar_default : String = "res://assets/models/teacher/"
 var current_avatar: String
 @onready var fps_disp: Label = %fps
 
+@onready var step_anim: AnimationPlayer = %step_anim
+
 @onready var target_indicator: TargetIndicator = %target_indicator
 @export var target : Marker2D
 @export var side_quest_targets : Dictionary[String, Marker2D]
@@ -21,7 +23,9 @@ var current_avatar: String
 @onready var hud: Control = %hud
 @onready var crystals_cont: VBoxContainer = %crystals
 @onready var currency: HBoxContainer = %currency
+@onready var kp: Label = %kp
 
+@onready var stamina_bar: ProgressBar = %stamina_bar
 
 var is_navigating: bool = false
 var joystick_direction: Vector2 = Vector2.ZERO
@@ -29,17 +33,25 @@ var joystick_direction: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	_onload_show_crystal()
 	call_deferred("setup_navigation")
-	currency.hide()
+	#currency.hide()
 
 func setup_navigation() -> void:
 	navigation_agent_2d.path_desired_distance = 8.0 
 	navigation_agent_2d.target_desired_distance = 8.0
 
 func _physics_process(_delta: float) -> void:
+	kp.text = str(GameManager.kp_amount)
+	stamina_bar.value = GameManager.player_stamina
+	
 	fps_disp.text = str(Engine.get_frames_per_second())
 	
 	var keyboard_dir = Input.get_vector("a", "d", "w", "s")
 	var input_dir = (keyboard_dir + joystick_direction).limit_length(1.0)
+	
+	if velocity.length() > 0.01:
+		step_anim.play("step")
+	else:
+		step_anim.play("RESET")
 	
 	if !GameManager.allow_cursor_click: return
 	
@@ -52,6 +64,8 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 
 	move_and_slide()
+	set_target_indicator()
+	
 
 func set_target_indicator() -> void:
 	target_indicator.main_target = GameManager.target_location

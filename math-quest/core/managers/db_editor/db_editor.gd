@@ -90,6 +90,13 @@ func _build_ui() -> void:
 	spacer.size_flags_horizontal = SIZE_EXPAND_FILL
 	input_header.add_child(spacer)
 
+	# Main Menu button (placed to the left of the theme button)
+	var main_menu_btn = Button.new()
+	main_menu_btn.text = "Main Menu"
+	main_menu_btn.custom_minimum_size = Vector2(100, 30)
+	main_menu_btn.pressed.connect(_on_main_menu_pressed)
+	input_header.add_child(main_menu_btn)
+
 	theme_btn = Button.new()
 	theme_btn.custom_minimum_size = Vector2(40, 30)
 	theme_btn.pressed.connect(_toggle_theme)
@@ -229,6 +236,9 @@ func _build_ui() -> void:
 	#expanded_tree.hide_root = true
 	#expanded_tree.column_titles_visible = true
 	#expand_vbox.add_child(expanded_tree)
+
+func _on_main_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
 
 func _toggle_theme() -> void:
 	is_dark_mode = !is_dark_mode

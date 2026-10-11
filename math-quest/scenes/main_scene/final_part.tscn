@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dj0swiip84b0u"]
+[gd_scene load_steps=14 format=3 uid="uid://dj0swiip84b0u"]
 
 [ext_resource type="Script" uid="uid://b615u01dhi31f" path="res://scenes/main_scene/final_part.gd" id="1_xmlde"]
 [ext_resource type="Shader" uid="uid://c6ybw3o3xr2g0" path="res://assets/shaders/fog.gdshader" id="2_4hsdk"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cycvscej8vgxk" path="res://assets/ui/entities/arith-normal.png" id="5_2boff"]
 [ext_resource type="Texture2D" uid="uid://bd1k5sixdfdp8" path="res://assets/ui/entities/wizard.png" id="6_d63lg"]
 [ext_resource type="Texture2D" uid="uid://pk4u70rvnbxy" path="res://assets/ui/borders/Border All 2.png" id="8_4hsdk"]
-[ext_resource type="FontFile" uid="uid://wbjufq0cuj84" path="res://assets/fonts/PressStart2P-Regular.ttf" id="9_ychdf"]
 [ext_resource type="PackedScene" uid="uid://t7gu33iy0wsx" path="res://core/components/transition/new/transitionFX.tscn" id="10_2boff"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ychdf"]
@@ -138,13 +137,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Panel" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(500, 250)
+custom_minimum_size = Vector2(545, 414)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2829861
-anchor_top = 0.30709878
-anchor_right = 0.7170139
-anchor_bottom = 0.69290125
+anchor_left = 0.26345485
+anchor_top = 0.18055555
+anchor_right = 0.73654515
+anchor_bottom = 0.8194444
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_j8o4t")
@@ -170,8 +169,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/line_separation = 10
-theme_override_fonts/normal_font = ExtResource("9_ychdf")
-theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/normal_font_size = 30
 text = "In a corner inside the classroom, there was Matthew."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -185,8 +183,7 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("9_ychdf")
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ychdf")
 text = "Next >"
 flat = true

@@ -7,6 +7,7 @@ class_name TargetIndicator
 @export var main_target: CanvasItem
 ## Values can be Node, NodePath (relative to this node) or Array of those.
 @export var side_targets: Dictionary = {}
+@export var target_gap: float = 24.0
 
 @export_group("Icons")
 @export var main_icon: Texture2D
@@ -194,7 +195,8 @@ func _update_marker(marker: Control, target: CanvasItem) -> void:
 	var center := view_rect.get_center()
 
 	# Space the whole indicator (circle + arrow + margin) needs at the edge.
-	var margin := indicator_size * 0.5 + arrow_gap + arrow_length + edge_margin
+	var indicator_extent := indicator_size * 0.5 + arrow_gap + arrow_length
+	var margin := indicator_extent + edge_margin
 	var half := (view_rect.size * 0.5 - Vector2.ONE * margin).max(Vector2.ONE)
 
 	var target_pos := _get_screen_position(target)
@@ -206,20 +208,32 @@ func _update_marker(marker: Control, target: CanvasItem) -> void:
 		return
 	marker.visible = true
 
-	# Ray from the screen centre through the target, cut at the inset edge.
-	var dir := offset.normalized() if offset.length() > 0.001 else Vector2.UP
-	var tx := INF if is_zero_approx(dir.x) else half.x / absf(dir.x)
-	var ty := INF if is_zero_approx(dir.y) else half.y / absf(dir.y)
-	var edge_pos := center + dir * minf(tx, ty)
+	var marker_center: Vector2
+	if on_screen:
+		# Hover next to the target, arrow tip stopping `target_gap` short of it.
+		var hover_dist := indicator_extent + target_gap
+		var dir_away := Vector2.UP
+		# Not enough room above? Go below instead.
+		if target_pos.y - hover_dist < center.y - half.y:
+			dir_away = Vector2.DOWN
+		marker_center = target_pos + dir_away * hover_dist
+		# Safety clamp so the indicator never leaves the screen.
+		marker_center = marker_center.clamp(center - half, center + half)
+	else:
+		# Ray from the screen centre through the target, cut at the inset edge.
+		var dir := offset.normalized() if offset.length() > 0.001 else Vector2.UP
+		var tx := INF if is_zero_approx(dir.x) else half.x / absf(dir.x)
+		var ty := INF if is_zero_approx(dir.y) else half.y / absf(dir.y)
+		marker_center = center + dir * minf(tx, ty)
 
 	# Screen -> this control's local space, so it also works if the control
 	# is not exactly at the origin of the canvas.
-	var local_pos := get_global_transform_with_canvas().affine_inverse() * edge_pos
+	var local_pos := get_global_transform_with_canvas().affine_inverse() * marker_center
 	marker.position = local_pos - marker.size * 0.5
 
 	# Arrow points from the indicator toward the real target position.
-	var to_target := target_pos - edge_pos
-	var angle := to_target.angle() if to_target.length() > 1.0 else dir.angle()
+	var to_target := target_pos - marker_center
+	var angle := to_target.angle() if to_target.length() > 1.0 else Vector2.DOWN.angle()
 	var arrow := marker.get_node_or_null("Arrow") as Polygon2D
 	if arrow:
 		arrow.rotation = angle

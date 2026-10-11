@@ -28,7 +28,9 @@ class_name World
 	"arith_pos":%arith_pos, 
 	"matthew_pos":%matthew_pos
 }
+@onready var popup_text: Label = %popup_text
 
+@onready var popup_alert: Control = %popup_alert
 
 var player_in_zone: Player = null
 var current_destination_key: String = ""
@@ -40,9 +42,51 @@ const STARTING_CHAPTER : String = "chapter_1"
 
 @export var default_bg_color : Color
 
+
+var _popup_tween: Tween
+var _popup_rest_pos: Vector2
+
+func show_popup_alert(duration: float = 2.0) -> void:
+	var school_closed : String = "Class starts from 4am to 9pm maybe i should go home for now"
+	var low_stamina : String = "I'm too tired to keep going... I should find a bed or visit the market for food."
+	var stamina_percentage = (float(GameManager.player_stamina) / float(GameManager.max_stamina)) * 100.0
+	
+	popup_text.text = school_closed if stamina_percentage > 15 else low_stamina
+	
+	if not popup_alert:
+		return
+
+	if _popup_tween and _popup_tween.is_valid():
+		_popup_tween.kill()
+
+	var hidden_pos := _popup_rest_pos + Vector2(0, -40)
+
+	popup_alert.position = hidden_pos
+	popup_alert.modulate.a = 0.0
+	popup_alert.show()
+
+	_popup_tween = create_tween()
+
+	# Slide in + fade in
+	_popup_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	_popup_tween.tween_property(popup_alert, "position", _popup_rest_pos, 0.35)
+	_popup_tween.parallel().tween_property(popup_alert, "modulate:a", 1.0, 0.25)
+
+	# Hold
+	_popup_tween.tween_interval(duration)
+
+	# Slide out + fade out
+	_popup_tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	_popup_tween.tween_property(popup_alert, "position", hidden_pos, 0.3)
+	_popup_tween.parallel().tween_property(popup_alert, "modulate:a", 0.0, 0.3)
+
+	_popup_tween.tween_callback(popup_alert.hide)
+
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(default_bg_color)
 	indicator.hide()
+	_popup_rest_pos = popup_alert.position
+	popup_alert.hide()
 	#_ensure_save_tables()
 	_load_progress()
 	
@@ -51,15 +95,13 @@ func _ready() -> void:
 	
 	if is_done:
 		GameManager.game_time_enabled = true
-	
+
 
 #region save/load
 
 func _ensure_save_tables() -> void:
 	pass
-	#db.query("CREATE TABLE progress (id int primary_key auto_increment, current_location vector2, current_chapter text, is_active bool)")
-	#db.query("CREATE TABLE checklist (id int primary_key auto_increment, chapter text not_null, is_done bool)")
-
+	
 func _sql_str(value: String) -> String:
 	return "\"" + value.replace("\"", "\\\"") + "\""
 
@@ -157,8 +199,6 @@ func _mark_chapter_done(chapter: String) -> void:
 
 	if existing != null:
 		db.query("UPDATE checklist SET is_done = true WHERE chapter = %s" % _sql_str(chapter))
-	#else:
-		#db.query("INSERT INTO checklist (chapter, is_done) VALUES (%s, true)" % _sql_str(chapter))
 
 #endregion
 
@@ -167,15 +207,19 @@ func _process(_delta: float) -> void:
 	var has_visible_child: bool = false
 
 	for i in game_ui.get_children():
-		if i.name.to_lower() != "extra_ui":
+		if i.name.to_lower() != "extra_ui" and i != popup_alert:
 			if i is CanvasItem and i.visible:
 				has_visible_child = true
 				break
-			
+		
+		
 	if has_visible_child:
 		GameManager.allow_cursor_click = false
+		MusicPlayer.tune_down = true
+		player.velocity = Vector2.ZERO
 	else:
 		GameManager.allow_cursor_click = true
+		MusicPlayer.tune_down = false
 	
 	if player_in_zone and current_destination_key != "":
 		if locations.has(current_destination_key):
@@ -192,10 +236,12 @@ func _get_current_checklist_id() -> Variant:
 
 func _on_academy_entrance_body_entered(body: Node2D) -> void:
 	var done_status = _is_chapter_done("school_admission")
+	var stamina_percentage = (float(GameManager.player_stamina) / float(GameManager.max_stamina)) * 100.0
 	
-	if GameManager.current_time > 21 or GameManager.current_time <= 4:
-		#{to-do} add a pop up alert
-		return
+	if body is Player:
+		if GameManager.current_time > 21 or GameManager.current_time <= 4 or stamina_percentage <= 15:
+			show_popup_alert()
+			return
 	
 	if body is Arith:
 		if locations.has("inner_academy"):
@@ -246,6 +292,7 @@ func _on_in_acd_entrace_body_exited(body: Node2D) -> void:
 		current_destination_key = ""
 		
 func teleport(character: CharacterBody2D, location: Vector2) -> void:
+	await get_tree().create_timer(0.5).timeout
 	character.set_deferred("global_position", location)
 	if character is Player and transition_fx:
 		await get_tree().process_frame
@@ -266,16 +313,16 @@ func _on_g_1_entrance_body_entered(body: Node2D) -> void:
 func _on_class_class_end(_currentGrade: String, _currentLesson: String) -> void:
 	teleport(player,locations["academy_gate2"].global_position)
 	player.show()
-	GameManager.current_time = 22
+	GameManager.current_time = 21
 
 func _on_portal_portal_spawned() -> void:
-	print("portal spawned")
 	await get_tree().process_frame
 	teleport(arith,locations["waiting_loc"].global_position)
 	teleport(great_wizzard, locations["gw_pos"].global_position)
 	GameManager.arith_goto = locations.arith_pos.global_position
 	arith.show()
 	great_wizzard.show()
+	GameManager.current_time = 21
 
 
 #endregion
@@ -285,12 +332,18 @@ func _on_portal_portal_spawned() -> void:
 
 func _on_chap_3_is_chapter_done(chapter: String) -> void:
 	update_checklist(chapter)
+	MusicPlayer.play_playlist([
+		preload("uid://cecfi3ldn4pn8"),
+		preload("uid://gxi3ibqe3cki"),
+		preload("uid://dbuw7fumbxllh"),
+	])
 
 func _on_chapter_4_is_chapter_done(chapter: String) -> void:
 	update_checklist(chapter)
 
 func _on_chapter_5_is_chapter_done(chapter: String) -> void:
 	update_checklist(chapter)
+
 
 func _on_chapter_6_is_chapter_done(chapter: String) -> void:
 	update_checklist(chapter)
@@ -306,3 +359,15 @@ func _on_matthew_sleep_is_chapter_done(chapter: String) -> void:
 
 
 #endregion monitor finished chapters
+
+
+@onready var hand_book_2: StarterHandBook = %HandBook2
+
+func _on_fndnl_book_pressed() -> void:
+	hand_book_2.show()
+
+
+func _on_area_2d_body_entered_house(body: Node2D) -> void:
+	if body is Player:
+		#GameManager.target_location = null
+		pass

@@ -26,7 +26,7 @@ const DEFAULT_SCHEMAS : Dictionary = {
 		"c1":{"data_type": "bool", "default": false},
 		"c2":{"data_type": "bool", "default": false},
 		"c3":{"data_type": "bool", "default": false},
-		"kp":{"data_type": "int", "default": 0},
+		"kp":{"data_type": "int", "default": 300},
 	},
 	"streak": {
 		"id": {"data_type": "int", "not_null": true, "primary_key": true, "auto_increment": true},
@@ -114,7 +114,7 @@ func _seed_default_table(table_name: String) -> void:
 				"c1": false,
 				"c2": false,
 				"c3": false,
-				"kp": 0     
+				"kp": 300
 			}]
 
 		"streak":

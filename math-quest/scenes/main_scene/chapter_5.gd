@@ -53,6 +53,8 @@ func _ready() -> void:
 	GameManager.current_chapter_id = current_chapter_id
 
 func start_typewriter(dialogue_text: String) -> void:
+	if visible:
+		MusicPlayer.one_shot = true
 	text_label.text = dialogue_text
 	text_label.visible_characters = 0
 	
@@ -64,7 +66,10 @@ func start_typewriter(dialogue_text: String) -> void:
 	var duration: float = dialogue_text.length() * type_speed
 	
 	tween.tween_property(text_label, "visible_characters", dialogue_text.length(), duration)
-
+	tween.finished.connect(func():
+		MusicPlayer.one_shot = false
+	)
+	
 func trigger_signal(value : signalType) -> void:
 	match value:
 		signalType.Start:
@@ -83,7 +88,6 @@ func trigger_signal(value : signalType) -> void:
 
 func update_entity_visibility(c_name: String, current_idx: int) -> void:
 	var new_name = name_cleaner_regex.sub(c_name, "", true).replace(" ", "_")
-	print(new_name)
 	match new_name:
 		"narrator":
 			show_entities = false
@@ -103,8 +107,6 @@ func update_entity_visibility(c_name: String, current_idx: int) -> void:
 		var overrides = index_visibility_overrides[current_idx]
 		if overrides.has("entity_1"): entity_1.visible = overrides["entity_1"]
 		if overrides.has("entity_2"): entity_2.visible = overrides["entity_2"]
-	
-	print(current_idx)
 
 func load_chapter(chapter_id: String) -> void:
 	if chapter_id == "":
@@ -160,6 +162,7 @@ func advance_to_next_chapter() -> void:
 func _on_next_pressed() -> void:
 	if tween and tween.is_running():
 		tween.kill()
+		MusicPlayer.one_shot = false
 		text_label.visible_characters = -1
 	else:
 		show_next_dialogue()

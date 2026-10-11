@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ba2hg2qsp88sg"]
+[gd_scene load_steps=34 format=3 uid="uid://ba2hg2qsp88sg"]
 
 [ext_resource type="Texture2D" uid="uid://dsfqp8gnce1yk" path="res://assets/ui/btn/gear.png" id="1_3jf6d"]
 [ext_resource type="Script" uid="uid://drv8mmyhglr8o" path="res://core/components/setting/setting.gd" id="1_su6v8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://1qmgoq0yett8" path="res://assets/ui/btn/credits.png" id="5_vurq1"]
 [ext_resource type="Texture2D" uid="uid://dif7n46e1pcek" path="res://assets/ui/btn/x.png" id="6_fesd2"]
 [ext_resource type="Texture2D" uid="uid://dccgybng41003" path="res://assets/ui/btn/slider.png" id="6_qgkhq"]
+[ext_resource type="Texture2D" uid="uid://bckmibamg1442" path="res://assets/ui/btn/export.png" id="6_tc0nr"]
 [ext_resource type="Texture2D" uid="uid://dghe2ysrhddc1" path="res://assets/ui/btn/reset.png" id="6_vurq1"]
 [ext_resource type="Texture2D" uid="uid://cj1qy506au3j6" path="res://assets/ui/bg/panel_bg-pause.png" id="7_dj8ec"]
 [ext_resource type="Texture2D" uid="uid://b21fou3qvaiba" path="res://assets/ui/btn/grabber.png" id="7_f78r7"]
@@ -22,12 +23,12 @@ shader_parameter/blur_radius = 4.0
 shader_parameter/paint_stroke_size = 15.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dtxxe"]
-content_margin_bottom = 117.0
+content_margin_bottom = 75.0
 texture = ExtResource("4_fesd2")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qgkhq"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f78r7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qgkhq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tc0nr"]
 
@@ -43,6 +44,8 @@ texture = ExtResource("6_qgkhq")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3rrix"]
 texture = ExtResource("7_dj8ec")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1nh0a"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qgkhq"]
 texture = ExtResource("8_dtxxe")
@@ -75,6 +78,7 @@ texture = ExtResource("1_3jf6d")
 region_rect = Rect2(0, 0, 2057, 2040)
 
 [node name="Setting" type="Control"]
+z_index = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,6 +90,7 @@ script = ExtResource("1_su6v8")
 
 [node name="panel_cont" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,25 +123,17 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_dtxxe")
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="panel_cont/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="panel_cont/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = -10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="panel_cont/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = -96
 
-[node name="reset_gameData" type="Button" parent="panel_cont/PanelContainer/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(200, 75)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qgkhq")
-icon = ExtResource("6_vurq1")
-flat = true
-icon_alignment = 1
-expand_icon = true
-metadata/_edit_use_anchors_ = true
-
-[node name="credits" type="Button" parent="panel_cont/PanelContainer/HBoxContainer"]
+[node name="credits" type="Button" parent="panel_cont/PanelContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 75)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -148,13 +145,25 @@ icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="clear_data" type="Button" parent="panel_cont/PanelContainer/HBoxContainer"]
+[node name="clear_data" type="Button" parent="panel_cont/PanelContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 75)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_f78r7")
 icon = ExtResource("6_vurq1")
+flat = true
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="export_analysis" type="Button" parent="panel_cont/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 75)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qgkhq")
+icon = ExtResource("6_tc0nr")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -217,7 +226,9 @@ theme_override_icons/grabber = ExtResource("7_f78r7")
 theme_override_icons/grabber_highlight = ExtResource("7_f78r7")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_7llbh")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_7llbh")
-value = 100.0
+max_value = 1.0
+step = 0.01
+value = 1.0
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="panel_cont/VBoxContainer"]
@@ -235,6 +246,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="music_slider" type="HSlider" parent="panel_cont/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(175, 22)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -243,7 +255,9 @@ theme_override_icons/grabber = ExtResource("7_f78r7")
 theme_override_icons/grabber_highlight = ExtResource("7_f78r7")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_7llbh")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_7llbh")
-value = 100.0
+max_value = 0.5
+step = 0.01
+value = 0.5
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="panel_cont/VBoxContainer"]
@@ -269,11 +283,14 @@ theme_override_icons/grabber = ExtResource("7_f78r7")
 theme_override_icons/grabber_highlight = ExtResource("7_f78r7")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_1nh0a")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_1nh0a")
-value = 100.0
+max_value = 1.0
+step = 0.01
+value = 1.0
 metadata/_edit_use_anchors_ = true
 
 [node name="pause_cont" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -315,6 +332,7 @@ custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1nh0a")
 flat = true
 
 [node name="PanelContainer" type="PanelContainer" parent="pause_cont/PanelContainer/VBoxContainer/continue"]
@@ -332,6 +350,7 @@ custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1nh0a")
 flat = true
 
 [node name="PanelContainer" type="PanelContainer" parent="pause_cont/PanelContainer/VBoxContainer/setting"]
@@ -349,6 +368,7 @@ custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1nh0a")
 flat = true
 
 [node name="PanelContainer" type="PanelContainer" parent="pause_cont/PanelContainer/VBoxContainer/exit"]
@@ -363,6 +383,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_tc0nr")
 
 [node name="credit_cont" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -424,16 +445,15 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -65.0
-offset_top = 15.0
-offset_right = -15.0
-offset_bottom = 65.0
+anchors_preset = -1
+anchor_left = 0.9435764
+anchor_top = 0.023148147
+anchor_right = 0.9869792
+anchor_bottom = 0.10030864
 grow_horizontal = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7llbh")
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="setting_btn"]
 show_behind_parent = true
@@ -447,8 +467,9 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_su6v8")
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="panel_cont/PanelContainer/HBoxContainer/credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="panel_cont/PanelContainer/HBoxContainer/clear_data" to="." method="_on_clear_data_pressed"]
+[connection signal="pressed" from="panel_cont/PanelContainer/VBoxContainer/HBoxContainer/credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="panel_cont/PanelContainer/VBoxContainer/HBoxContainer/clear_data" to="." method="_on_clear_data_pressed"]
+[connection signal="pressed" from="panel_cont/PanelContainer/VBoxContainer/export_analysis" to="." method="_on_export_analysis_pressed"]
 [connection signal="pressed" from="panel_cont/close_btn" to="." method="_on_close_btn_pressed"]
 [connection signal="value_changed" from="panel_cont/VBoxContainer/HBoxContainer3/master_slider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="panel_cont/VBoxContainer/HBoxContainer/music_slider" to="." method="_on_music_slider_value_changed"]

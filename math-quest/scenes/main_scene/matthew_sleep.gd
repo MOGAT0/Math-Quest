@@ -5,15 +5,21 @@ signal wokeUp
 
 @onready var matthew_sleeping: Sprite2D = %matthew_sleeping
 @onready var indicator: Sprite2D = %indicator
+@onready var key_label: Label = %key_label
 @onready var letter: Letter = %Letter
 @onready var transition_fx: TransitionFX = %TransitionFx
 
-var active_player: Node2D = null
+var active_player: CharacterBody2D = null
 var is_sleeping: bool = false
 var wake_timer: Timer
 var wait_time : float = 5.0
 
 func _ready() -> void:
+	key_label.hide()
+	var check_status = db.query("SELECT is_done FROM checklist WHERE chapter = home_sleep_1")
+	if check_status.data[0].is_done:
+		is_chapterDone.emit("home_sleep_1")
+		
 	matthew_sleeping.hide()
 
 	wake_timer = Timer.new()
@@ -28,6 +34,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			go_to_sleep()
 
 func go_to_sleep() -> void:
+	MusicPlayer.stop()
+	MusicPlayer.one_shot_stream = preload("res://assets/audio/dreaming.mp3")
+	MusicPlayer.set_one_shot_volume_db(-20)
+	MusicPlayer.one_shot = true
 	transition_fx.allow_time_extend = true
 	transition_fx.extend_time = (wait_time - 1)
 	transition_fx.transition = true
@@ -61,15 +71,23 @@ func wake_up() -> void:
 	
 	await get_tree().process_frame
 	is_chapterDone.emit("home_sleep_1")
+	GameManager.refill_stamina(100.0)
+	MusicPlayer.one_shot = false
+	MusicPlayer.one_shot_stream = preload("res://assets/audio/dialogue.mp3")
+	MusicPlayer.set_one_shot_volume_db(0)
+	MusicPlayer._play_current()
 	
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		indicator.show()
+		if OS.get_name().to_lower() not in ["android", "ios"]:
+			key_label.show()
 		active_player = body
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
 		indicator.hide()
+		key_label.hide()
 		if is_sleeping:
 			wake_up()
 		active_player = null

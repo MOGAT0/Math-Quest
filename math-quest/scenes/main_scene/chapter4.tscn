@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://e72bih8so6l2" path="res://scenes/main_scene/chapter_4.gd" id="1_w27ya"]
 [ext_resource type="Texture2D" uid="uid://hvwshpqotpmn" path="res://assets/ui/bg/castle_bg.jpg" id="2_apucg"]
 [ext_resource type="Shader" uid="uid://c71n5bdme4ecy" path="res://assets/shaders/bg.gdshader" id="3_aomvp"]
-[ext_resource type="Texture2D" uid="uid://qv4s3575f7ek" path="res://assets/ui/entities/matthew-normal-bg.png" id="4_fuqa5"]
+[ext_resource type="Texture2D" uid="uid://bx0uoq0084k8k" path="res://assets/ui/entities/matthew-smille-bg.png" id="4_aomvp"]
 [ext_resource type="Texture2D" uid="uid://cycvscej8vgxk" path="res://assets/ui/entities/arith-normal.png" id="5_8o225"]
 [ext_resource type="Texture2D" uid="uid://bd1k5sixdfdp8" path="res://assets/ui/entities/wizard.png" id="5_w27ya"]
 [ext_resource type="Shader" uid="uid://b8stk2g7mc7vm" path="res://assets/shaders/grunge_border.gdshader" id="7_aomvp"]
@@ -74,7 +74,7 @@ anchor_top = 0.25925925
 anchor_right = 0.3220486
 anchor_bottom = 1.0061729
 offset_bottom = -6.1035156e-05
-texture = ExtResource("4_fuqa5")
+texture = ExtResource("4_aomvp")
 expand_mode = 1
 stretch_mode = 5
 
@@ -160,7 +160,7 @@ text = "name"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 20
 text = "In a corner inside the classroom, there was Matthew."
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer"]

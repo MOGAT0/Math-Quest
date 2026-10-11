@@ -3,8 +3,22 @@ class_name Scholl
 
 signal class_end(currentGrade: String, currentLesson : String)
 
+var save_path = "user://analysis_data.json"
+
 @export var current_lesson : String = "g1-l1"
 @export var current_grade : String = "g1"
+
+@export_range(0.5, 3.0, 0.05) var font_scale : float = 1.0
+@export_range(0.5, 3.0, 0.05) var icon_scale : float = 1.0
+
+const _NUMBER_WORDS := [
+	"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+	"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+	"seventeen", "eighteen", "nineteen"
+]
+const _TENS_WORDS := ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+
+
 
 var lesson_database : Dictionary = {}
 
@@ -15,6 +29,8 @@ var title_label : Label
 var lecture_display : RichTextLabel
 var exam_container : VBoxContainer
 var action_button : Button
+var next_button : Button
+var bottom_buttons : HBoxContainer
 var options_grid : GridContainer
 
 var lesson_complete_container : VBoxContainer 
@@ -22,6 +38,11 @@ var lesson_complete_label : Label
 var bottom_panel_margin : MarginContainer
 
 const LESSONS_PER_GRADE := 10
+
+# The final exam is exclusive: it only runs for progress that is exactly
+# grade "g4" + lesson "final", and it is never listed on the relearn page.
+const FINAL_EXAM_GRADE := "g4"
+const FINAL_EXAM_LESSON := "final"
 
 var lecture_container : VBoxContainer
 var lecture_title_label : Label
@@ -35,6 +56,8 @@ var _tw_timer : Timer = null
 var _tw_target : RichTextLabel = null
 var _tts_voice_id : String = ""
 
+var _session_id : String = ""
+var _question_start_ms : int = 0
 var current_question_idx : int = 0
 var selected_answer : String = ""
 var exam_status : String = "idle"
@@ -69,11 +92,20 @@ const COLOR_RED_500 = Color("#8c2f1a")
 const COLOR_AMBER_100 = Color("#f0dfa0")  
 const COLOR_AMBER_500 = Color("#a8781a")  
 
+## Scales a base font size by the global font_scale.
+func _fs(base: int) -> int:
+	return roundi(base * font_scale)
+
+## Scales a base icon/visual size by the global icon_scale.
+func _ics(base: float) -> float:
+	return base * icon_scale
+
 func _ready() -> void:
 	_load_active_curriculum()
 	_setup_database()
 	_build_ui_nodes()
 	_prepare_tts()
+	
 
 
 	_lesson_available = _lesson_exists(current_grade, current_lesson)
@@ -89,6 +121,7 @@ func _load_active_curriculum():
 
 func start_class() -> void:
 	_load_active_curriculum()
+	_lesson_available = _lesson_exists(current_grade, current_lesson)
 	show()
 	GameManager.game_time_enabled = false
 	if _lesson_available:
@@ -215,6 +248,7 @@ func _build_ui_nodes() -> void:
 	trophy_bg.add_theme_stylebox_override("panel", trophy_style)
 	trophy_bg.custom_minimum_size = Vector2(120, 120)
 	trophy_bg.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	trophy_bg.mouse_filter = Control.MOUSE_FILTER_PASS
 	lesson_complete_container.add_child(trophy_bg)
 	
 	var trophy_icon = TextureRect.new()
@@ -246,6 +280,7 @@ func _build_ui_nodes() -> void:
 	bp_style.border_width_top = 2
 	bp_style.border_color = COLOR_SLATE_200
 	bottom_panel.add_theme_stylebox_override("panel", bp_style)
+	bottom_panel.mouse_filter = Control.MOUSE_FILTER_PASS
 	main_container.add_child(bottom_panel)
 	
 	bottom_panel_margin = MarginContainer.new()
@@ -255,12 +290,25 @@ func _build_ui_nodes() -> void:
 	bottom_panel_margin.add_theme_constant_override("margin_right", 40)
 	bottom_panel.add_child(bottom_panel_margin)
 
+	bottom_buttons = HBoxContainer.new()
+	bottom_buttons.alignment = BoxContainer.ALIGNMENT_END
+	bottom_buttons.add_theme_constant_override("separation", 15)
+	bottom_panel_margin.add_child(bottom_buttons)
+
 	action_button = Button.new()
 	action_button.text = "CAST"
 	action_button.custom_minimum_size = Vector2(150, 50)
 	action_button.size_flags_horizontal = Control.SIZE_SHRINK_END
 	action_button.pressed.connect(_on_action_button_pressed)
-	bottom_panel_margin.add_child(action_button)
+	bottom_buttons.add_child(action_button)
+
+	next_button = Button.new()
+	next_button.text = "NEXT SPELL"
+	next_button.custom_minimum_size = Vector2(150, 50)
+	next_button.size_flags_horizontal = Control.SIZE_SHRINK_END
+	next_button.disabled = true
+	next_button.pressed.connect(_on_next_button_pressed)
+	bottom_buttons.add_child(next_button)
 
 	_build_lecture_nodes()
 	_build_relearn_nodes()
@@ -322,7 +370,7 @@ func _build_lecture_nodes() -> void:
 	lbp_style.border_width_top = 4
 	lbp_style.border_color = COLOR_AMBER_500
 	lecture_bottom_panel.add_theme_stylebox_override("panel", lbp_style)
-	lecture_bottom_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	lecture_bottom_panel.mouse_filter = Control.MOUSE_FILTER_PASS
 	lecture_container.add_child(lecture_bottom_panel)
 
 	var lbp_margin = MarginContainer.new()
@@ -337,7 +385,7 @@ func _build_lecture_nodes() -> void:
 	lbp_margin.add_child(lecture_vbox)
 
 	lecture_title_label = Label.new()
-	lecture_title_label.add_theme_font_size_override("font_size", 20)
+	lecture_title_label.add_theme_font_size_override("font_size", _fs(20))
 	lecture_title_label.add_theme_color_override("font_color", COLOR_SLATE_800)
 	lecture_title_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	lecture_vbox.add_child(lecture_title_label)
@@ -355,7 +403,7 @@ func _build_lecture_nodes() -> void:
 	lecture_display.fit_content = true
 	lecture_display.scroll_active = false
 	lecture_display.selection_enabled = false
-	lecture_display.add_theme_font_size_override("normal_font_size", 14)
+	lecture_display.add_theme_font_size_override("normal_font_size", _fs(14))
 	lecture_display.add_theme_color_override("default_color", COLOR_SLATE_800)
 	lecture_display.add_theme_constant_override("line_separation", 2)
 	lecture_display.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -491,39 +539,27 @@ func _on_lecture_display_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		_skip_typewriter()
 
-func _get_male_english_voice() -> String:
-	var all_voices = DisplayServer.tts_get_voices()
-
-	for voice in all_voices:
-		if voice["language"].begins_with("en") and "male" in voice["name"].to_lower():
-			return voice["id"]
-			
-	return ""
-
 func _prepare_tts() -> void:
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_TEXT_TO_SPEECH):
 		return
-		
-	# Added: Call the helper function to search for a male voice ID
-	var male_voice_id = _get_male_english_voice()
+	var voices = DisplayServer.tts_get_voices_for_language("en")
+	if voices.size() > 0:
+		if current_grade == "g4" and current_lesson == "final":
+			_tts_voice_id = voices[0] if OS.get_name().to_lower() in ["android", "ios"] else voices[1]
+		else:
+			_tts_voice_id = voices[1] if OS.get_name().to_lower() in ["android", "ios"] else voices[0]
+
+func _number_to_word(n: int) -> String:
+	if n < 0:
+		return str(n)
+	if n < 20:
+		return _NUMBER_WORDS[n]
+	if n < 100:
+		var tens: String = _TENS_WORDS[n / 10]
+		var ones := n % 10
+		return tens if ones == 0 else "%s %s" % [tens, _NUMBER_WORDS[ones]]
+	return str(n)
 	
-	# Added: Check if a male voice was successfully found
-	if male_voice_id != "":
-		# Added: Assign the specific male voice to your variable
-		_tts_voice_id = male_voice_id
-	else:
-		# Added: Fallback to the original logic if no male voice exists on the phone
-		var voices = DisplayServer.tts_get_voices_for_language("en")
-		if voices.size() > 0:
-			_tts_voice_id = voices[0]
-
-#func _prepare_tts() -> void:
-	#if not DisplayServer.has_feature(DisplayServer.FEATURE_TEXT_TO_SPEECH):
-		#return
-	#var voices = DisplayServer.tts_get_voices_for_language("en")
-	#if voices.size() > 0:
-		#_tts_voice_id = voices[0]
-
 func _speak(text: String) -> void:
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_TEXT_TO_SPEECH):
 		return
@@ -591,16 +627,19 @@ func _start_lesson() -> void:
 	# The action button may still be sitting inside lesson_complete_container
 	# from a previous lesson's trophy screen - put it back in the normal
 	# lesson footer before presenting anything.
-	if action_button.get_parent() != bottom_panel_margin:
+	if action_button.get_parent() != bottom_buttons:
 		if action_button.get_parent():
 			action_button.get_parent().remove_child(action_button)
-		bottom_panel_margin.add_child(action_button)
+		bottom_buttons.add_child(action_button)
+		bottom_buttons.move_child(action_button, 0)   # keep CAST on the left of NEXT
 	action_button.size_flags_horizontal = Control.SIZE_SHRINK_END
 	action_button.custom_minimum_size = Vector2(150, 50)
 
 	main_container.hide()
 	lesson_complete_container.hide()
 	current_question_idx = 0
+	
+	_session_id = str(int(Time.get_unix_time_from_system()))
 	_show_lecture()
 
 func _load_current_question() -> void:
@@ -641,6 +680,7 @@ func _load_current_question() -> void:
 	qc_style.content_margin_bottom = 24
 	qc_style.border_color = COLOR_AMBER_500
 	q_card.add_theme_stylebox_override("panel", qc_style)
+	q_card.mouse_filter = Control.MOUSE_FILTER_PASS
 	exam_container.add_child(q_card)
 	
 	var q_margin = MarginContainer.new()
@@ -656,7 +696,7 @@ func _load_current_question() -> void:
 	q_label.fit_content = true
 	q_label.scroll_active = false
 	q_label.selection_enabled = false
-	q_label.add_theme_font_size_override("normal_font_size", 16)
+	q_label.add_theme_font_size_override("normal_font_size", _fs(16))
 	q_label.add_theme_color_override("default_color", COLOR_SLATE_800)
 	q_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	q_label.gui_input.connect(func(event: InputEvent):
@@ -665,6 +705,7 @@ func _load_current_question() -> void:
 	)
 	q_vbox.add_child(q_label)
 	_typewrite_and_speak(q_label, str(q["text"]))
+	_question_start_ms = Time.get_ticks_msec()
 	
 	if q.has("visual"):
 		_build_visual(q["visual"], q_vbox, str(q.get("answer", "")))
@@ -679,7 +720,7 @@ func _load_current_question() -> void:
 		btn.text = opts[i]
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		btn.custom_minimum_size = Vector2(0, 60)
-		btn.add_theme_font_size_override("font_size", 18)
+		btn.add_theme_font_size_override("font_size", _fs(18))
 		btn.add_theme_color_override("font_color", COLOR_SLATE_800)
 		btn.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
 		btn.pressed.connect(_on_option_selected.bind(opts[i]))
@@ -736,12 +777,13 @@ func _make_hint_label(text: String) -> Label:
 	return lbl
 
 func _make_icon_chip(display_text: String, iocn_size: float = 52.0, font_size: int = 24) -> Button:
+	var chip_size := _ics(iocn_size)
 	var btn = Button.new()
 	btn.text = display_text
 	btn.focus_mode = Control.FOCUS_NONE
-	btn.custom_minimum_size = Vector2(iocn_size, iocn_size)
-	btn.pivot_offset = Vector2(iocn_size, iocn_size) / 2.0
-	btn.add_theme_font_size_override("font_size", font_size)
+	btn.custom_minimum_size = Vector2(chip_size, chip_size)
+	btn.pivot_offset = Vector2(chip_size, chip_size) / 2.0
+	btn.add_theme_font_size_override("font_size", roundi(_ics(font_size)))
 
 	var normal = StyleBoxFlat.new()
 	normal.bg_color = COLOR_WHITE
@@ -787,6 +829,9 @@ func _build_grid_visual(items: Array, parent: Container) -> void:
 				counted["n"] += 1 if is_on else -1
 				tally.text = "Tap each charm as you count it! (%d / %d)" % [counted["n"], total]
 				_pop_animation(chip)
+				# Say the running count when a charm is counted
+				if is_on:
+					_speak(_number_to_word(counted["n"]))
 			)
 			flow.add_child(chip)
 
@@ -812,6 +857,7 @@ func _build_groups_visual(group_data: Dictionary, parent: Container) -> void:
 		# PanelContainer sizes itself to its contents (a Button does NOT),
 		# so the bundle now reserves real space instead of overlapping the options.
 		var bundle = PanelContainer.new()
+		bundle.mouse_filter = Control.MOUSE_FILTER_PASS
 		bundle.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
 
 		var normal = StyleBoxFlat.new()
@@ -855,10 +901,10 @@ func _build_groups_visual(group_data: Dictionary, parent: Container) -> void:
 		for i in range(per_group):
 			var lbl = Label.new()
 			lbl.text = icon
-			lbl.custom_minimum_size = Vector2(30, 30)
+			lbl.custom_minimum_size = Vector2(_ics(30), _ics(30))
 			lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-			lbl.add_theme_font_size_override("font_size", 20)
+			lbl.add_theme_font_size_override("font_size", roundi(_ics(20)))
 			lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			grid.add_child(lbl)
 
@@ -1032,13 +1078,18 @@ func _build_balance_visual(left_items: Dictionary, right_items: Dictionary, pare
 	var right_icon = str(right_items.get("icon", "❔"))
 	var right_count = int(right_items.get("count", 0))
 
-	var beam_x = (BALANCE_STAGE_WIDTH - BALANCE_BEAM_WIDTH) / 2.0
+	# Pans grow with icon_scale; the stage grows with them so nothing is clipped.
+	var pan_w := _ics(BALANCE_PAN_WIDTH)
+	var stage_w := BALANCE_STAGE_WIDTH + (pan_w - BALANCE_PAN_WIDTH)
+	var stage_h := BALANCE_STAGE_HEIGHT + (icon_scale - 1.0) * 80.0
+
+	var beam_x = (stage_w - BALANCE_BEAM_WIDTH) / 2.0
 	var beam_left_x = beam_x
 	var beam_right_x = beam_x + BALANCE_BEAM_WIDTH
-	var center_x = BALANCE_STAGE_WIDTH / 2.0
+	var center_x = stage_w / 2.0
 
 	var stage = Control.new()
-	stage.custom_minimum_size = Vector2(BALANCE_STAGE_WIDTH, BALANCE_STAGE_HEIGHT)
+	stage.custom_minimum_size = Vector2(stage_w, stage_h)
 	stage.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	parent.add_child(stage)
 
@@ -1080,21 +1131,21 @@ func _build_balance_visual(left_items: Dictionary, right_items: Dictionary, pare
 
 	var tally = _make_hint_label("Tap each pan to weigh it!")
 
-	var left_pan = _make_balance_pan(left_icon, left_count, tally, "Left")
-	left_pan.position = Vector2(beam_left_x - BALANCE_PAN_WIDTH / 2.0, BALANCE_PAN_Y)
+	var left_pan = _make_balance_pan(left_icon, left_count, tally, "Left", pan_w)
+	left_pan.position = Vector2(beam_left_x - pan_w / 2.0, BALANCE_PAN_Y)
 	stage.add_child(left_pan)
 
-	var right_pan = _make_balance_pan(right_icon, right_count, tally, "Right")
-	right_pan.position = Vector2(beam_right_x - BALANCE_PAN_WIDTH / 2.0, BALANCE_PAN_Y)
+	var right_pan = _make_balance_pan(right_icon, right_count, tally, "Right", pan_w)
+	right_pan.position = Vector2(beam_right_x - pan_w / 2.0, BALANCE_PAN_Y)
 	stage.add_child(right_pan)
 
 	#parent.add_child(tally)
 
-func _make_balance_pan(icon: String, count: int, tally_label: Label, side_name: String) -> Control:
+func _make_balance_pan(icon: String, count: int, tally_label: Label, side_name: String, pan_w: float = BALANCE_PAN_WIDTH) -> Control:
 	var pan = Button.new()
 	pan.text = ""
 	pan.focus_mode = Control.FOCUS_NONE
-	pan.custom_minimum_size = Vector2(BALANCE_PAN_WIDTH, 0)
+	pan.custom_minimum_size = Vector2(pan_w, 0)
 
 	var style = StyleBoxFlat.new()
 	style.bg_color = COLOR_WHITE
@@ -1122,14 +1173,14 @@ func _make_balance_pan(icon: String, count: int, tally_label: Label, side_name: 
 	pan.add_child(margin)
 
 	var flow = _make_flow(6, 6)
-	flow.custom_minimum_size = Vector2(BALANCE_PAN_WIDTH - 24, 0)
+	flow.custom_minimum_size = Vector2(pan_w - 24, 0)
 	flow.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	margin.add_child(flow)
 
 	for i in range(count):
 		var lbl = Label.new()
 		lbl.text = icon
-		lbl.add_theme_font_size_override("font_size", 22)
+		lbl.add_theme_font_size_override("font_size", roundi(_ics(22)))
 		lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		flow.add_child(lbl)
 
@@ -1230,67 +1281,70 @@ func _refresh_option_styles() -> void:
 		btn.add_theme_stylebox_override("hover", style)
 		btn.add_theme_stylebox_override("pressed", style)
 
-func _update_action_button() -> void:
+func _apply_action_style(btn: Button, bg: Color, border: Color, font_color: Color) -> void:
 	var style = StyleBoxFlat.new()
-	style.corner_radius_top_left = 10
-	style.corner_radius_bottom_right = 10
-	style.corner_radius_top_right = 10
-	style.corner_radius_bottom_left = 10
+	style.set_corner_radius_all(10)
 	style.border_width_bottom = 4
-	
-	if exam_status == "complete":
-		action_button.text = "RETURN TO THE HALL"
-		action_button.disabled = false
-		style.bg_color = COLOR_BLUE_500
-		style.border_color = COLOR_BLUE_600
-		action_button.add_theme_color_override("font_color", COLOR_WHITE)
-	elif exam_status == "curriculum_complete":
-		action_button.text = "Exit"
-		action_button.disabled = false
-		style.bg_color = COLOR_BLUE_500
-		style.border_color = COLOR_BLUE_600
-		action_button.add_theme_color_override("font_color", COLOR_WHITE)
-	elif exam_status == "idle":
-		action_button.text = "CAST"
-		if selected_answer == "":
-			action_button.disabled = true
-			style.bg_color = COLOR_SLATE_200
-			style.border_color = COLOR_SLATE_300
-			action_button.add_theme_color_override("font_color", COLOR_SLATE_400)
-		else:
-			action_button.disabled = false
-			style.bg_color = COLOR_BLUE_500
-			style.border_color = COLOR_BLUE_600
-			action_button.add_theme_color_override("font_color", COLOR_WHITE)
-	elif exam_status == "correct":
-		action_button.text = "NEXT SPELL"
-		action_button.disabled = false
-		style.bg_color = COLOR_GREEN_500
-		style.border_color = COLOR_GREEN_500.darkened(0.2)
-		action_button.add_theme_color_override("font_color", COLOR_WHITE)
-	elif exam_status == "incorrect":
-		action_button.text = "ONCE MORE"
-		action_button.disabled = false
-		style.bg_color = COLOR_RED_500
-		style.border_color = COLOR_RED_500.darkened(0.2)
-		action_button.add_theme_color_override("font_color", COLOR_WHITE)
+	style.bg_color = bg
+	style.border_color = border
+	btn.add_theme_stylebox_override("normal", style)
+	btn.add_theme_stylebox_override("disabled", style)
+	btn.add_theme_stylebox_override("hover", style)
 
-	action_button.add_theme_stylebox_override("normal", style)
-	action_button.add_theme_stylebox_override("disabled", style)
-	
 	var pressed_style = style.duplicate()
 	pressed_style.border_width_bottom = 0
 	pressed_style.content_margin_top = 4
-	action_button.add_theme_stylebox_override("pressed", pressed_style)
+	btn.add_theme_stylebox_override("pressed", pressed_style)
+
+	btn.add_theme_color_override("font_color", font_color)
+	btn.add_theme_color_override("font_disabled_color", font_color)
+
+func _update_action_button() -> void:
+	var next_enabled := false
+
+	match exam_status:
+		"complete":
+			action_button.text = "RETURN TO THE HALL"
+			action_button.disabled = false
+			_apply_action_style(action_button, COLOR_BLUE_500, COLOR_BLUE_600, COLOR_WHITE)
+		"curriculum_complete":
+			action_button.text = "Exit"
+			action_button.disabled = false
+			_apply_action_style(action_button, COLOR_BLUE_500, COLOR_BLUE_600, COLOR_WHITE)
+		"idle":
+			action_button.text = "CAST"
+			if selected_answer == "":
+				action_button.disabled = true
+				_apply_action_style(action_button, COLOR_SLATE_200, COLOR_SLATE_300, COLOR_SLATE_400)
+			else:
+				action_button.disabled = false
+				_apply_action_style(action_button, COLOR_BLUE_500, COLOR_BLUE_600, COLOR_WHITE)
+		"correct":
+			# Answer is locked in: CAST is done, NEXT becomes available
+			action_button.text = "CAST"
+			action_button.disabled = true
+			_apply_action_style(action_button, COLOR_SLATE_200, COLOR_SLATE_300, COLOR_SLATE_400)
+			next_enabled = true
+		"incorrect":
+			# Answer is saved and locked: no retry, the player moves on
+			action_button.text = "CAST"
+			action_button.disabled = true
+			_apply_action_style(action_button, COLOR_SLATE_200, COLOR_SLATE_300, COLOR_SLATE_400)
+			next_enabled = true
+			
+	next_button.disabled = not next_enabled
+	if next_enabled:
+		_apply_action_style(next_button, COLOR_GREEN_500, COLOR_GREEN_500.darkened(0.2), COLOR_WHITE)
+	else:
+		_apply_action_style(next_button, COLOR_SLATE_200, COLOR_SLATE_300, COLOR_SLATE_400)
 
 func _on_action_button_pressed() -> void:
 	if exam_status == "complete":
-		# A relearned lesson doesn't advance saved progress; just hop back
-		# to the curriculum-complete screen instead of closing the module.
 		if _is_relearning:
 			_is_relearning = false
 			_show_curriculum_complete()
 			return
+		_player_reward(_get_reward_amount(current_grade, current_lesson))
 		class_end.emit(current_grade, current_lesson)
 		_persist_next_progress()
 		hide()
@@ -1304,53 +1358,84 @@ func _on_action_button_pressed() -> void:
 		return
 
 	var questions = current_lesson_data.get("questions", [])
-	
+
 	if exam_status == "idle":
 		if selected_answer == "": return
-		var correct_ans = str(questions[current_question_idx]["answer"]).to_lower().strip_edges()
+		var q = questions[current_question_idx]
+		var correct_ans = str(q["answer"]).to_lower().strip_edges()
 		var user_ans = selected_answer.to_lower().strip_edges()
-		
-		if user_ans == correct_ans:
-			exam_status = "correct"
-		else:
-			exam_status = "incorrect"
-			
+		var is_correct = user_ans == correct_ans
+
+		_record_answer(q, is_correct)
+
+		exam_status = "correct" if is_correct else "incorrect"
 		_refresh_option_styles()
 		_update_action_button()
-		
-	elif exam_status == "correct":
-		current_question_idx += 1
-		if current_question_idx >= questions.size():
-			_show_lesson_complete()
-		else:
-			_load_current_question()
-			
-	elif exam_status == "incorrect":
-		exam_status = "idle"
-		selected_answer = ""
-		_refresh_option_styles()
-		_update_action_button()
+
+func _record_answer(q: Dictionary, is_correct: bool) -> void:
+	AnalysisReport.record_answer({
+		"timestamp": int(Time.get_unix_time_from_system()),
+		"datetime": Time.get_datetime_string_from_system(false, true),
+		"session": _session_id,
+		"grade": current_grade,
+		"lesson": current_lesson,
+		"lesson_title": str(current_lesson_data.get("title", current_lesson)),
+		"question_idx": current_question_idx,
+		"question": str(q.get("text", "")),
+		"selected_answer": selected_answer,
+		"correct_answer": str(q.get("answer", "")),
+		"is_correct": is_correct,
+		"time_ms": Time.get_ticks_msec() - _question_start_ms,
+		"relearn": _is_relearning
+	})
+
+func _on_next_button_pressed() -> void:
+	if exam_status != "correct" and exam_status != "incorrect": return
+	var questions = current_lesson_data.get("questions", [])
+	current_question_idx += 1
+	if current_question_idx >= questions.size():
+		_show_lesson_complete()
+	else:
+		_load_current_question()
 
 func _persist_next_progress() -> void:
 	var grade_num = current_grade.trim_prefix("g").to_int()
 	var lesson_num = 1
 
-	var lesson_parts = current_lesson.split("-l")
-	if lesson_parts.size() > 1:
-		lesson_num = lesson_parts[1].to_int()
+	var next_grade : String
+	var next_lesson : String
 
-	lesson_num += 1
-	if lesson_num > LESSONS_PER_GRADE:
-		lesson_num = 1
+	if _is_final_exam(current_grade, current_lesson):
+		# Final exam passed: move past the last grade. Nothing exists there,
+		# so the class will show the "all classes completed" screen from now on.
 		grade_num += 1
+		next_grade = "g%d" % grade_num
+		next_lesson = "g%d-l1" % grade_num
+	else:
+		var lesson_parts = current_lesson.split("-l")
+		if lesson_parts.size() > 1:
+			lesson_num = lesson_parts[1].to_int()
 
-	var next_grade = "g%d" % grade_num
-	var next_lesson = "g%d-l%d" % [grade_num, lesson_num]
+		lesson_num += 1
+		if lesson_num > LESSONS_PER_GRADE:
+			lesson_num = 1
+			grade_num += 1
+
+		next_grade = "g%d" % grade_num
+		if next_grade == FINAL_EXAM_GRADE:
+			# Finished the last regular lesson (g3-l10): the final exam is next.
+			next_lesson = FINAL_EXAM_LESSON
+		else:
+			next_lesson = "g%d-l%d" % [grade_num, lesson_num]
 
 	db.query("UPDATE progress SET current_grade = '%s', current_lesson = '%s' WHERE is_active = true" % [next_grade, next_lesson])
 
 ## Checks whether a given grade/lesson id is present in the loaded curriculum.
 func _lesson_exists(grade: String, lesson_id: String) -> bool:
+	# The final exam only counts as available for exactly g4 + "final".
+	# Anything else falls through to the "all classes completed" screen.
+	if lesson_id == FINAL_EXAM_LESSON and grade != FINAL_EXAM_GRADE:
+		return false
 	if not lesson_database.has(grade):
 		return false
 	for lesson in lesson_database[grade]:
@@ -1358,9 +1443,20 @@ func _lesson_exists(grade: String, lesson_id: String) -> bool:
 			return true
 	return false
 
+## True only for the exclusive final exam (grade 4, lesson "final").
+func _is_final_exam(grade: String, lesson_id: String) -> bool:
+	return grade == FINAL_EXAM_GRADE and lesson_id == FINAL_EXAM_LESSON
+
 func _show_lesson_complete() -> void:
 	_cancel_typewriter()
 	exam_status = "complete"
+	
+	if _is_relearning:
+		lesson_complete_label.text = "Spell Mastered!"
+	else:
+		lesson_complete_label.text = "Spell Mastered!\n+%d KP" % _get_reward_amount(current_grade, current_lesson)
+		
+	
 	main_container.hide()
 	relearn_button.hide()
 
@@ -1424,6 +1520,14 @@ func _populate_relearn_grid() -> void:
 		if typeof(lessons) != TYPE_ARRAY or lessons.is_empty():
 			continue
 
+		# The final exam is exclusive and is never offered for relearning.
+		var relearn_lessons : Array = []
+		for lesson in lessons:
+			if lesson.has("id") and not _is_final_exam(String(grade), str(lesson["id"])):
+				relearn_lessons.append(lesson)
+		if relearn_lessons.is_empty():
+			continue
+
 		var grade_label = Label.new()
 		grade_label.text = "Grade %s" % String(grade).trim_prefix("g")
 		grade_label.add_theme_font_size_override("font_size", 20)
@@ -1436,7 +1540,7 @@ func _populate_relearn_grid() -> void:
 		grid.add_theme_constant_override("v_separation", 14)
 		relearn_grades_vbox.add_child(grid)
 
-		for lesson in lessons:
+		for lesson in relearn_lessons:
 			if not lesson.has("id"):
 				continue
 			var lesson_id = str(lesson["id"])
@@ -1458,6 +1562,8 @@ func _populate_relearn_grid() -> void:
 ## Enters a lesson chosen from the relearn grid without touching saved
 ## progress (see _is_relearning usage in _on_action_button_pressed()).
 func _on_relearn_lesson_selected(grade: String, lesson_id: String) -> void:
+	if _is_final_exam(grade, lesson_id):
+		return
 	_is_relearning = true
 	current_grade = grade
 	current_lesson = lesson_id
@@ -1495,3 +1601,24 @@ func _spawn_confetti() -> void:
 		emitter.emitting = true
 
 		get_tree().create_timer(3.5).timeout.connect(emitter.queue_free)
+
+func _get_reward_amount(grade: String, lesson_id: String) -> int:
+	var grade_num := grade.trim_prefix("g").to_int()
+	var lesson_num := 1
+	var parts := lesson_id.split("-l")
+	if parts.size() > 1:
+		lesson_num = parts[1].to_int()
+	if _is_final_exam(grade, lesson_id):
+		lesson_num = LESSONS_PER_GRADE
+
+	var reward := 50                  
+	reward += (grade_num - 1) * 10  
+	reward += (lesson_num - 1) * 2   
+	if lesson_num == LESSONS_PER_GRADE:
+		reward += 50                
+	return reward
+
+func _player_reward(KP_amount):
+	var total_kp = GameManager.kp_amount + KP_amount
+	db.query("UPDATE progress SET kp = %d WHERE is_active = true" % total_kp)
+	GameManager._update_KP()

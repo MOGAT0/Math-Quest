@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://rahllimxmbge" path="res://scenes/main_scene/chapter_8.gd" id="1_ea6pw"]
 [ext_resource type="Texture2D" uid="uid://dnoaet08k8hd2" path="res://assets/ui/bg/forest_bg_night.jpg" id="2_8k8t2"]
 [ext_resource type="Shader" uid="uid://c71n5bdme4ecy" path="res://assets/shaders/bg.gdshader" id="2_docfs"]
-[ext_resource type="Texture2D" uid="uid://qv4s3575f7ek" path="res://assets/ui/entities/matthew-normal-bg.png" id="3_8k8t2"]
+[ext_resource type="Texture2D" uid="uid://bx0uoq0084k8k" path="res://assets/ui/entities/matthew-smille-bg.png" id="4_6jodv"]
 [ext_resource type="Texture2D" uid="uid://cycvscej8vgxk" path="res://assets/ui/entities/arith-normal.png" id="4_50wf2"]
 [ext_resource type="Texture2D" uid="uid://bd1k5sixdfdp8" path="res://assets/ui/entities/wizard.png" id="6_docfs"]
 [ext_resource type="Shader" uid="uid://b8stk2g7mc7vm" path="res://assets/shaders/grunge_border.gdshader" id="7_50wf2"]
@@ -73,10 +73,9 @@ anchor_top = 0.22839506
 anchor_right = 0.3923611
 anchor_bottom = 1.0061729
 offset_bottom = -6.1035156e-05
-texture = ExtResource("3_8k8t2")
+texture = ExtResource("4_6jodv")
 expand_mode = 1
 stretch_mode = 5
-metadata/_edit_use_anchors_ = true
 
 [node name="entity2" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -89,7 +88,6 @@ anchor_bottom = 0.9984568
 texture = ExtResource("4_50wf2")
 expand_mode = 1
 stretch_mode = 5
-metadata/_edit_use_anchors_ = true
 
 [node name="entity3" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -142,7 +140,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = ExtResource("8_6jodv")
-metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 2
@@ -161,7 +158,7 @@ text = "name"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 20
 text = "In a corner inside the classroom, there was Matthew."
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer"]

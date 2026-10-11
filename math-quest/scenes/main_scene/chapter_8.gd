@@ -48,6 +48,8 @@ func _ready() -> void:
 
 
 func start_typewriter(dialogue_text: String) -> void:
+	if visible:
+		MusicPlayer.one_shot = true
 	text_label.text = dialogue_text
 	text_label.visible_characters = 0
 	
@@ -59,7 +61,10 @@ func start_typewriter(dialogue_text: String) -> void:
 	var duration: float = dialogue_text.length() * type_speed
 	
 	tween.tween_property(text_label, "visible_characters", dialogue_text.length(), duration)
-
+	tween.finished.connect(func():
+		MusicPlayer.one_shot = false
+	)
+	
 func trigger_signal(value : signalType) -> void:
 	match value:
 		signalType.Start:
@@ -158,6 +163,7 @@ func advance_to_next_chapter() -> void:
 func _on_next_pressed() -> void:
 	if tween and tween.is_running():
 		tween.kill()
+		MusicPlayer.one_shot = false
 		text_label.visible_characters = -1
 	else:
 		show_next_dialogue()

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b4rgsagc4f03a" path="res://scenes/main_scene/chapter_6.gd" id="1_mf40r"]
 [ext_resource type="Texture2D" uid="uid://balcykhmk7utj" path="res://assets/ui/bg/innerview_school.jpg" id="2_jq8cq"]
 [ext_resource type="Shader" uid="uid://c71n5bdme4ecy" path="res://assets/shaders/bg.gdshader" id="3_0fg21"]
-[ext_resource type="Texture2D" uid="uid://qv4s3575f7ek" path="res://assets/ui/entities/matthew-normal-bg.png" id="4_22jwn"]
+[ext_resource type="Texture2D" uid="uid://bx0uoq0084k8k" path="res://assets/ui/entities/matthew-smille-bg.png" id="4_22jwn"]
 [ext_resource type="Texture2D" uid="uid://cycvscej8vgxk" path="res://assets/ui/entities/arith-normal.png" id="5_h3ceo"]
 [ext_resource type="Texture2D" uid="uid://ccj6rptgdw3ob" path="res://assets/ui/entities/MrArchimedes.png" id="6_jq8cq"]
 [ext_resource type="Shader" uid="uid://b8stk2g7mc7vm" path="res://assets/shaders/grunge_border.gdshader" id="7_22jwn"]
@@ -160,7 +160,7 @@ text = "name"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 20
 text = "In a corner inside the classroom, there was Matthew."
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer"]

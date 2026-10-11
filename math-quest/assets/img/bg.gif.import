@@ -1,0 +1,16 @@
+[remap]
+
+importer="texture_gif"
+importer_version=2
+type="GIFTexture"
+uid="uid://cidrtawfa105g"
+path="res://.godot/imported/bg.gif-977839ba3ab7c23dc6db0b5b2dda984f.res"
+
+[deps]
+
+source_file="res://assets/img/bg.gif"
+dest_files=["res://.godot/imported/bg.gif-977839ba3ab7c23dc6db0b5b2dda984f.res"]
+
+[params]
+
+storage/compress=true

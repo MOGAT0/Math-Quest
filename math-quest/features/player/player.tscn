@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://d2tlvphqoq6ok"]
+[gd_scene load_steps=52 format=3 uid="uid://d2tlvphqoq6ok"]
 
 [ext_resource type="Script" uid="uid://ddchdq6sjtre7" path="res://features/player/script/player.gd" id="1_sjcu7"]
 [ext_resource type="Texture2D" uid="uid://daeplqk8xxe5y" path="res://assets/environment/shadow.png" id="2_emvbc"]
@@ -14,15 +14,18 @@
 [ext_resource type="Script" uid="uid://bomudbohmjmfa" path="res://features/player/target_indicator.gd" id="12_5rlqq"]
 [ext_resource type="Script" uid="uid://b6e3rl7h66vvx" path="res://features/player/touch_control.gd" id="13_1ncrl"]
 [ext_resource type="Script" uid="uid://crjlkg2q7arjn" path="res://addons/virtual_joystick_plus/virtual_joystick_plus.gd" id="13_4kvd7"]
-[ext_resource type="Texture2D" uid="uid://bqrl1tfugklvx" path="res://addons/virtual_joystick_plus/resources/textures/joystick_texture_5.png" id="14_m333p"]
-[ext_resource type="Texture2D" uid="uid://853skcmfj2mw" path="res://addons/virtual_joystick_plus/resources/textures/stick_texture_4.png" id="15_4kvd7"]
+[ext_resource type="Texture2D" uid="uid://cw4iqu52ngd1" path="res://mathquest_logo(circle).png" id="13_lna2h"]
+[ext_resource type="Texture2D" uid="uid://cbwgqi3t7uf2y" path="res://addons/virtual_joystick_plus/resources/textures/joystick_texture_1.png" id="14_lna2h"]
+[ext_resource type="Texture2D" uid="uid://mp7d4sd5s0ks" path="res://addons/virtual_joystick_plus/resources/textures/stick_texture_1.png" id="15_ftx3j"]
 [ext_resource type="PackedScene" uid="uid://ba2hg2qsp88sg" path="res://core/components/setting/setting.tscn" id="16_m333p"]
 [ext_resource type="Texture2D" uid="uid://cbr6abwxmc1ja" path="res://assets/ui/icon/crystalspng.png" id="18_8m8b1"]
 [ext_resource type="Script" uid="uid://b8p5734srdsqq" path="res://features/player/reward_UI.gd" id="19_mhvub"]
 [ext_resource type="Shader" uid="uid://c71n5bdme4ecy" path="res://assets/shaders/bg.gdshader" id="20_jec2r"]
 [ext_resource type="Texture2D" uid="uid://brj8ih3w38hx4" path="res://assets/ui/bg/panel-reward.png" id="20_x3ag6"]
+[ext_resource type="Texture2D" uid="uid://cp5vp73mute24" path="res://assets/ui/icon/energy_icon.png" id="22_ftx3j"]
 [ext_resource type="FontFile" uid="uid://wbjufq0cuj84" path="res://assets/fonts/PressStart2P-Regular.ttf" id="22_lrnek"]
 [ext_resource type="Texture2D" uid="uid://dif7n46e1pcek" path="res://assets/ui/btn/x.png" id="23_d5tpd"]
+[ext_resource type="AudioStream" uid="uid://doebjty8g56s8" path="res://assets/audio/step.ogg" id="26_ftx3j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fcb3x"]
 radius = 2.0
@@ -139,6 +142,44 @@ _data = {
 &"walk_up": SubResource("Animation_7mbft")
 }
 
+[sub_resource type="Animation" id="Animation_lna2h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("step:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ocbvg"]
+resource_name = "step"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("step:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ftx3j"]
+_data = {
+&"RESET": SubResource("Animation_lna2h"),
+&"step": SubResource("Animation_ocbvg")
+}
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5rlqq"]
 shader = ExtResource("9_uqugw")
 shader_parameter/tolerance = 0.01
@@ -194,6 +235,56 @@ region_rect = Rect2(534, 180, 262, 374)
 texture = ExtResource("18_8m8b1")
 region_rect = Rect2(68, 204, 402.59467, 340)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocbvg"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.60861856, 0.44627932, 0.24827306, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lna2h"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 4
+border_color = Color(0.4117474, 0.28500313, 0.12734567, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftx3j"]
+bg_color = Color(0.034796007, 0.69687116, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 3
+anti_aliasing = false
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lna2h"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("26_ftx3j")
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
@@ -235,6 +326,12 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="step_anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_ftx3j")
+}
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
 debug_use_custom = true
@@ -270,6 +367,7 @@ layout_mode = 1
 anchors_preset = 0
 offset_right = 150.0
 offset_bottom = 80.0
+scale = Vector2(1.5, 1.5)
 script = ExtResource("8_uqugw")
 
 [node name="TextureRect" type="TextureRect" parent="UI/hud/clock"]
@@ -295,7 +393,7 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
-rotation = 3.1415927
+rotation = 1.7715092
 scale = Vector2(0.8, 0.8)
 
 [node name="TextureRect2" type="TextureRect" parent="UI/hud/clock/claw"]
@@ -332,27 +430,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_47rrt")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 21
 text = "10:00 AM"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="target_indicator" type="Control" parent="UI/hud"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("12_5rlqq")
-indicator_size = 0.0
-border_width = 0.0
-icon_padding = 0.0
-arrow_length = 25.0
-arrow_width = 12.0
-arrow_gap = 0.0
-hide_when_on_screen = true
 
 [node name="touch_control" type="Control" parent="UI/hud"]
 layout_mode = 1
@@ -365,6 +446,7 @@ mouse_filter = 1
 script = ExtResource("13_1ncrl")
 
 [node name="joystick" type="Control" parent="UI/hud/touch_control"]
+visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 1
 anchors_preset = 2
@@ -376,40 +458,45 @@ grow_vertical = 0
 pivot_offset = Vector2(238, 150)
 mouse_filter = 1
 script = ExtResource("13_4kvd7")
+joystick_mode = 1
+visibility_mode = 1
 only_mobile = true
-joystick_texture = ExtResource("14_m333p")
-stick_preset_texture = 4
-stick_texture = ExtResource("15_4kvd7")
+joystick_preset_texture = 1
+joystick_texture = ExtResource("14_lna2h")
+joystick_opacity = 0.5
+stick_use_textures = false
+stick_preset_texture = 1
+stick_texture = ExtResource("15_ftx3j")
+stick_opacity = 0.5
 metadata/_custom_type_script = "uid://crjlkg2q7arjn"
 
 [node name="fps" type="Label" parent="UI/hud"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -104.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_right = 52.0
 offset_bottom = 40.0
-grow_horizontal = 0
+grow_horizontal = 2
 text = "000"
-horizontal_alignment = 2
-
-[node name="Setting" parent="UI/hud" instance=ExtResource("16_m333p")]
-visible = false
-layout_mode = 1
+horizontal_alignment = 1
 
 [node name="crystals" type="VBoxContainer" parent="UI/hud"]
 unique_name_in_owner = true
-layout_mode = 0
+visible = false
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.010416667
-anchor_top = 0.1095679
+anchor_top = 0.1574074
 anchor_right = 0.067708336
-anchor_bottom = 0.3472222
-offset_bottom = 1.5258789e-05
+anchor_bottom = 0.4074074
+offset_bottom = -4.0000153
+metadata/_edit_use_anchors_ = true
 
 [node name="emerald" type="PanelContainer" parent="UI/hud/crystals"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(40, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -419,7 +506,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_mhvub")
 
 [node name="ruby" type="PanelContainer" parent="UI/hud/crystals"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(40, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -429,7 +515,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_x3ag6")
 
 [node name="diamond" type="PanelContainer" parent="UI/hud/crystals"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(45, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -439,14 +524,13 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_jec2r")
 
 [node name="currency" type="HBoxContainer" parent="UI/hud"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -209.0
+offset_left = -71.0
 offset_top = -40.0
 offset_right = -7.0
 offset_bottom = -5.0
@@ -464,6 +548,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="kp" type="Label" parent="UI/hud/currency"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.95484024, 0.76781565, 0.18856215, 1)
@@ -606,6 +691,63 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
+
+[node name="stamina" type="PanelContainer" parent="UI/hud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.94791675
+anchor_top = 0.13580246
+anchor_right = 0.9826389
+anchor_bottom = 0.3580247
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ocbvg")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/hud/stamina"]
+layout_mode = 2
+
+[node name="Label" type="TextureRect" parent="UI/hud/stamina/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+texture = ExtResource("22_ftx3j")
+expand_mode = 1
+
+[node name="stamina_bar" type="ProgressBar" parent="UI/hud/stamina/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_lna2h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ftx3j")
+value = 49.48
+fill_mode = 3
+show_percentage = false
+
+[node name="target_indicator" type="Control" parent="UI/hud"]
+unique_name_in_owner = true
+z_index = 20
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_5rlqq")
+main_icon = ExtResource("13_lna2h")
+main_color = Color(0.11764706, 0.5647059, 1, 1)
+indicator_size = 0.0
+border_width = 0.0
+icon_padding = 0.0
+arrow_length = 50.0
+arrow_width = 40.0
+
+[node name="Setting" parent="UI/hud" instance=ExtResource("16_m333p")]
+layout_mode = 1
+
+[node name="step" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_lna2h")
+volume_db = -8.0
+bus = &"SFX"
 
 [connection signal="analogic_changed" from="UI/hud/touch_control/joystick" to="." method="_on_virtual_joystick_plus_analogic_changed"]
 [connection signal="pressed" from="UI/hud/reward/exit" to="UI/hud/reward" method="_on_exit_pressed"]

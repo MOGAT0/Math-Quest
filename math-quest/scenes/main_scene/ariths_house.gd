@@ -5,6 +5,7 @@ extends Area2D
 
 @export var next_loc : Marker2D
 @export var arithsbed : Marker2D
+@export var matthewsbed : Marker2D
 @onready var transition_fx: TransitionFX = %TransitionFx
 
 func _ready() -> void:
@@ -17,7 +18,7 @@ func _on_body_entered(body: Node2D) -> void:
 		teleport(body,next_loc.global_position)
 		await get_tree().process_frame
 		GameManager.arith_goto = arithsbed.global_position
-		GameManager.target_location = arithsbed
+		GameManager.target_location = matthewsbed
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
