@@ -26,11 +26,13 @@ var current_avatar: String
 @onready var kp: Label = %kp
 
 @onready var stamina_bar: ProgressBar = %stamina_bar
+@onready var interact_btn: Button = %interact_btn
 
 var is_navigating: bool = false
 var joystick_direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	interact_btn.hide()
 	_onload_show_crystal()
 	call_deferred("setup_navigation")
 	#currency.hide()
@@ -131,3 +133,42 @@ func _on_cutscene_player_cutscene_started() -> void:
 
 func _on_cutscene_player_cutscene_ended() -> void:
 	hud.show()
+
+
+
+func _on_interact_btn_button_down() -> void:
+	var event = InputEventAction.new()
+	event.action = "interact"
+	event.pressed = true
+	Input.parse_input_event(event)
+	print("pressed")
+
+
+func _on_interact_btn_button_up() -> void:
+	var event = InputEventAction.new()
+	event.action = "interact"
+	event.pressed = false
+	Input.parse_input_event(event)
+	print("released")
+
+
+func _on_indicator_visibility_area_entered(area: Area2D) -> void:
+	if area.name == "matthew_sleep":
+		_mobile_btn_state()
+	elif area.owner is Merchant:
+		_mobile_btn_state()
+
+
+func _on_indicator_visibility_area_exited(area: Area2D) -> void:
+	if area.name == "matthew_sleep":
+		interact_btn.hide()
+	elif area.owner is Merchant:
+		interact_btn.hide()
+
+
+func _mobile_btn_state() -> void:
+	#interact_btn.show()
+	if OS.get_name().to_lower() in ["android", "ios"]:
+		interact_btn.show()
+	else:
+		interact_btn.hide()

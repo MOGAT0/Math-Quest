@@ -265,13 +265,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_wfnrt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_l1ns0")
-value = 33.1
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -286,8 +284,9 @@ grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.03, 0.03)
 pivot_offset = Vector2(1024, 1024)
-value = 27.0
+value = 28.0
 fill_mode = 4
+nine_patch_stretch = true
 texture_progress = ExtResource("2_h5gtl")
 
 [node name="TransitionFx" parent="." instance=ExtResource("5_rpqkn")]

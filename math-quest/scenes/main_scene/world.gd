@@ -292,11 +292,11 @@ func _on_in_acd_entrace_body_exited(body: Node2D) -> void:
 		current_destination_key = ""
 		
 func teleport(character: CharacterBody2D, location: Vector2) -> void:
-	await get_tree().create_timer(0.5).timeout
-	character.set_deferred("global_position", location)
 	if character is Player and transition_fx:
 		await get_tree().process_frame
 		transition_fx.transition = true
+	await get_tree().create_timer(0.3).timeout
+	character.set_deferred("global_position", location)
 	
 
 func _on_arith_home_exit_body_entered(body: Node2D) -> void:

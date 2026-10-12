@@ -73,7 +73,7 @@ func _setup_bootsplash() -> void:
 		animation_player.animation_finished.connect(_on_animation_player_animation_finished)
 
 	if OS.get_name().to_lower() in ["android", "ios"]:
-		DisplayServer.window_set_size(Vector2i(1252, 648))
+		DisplayServer.window_set_size(Vector2i(1280, 720))
 		get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
 		get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
 
@@ -85,7 +85,7 @@ func _process(_delta: float) -> void:
 	if _is_transitioning:
 		return
 
-	loading_txt.text = "[pulse][wave]" + custom_loading_text + "[/wave][/pulse]"
+	loading_txt.text = "[pulse][wave]" + custom_loading_text + load_percent + "[/wave][/pulse]"
 
 	var all_loaded := true
 	var total := 0.0

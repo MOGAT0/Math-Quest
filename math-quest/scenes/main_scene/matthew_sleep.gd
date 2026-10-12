@@ -4,7 +4,7 @@ signal is_chapterDone(chapter : String)
 signal wokeUp
 
 @onready var matthew_sleeping: Sprite2D = %matthew_sleeping
-@onready var indicator: Sprite2D = %indicator
+#@onready var indicator: Sprite2D = %indicator
 @onready var key_label: Label = %key_label
 @onready var letter: Letter = %Letter
 @onready var transition_fx: TransitionFX = %TransitionFx
@@ -42,7 +42,7 @@ func go_to_sleep() -> void:
 	transition_fx.extend_time = (wait_time - 1)
 	transition_fx.transition = true
 	
-	indicator.hide()
+	#indicator.hide()
 	is_sleeping = true
 	matthew_sleeping.show()
 	active_player.hide()
@@ -79,23 +79,15 @@ func wake_up() -> void:
 	
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		indicator.show()
+		#indicator.show()
 		if OS.get_name().to_lower() not in ["android", "ios"]:
 			key_label.show()
 		active_player = body
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
-		indicator.hide()
+		#indicator.hide()
 		key_label.hide()
 		if is_sleeping:
 			wake_up()
 		active_player = null
-
-
-func _on_sleep_btn_pressed() -> void:
-	go_to_sleep()
-
-
-func _on_sleep_btn_released() -> void:
-	pass

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qh2a3y2no780"
-path="res://.godot/imported/Interiors_free_16x16.png-6bb1f838cbf3714905efb01bd0212ecf.ctex"
+uid="uid://d13c4fobetkl"
+path="res://.godot/imported/interact_btn1.png-32e22010cde9faea53bc16c715b51ee3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/Interiors_free_16x16.png"
-dest_files=["res://.godot/imported/Interiors_free_16x16.png-6bb1f838cbf3714905efb01bd0212ecf.ctex"]
+source_file="res://assets/ui/btn/interact_btn1.png"
+dest_files=["res://.godot/imported/interact_btn1.png-32e22010cde9faea53bc16c715b51ee3.ctex"]
 
 [params]
 

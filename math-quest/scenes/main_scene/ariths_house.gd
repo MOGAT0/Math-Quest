@@ -25,10 +25,11 @@ func _on_body_exited(body: Node2D) -> void:
 		pass
 
 func teleport(character: CharacterBody2D, location: Vector2) -> void:
-	character.set_deferred("global_position", location)
 	if character is Player and transition_fx:
 		await get_tree().process_frame
 		transition_fx.transition = true
+	await get_tree().create_timer(0.3).timeout
+	character.set_deferred("global_position", location)
 
 func _on_chapter_7_is_chapter_done(_chapter: String) -> void:
 	await get_tree().process_frame

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://d2tlvphqoq6ok"]
+[gd_scene load_steps=54 format=3 uid="uid://d2tlvphqoq6ok"]
 
 [ext_resource type="Script" uid="uid://ddchdq6sjtre7" path="res://features/player/script/player.gd" id="1_sjcu7"]
 [ext_resource type="Texture2D" uid="uid://daeplqk8xxe5y" path="res://assets/environment/shadow.png" id="2_emvbc"]
@@ -12,11 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://8fohb4tun3wl" path="res://assets/img/game clock hand.png" id="9_47rrt"]
 [ext_resource type="Shader" uid="uid://c8ati8ffrm6o4" path="res://assets/shaders/color_swap.gdshader" id="9_uqugw"]
 [ext_resource type="Script" uid="uid://bomudbohmjmfa" path="res://features/player/target_indicator.gd" id="12_5rlqq"]
-[ext_resource type="Script" uid="uid://b6e3rl7h66vvx" path="res://features/player/touch_control.gd" id="13_1ncrl"]
 [ext_resource type="Script" uid="uid://crjlkg2q7arjn" path="res://addons/virtual_joystick_plus/virtual_joystick_plus.gd" id="13_4kvd7"]
 [ext_resource type="Texture2D" uid="uid://cw4iqu52ngd1" path="res://mathquest_logo(circle).png" id="13_lna2h"]
 [ext_resource type="Texture2D" uid="uid://cbwgqi3t7uf2y" path="res://addons/virtual_joystick_plus/resources/textures/joystick_texture_1.png" id="14_lna2h"]
 [ext_resource type="Texture2D" uid="uid://mp7d4sd5s0ks" path="res://addons/virtual_joystick_plus/resources/textures/stick_texture_1.png" id="15_ftx3j"]
+[ext_resource type="Texture2D" uid="uid://d13c4fobetkl" path="res://assets/ui/btn/interact_btn1.png" id="16_bc4qc"]
 [ext_resource type="PackedScene" uid="uid://ba2hg2qsp88sg" path="res://core/components/setting/setting.tscn" id="16_m333p"]
 [ext_resource type="Texture2D" uid="uid://cbr6abwxmc1ja" path="res://assets/ui/icon/crystalspng.png" id="18_8m8b1"]
 [ext_resource type="Script" uid="uid://b8p5734srdsqq" path="res://features/player/reward_UI.gd" id="19_mhvub"]
@@ -201,6 +201,8 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 anti_aliasing = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ftx3j"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mhvub"]
 texture = ExtResource("18_8m8b1")
 region_rect = Rect2(909, 180, 270, 369)
@@ -284,6 +286,9 @@ anti_aliasing = false
 random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("26_ftx3j")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ftx3j"]
+radius = 1.8
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -443,7 +448,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("13_1ncrl")
 
 [node name="joystick" type="Control" parent="UI/hud/touch_control"]
 visible = false
@@ -469,6 +473,26 @@ stick_preset_texture = 1
 stick_texture = ExtResource("15_ftx3j")
 stick_opacity = 0.5
 metadata/_custom_type_script = "uid://crjlkg2q7arjn"
+
+[node name="interact_btn" type="Button" parent="UI/hud/touch_control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -383.0
+offset_top = -253.0
+offset_right = -136.0
+offset_bottom = -48.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ftx3j")
+icon = ExtResource("16_bc4qc")
+flat = true
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="fps" type="Label" parent="UI/hud"]
 unique_name_in_owner = true
@@ -749,5 +773,16 @@ stream = SubResource("AudioStreamRandomizer_lna2h")
 volume_db = -8.0
 bus = &"SFX"
 
+[node name="indicator_visibility" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="indicator_visibility"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_ftx3j")
+debug_color = Color(0.70196074, 0, 0.65878946, 0.41960785)
+
 [connection signal="analogic_changed" from="UI/hud/touch_control/joystick" to="." method="_on_virtual_joystick_plus_analogic_changed"]
+[connection signal="button_down" from="UI/hud/touch_control/interact_btn" to="." method="_on_interact_btn_button_down"]
+[connection signal="button_up" from="UI/hud/touch_control/interact_btn" to="." method="_on_interact_btn_button_up"]
 [connection signal="pressed" from="UI/hud/reward/exit" to="UI/hud/reward" method="_on_exit_pressed"]
+[connection signal="area_entered" from="indicator_visibility" to="." method="_on_indicator_visibility_area_entered"]
+[connection signal="area_exited" from="indicator_visibility" to="." method="_on_indicator_visibility_area_exited"]

@@ -1,11 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://crwgkc7df5lli"]
+[gd_scene load_steps=9 format=3 uid="uid://crwgkc7df5lli"]
 
 [ext_resource type="Script" uid="uid://b0uq7gdae842v" path="res://features/merchants/merchant.gd" id="1_iq53o"]
 [ext_resource type="Shader" uid="uid://c8ati8ffrm6o4" path="res://assets/shaders/color_swap.gdshader" id="2_wbwwx"]
 [ext_resource type="PackedScene" uid="uid://dmwwbfq8ne10u" path="res://core/components/vendors/vendors_UI.tscn" id="3_wbwwx"]
 [ext_resource type="Texture2D" uid="uid://cpbxkyflht1hn" path="res://assets/ui/keys/E.png" id="4_rpukg"]
-[ext_resource type="Texture2D" uid="uid://bjhoy02veiaxu" path="res://icon.svg" id="5_u17vp"]
-[ext_resource type="Texture2D" uid="uid://di7ealxbqi0v1" path="res://animation_controller_node_icon_.png" id="6_avhkf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wbwwx"]
 shader = ExtResource("2_wbwwx")
@@ -98,16 +96,8 @@ scale = Vector2(0.36764705, 0.375)
 texture = ExtResource("4_rpukg")
 hframes = 2
 
-[node name="interact" type="TouchScreenButton" parent="."]
-modulate = Color(1, 1, 1, 0)
-z_index = 4096
-y_sort_enabled = true
-position = Vector2(-7, -20)
-scale = Vector2(0.109375, 0.1640625)
-texture_normal = ExtResource("5_u17vp")
-texture_pressed = ExtResource("6_avhkf")
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-7, -23, 15, 25)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="pressed" from="interact" to="." method="_on_interact_pressed"]
-[connection signal="released" from="interact" to="." method="_on_interact_released"]

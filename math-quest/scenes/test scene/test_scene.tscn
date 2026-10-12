@@ -1,10 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhqbio0n88xsb"]
+[gd_scene load_steps=7 format=3 uid="uid://dhqbio0n88xsb"]
 
 [ext_resource type="Script" uid="uid://cmg2ourjvd5ox" path="res://scenes/test scene/test_scene.gd" id="1_5kwxl"]
 [ext_resource type="PackedScene" uid="uid://d2tlvphqoq6ok" path="res://features/player/player.tscn" id="2_s5g1l"]
+[ext_resource type="PackedScene" uid="uid://crwgkc7df5lli" path="res://features/merchants/merchant.tscn" id="3_s5g1l"]
+[ext_resource type="Texture2D" uid="uid://bjhoy02veiaxu" path="res://icon.svg" id="50_xh2h6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwv4p"]
+size = Vector2(45.000015, 29.33252)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ofa4l"]
 
 [node name="test_scene" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5kwxl")
 
 [node name="Player" parent="." instance=ExtResource("2_s5g1l")]
+
+[node name="merchant" parent="." instance=ExtResource("3_s5g1l")]
+position = Vector2(120, -32)
+
+[node name="merchant2" parent="." instance=ExtResource("3_s5g1l")]
+position = Vector2(-152, 104)
+
+[node name="merchant3" parent="." instance=ExtResource("3_s5g1l")]
+position = Vector2(-152, -8)
+
+[node name="merchant4" parent="." instance=ExtResource("3_s5g1l")]
+position = Vector2(120, 96)
+
+[node name="merchant5" parent="." instance=ExtResource("3_s5g1l")]
+position = Vector2(-16, -112)
+
+[node name="matthew_sleep" type="Area2D" parent="."]
+position = Vector2(8, 80)
+
+[node name="sleep_BTN" type="TouchScreenButton" parent="matthew_sleep"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-12.227509, -11.66748)
+scale = Vector2(0.1640626, 0.19531283)
+texture_normal = ExtResource("50_xh2h6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="matthew_sleep"]
+position = Vector2(-5.7275085, 4.66626)
+shape = SubResource("RectangleShape2D_rwv4p")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="matthew_sleep"]
+position = Vector2(-5.499999, 4.5000024)
+scale = Vector2(41, 27.000002)
+mesh = SubResource("QuadMesh_ofa4l")
