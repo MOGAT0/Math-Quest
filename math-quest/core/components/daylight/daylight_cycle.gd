@@ -30,7 +30,10 @@ func _process(delta: float) -> void:
 		self.current_time += game_hours_per_second * delta
 	else:
 		self.current_time = GameManager.current_time
-		if is_sleep_task_done:
+		# At night the arrow points home, except while a festival still
+		# needs it (it can start at midnight); once its badge is earned
+		# the arrow goes home as usual
+		if is_sleep_task_done and not FestivalDirector.holds_main_target():
 			if GameManager.current_time > 21 or GameManager.current_time <= 4:
 				GameManager.target_location = %arith_house
 			

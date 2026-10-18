@@ -7,6 +7,9 @@ var arith_goto: Vector2 = Vector2.ZERO
 
 var target_location: Marker2D
 var sideQuest_locations: Dictionary[String, Marker2D]
+## Key of the side quest in progress (e.g. an accepted fetch task). While
+## set, the target indicator only shows that quest's side indicators.
+var side_quest_focus: String = ""
 
 var next_scene: String = ""
 var loaded_world_scene : PackedScene
@@ -34,6 +37,8 @@ func go_to_loading(next: String = "", load_world := false, to_world := false, te
 #region day and night cycle
 signal hour_changed(new_hour: float)
 signal time_state_changed(is_enabled: bool)
+## The running clock passed 24:00 (CalendarManager starts the next day).
+signal midnight_passed
 
 var game_time_enabled: bool = false:
 	set(value):
@@ -75,13 +80,33 @@ func refill_stamina(value: float) -> void:
 	player_stamina = clampf(player_stamina, 0.0, max_stamina)
 
 func _ready() -> void:
+	DataManager.data_cleared.connect(_on_data_cleared)
 	await get_tree().process_frame
 	_update_KP()
-	
+
 func _update_KP() -> void:
 	var data = db.query("SELECT kp FROM progress WHERE is_active = true")
-	# {to-do} Add error handling/null checks in case the db query fails or returns empty
-	kp_amount = data.data[0].kp
+	var rows = data.get("data") if data is Dictionary else null
+	if not rows is Array or rows.is_empty() or rows[0].get("kp") == null:
+		push_warning("GameManager: no active progress row, KP set to 0.")
+		kp_amount = 0
+		return
+	kp_amount = int(rows[0].kp)
+
+## Reset data (Settings): forget the old save's values kept in memory.
+## Without this the old KP stayed here and the next reward or purchase
+## wrote it back into the fresh save.
+func _on_data_cleared() -> void:
+	game_time_enabled = false
+	current_time = 8.0
+	player_stamina = max_stamina
+	current_chapter_id = ""
+	side_quest_focus = ""
+	next_quest_marker = null
+	target_location = null
+	sideQuest_locations.clear()
+	arith_goto = Vector2.ZERO
+	_update_KP()
 
 func _process(delta: float) -> void:
 	if not game_time_enabled:
@@ -91,7 +116,13 @@ func _process(delta: float) -> void:
 		var game_hours_per_second: float = 24.0 / (minute_per_day * 60.0)
 		var hour_increment: float = (game_hours_per_second * speed_scale) * delta
 		
-		self.current_time = wrapf(current_time + hour_increment, 0.0, 24.0)
+		# Midnight = the clock wrapped round (it only counts up). Not
+		# "next_time >= 24": wrapf() already returns 0.0 for times a hair
+		# under 24 (it treats them as equal to 24), so that check missed it.
+		var before: float = current_time
+		self.current_time = wrapf(before + hour_increment, 0.0, 24.0)
+		if current_time < before:
+			midnight_passed.emit()
 
 func get_formatted_time() -> String:
 	var total_hours: int = int(current_time)

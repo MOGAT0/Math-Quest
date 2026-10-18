@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://4cit4hagysr0"
+path="res://.godot/imported/Academy Magic fest.mp3-c78debc10808a0fa82da577555e3b5c6.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Academy Magic fest.mp3"
+dest_files=["res://.godot/imported/Academy Magic fest.mp3-c78debc10808a0fa82da577555e3b5c6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

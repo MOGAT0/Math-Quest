@@ -8,6 +8,7 @@ class_name World
 @export var great_wizzard : CharacterBody2D
 @onready var classRoom: Scholl = %Class
 @onready var transition_fx: TransitionFX = %TransitionFx
+@onready var event_location: Marker2D = %event_location
 
 @onready var locations: Dictionary[String, Marker2D] = {
 	"arith_house": %arith_house,
@@ -46,12 +47,19 @@ const STARTING_CHAPTER : String = "chapter_1"
 var _popup_tween: Tween
 var _popup_rest_pos: Vector2
 
-func show_popup_alert(duration: float = 2.0) -> void:
+## message: show this text instead of the academy / stamina reasons.
+func show_popup_alert(duration: float = 2.0, message: String = "") -> void:
 	var school_closed : String = "Class starts from 4am to 9pm maybe i should go home for now"
 	var low_stamina : String = "I'm too tired to keep going... I should find a bed or visit the market for food."
+	var special_event : String = "There's a special event today, the school is probably closed."
 	var stamina_percentage = (float(GameManager.player_stamina) / float(GameManager.max_stamina)) * 100.0
 	
-	popup_text.text = school_closed if stamina_percentage > 15 else low_stamina
+	if CalendarManager.is_holiday():
+		popup_text.text = special_event
+	else:
+		popup_text.text = school_closed if stamina_percentage > 15 else low_stamina
+	if message != "":
+		popup_text.text = message
 	
 	if not popup_alert:
 		return
@@ -83,6 +91,8 @@ func show_popup_alert(duration: float = 2.0) -> void:
 	_popup_tween.tween_callback(popup_alert.hide)
 
 func _ready() -> void:
+	EventDirector.register_world(self)   # random events spawn in this world
+	FestivalDirector.register_world(self)   # festival days (major events)
 	RenderingServer.set_default_clear_color(default_bg_color)
 	indicator.hide()
 	_popup_rest_pos = popup_alert.position
@@ -239,8 +249,8 @@ func _on_academy_entrance_body_entered(body: Node2D) -> void:
 	var stamina_percentage = (float(GameManager.player_stamina) / float(GameManager.max_stamina)) * 100.0
 	
 	if body is Player:
-		if GameManager.current_time > 21 or GameManager.current_time <= 4 or stamina_percentage <= 15:
-			show_popup_alert()
+		if GameManager.current_time > 21 or GameManager.current_time <= 4 or stamina_percentage <= 15 				or not CalendarManager.is_school_day():
+			show_popup_alert(3.0)
 			return
 	
 	if body is Arith:
@@ -314,6 +324,7 @@ func _on_class_class_end(_currentGrade: String, _currentLesson: String) -> void:
 	teleport(player,locations["academy_gate2"].global_position)
 	player.show()
 	GameManager.current_time = 21
+	EventDirector.on_class_finished(self)   # maybe a random event on the way home
 
 func _on_portal_portal_spawned() -> void:
 	await get_tree().process_frame
@@ -369,5 +380,9 @@ func _on_fndnl_book_pressed() -> void:
 
 func _on_area_2d_body_entered_house(body: Node2D) -> void:
 	if body is Player:
-		#GameManager.target_location = null
-		pass
+		body.show_target_indicator(false)
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body is Player:
+		body.show_target_indicator(true)

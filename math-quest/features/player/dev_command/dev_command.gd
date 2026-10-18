@@ -88,3 +88,48 @@ func follow_player(npc_name: String, value: bool) -> void:
 func update_class(current_grade: String, current_lesson: String) -> void:
 	GameManager._update_class(current_grade, current_lesson)
 	_log_to_console("Command executed: update_class " + current_grade + " " + current_lesson)
+
+## change_date <season> <year> <day>, e.g. "change_date spring 1 13".
+## Ends the current day first (festival and random events pack up), then
+## starts the new date as if Matthew woke up on it.
+func change_date(season_name = "", year = 1, day = 1) -> void:
+	var usage := "Usage: change_date <spring|summer|autumn|winter> <year> <day 1-28>"
+	var seasons : Array = CalendarManager.SEASONS.map(func(s): return s.to_lower())
+	var season := seasons.find(str(season_name).to_lower())
+	if season == -1 and str(season_name).to_lower() == "fall":
+		season = 2
+	if season == -1:
+		_log_to_console("Error: unknown season [" + str(season_name) + "]. " + usage)
+		return
+	if typeof(year) != TYPE_INT or year < 1:
+		_log_to_console("Error: year must be 1 or more. " + usage)
+		return
+	if typeof(day) != TYPE_INT or day < 1 or day > CalendarManager.DAYS_PER_SEASON:
+		_log_to_console("Error: day must be 1-%d. %s" % [CalendarManager.DAYS_PER_SEASON, usage])
+		return
+	CalendarManager.day_ended.emit(CalendarManager.date())
+	CalendarManager.set_date(day, season, year)
+	_log_to_console("Command executed: change_date -> " + CalendarManager.date_text(false))
+
+## set_time <hour> [minute], 24-hour clock: "set_time 13", "set_time 13 30"
+## or "set_time 13:30". Stamina is kept as it was (jumping the clock would
+## otherwise drain it for the skipped hours), and it never changes the date
+## (use change_date for that).
+func set_time(hour = null, minute = 0) -> void:
+	var usage := "Usage: set_time <hour 0-23> [minute 0-59], e.g. set_time 13 or set_time 13:30"
+	if typeof(hour) == TYPE_STRING and str(hour).contains(":"):
+		var parts := str(hour).split(":")
+		if parts.size() == 2 and parts[0].is_valid_int() and parts[1].is_valid_int():
+			minute = parts[1].to_int()
+			hour = parts[0].to_int()
+	if typeof(hour) != TYPE_INT or hour < 0 or hour > 23:
+		_log_to_console("Error: hour must be 0-23. " + usage)
+		return
+	if typeof(minute) != TYPE_INT or minute < 0 or minute > 59:
+		_log_to_console("Error: minute must be 0-59. " + usage)
+		return
+	var stamina := GameManager.player_stamina
+	# (+ a hair, so 13:20 doesn't round down to 13:19 on the clock)
+	GameManager.current_time = hour + minute / 60.0 + 0.0001
+	GameManager.player_stamina = stamina
+	_log_to_console("Command executed: set_time -> %02d:%02d (%s)" % [hour, minute, GameManager.get_formatted_time()])
