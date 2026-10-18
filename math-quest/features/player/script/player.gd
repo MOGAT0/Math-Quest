@@ -31,11 +31,26 @@ var current_avatar: String
 var is_navigating: bool = false
 var joystick_direction: Vector2 = Vector2.ZERO
 
+const AFTER_CLASS_LINE := "Class is finally over! I can't wait to go home and sleep... Should I go to the shop first? Hmmm..."
+
+var _bubble: PlayerBubble
+
 func _ready() -> void:
 	interact_btn.hide()
 	_onload_show_crystal()
 	call_deferred("setup_navigation")
 	#currency.hide()
+	_bubble = PlayerBubble.new()
+	add_child(_bubble)
+	_bubble.setup(sprite_2d)
+
+## Speech bubble over Matthew's head. seconds = how long it stays after
+## the line is typed (0 = by length).
+func say(text: String, seconds: float = 0.0) -> void:
+	_bubble.say(text, seconds)
+
+func show_target_indicator(value : bool) -> void:
+	target_indicator.visible = value
 
 func setup_navigation() -> void:
 	navigation_agent_2d.path_desired_distance = 8.0 
@@ -111,7 +126,12 @@ func _on_class_class_end(currentGrade: String, currentLesson: String) -> void:
 		diamond.show()
 		db.query("UPDATE progress SET c3 = true WHERE is_active = true")
 		reward.reward_trigger.emit("diamond")
-	
+		return   # the grade-3 cinematic plays now, no bubble
+
+	# After the teleport to the academy gate and any crystal reward
+	await get_tree().create_timer(1.2).timeout
+	say(AFTER_CLASS_LINE)
+
 func _onload_show_crystal():
 	var req = db.query("SELECT c1,c2,c3 FROM progress WHERE is_active = true")
 	var data = req.data[0]
@@ -129,6 +149,7 @@ func _on_portal_portal_opened() -> void:
 
 func _on_cutscene_player_cutscene_started() -> void:
 	hud.hide()
+	_bubble.hide_now()
 
 
 func _on_cutscene_player_cutscene_ended() -> void:
@@ -157,6 +178,8 @@ func _on_indicator_visibility_area_entered(area: Area2D) -> void:
 		_mobile_btn_state()
 	elif area.owner is Merchant:
 		_mobile_btn_state()
+	elif area is EventNPC:
+		_mobile_btn_state()
 
 
 func _on_indicator_visibility_area_exited(area: Area2D) -> void:
@@ -164,10 +187,12 @@ func _on_indicator_visibility_area_exited(area: Area2D) -> void:
 		interact_btn.hide()
 	elif area.owner is Merchant:
 		interact_btn.hide()
-
+	elif area is EventNPC:
+		interact_btn.hide()
 
 func _mobile_btn_state() -> void:
-	#interact_btn.show()
+	#interact_btn.show() #for debug
+	#return #for debug
 	if OS.get_name().to_lower() in ["android", "ios"]:
 		interact_btn.show()
 	else:

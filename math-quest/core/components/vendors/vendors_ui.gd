@@ -85,7 +85,8 @@ var _challenge_overlay: Control
 var _challenge_title: Label
 var _challenge_question: Label
 var _challenge_equation: Label
-var _answer_input: LineEdit
+var _numpad: NumberPad                # same on-screen pad as the class
+var _numpad_holder: VBoxContainer
 var _feedback_label: Label
 
 var _current_product_id: String = ""
@@ -423,36 +424,39 @@ func _build_challenge_ui() -> void:
 	_style_label(_challenge_title, 30)
 	box.add_child(_challenge_title)
 
+	# Question on the left, number pad on the right (the pad is too tall to
+	# stack under the question on a 648 px high screen)
+	var body := HBoxContainer.new()
+	body.add_theme_constant_override("separation", 28)
+	box.add_child(body)
+
+	var left := VBoxContainer.new()
+	left.alignment = BoxContainer.ALIGNMENT_CENTER
+	left.add_theme_constant_override("separation", 14)
+	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	body.add_child(left)
+
 	_challenge_question = Label.new()
 	_challenge_question.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_challenge_question.custom_minimum_size = Vector2(480, 0)
+	_challenge_question.custom_minimum_size = Vector2(380, 0)
 	_style_label(_challenge_question, 22)
-	box.add_child(_challenge_question)
+	left.add_child(_challenge_question)
 
 	_challenge_equation = Label.new()
 	_challenge_equation.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_style_label(_challenge_equation, 42, RED)
-	box.add_child(_challenge_equation)
-
-	_answer_input = LineEdit.new()
-	_answer_input.placeholder_text = "Your answer"
-	_answer_input.alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_answer_input.add_theme_font_size_override("font_size", 26)
-	_answer_input.add_theme_color_override("font_color", INK)
-	_answer_input.add_theme_color_override("font_placeholder_color", Color("8a7c5c"))
-	_answer_input.add_theme_color_override("caret_color", INK)
-	var input_style := _box(Color("fffaf0"), GOLD, 3, 12)
-	input_style.set_content_margin_all(10)
-	_answer_input.add_theme_stylebox_override("normal", input_style)
-	_answer_input.add_theme_stylebox_override("focus", input_style)
-	_answer_input.text_submitted.connect(func(_t: String) -> void: _on_submit_pressed())
-	box.add_child(_answer_input)
+	left.add_child(_challenge_equation)
 
 	_feedback_label = Label.new()
 	_feedback_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_feedback_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_feedback_label.custom_minimum_size = Vector2(0, 30)
 	_style_label(_feedback_label, 22)
-	box.add_child(_feedback_label)
+	left.add_child(_feedback_label)
+
+	_numpad_holder = VBoxContainer.new()
+	_numpad_holder.custom_minimum_size = Vector2(260, 0)
+	body.add_child(_numpad_holder)
 
 	var btn_row := HBoxContainer.new()
 	btn_row.alignment = BoxContainer.ALIGNMENT_CENTER
@@ -463,7 +467,7 @@ func _build_challenge_ui() -> void:
 	cancel_btn.text = "Cancel"
 	cancel_btn.custom_minimum_size = Vector2(170, 56)
 	_style_button(cancel_btn, CREAM_BTN, GOLD, INK, 26, 18, 4)
-	cancel_btn.pressed.connect(func() -> void: _challenge_overlay.hide())
+	cancel_btn.pressed.connect(_close_challenge)
 	btn_row.add_child(cancel_btn)
 
 	var submit_btn := Button.new()
@@ -682,14 +686,29 @@ func _start_challenge(product_id: String, price: int) -> void:
 			_challenge_equation.text = "? - %d = %d" % [price, change]
 			_current_answer = player_money
 
-	_answer_input.text = ""
 	_feedback_label.text = ""
+	_new_numpad()
 	_challenge_overlay.show()
-	_answer_input.grab_focus()
+
+
+## A fresh pad for every challenge. Enter on a PC keyboard submits.
+func _new_numpad() -> void:
+	if _numpad:
+		_numpad.queue_free()
+	_numpad = NumberPad.new()
+	_numpad_holder.add_child(_numpad)
+	_numpad.setup({})
+	_numpad.submitted.connect(_on_submit_pressed)
+
+
+func _close_challenge() -> void:
+	_challenge_overlay.hide()
+	if _numpad:
+		_numpad.locked = true     # stop it catching number keys while hidden
 
 
 func _on_submit_pressed() -> void:
-	var text := _answer_input.text.strip_edges()
+	var text := _numpad.get_value().strip_edges() if _numpad else ""
 	if not text.is_valid_int():
 		_show_feedback("Please enter a whole number.", Color("a56a00"))
 		return
@@ -699,15 +718,14 @@ func _on_submit_pressed() -> void:
 		var price: int = int(data.get("price", 0))
 		var stamina: int = int(data.get("stamina", 0))
 		player_money -= price
-		_challenge_overlay.hide()
+		_close_challenge()
 		_update_money()
 		_spawn_confetti()
 		item_purchased.emit(_current_product_id, stamina, price)
 		GameManager.refill_stamina(stamina)
 	else:
 		_show_feedback("Not quite, try again!", RED)
-		_answer_input.clear()
-		_answer_input.grab_focus()
+		_numpad.clear()
 
 
 func _show_feedback(msg: String, color: Color) -> void:

@@ -1,0 +1,1375 @@
+{
+  "major": [
+    {
+      "id": "academy_magic_fest",
+      "title": "Academy Magic Fest",
+      "icon": "🎉",
+      "season": 0,
+      "day": 13,
+      "closes_school": true,
+      "description": "The whole academy celebrates magic! Booths, potion contests and rune races.",
+      "festival": {
+        "host": {
+          "name": "Mr. Archimedes",
+          "npc": "res://assets/models/npc/mr_archimedes.png",
+          "npc_frames": 1,
+          "npc_frame": 0,
+          "npc_scale": 0.122,
+          "welcome": "Welcome to the Academy Magic Fest, Matthew! Here is your stamp card. Play every booth and collect all four stamps to earn the Magic Fest badge!",
+          "reminder": "Keep going! Visit every booth to fill your stamp card.",
+          "finished": "All four stamps! You are a true festival wizard. Here is your Magic Fest badge!"
+        },
+        "badge": {
+          "title": "Magic Fest Badge",
+          "icon": "🏅"
+        },
+        "bonus_kp": 25,
+        "booths": [
+          {
+            "id": "potion_contest",
+            "name": "Potion Contest",
+            "icon": "🧪",
+            "host_name": "Amelia",
+            "npc": "res://assets/models/npc/Amelia_idle_16x16.png",
+            "awning": "#b0386b",
+            "station": "potion",
+            "game": "points",
+            "rounds": 3,
+            "intro": "Brew three potions with exactly the right amount. Quick hands earn bonus points!",
+            "ghosts": [
+              {
+                "name": "Amelia",
+                "score": 34
+              },
+              {
+                "name": "Tim",
+                "score": 27
+              },
+              {
+                "name": "Karen",
+                "score": 20
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "rune_race",
+            "name": "Rune-Lock Race",
+            "icon": "🔐",
+            "host_name": "Alex",
+            "npc": "res://assets/models/npc/Alex_idle_16x16.png",
+            "awning": "#3a6fb0",
+            "station": "rune",
+            "game": "race",
+            "rounds": 5,
+            "par": 40,
+            "intro": "Open five rune locks as fast as you can! Every wrong rune costs 5 seconds.",
+            "ghosts": [
+              {
+                "name": "Alex",
+                "score": 38
+              },
+              {
+                "name": "Oscar",
+                "score": 52
+              },
+              {
+                "name": "Romeo",
+                "score": 70
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "balance_guess",
+            "name": "Guess the Balance",
+            "icon": "⚖️",
+            "host_name": "Mitty",
+            "npc": "res://assets/models/npc/Kid_Mitty_idle_16x16.png",
+            "awning": "#3f8a52",
+            "station": "scale",
+            "game": "points",
+            "rounds": 3,
+            "intro": "Read the magic balance: which side is heavier, and by how much?",
+            "ghosts": [
+              {
+                "name": "Mitty",
+                "score": 33
+              },
+              {
+                "name": "Abby",
+                "score": 25
+              },
+              {
+                "name": "Lucy",
+                "score": 18
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "circle_duel",
+            "name": "Magic-Circle Duel",
+            "icon": "🔮",
+            "host_name": "Arith",
+            "npc": "res://assets/models/teacher/arith_sprite_sheet.png",
+            "npc_frames": 3,
+            "npc_vframes": 4,
+            "npc_frame": 1,
+            "npc_scale": 0.033,
+            "awning": "#6b4fa0",
+            "station": "circle",
+            "game": "duel",
+            "rounds": 3,
+            "intro": "A friendly duel! Answer before Arith does. First to 3 points wins.",
+            "rival": "Arith",
+            "ghosts": [
+              {
+                "name": "Arith",
+                "score": 30
+              },
+              {
+                "name": "Dan",
+                "score": 24
+              },
+              {
+                "name": "Tim",
+                "score": 16
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          }
+        ],
+        "prize_booth": {
+          "name": "Prize Booth",
+          "icon": "🎁",
+          "host_name": "Oscar",
+          "npc": "res://assets/models/npc/kid_Oscar_idle_16x16.png",
+          "awning": "#c8962a",
+          "intro": "Trade your festival tokens for prizes!"
+        },
+        "prizes": [
+          {
+            "id": "stamina_potion",
+            "name": "Stamina Potion",
+            "icon": "🧃",
+            "cost": 2,
+            "effect": {
+              "stamina": 40
+            },
+            "description": "Restores 40 stamina."
+          },
+          {
+            "id": "kp_pouch",
+            "name": "KP Pouch",
+            "icon": "💰",
+            "cost": 3,
+            "effect": {
+              "kp": 30
+            },
+            "description": "A pouch with 30 KP."
+          },
+          {
+            "id": "magic_fest_token",
+            "name": "Magic Fest Token",
+            "icon": "🎟️",
+            "cost": 4,
+            "kp_value": 50,
+            "effect": {
+              "special_token": true
+            },
+            "description": "Only sold during the Academy Magic Fest! Trade it to the Traveling Trader for KP."
+          }
+        ]
+      }
+    },
+    {
+      "id": "easter_holiday",
+      "title": "Easter Holiday",
+      "icon": "🥚",
+      "season": 0,
+      "day": 20,
+      "closes_school": true,
+      "description": "No classes today. Granny Jenny hid painted eggs around the festival. Find them, and play the Easter booths!",
+      "festival": {
+        "host": {
+          "name": "Granny Jenny",
+          "npc": "res://assets/models/npc/Old_woman_Jenny_idle_16x16.png",
+          "welcome": "Happy Easter, Matthew! I hid ten painted eggs around here, and one golden egg too! You won't see them until you are close, so watch the egg meter: the warmer it gets, the closer you are. Then visit the booths and fill your stamp card!",
+          "reminder": "Keep looking, dear! The egg meter gets warmer as you get closer. And don't forget the booths!",
+          "finished": "You found every egg and played every booth! Here is your Easter Egg Badge, well done!"
+        },
+        "badge": {
+          "title": "Easter Egg Badge",
+          "icon": "🏅"
+        },
+        "bonus_kp": 25,
+        "hunt": {
+          "id": "egg_hunt",
+          "name": "Egg Hunt",
+          "icon": "🥚",
+          "eggs": 10,
+          "golden": true,
+          "min_radius": 70,
+          "max_radius": 220,
+          "reveal": 50,
+          "golden_reveal": 30,
+          "kp": 15,
+          "tokens": 2,
+          "golden_kp": 15,
+          "golden_tokens": 3
+        },
+        "booths": [
+          {
+            "id": "basket_sorting",
+            "name": "Basket Sorting",
+            "icon": "🧺",
+            "host_name": "Lucy",
+            "npc": "res://assets/models/npc/Lucy_idle_16x16.png",
+            "awning": "#c8962a",
+            "station": "counting",
+            "game": "points",
+            "rounds": 3,
+            "intro": "Help me pack the eggs! Count them in baskets: tap each basket to count along.",
+            "ghosts": [
+              {
+                "name": "Lucy",
+                "score": 33
+              },
+              {
+                "name": "Granny Jenny",
+                "score": 28
+              },
+              {
+                "name": "Tim",
+                "score": 19
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "egg_patterns",
+            "name": "Egg Patterns",
+            "icon": "🎨",
+            "host_name": "Abby",
+            "npc": "res://assets/models/npc/Kid_Abby_idle_16x16.png",
+            "awning": "#f28fb5",
+            "station": "pattern",
+            "game": "points",
+            "rounds": 3,
+            "intro": "I paint my eggs in patterns! Look at the row and work out what comes next.",
+            "ghosts": [
+              {
+                "name": "Abby",
+                "score": 35
+              },
+              {
+                "name": "Romeo",
+                "score": 26
+              },
+              {
+                "name": "Karen",
+                "score": 21
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "bunny_hop",
+            "name": "Bunny Hop",
+            "icon": "🐰",
+            "host_name": "Romeo",
+            "npc": "res://assets/models/npc/Kid_Romeo_idle_16x16.png",
+            "awning": "#7fd0e0",
+            "station": "number_line",
+            "game": "points",
+            "rounds": 3,
+            "intro": "My bunny hops the same amount every time! Tell me where it lands on the number line.",
+            "ghosts": [
+              {
+                "name": "Romeo",
+                "score": 34
+              },
+              {
+                "name": "Oscar",
+                "score": 27
+              },
+              {
+                "name": "Mitty",
+                "score": 20
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          }
+        ],
+        "prize_booth": {
+          "name": "Easter Prizes",
+          "icon": "🎁",
+          "host_name": "Tim",
+          "npc": "res://assets/models/npc/Kid_Tim_idle_16x16.png",
+          "awning": "#a8e0a0",
+          "intro": "Trade your tokens for Easter treats!"
+        },
+        "prizes": [
+          {
+            "id": "chocolate_egg",
+            "name": "Chocolate Egg",
+            "icon": "🍫",
+            "cost": 2,
+            "effect": {
+              "stamina": 30
+            },
+            "description": "Restores 30 stamina. Yum!"
+          },
+          {
+            "id": "easter_kp_pouch",
+            "name": "KP Pouch",
+            "icon": "💰",
+            "cost": 3,
+            "effect": {
+              "kp": 30
+            },
+            "description": "A pouch with 30 KP."
+          },
+          {
+            "id": "easter_token",
+            "name": "Easter Token",
+            "icon": "🥚",
+            "cost": 4,
+            "kp_value": 50,
+            "effect": {
+              "special_token": true
+            },
+            "description": "Only sold during the Easter Holiday! Trade it to the Traveling Trader for KP."
+          }
+        ]
+      }
+    },
+    {
+      "id": "star_festival",
+      "title": "Star Festival",
+      "icon": "⭐",
+      "season": 1,
+      "day": 14,
+      "closes_school": false,
+      "description": "A night festival from 6 PM! Find fallen stars, play the star booths and send wish lanterns into the sky.",
+      "festival": {
+        "opens_at": 18,
+        "ending": "lanterns",
+        "host": {
+          "name": "Mr. Archimedes",
+          "npc": "res://assets/models/npc/mr_archimedes.png",
+          "npc_frames": 1,
+          "npc_frame": 0,
+          "npc_scale": 0.122,
+          "welcome": "Good evening, Matthew! Tonight the sky is full of stars, and some of them fell around here! Find the fallen star fragments with your star meter, then visit the booths. Fill your stamp card and we will send wish lanterns into the sky!",
+          "reminder": "Keep stargazing! The star meter glows warmer as you get closer to a fallen star.",
+          "finished": "Every star found and every booth done! Here is your Star Festival Badge. Now, let's light the wish lanterns!"
+        },
+        "badge": {
+          "title": "Star Festival Badge",
+          "icon": "🏅"
+        },
+        "bonus_kp": 25,
+        "hunt": {
+          "id": "star_hunt",
+          "name": "Fallen Stars",
+          "icon": "🌠",
+          "item": "star",
+          "label": "Stars",
+          "eggs": 10,
+          "golden": true,
+          "special_name": "Comet Shard",
+          "min_radius": 70,
+          "max_radius": 220,
+          "reveal": 50,
+          "golden_reveal": 30,
+          "kp": 15,
+          "tokens": 2,
+          "golden_kp": 15,
+          "golden_tokens": 3
+        },
+        "booths": [
+          {
+            "id": "constellation",
+            "name": "Constellations",
+            "icon": "✨",
+            "host_name": "Pier",
+            "npc": "res://assets/models/npc/Pier_idle_16x16.png",
+            "awning": "#3a4f9a",
+            "station": "constellation",
+            "game": "points",
+            "rounds": 3,
+            "intro": "The stars in my constellations count in steps! Find the number on the missing star.",
+            "ghosts": [
+              {
+                "name": "Pier",
+                "score": 35
+              },
+              {
+                "name": "Alex",
+                "score": 27
+              },
+              {
+                "name": "Karen",
+                "score": 20
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "shooting_stars",
+            "name": "Shooting Stars",
+            "icon": "☄️",
+            "host_name": "Oscar",
+            "npc": "res://assets/models/npc/kid_Oscar_idle_16x16.png",
+            "awning": "#6b4fa0",
+            "station": "shooting_stars",
+            "game": "points",
+            "rounds": 3,
+            "intro": "Shooting stars fall in little groups! Count them in all, or count the groups.",
+            "ghosts": [
+              {
+                "name": "Oscar",
+                "score": 33
+              },
+              {
+                "name": "Mitty",
+                "score": 26
+              },
+              {
+                "name": "Tim",
+                "score": 18
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "telescope",
+            "name": "Telescope",
+            "icon": "🔭",
+            "host_name": "Old man Josh",
+            "npc": "res://assets/models/npc/Old_man_Josh_idle_with_can_16x16.png",
+            "awning": "#2f5a7a",
+            "station": "star_map",
+            "game": "points",
+            "rounds": 3,
+            "intro": "Look through my telescope at two constellations. Count their stars and compare them!",
+            "ghosts": [
+              {
+                "name": "Josh",
+                "score": 34
+              },
+              {
+                "name": "Abby",
+                "score": 25
+              },
+              {
+                "name": "Romeo",
+                "score": 19
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          }
+        ],
+        "prize_booth": {
+          "name": "Star Prizes",
+          "icon": "🎁",
+          "host_name": "Amelia",
+          "npc": "res://assets/models/npc/Amelia_idle_16x16.png",
+          "awning": "#c8962a",
+          "intro": "Trade your tokens for starry prizes!"
+        },
+        "prizes": [
+          {
+            "id": "star_candy",
+            "name": "Star Candy",
+            "icon": "🍬",
+            "cost": 2,
+            "effect": {
+              "stamina": 30
+            },
+            "description": "Restores 30 stamina. It fizzes like a comet!"
+          },
+          {
+            "id": "star_kp_pouch",
+            "name": "KP Pouch",
+            "icon": "💰",
+            "cost": 3,
+            "effect": {
+              "kp": 30
+            },
+            "description": "A pouch with 30 KP."
+          },
+          {
+            "id": "star_token",
+            "name": "Star Festival Token",
+            "icon": "🌟",
+            "cost": 4,
+            "kp_value": 50,
+            "effect": {
+              "special_token": true
+            },
+            "description": "Only sold during the Star Festival! Trade it to the Traveling Trader for KP."
+          }
+        ]
+      }
+    },
+    {
+      "id": "harvest_fair",
+      "title": "Harvest Fair",
+      "icon": "🌾",
+      "season": 2,
+      "day": 10,
+      "closes_school": true,
+      "description": "No classes today. Pick apples, shop and give change, weigh pumpkins and sort the crops at the fair!",
+      "festival": {
+        "ending": "pumpkin",
+        "host": {
+          "name": "Lucy",
+          "npc": "res://assets/models/npc/Lucy_idle_16x16.png",
+          "welcome": "Welcome to the Harvest Fair, Matthew! Ripe apples have rolled all over the fair, can you pick them up? Your apple meter gets warmer as you get close. Then shop, sell, weigh and count at the stalls to fill your stamp card!",
+          "reminder": "Keep going! Follow the apple meter, and visit every stall for a stamp.",
+          "finished": "Every apple picked and every stall done! Here is your Harvest Fair Badge, and the prize pumpkin is yours!"
+        },
+        "badge": {
+          "title": "Harvest Fair Badge",
+          "icon": "🏅"
+        },
+        "bonus_kp": 25,
+        "hunt": {
+          "id": "apple_hunt",
+          "name": "Apple Picking",
+          "icon": "🍎",
+          "item": "apple",
+          "label": "Apples",
+          "eggs": 10,
+          "golden": true,
+          "special_name": "Golden Apple",
+          "min_radius": 70,
+          "max_radius": 220,
+          "reveal": 50,
+          "golden_reveal": 30,
+          "kp": 15,
+          "tokens": 2,
+          "golden_kp": 15,
+          "golden_tokens": 3
+        },
+        "booths": [
+          {
+            "id": "shopping_list",
+            "name": "Shopping List",
+            "icon": "🛒",
+            "host_name": "Abby",
+            "npc": "res://assets/models/npc/Kid_Abby_idle_16x16.png",
+            "station": "market",
+            "mode": "shopping",
+            "game": "points",
+            "rounds": 3,
+            "awning": "#c8962a",
+            "intro": "Here is my shopping list! Add up the prices and count the coins left in the purse.",
+            "ghosts": [
+              {
+                "name": "Abby",
+                "score": 34
+              },
+              {
+                "name": "Tim",
+                "score": 26
+              },
+              {
+                "name": "Karen",
+                "score": 20
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "making_change",
+            "name": "Making Change",
+            "icon": "🪙",
+            "host_name": "Pier",
+            "npc": "res://assets/models/npc/Pier_idle_16x16.png",
+            "station": "market",
+            "mode": "change",
+            "game": "points",
+            "rounds": 3,
+            "awning": "#b0386b",
+            "intro": "You're the shopkeeper today! Customers pay with coins: give them the right change.",
+            "ghosts": [
+              {
+                "name": "Pier",
+                "score": 35
+              },
+              {
+                "name": "Oscar",
+                "score": 27
+              },
+              {
+                "name": "Mitty",
+                "score": 19
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "pumpkin_weigh",
+            "name": "Pumpkin Weigh-off",
+            "icon": "🎃",
+            "host_name": "Old man Josh",
+            "npc": "res://assets/models/npc/Old_man_Josh_idle_with_can_16x16.png",
+            "station": "scale",
+            "items": "pumpkin",
+            "game": "points",
+            "rounds": 3,
+            "awning": "#f28c28",
+            "intro": "My magic balance weighs the biggest pumpkins! Which is heavier, and by how many kilograms?",
+            "ghosts": [
+              {
+                "name": "Josh",
+                "score": 33
+              },
+              {
+                "name": "Romeo",
+                "score": 25
+              },
+              {
+                "name": "Lucy",
+                "score": 21
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "crop_sorting",
+            "name": "Crop Sorting",
+            "icon": "🥕",
+            "host_name": "Romeo",
+            "npc": "res://assets/models/npc/Kid_Romeo_idle_16x16.png",
+            "station": "garden",
+            "game": "points",
+            "rounds": 3,
+            "awning": "#5c9a3a",
+            "intro": "My vegetables grow in neat rows! Count the rows, or count all the crops row by row.",
+            "ghosts": [
+              {
+                "name": "Romeo",
+                "score": 34
+              },
+              {
+                "name": "Abby",
+                "score": 26
+              },
+              {
+                "name": "Alex",
+                "score": 18
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          }
+        ],
+        "prize_booth": {
+          "name": "Harvest Prizes",
+          "icon": "🎁",
+          "host_name": "Tim",
+          "npc": "res://assets/models/npc/Kid_Tim_idle_16x16.png",
+          "awning": "#a8e0a0",
+          "intro": "Trade your tokens for harvest treats!"
+        },
+        "prizes": [
+          {
+            "id": "apple_pie",
+            "name": "Apple Pie",
+            "icon": "🥧",
+            "cost": 2,
+            "effect": {
+              "stamina": 30
+            },
+            "description": "Restores 30 stamina. Fresh from the oven!"
+          },
+          {
+            "id": "harvest_kp_pouch",
+            "name": "KP Pouch",
+            "icon": "💰",
+            "cost": 3,
+            "effect": {
+              "kp": 30
+            },
+            "description": "A pouch with 30 KP."
+          },
+          {
+            "id": "harvest_token",
+            "name": "Harvest Token",
+            "icon": "🌾",
+            "cost": 4,
+            "kp_value": 50,
+            "effect": {
+              "special_token": true
+            },
+            "description": "Only sold during the Harvest Fair! Trade it to the Traveling Trader for KP."
+          }
+        ]
+      }
+    },
+    {
+      "id": "night_of_lanterns",
+      "title": "Night of Lanterns",
+      "icon": "🏮",
+      "season": 2,
+      "day": 27,
+      "closes_school": false,
+      "description": "A night festival from 6 PM! Solve the puzzles to light the lanterns, play the spooky booths and watch the lantern parade.",
+      "festival": {
+        "opens_at": 18,
+        "ending": "lanterns",
+        "decor": "halloween",
+        "host": {
+          "name": "Mr. Archimedes",
+          "npc": "res://assets/models/npc/mr_archimedes.png",
+          "npc_frames": 1,
+          "npc_frame": 0,
+          "npc_scale": 0.122,
+          "welcome": "Welcome to the Night of Lanterns, Matthew! Eight lanterns around the square are sealed by number puzzles. Solve them to light them up, then visit the spooky booths. When everything glows, we will send the lanterns up into the sky!",
+          "reminder": "Look for the dark lanterns with a question mark, and solve their puzzles to light them!",
+          "finished": "Every lantern is glowing and every booth is done! Here is your Night of Lanterns Badge. Now watch the lanterns fly!"
+        },
+        "badge": {
+          "title": "Night of Lanterns Badge",
+          "icon": "🏅"
+        },
+        "bonus_kp": 25,
+        "lanterns": {
+          "id": "light_lanterns",
+          "name": "Light the Lanterns",
+          "icon": "🏮",
+          "count": 8,
+          "min_radius": 120,
+          "max_radius": 210,
+          "kp": 15,
+          "tokens": 2
+        },
+        "booths": [
+          {
+            "id": "trick_or_treat",
+            "name": "Trick-or-Treat",
+            "icon": "🍬",
+            "host_name": "Tim",
+            "npc": "res://assets/models/npc/Kid_Tim_idle_16x16.png",
+            "station": "sharing",
+            "game": "points",
+            "rounds": 3,
+            "awning": "#b05ad6",
+            "intro": "Trick or treat! Help me share the candies so every friend gets the same amount.",
+            "ghosts": [
+              {
+                "name": "Tim",
+                "score": 34
+              },
+              {
+                "name": "Abby",
+                "score": 26
+              },
+              {
+                "name": "Oscar",
+                "score": 19
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "pumpkin_carving",
+            "name": "Pumpkin Carving",
+            "icon": "🎃",
+            "host_name": "Amelia",
+            "npc": "res://assets/models/npc/Amelia_idle_16x16.png",
+            "station": "shapes",
+            "game": "points",
+            "rounds": 3,
+            "awning": "#f28c28",
+            "intro": "We carve faces from shapes! Count the sides and corners of the eyes, nose and mouth.",
+            "ghosts": [
+              {
+                "name": "Amelia",
+                "score": 35
+              },
+              {
+                "name": "Lucy",
+                "score": 27
+              },
+              {
+                "name": "Romeo",
+                "score": 20
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "ghost_clock",
+            "name": "Ghost Clock",
+            "icon": "👻",
+            "host_name": "Old man Josh",
+            "npc": "res://assets/models/npc/Old_man_Josh_idle_with_can_16x16.png",
+            "station": "clock",
+            "game": "points",
+            "rounds": 3,
+            "awning": "#5a6a8a",
+            "intro": "A ghost visits my clock tower! Read the clock and tell me what time it appears.",
+            "ghosts": [
+              {
+                "name": "Josh",
+                "score": 33
+              },
+              {
+                "name": "Pier",
+                "score": 25
+              },
+              {
+                "name": "Karen",
+                "score": 18
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "bat_counting",
+            "name": "Bat Counting",
+            "icon": "🦇",
+            "host_name": "Alex",
+            "npc": "res://assets/models/npc/Alex_idle_16x16.png",
+            "station": "shooting_stars",
+            "creature": "bat",
+            "game": "points",
+            "rounds": 3,
+            "awning": "#3a2b44",
+            "intro": "The bats fly out of the tower in little groups! Count them all, or count the groups.",
+            "ghosts": [
+              {
+                "name": "Alex",
+                "score": 34
+              },
+              {
+                "name": "Mitty",
+                "score": 26
+              },
+              {
+                "name": "Tim",
+                "score": 19
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          }
+        ],
+        "prize_booth": {
+          "name": "Spooky Prizes",
+          "icon": "🎁",
+          "host_name": "Mitty",
+          "npc": "res://assets/models/npc/Kid_Mitty_idle_16x16.png",
+          "awning": "#6b4fa0",
+          "intro": "Trade your tokens for spooky treats!"
+        },
+        "prizes": [
+          {
+            "id": "candy_bag",
+            "name": "Candy Bag",
+            "icon": "🍬",
+            "cost": 2,
+            "effect": {
+              "stamina": 30
+            },
+            "description": "Restores 30 stamina. Sweet!"
+          },
+          {
+            "id": "lantern_kp_pouch",
+            "name": "KP Pouch",
+            "icon": "💰",
+            "cost": 3,
+            "effect": {
+              "kp": 30
+            },
+            "description": "A pouch with 30 KP."
+          },
+          {
+            "id": "lantern_token",
+            "name": "Lantern Token",
+            "icon": "🏮",
+            "cost": 4,
+            "kp_value": 50,
+            "effect": {
+              "special_token": true
+            },
+            "description": "Only sold during the Night of Lanterns! Trade it to the Traveling Trader for KP."
+          }
+        ]
+      }
+    },
+    {
+      "id": "winter_solstice",
+      "title": "Winter Solstice",
+      "icon": "🎁",
+      "season": 3,
+      "day": 24,
+      "closes_school": true,
+      "description": "No classes today. Build the snowmen, share cookies, skate, make cocoa and count snowballs, and a friend may bring you a gift!",
+      "festival": {
+        "ending": "snow_gift",
+        "host": {
+          "name": "Mr. Archimedes",
+          "npc": "res://assets/models/npc/mr_archimedes.png",
+          "npc_frames": 1,
+          "npc_frame": 0,
+          "npc_scale": 0.122,
+          "welcome": "Happy Winter Solstice, Matthew! It is the longest night of the year, so we share and celebrate. Six snowmen around the square are not finished yet: solve their puzzles to build them, then visit the winter booths!",
+          "reminder": "Look for the snowballs with a question mark, and solve their puzzles to finish the snowmen!",
+          "finished": "Every snowman is built and every booth is done! Here is your Winter Solstice Badge. Oh look, it's starting to snow!"
+        },
+        "badge": {
+          "title": "Winter Solstice Badge",
+          "icon": "🏅"
+        },
+        "bonus_kp": 25,
+        "lanterns": {
+          "id": "build_snowmen",
+          "name": "Snowmen",
+          "icon": "⛄",
+          "item": "snowman",
+          "label": "Snowmen built",
+          "count": 6,
+          "min_radius": 120,
+          "max_radius": 200,
+          "kp": 15,
+          "tokens": 2,
+          "puzzle_title": "⛄ Unfinished Snowman",
+          "puzzle_intro": "Solve the puzzle to finish building the snowman!",
+          "done_text": "Every snowman is built!"
+        },
+        "booths": [
+          {
+            "id": "share_cookies",
+            "name": "Share the Cookies",
+            "icon": "🍪",
+            "host_name": "Lucy",
+            "npc": "res://assets/models/npc/Lucy_idle_16x16.png",
+            "station": "sharing",
+            "item": "cookie",
+            "game": "points",
+            "rounds": 3,
+            "awning": "#b9773a",
+            "intro": "I baked cookies for everyone! Help me share them equally on the plates.",
+            "ghosts": [
+              {
+                "name": "Lucy",
+                "score": 34
+              },
+              {
+                "name": "Tim",
+                "score": 26
+              },
+              {
+                "name": "Abby",
+                "score": 19
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "ice_skating",
+            "name": "Ice Skating",
+            "icon": "⛸️",
+            "host_name": "Romeo",
+            "npc": "res://assets/models/npc/Kid_Romeo_idle_16x16.png",
+            "station": "number_line",
+            "rider": "penguin",
+            "game": "points",
+            "rounds": 3,
+            "awning": "#7fd0e0",
+            "intro": "My penguin skates in equal jumps on the frozen pond! Where does it stop?",
+            "ghosts": [
+              {
+                "name": "Romeo",
+                "score": 35
+              },
+              {
+                "name": "Alex",
+                "score": 27
+              },
+              {
+                "name": "Mitty",
+                "score": 20
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "hot_cocoa",
+            "name": "Hot Cocoa",
+            "icon": "☕",
+            "host_name": "Amelia",
+            "npc": "res://assets/models/npc/Amelia_idle_16x16.png",
+            "station": "potion",
+            "recipe": "cocoa",
+            "game": "points",
+            "rounds": 3,
+            "awning": "#7b4a2a",
+            "intro": "Let's make hot cocoa! Read the recipe and work out how much goes in the pot.",
+            "ghosts": [
+              {
+                "name": "Amelia",
+                "score": 34
+              },
+              {
+                "name": "Lucy",
+                "score": 25
+              },
+              {
+                "name": "Oscar",
+                "score": 18
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          },
+          {
+            "id": "snowball_tally",
+            "name": "Snowball Tally",
+            "icon": "❄️",
+            "host_name": "Oscar",
+            "npc": "res://assets/models/npc/kid_Oscar_idle_16x16.png",
+            "station": "tally",
+            "game": "points",
+            "rounds": 3,
+            "awning": "#3a6fd8",
+            "intro": "Snowball fight! I keep the score in tally marks. Count the hits and compare the teams!",
+            "ghosts": [
+              {
+                "name": "Oscar",
+                "score": 33
+              },
+              {
+                "name": "Romeo",
+                "score": 26
+              },
+              {
+                "name": "Karen",
+                "score": 19
+              }
+            ],
+            "kp": [
+              5,
+              15
+            ],
+            "tokens": [
+              1,
+              3
+            ]
+          }
+        ],
+        "prize_booth": {
+          "name": "Winter Prizes",
+          "icon": "🎁",
+          "host_name": "Mitty",
+          "npc": "res://assets/models/npc/Kid_Mitty_idle_16x16.png",
+          "awning": "#c8962a",
+          "intro": "Trade your tokens for cozy winter treats!"
+        },
+        "prizes": [
+          {
+            "id": "hot_cocoa_mug",
+            "name": "Hot Cocoa",
+            "icon": "☕",
+            "cost": 2,
+            "effect": {
+              "stamina": 30
+            },
+            "description": "Restores 30 stamina. Warm and sweet!"
+          },
+          {
+            "id": "winter_kp_pouch",
+            "name": "KP Pouch",
+            "icon": "💰",
+            "cost": 3,
+            "effect": {
+              "kp": 30
+            },
+            "description": "A pouch with 30 KP."
+          },
+          {
+            "id": "solstice_token",
+            "name": "Solstice Token",
+            "icon": "❄️",
+            "cost": 4,
+            "kp_value": 50,
+            "effect": {
+              "special_token": true
+            },
+            "description": "Only sold during the Winter Solstice! Trade it to the Traveling Trader for KP."
+          }
+        ],
+        "gift": {
+          "id": "arith_star_charm",
+          "name": "Arith's Star Charm",
+          "icon": "🎁",
+          "giver": "Arith",
+          "npc": "res://assets/models/teacher/arith_sprite_sheet.png",
+          "npc_frames": 3,
+          "npc_vframes": 4,
+          "npc_frame": 1,
+          "npc_scale": 0.033,
+          "line": "Happy Solstice, Matthew! Thank you for being such a great friend and student this year. I made this star charm for you, so you always have a little light on the longest night."
+        }
+      }
+    }
+  ],
+  "random": [
+    {
+      "id": "wandering_wizard",
+      "type": "riddle",
+      "weight": 1,
+      "name": "Old Wizard Josh",
+      "npc": "res://assets/models/npc/Old_man_Josh_idle_with_can_16x16.png",
+      "announce": "An old wizard is waiting by the road home...",
+      "intro": "Hoo hoo! A young apprentice! Solve my riddle and I'll share some of my Knowledge Points.",
+      "complete": "The old wizard bows. \"Splendid thinking!\"",
+      "reward": 15
+    },
+    {
+      "id": "classmate_homework",
+      "type": "riddle",
+      "weight": 1,
+      "name": "Tim",
+      "npc": "res://assets/models/npc/Kid_Tim_idle_16x16.png",
+      "announce": "Your classmate Tim is looking for you!",
+      "intro": "Matthew! I'm stuck on my homework. Can you help me? Pleeease?",
+      "complete": "Tim cheers: \"You're a genius, thanks!\"",
+      "reward": 10
+    },
+    {
+      "id": "granny_jenny",
+      "type": "riddle",
+      "weight": 1,
+      "name": "Granny Jenny",
+      "npc": "res://assets/models/npc/Old_woman_Jenny_idle_16x16.png",
+      "announce": "Granny Jenny seems to need some help...",
+      "intro": "Oh dear, my old eyes can't work out this sum. Could you help me, child?",
+      "complete": "Granny Jenny smiles: \"What a kind young wizard!\"",
+      "reward": 12
+    },
+    {
+      "id": "abby_marbles",
+      "type": "fetch",
+      "weight": 1,
+      "name": "Abby",
+      "npc": "res://assets/models/npc/Kid_Abby_idle_16x16.png",
+      "announce": "Abby looks like she's about to cry...",
+      "ask": "My magic marbles rolled away all over the village! Can you help me find them?",
+      "item": "Marbles",
+      "color": "#8fa6ff",
+      "min": 3,
+      "max": 5,
+      "thanks": "My marbles! You found them!",
+      "complete": "Abby hugs her marbles happily.",
+      "reward": 12
+    },
+    {
+      "id": "pier_star_fragments",
+      "type": "fetch",
+      "weight": 1,
+      "name": "Pier",
+      "npc": "res://assets/models/npc/Pier_idle_16x16.png",
+      "announce": "Pier the stargazer needs a hand!",
+      "ask": "Shooting stars fell last night! I need their fragments for my telescope. Will you gather them for me?",
+      "item": "Star fragments",
+      "color": "#f5d76e",
+      "min": 3,
+      "max": 6,
+      "thanks": "Wonderful! Now my telescope will shine!",
+      "complete": "Pier fixes his telescope.",
+      "reward": 15
+    },
+    {
+      "id": "lucy_herbs",
+      "type": "fetch",
+      "weight": 1,
+      "name": "Lucy",
+      "npc": "res://assets/models/npc/Lucy_idle_16x16.png",
+      "announce": "Lucy the herbalist is searching for something...",
+      "ask": "I'm brewing a healing potion, but I'm out of glowing herbs. Could you pick some for me?",
+      "item": "Herbs",
+      "color": "#8fc45a",
+      "min": 3,
+      "max": 5,
+      "thanks": "Fresh herbs! Just what my potion needed!",
+      "complete": "Lucy's potion bubbles happily.",
+      "reward": 12
+    },
+    {
+      "id": "romeo_crystals",
+      "type": "fetch",
+      "weight": 1,
+      "name": "Romeo",
+      "npc": "res://assets/models/npc/Kid_Romeo_idle_16x16.png",
+      "announce": "Romeo dropped something shiny...",
+      "ask": "My pouch had a hole and my mana crystals fell out! Please help me find them!",
+      "item": "Mana crystals",
+      "color": "#7fd0e0",
+      "min": 3,
+      "max": 5,
+      "thanks": "My crystals! Thank you, Matthew!",
+      "complete": "Romeo sews up his pouch.",
+      "reward": 10
+    }
+  ],
+  "trader": {
+    "name": "Traveling Trader",
+    "icon": "🧳",
+    "host_name": "Dan",
+    "npc": "res://assets/models/npc/Dan_idle_16x16.png",
+    "awning": "#2f5a7a",
+    "intro": "Greetings, young wizard! I travel to every festival. Bring me the special tokens from the prize booths and I'll pay you in KP!"
+  }
+}

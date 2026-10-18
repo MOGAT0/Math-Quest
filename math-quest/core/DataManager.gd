@@ -1,6 +1,10 @@
 extends Node
 
-var save_path : String = "user://data.json"
+## Emitted after clear_data() wipes and reseeds the save (New Game), so
+## managers that keep state in memory (e.g. CalendarManager) can reload.
+signal data_cleared
+
+var save_path : String = "user://mathquest_data.json"
 
 var database : Dictionary = {
 	"schemas": {},
@@ -32,6 +36,37 @@ const DEFAULT_SCHEMAS : Dictionary = {
 		"id": {"data_type": "int", "not_null": true, "primary_key": true, "auto_increment": true},
 		"date": {"data_type": "text"},
 		"days": {"data_type": "int"}
+	},
+	# In-game calendar (CalendarManager): one row. season 0-3 = Spring..Winter,
+	# next_random_day is an absolute day number, seen_events a JSON array.
+	"calendar": {
+		"id": {"data_type": "int", "not_null": true, "primary_key": true, "auto_increment": true},
+		"day": {"data_type": "int", "default": 1},
+		"season": {"data_type": "int", "default": 0},
+		"year": {"data_type": "int", "default": 1},
+		"next_random_day": {"data_type": "int", "default": 0},
+		"seen_events": {"data_type": "text", "default": "[]"}
+	},
+	# Festivals (FestivalDirector): one row per festival per year the player
+	# joined; stamps = JSON array of booth ids finished, badge = all done,
+	# progress = JSON of the day's hunt ({"eggs": n, "golden": bool}).
+	"festival": {
+		"id": {"data_type": "int", "not_null": true, "primary_key": true, "auto_increment": true},
+		"event_id": {"data_type": "text", "not_null": true},
+		"year": {"data_type": "int", "default": 1},
+		"stamps": {"data_type": "text", "default": "[]"},
+		"badge": {"data_type": "bool", "default": false},
+		"progress": {"data_type": "text", "default": "{}"}
+	},
+	# One row: festival tokens, best booth scores (JSON {booth_id: score}),
+	# prizes collected (JSON array of prize ids) and special event tokens
+	# (JSON {token_id: count}, sold for KP to the Traveling Trader).
+	"festival_profile": {
+		"id": {"data_type": "int", "not_null": true, "primary_key": true, "auto_increment": true},
+		"tokens": {"data_type": "int", "default": 0},
+		"best": {"data_type": "text", "default": "{}"},
+		"collectibles": {"data_type": "text", "default": "[]"},
+		"special": {"data_type": "text", "default": "{}"}
 	}
 }
 
@@ -76,8 +111,16 @@ func _ready() -> void:
 	load_database()
 	ensure_base_tables()
 
+## Makes the save match DEFAULT_SCHEMAS. Runs on every start, so a new
+## device gets a complete save file, and an older save picks up the tables,
+## columns and chapters added by game updates (its own values are kept).
 func ensure_base_tables() -> void:
 	var needs_save : bool = false
+
+	for key in ["schemas", "data"]:
+		if typeof(database.get(key)) != TYPE_DICTIONARY:
+			database[key] = {}
+			needs_save = true
 
 	for table_name in DEFAULT_SCHEMAS.keys():
 		if not database["schemas"].has(table_name):
@@ -85,9 +128,66 @@ func ensure_base_tables() -> void:
 			database["data"][table_name] = []
 			_seed_default_table(table_name)
 			needs_save = true
+			continue
+
+		if typeof(database["data"].get(table_name)) != TYPE_ARRAY:
+			database["data"][table_name] = []
+			needs_save = true
+		if _add_missing_columns(table_name):
+			needs_save = true
+		if _add_missing_rows(table_name):
+			needs_save = true
 
 	if needs_save:
 		save_database()
+
+## Adds the template's columns this save doesn't have yet, and gives every
+## row that lacks one the column's default.
+func _add_missing_columns(table_name: String) -> bool:
+	var changed : bool = false
+	var schema : Dictionary = database["schemas"][table_name]
+	for field in DEFAULT_SCHEMAS[table_name]:
+		var rules : Dictionary = DEFAULT_SCHEMAS[table_name][field]
+		if not schema.has(field):
+			schema[field] = rules.duplicate(true)
+			changed = true
+		if not rules.has("default"):
+			continue
+		for row in database["data"][table_name]:
+			if not row.has(field):
+				row[field] = rules["default"]
+				changed = true
+	return changed
+
+## Puts back the starting rows the game expects: the one-row tables when
+## they are empty, and any checklist chapter the save is missing.
+func _add_missing_rows(table_name: String) -> bool:
+	var rows : Array = database["data"][table_name]
+	match table_name:
+		"progress", "calendar", "festival_profile":
+			if rows.is_empty():
+				_seed_default_table(table_name)
+				return true
+		"checklist":
+			var have : Array = []
+			for row in rows:
+				have.append(row.get("chapter", ""))
+			var changed : bool = false
+			for chapter in DEFAULT_CHAPTERS:
+				if not chapter in have:
+					rows.append({"id": _get_next_id("checklist", "id"), "chapter": chapter, "is_done": false})
+					changed = true
+			return changed
+	return false
+
+## One row holding every column's default (columns without one are left out).
+func _default_row(table_name: String) -> Dictionary:
+	var row : Dictionary = {}
+	for field in DEFAULT_SCHEMAS[table_name]:
+		var rules : Dictionary = DEFAULT_SCHEMAS[table_name][field]
+		if rules.has("default"):
+			row[field] = rules["default"]
+	return row
 
 func _seed_default_table(table_name: String) -> void:
 	match table_name:
@@ -102,26 +202,19 @@ func _seed_default_table(table_name: String) -> void:
 			database["data"]["checklist"] = rows
 
 		"progress":
-			database["data"]["progress"] = [{
-				"id": 1,
-				"current_chapter": "prologue_classroom",
-				"current_grade": "g1",
-				"current_lesson": "g1-l1",
-				"current_location": Vector2.ZERO,
-				"arith_pos": Vector2.ZERO,
-				"is_active": true,
-				"open_portal": false,
-				"c1": false,
-				"c2": false,
-				"c3": false,
-				"kp": 300
-			}]
+			var row : Dictionary = _default_row("progress")
+			row["id"] = 1
+			row["current_chapter"] = "prologue_classroom"
+			row["is_active"] = true
+			database["data"]["progress"] = [row]
 
-		"streak":
-			database["data"]["streak"] = []
+		"calendar", "festival_profile":
+			var row : Dictionary = _default_row(table_name)
+			row["id"] = 1
+			database["data"][table_name] = [row]
 
 		_:
-			pass
+			database["data"][table_name] = []
 
 func create_table(table_name: String, schema: Dictionary) -> void:
 	if not database["schemas"].has(table_name):
@@ -142,7 +235,11 @@ func insert(table_name: String, row_data: Dictionary) -> int:
 			var next_id = _get_next_id(table_name, field)
 			new_row[field] = next_id
 			inserted_id = next_id
-			
+		# Columns the caller left out get their default (e.g. a new
+		# progress row starts with kp = 300, not without kp at all).
+		elif not new_row.has(field) and schema[field].has("default"):
+			new_row[field] = schema[field]["default"]
+
 	if not _validate_data(table_name, new_row):
 		push_error("DataManager: Validation failed for table '" + table_name + "'")
 		return -1
@@ -261,7 +358,10 @@ func _deserialize_value(value: Variant) -> Variant:
 		return arr_res
 	return value
 
+## Reset data (Settings): rebuilds the save from the template. Managers that
+## keep save values in memory (GameManager's KP, CalendarManager, ...)
+## listen to data_cleared and reload, or they would write old values back.
 func clear_data() -> void:
-	database["schemas"].clear()
-	database["data"].clear()
+	database = {"schemas": {}, "data": {}}
 	ensure_base_tables()
+	data_cleared.emit()

@@ -30,6 +30,9 @@ DataManager="*res://core/DataManager.gd"
 db="*res://core/managers/db_editor/db_editor.gd"
 MusicPlayer="*res://core/managers/MusicPlayer.gd"
 AnalysisReport="*res://core/managers/AnalysisReport.gd"
+CalendarManager="*res://core/managers/CalendarManager.gd"
+EventDirector="*res://core/managers/EventDirector.gd"
+FestivalDirector="*res://core/managers/FestivalDirector.gd"
 
 [debug]
 
@@ -37,6 +40,7 @@ gdscript/warnings/integer_division=0
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=4

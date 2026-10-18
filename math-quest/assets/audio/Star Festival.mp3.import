@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7l3kg7j7i7go"
+path="res://.godot/imported/Star Festival.mp3-528984f4c4e4ea28488c5abc9121ea9c.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Star Festival.mp3"
+dest_files=["res://.godot/imported/Star Festival.mp3-528984f4c4e4ea28488c5abc9121ea9c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

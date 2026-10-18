@@ -1,145 +1,161 @@
 extends Control
 class_name BookApp
 
+# =====================================================================
+#  The entrance exam, as a treasure map: a dotted path of stops at the
+#  top (one per page) and one big parchment card in the middle that
+#  flips to the next page. Every chapter starts with a lesson card (tap
+#  to count + one short line), then one card per question. Everything
+#  fits on one screen; no scrolling.
+#
+#  Data: res://data/book_data.json (chapters -> lessonContent, exercises).
+#  Pictures are counted in the order they are tapped: the 1st tap shows
+#  1, the 2nd shows 2..., and the number is read out loud.
+#  Each card reads itself out loud when it opens (lesson: title, idea and
+#  tip; question: the question and what to do), 🔊 says it again. A right
+#  answer flips to the next card by itself.
+#  Solving every question shows the certificate; "Return" hides the exam
+#  and emits isChapter_Done.
+# =====================================================================
+
 signal isChapter_Done
-# ---------------------------------------------------------------------------
-# CONFIG
-# ---------------------------------------------------------------------------
+
 const DATA_PATH := "res://data/book_data.json"
-#const SAVE_PATH := "user://entranceExam_data.json"
 
 const ITEM_EMOJI := {
 	"star": "⭐", "can": "🥫", "box": "📦", "yoyo": "🪀", "balloon": "🎈",
 	"backpack": "🎒", "strawberry": "🍓", "pineapple": "🍍", "apple": "🍎",
 	"pencil": "✏️", "flower": "🌸"
 }
-
 const ROMAN := {1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI", 7: "VII", 8: "VIII"}
 
-
-# ---------------------------------------------------------------------------
-# COLOR PALETTE (lifted from index.css)
-# ---------------------------------------------------------------------------
+# Palette (leather, parchment and gold)
 const COL_DESK_BG := "#170e08"
 const COL_LEATHER := "#2b120a"
-const COL_LEATHER_BORDER := "#1a0b06"
 const COL_GOLD := "#c5a059"
 const COL_GOLD_LIGHT := "#ecd69e"
 const COL_GOLD_DARK := "#9c7328"
-const COL_HEADER_BG := "#24130a"
-const COL_HEADER_BORDER := "#5c3b1e"
-const COL_HEADER_TEXT := "#f7eed8"
-const COL_HEADER_SUBTEXT := "#c5ab82"
-const COL_TAB_INACTIVE_BG := "#381f12"
-const COL_TAB_INACTIVE_BORDER := "#5e381b"
-const COL_TAB_INACTIVE_TEXT := "#d4bd94"
-const COL_TAB_ACTIVE_BG := "#fcf8ee"
-const COL_TAB_ACTIVE_TEXT := "#29170a"
 const COL_PARCHMENT := "#faf4e5"
-const COL_PARCHMENT_TEXT := "#2c1d11"
-const COL_VINTAGE_PLATE := "#fdfbf6"
-const COL_VINTAGE_PLATE_BORDER := "#cbb387"
-const COL_INK_BOX_BG := "#f5ecda"
-const COL_INK_BOX_BORDER := "#9b6c23"
-const COL_GOLD_BTN_TOP := "#ecd69e"
-const COL_GOLD_BTN_BOT := "#b98e3b"
-const COL_GOLD_BTN_BORDER := "#9c7328"
-const COL_GOLD_BTN_TEXT := "#2d1b0d"
-const COL_PARCH_BTN_TOP := "#fbf7ee"
-const COL_PARCH_BTN_BOT := "#eee2c7"
-const COL_PARCH_BTN_BORDER := "#bd9e6b"
-const COL_PARCH_BTN_TEXT := "#382414"
-const COL_SUCCESS_BG := "#ebf7ee"
-const COL_SUCCESS_BORDER := "#3d9159"
-const COL_SUCCESS_TEXT := "#134e26"
-const COL_ERROR_BG := "#fdf0f0"
-const COL_ERROR_BORDER := "#b8383e"
-const COL_ERROR_TEXT := "#6d1318"
-const COL_HINT_BG := "#fff9ea"
-const COL_HINT_BORDER := "#d6be85"
-const COL_HINT_TEXT := "#523713"
-const COL_MC_SELECTED_NEUTRAL := "#9e7526"
-const COL_MC_SELECTED_CORRECT := "#156e3b"
-const COL_MC_SELECTED_WRONG := "#9c252b"
+const COL_PARCHMENT_DARK := "#eee2c7"
+const COL_INK := "#2c1d11"
+const COL_INK_SOFT := "#5c3e23"
+const COL_TRAIL := "#5c3b1e"
+const COL_CORRECT := "#2f7a43"
+const COL_WRONG := "#a32228"
+const COL_SEAL := "#8d161d"
 
-# ---------------------------------------------------------------------------
-# STATE
-# ---------------------------------------------------------------------------
-var book_data: Array = []
-var current_page: int = 0
-var show_tagalog: bool = false
-var show_certificate: bool = false
-var completed_exercises: Array = []
-var ex_state: Dictionary = {}   # exercise_id -> Dictionary of per-exercise UI state
-
-var _confirm_dialog: ConfirmationDialog = null
-
-var _scroll: ScrollContainer = null
-var _bg: ColorRect = null
-var _pending_reset_scroll: bool = false
+const MAP_H := 0.12          # map path height (share of the screen)
+const CARD_W := 0.78         # card size (share of the screen)
+const CARD_H := 0.74
+const MAX_TILE := 64.0       # biggest picture tile (px at 648 high)
+const MAX_LESSON_TILE := 96.0  # lessons show only a few pictures: bigger
+const HINT_AFTER := 2        # wrong answers before the hint shows
+const AUTO_NEXT_DELAY := 1.6 # seconds after a right answer before the next card
 
 enum SignalType {
 	Open, Close
 }
 
-
-# ---------------------------------------------------------------------------
-# TEXT-TO-SPEECH (reads the counter number when an icon is tapped)
-# ---------------------------------------------------------------------------
+# ------------------------------------------------------------------ TTS --
 @export var tts_enabled: bool = true
-@export_range(0.1, 10.0, 0.1) var tts_rate: float = 0.9     # 1.0 = normal speed
-@export_range(0.0, 2.0, 0.1) var tts_pitch: float = 1.1     # slightly higher suits kids
+@export_range(0.1, 10.0, 0.1) var tts_rate: float = 0.9
+@export_range(0.0, 2.0, 0.1) var tts_pitch: float = 1.1
 @export_range(0, 100, 1) var tts_volume: int = 100
+## Kept for the scene's settings; the card sizes itself to the screen.
+@export_range(0.5, 3.0, 0.05) var font_scale: float = 1.0
+@export_range(0.5, 3.0, 0.05) var icon_scale: float = 1.0
 
 var _tts_voice: String = ""
 
+# ---------------------------------------------------------------- state --
+var book_data: Array = []
+## Every page in order: a lesson per chapter, then one per question
+## ({"kind": "lesson"|"exercise", "ch": int, "ex": int}).
+var _pages: Array = []
+var current_page: int = 0
+var _visited: Array = [0]
+var completed_exercises: Array = []
+var ex_state: Dictionary = {}       # exercise / practice id -> state
+var show_certificate: bool = false
+
+var _map: MapPath
+var _card: PanelContainer
+var _prev_btn: Button
+var _next_btn: Button
+var _flipping: bool = false
+
+
 func _init_tts() -> void:
-	# Pick the first English voice once. Falls back to the system default if none exist.
 	var voices := DisplayServer.tts_get_voices_for_language("en")
 	if voices.size() > 0:
 		_tts_voice = voices[0]
 
+
 func _speak_number(n: int) -> void:
+	_say(str(n))
+
+
+## Say something out loud (stops anything still being said). Emoji and
+## arrows are left out so the voice doesn't read their names.
+func _say(text: String) -> void:
 	if not tts_enabled:
 		return
-	# interrupt = true so rapid taps cut off the previous number
-	# instead of queueing up a long backlog of speech.
-	DisplayServer.tts_speak(str(n), _tts_voice, tts_volume, tts_pitch, tts_rate, 0, true)
+	var clean := text.replace("→", ",").replace("+", " plus ").replace("=", " equals ")
+	clean = RegEx.create_from_string("[^\\x{0020}-\\x{024F}]").sub(clean, "", true)
+	clean = RegEx.create_from_string("\\s+").sub(clean, " ", true).strip_edges()
+	if clean != "":
+		DisplayServer.tts_speak(clean, _tts_voice, tts_volume, tts_pitch, tts_rate, 0, true)
 
-@export_range(0.5, 3.0, 0.05) var font_scale: float = 1.0   # all text
-@export_range(0.5, 3.0, 0.05) var icon_scale: float = 1.0   # emoji icons, badges, item buttons
 
-func _fsz(size: int) -> int:
-	return maxi(1, int(round(size * font_scale)))
+## What the current card says when it opens.
+func _card_speech() -> String:
+	# Opened before _ready loaded the book (a chapter can open it from its
+	# own _ready): there is no card to read yet
+	if book_data.is_empty() or _pages.is_empty():
+		return ""
+	var page := _page()
+	var chapter: Dictionary = book_data[int(page["ch"])]
+	if page["kind"] == "lesson":
+		var lesson: Dictionary = chapter.get("lessonContent", {})
+		return "%s. %s %s" % [_short_title(str(chapter.get("titleEn", ""))), str(lesson.get("explanation", "")),
+			str(lesson.get("keyTip", "")).replace("Tip:", "").replace("Quick", "")]
+	var ex := _exercise_at(page)
+	var q := RegEx.create_from_string("^\\d+\\.\\s*").sub(str(ex.get("questionEn", "")), "")
+	return "%s %s" % [q, str(ex.get("instructionEn", ""))]
 
-func _isz(size: float) -> int:
-	return maxi(1, int(round(size * icon_scale)))
 
-func _trigger(value : SignalType) -> void:
+func _read_card() -> void:
+	if visible and not show_certificate:
+		_say(_card_speech())
+
+
+func _trigger(value: SignalType) -> void:
 	match value:
 		SignalType.Open:
 			render()
 			show()
+			_read_card()
 		SignalType.Close:
 			hide()
 
-# ---------------------------------------------------------------------------
-# LIFECYCLE
-# ---------------------------------------------------------------------------
+
+# ------------------------------------------------------------ lifecycle --
 func _ready() -> void:
 	set_anchors_preset(Control.PRESET_FULL_RECT)
+	mouse_filter = Control.MOUSE_FILTER_STOP
 	_init_tts()
 	_load_data()
+	resized.connect(func():
+		if visible and _card and not _flipping:
+			render()
+	)
 	hide()
 	#_trigger(SignalType.Open)
 
-func _set_panels_pass(node: Node) -> void:
-	if node is PanelContainer:
-		(node as PanelContainer).mouse_filter = Control.MOUSE_FILTER_PASS
-	for child in node.get_children():
-		_set_panels_pass(child)
 
 func _unhandled_key_input(event: InputEvent) -> void:
+	if not visible or show_certificate:
+		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_RIGHT:
 			_next_page()
@@ -147,50 +163,36 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			_prev_page()
 
 
-# ---------------------------------------------------------------------------
-# DATA LOADING / PERSISTENCE
-# ---------------------------------------------------------------------------
 func _load_data() -> void:
 	var f := FileAccess.open(DATA_PATH, FileAccess.READ)
 	if f == null:
 		push_error("BookApp: could not open " + DATA_PATH)
 		book_data = []
 		return
-	var txt := f.get_as_text()
+	var parsed = JSON.parse_string(f.get_as_text())
 	f.close()
-	var parsed = JSON.parse_string(txt)
 	book_data = parsed if parsed is Array else []
+	_build_pages()
 
 
-#func _load_progress() -> void:
-	#if not FileAccess.file_exists(SAVE_PATH):
-		#return
-	#var f := FileAccess.open(SAVE_PATH, FileAccess.READ)
-	#if f == null:
-		#return
-	#var parsed = JSON.parse_string(f.get_as_text())
-	#f.close()
-	#if parsed is Dictionary and parsed.has("completed"):
-		#completed_exercises = parsed["completed"]
+func _build_pages() -> void:
+	_pages = []
+	for ch in range(book_data.size()):
+		_pages.append({"kind": "lesson", "ch": ch, "ex": -1})
+		for ex in range((book_data[ch].get("exercises", []) as Array).size()):
+			_pages.append({"kind": "exercise", "ch": ch, "ex": ex})
 
 
-#func _save_progress() -> void:
-	#var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	#if f == null:
-		#return
-	#f.store_string(JSON.stringify({"completed": completed_exercises}))
-	#f.close()
+func _page() -> Dictionary:
+	if _pages.is_empty():
+		return {"kind": "lesson", "ch": 0, "ex": -1}
+	return _pages[clampi(current_page, 0, _pages.size() - 1)]
 
 
-# ---------------------------------------------------------------------------
-# HELPERS
-# ---------------------------------------------------------------------------
-func _c(hex: String) -> Color:
-	return Color(hex)
-
-
-func _roman(n: int) -> String:
-	return ROMAN.get(n, str(n))
+func _exercise_at(page: Dictionary) -> Dictionary:
+	if page["kind"] != "exercise":
+		return {}
+	return book_data[int(page["ch"])]["exercises"][int(page["ex"])]
 
 
 func _total_exercises() -> int:
@@ -200,1069 +202,535 @@ func _total_exercises() -> int:
 	return total
 
 
-func _chapter_done(chapter: Dictionary) -> bool:
-	for ex in chapter.get("exercises", []):
-		if not completed_exercises.has(ex["id"]):
-			return false
-	return true
-
-
 func _get_ex_state(id: String) -> Dictionary:
 	if not ex_state.has(id):
-		ex_state[id] = {
-			"counted": [],       # Array[int]
-			"selected_option": null,
-			"typed_number": "",
-			"tens": 0,
-			"ones": 0,
-			"is_answered": false,
-			"is_correct": null,
-			"show_hint": false,
-		}
+		ex_state[id] = {"counted": [], "selected_option": null, "typed_number": "",
+			"tens": 0, "ones": 0, "is_answered": false, "is_correct": null, "misses": 0}
 	return ex_state[id]
 
 
-func _flat_style(bg: Color, border: Color = Color(0, 0, 0, 0), border_w: int = 0,
-		radius: int = 4, margin: int = 8) -> StyleBoxFlat:
-	var sb := StyleBoxFlat.new()
-	sb.bg_color = bg
-	sb.border_color = border
-	sb.set_border_width_all(border_w)
-	sb.set_corner_radius_all(radius)
-	sb.set_content_margin_all(margin)
+func _roman(n: int) -> String:
+	return ROMAN.get(n, str(n))
+
+
+## Screen scale: 1.0 at 648 px high.
+func _s() -> float:
+	return maxf(size.y, 360.0) / 648.0
+
+
+func _fs(px: float) -> int:
+	return maxi(8, roundi(px * _s()))
+
+
+# =============================================================== render --
+func render() -> void:
+	for c in get_children():
+		remove_child(c)
+		c.queue_free()
+	_map = null
+	_card = null
+	queue_redraw()
+	if _pages.is_empty():
+		return
+
+	_map = MapPath.new()
+	_map.exam = self
+	_map.position = Vector2.ZERO
+	_map.size = Vector2(size.x, size.y * MAP_H)
+	add_child(_map)
+
+	var card_size := Vector2(size.x * CARD_W, size.y * CARD_H)
+	var card_pos := Vector2((size.x - card_size.x) / 2.0, size.y * MAP_H + (size.y * (1.0 - MAP_H) - card_size.y) / 2.0)
+	_card = PanelContainer.new()
+	_card.position = card_pos
+	_card.size = card_size
+	_card.custom_minimum_size = card_size
+	_card.pivot_offset = card_size / 2.0
+	_card.add_theme_stylebox_override("panel", _card_style(Color(COL_GOLD)))
+	add_child(_card)
+	_fill_card()
+
+	# Arrows beside the card
+	var arrow_size := Vector2(56, 84) * _s()
+	_prev_btn = _arrow_button("‹")
+	_prev_btn.position = Vector2((card_pos.x - arrow_size.x) / 2.0, card_pos.y + (card_size.y - arrow_size.y) / 2.0)
+	_prev_btn.size = arrow_size
+	_prev_btn.disabled = current_page == 0
+	_prev_btn.pressed.connect(_prev_page)
+	add_child(_prev_btn)
+	_next_btn = _arrow_button("›")
+	_next_btn.position = Vector2(card_pos.x + card_size.x + (card_pos.x - arrow_size.x) / 2.0, _prev_btn.position.y)
+	_next_btn.size = arrow_size
+	_next_btn.disabled = current_page >= _pages.size() - 1
+	_next_btn.pressed.connect(_next_page)
+	add_child(_next_btn)
+	if _page_solved() and _page()["kind"] == "exercise" and current_page < _pages.size() - 1:
+		ClassTheme.pulse(_next_btn)
+
+	if show_certificate:
+		add_child(_build_certificate())
+
+
+func _card_style(border: Color) -> StyleBoxFlat:
+	var sb := ClassTheme.flat(Color(COL_PARCHMENT), border, int(18 * _s()), int(5 * _s()), int(22 * _s()))
+	sb.shadow_color = Color(0, 0, 0, 0.45)
+	sb.shadow_size = int(14 * _s())
+	sb.shadow_offset = Vector2(0, 6) * _s()
 	return sb
 
 
-func _make_label(text: String, size: int = 14, color: String = COL_PARCHMENT_TEXT, bold: bool = false, italic: bool = false, autowrap: bool = false) -> Label:
-
-	var l := Label.new()
-	l.text = text
-	l.add_theme_font_size_override("font_size", _fsz(size))
-	l.add_theme_color_override("font_color", _c(color))
-	if autowrap:
-		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	else:
-		l.autowrap_mode = TextServer.AUTOWRAP_OFF
-	return l
-
-
-func _make_btn(text: String, bg: String, border: String, txt_color: String, hover_bg: String = "", font_size: int = 13) -> Button:
+func _arrow_button(text: String) -> Button:
 	var b := Button.new()
 	b.text = text
 	b.focus_mode = Control.FOCUS_NONE
-	b.add_theme_font_size_override("font_size", _fsz(font_size))
-	b.add_theme_color_override("font_color", _c(txt_color))
-	b.add_theme_color_override("font_hover_color", _c(txt_color))
-	b.add_theme_color_override("font_pressed_color", _c(txt_color))
-	b.add_theme_color_override("font_disabled_color", _c(txt_color).darkened(0.3))
-	var hbg := _c(hover_bg) if hover_bg != "" else _c(bg).lightened(0.08)
-	b.add_theme_stylebox_override("normal", _flat_style(_c(bg), _c(border), 2, 4, 10))
-	b.add_theme_stylebox_override("hover", _flat_style(hbg, _c(border), 2, 4, 10))
-	b.add_theme_stylebox_override("pressed", _flat_style(hbg.darkened(0.05), _c(border), 2, 4, 10))
-	b.add_theme_stylebox_override("disabled", _flat_style(_c(bg).darkened(0.15), _c(border).darkened(0.2), 2, 4, 10))
+	ClassTheme.style_button(b, Color(COL_LEATHER), Color(COL_GOLD), Color(COL_GOLD_LIGHT), _fs(44))
 	return b
 
-func _make_icon_label(text: String, size: int = 20, color: String = COL_PARCHMENT_TEXT, bold: bool = false) -> Label:
-	var l := Label.new()
-	l.text = text
-	l.add_theme_font_size_override("font_size", _isz(size))
-	l.add_theme_color_override("font_color", _c(color))
-	l.autowrap_mode = TextServer.AUTOWRAP_OFF
-	return l
 
-func _gold_button(text: String, font_size: int = 13) -> Button:
-	return _make_btn(text, COL_GOLD_BTN_BOT, COL_GOLD_BTN_BORDER, COL_GOLD_BTN_TEXT, COL_GOLD_BTN_TOP, font_size)
+## The current page is done (a lesson counts as done once visited).
+func _page_solved() -> bool:
+	var page := _page()
+	if page["kind"] == "lesson":
+		return true
+	return completed_exercises.has(str(_exercise_at(page).get("id", "")))
 
 
-func _parchment_button(text: String, font_size: int = 13) -> Button:
-	return _make_btn(text, COL_PARCH_BTN_BOT, COL_PARCH_BTN_BORDER, COL_PARCH_BTN_TEXT, COL_PARCH_BTN_TOP, font_size)
-
-
-func _spacer(h: float = 8.0) -> Control:
-	var c := Control.new()
-	c.custom_minimum_size = Vector2(0, h)
-	return c
-
-
-func _divider(color: String = "#d8c59e") -> ColorRect:
-	var r := ColorRect.new()
-	r.color = _c(color)
-	r.custom_minimum_size = Vector2(0, 1)
-	return r
-
-
-# ---------------------------------------------------------------------------
-# MASTER RENDER (rebuilds the book content each time, but keeps the
-# ScrollContainer node itself alive so scroll position survives re-renders)
-# ---------------------------------------------------------------------------
-func render() -> void:
-	var reset_scroll := _pending_reset_scroll
-	_pending_reset_scroll = false
-
-	if _scroll == null or not is_instance_valid(_scroll):
-		# First render (or the persistent nodes were somehow lost): build
-		# the whole tree, including the background and scroll container,
-		# from scratch.
-		for child in get_children():
-			child.queue_free()
-
-		_bg = ColorRect.new()
-		_bg.color = _c(COL_DESK_BG)
-		_bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-		_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		add_child(_bg)
-
-		_scroll = ScrollContainer.new()
-		_scroll.set_anchors_preset(Control.PRESET_FULL_RECT)
-		_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-		add_child(_scroll)
+func _fill_card() -> void:
+	for c in _card.get_children():
+		_card.remove_child(c)
+		c.queue_free()
+	var page := _page()
+	var chapter: Dictionary = book_data[int(page["ch"])]
+	if page["kind"] == "lesson":
+		_card.add_child(_build_lesson_card(chapter, int(page["ch"])))
 	else:
-		# Subsequent renders: keep _bg and _scroll alive, only tear down
-		# their contents (and any extra top-level overlay, e.g. the
-		# certificate) so the ScrollContainer's scroll_vertical is preserved.
-		for child in _scroll.get_children():
-			child.queue_free()
-		for child in get_children():
-			if child != _bg and child != _scroll:
-				child.queue_free()
-
-	# Small outer margin so the book doesn't touch the screen edges.
-	# MarginContainer + EXPAND_FILL makes the content use the full window width.
-	var margin := MarginContainer.new()
-	margin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	margin.add_theme_constant_override("margin_left", 12)
-	margin.add_theme_constant_override("margin_right", 12)
-	margin.add_theme_constant_override("margin_top", 0)
-	margin.add_theme_constant_override("margin_bottom", 0)
-	_scroll.add_child(margin)
-
-	var main := VBoxContainer.new()
-	main.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	main.add_theme_constant_override("separation", 0)
-	margin.add_child(main)
-
-	main.add_child(_build_header())
-	main.add_child(_spacer(14))
-	main.add_child(_build_chapter_tabs())
-	main.add_child(_build_leather_panel())
-	main.add_child(_spacer(14))
-	main.add_child(_build_footer())
-	main.add_child(_spacer(24))
-	
-	_set_panels_pass(_scroll)
-	
-	if show_certificate:
-		add_child(_build_certificate_overlay())
-
-	if reset_scroll:
-		_scroll.scroll_vertical = 0
+		_card.add_child(_build_question_card(chapter, _exercise_at(page)))
 
 
-# ---------------------------------------------------------------------------
-# HEADER (top toolbar)
-# ---------------------------------------------------------------------------
-func _build_header() -> Control:
-	var panel := PanelContainer.new()
-	panel.add_theme_stylebox_override("panel", _flat_style(_c(COL_HEADER_BG), _c(COL_HEADER_BORDER), 0, 0, 14))
+# ========================================================= lesson card --
+func _build_lesson_card(chapter: Dictionary, ch: int) -> Control:
+	var lesson: Dictionary = chapter.get("lessonContent", {})
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", int(10 * _s()))
 
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 12)
-	panel.add_child(row)
+	# Title with a small chapter ribbon
+	var head := HBoxContainer.new()
+	head.add_theme_constant_override("separation", int(12 * _s()))
+	head.add_child(_ribbon("📜 Chapter " + _roman(int(chapter.get("pageNumber", ch + 1)))))
+	var title := ClassTheme.label(_short_title(str(chapter.get("titleEn", ""))), _fs(28), Color(COL_INK))
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	head.add_child(title)
+	head.add_child(_speaker_button())
+	col.add_child(head)
 
-	# --- Branding block ---
-	var brand := HBoxContainer.new()
-	brand.add_theme_constant_override("separation", 10)
-	brand.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	# One short line
+	var idea := ClassTheme.label(str(lesson.get("conceptTitle", "")).trim_prefix("Lesson: "), _fs(19), Color(COL_INK_SOFT))
+	idea.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	col.add_child(idea)
 
-	var icon_box := PanelContainer.new()
-	icon_box.custom_minimum_size = Vector2(_isz(38), _isz(38))
-	icon_box.add_theme_stylebox_override("panel", _flat_style(_c("#3b2012"), _c("#a17838"), 1, 2, 0))
-	var icon_lbl := _make_icon_label("📖", 18, COL_GOLD_LIGHT)
-	icon_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	icon_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	icon_box.add_child(icon_lbl)
-	brand.add_child(icon_box)
+	# Practice: tap to count, with a big counter
+	var visual = lesson.get("visualExample", null)
+	var body := HBoxContainer.new()
+	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	body.add_theme_constant_override("separation", int(16 * _s()))
+	col.add_child(body)
+	var practice_id := "lesson-%d" % ch
+	var st := _get_ex_state(practice_id)
+	var count := 0
+	if visual is Dictionary:
+		count = int(visual.get("count", 0))
+	if count > 0:
+		var area := Vector2(_card.size.x * 0.62, _card.size.y * 0.48)
+		body.add_child(_picture_grid(str(visual.get("itemType", "star")), _rows_for(count, 10), st, practice_id, area, MAX_LESSON_TILE))
+		var counted: Array = st["counted"]
+		var counter := VBoxContainer.new()
+		counter.alignment = BoxContainer.ALIGNMENT_CENTER
+		counter.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var n := ClassTheme.label(str(counted.size()), _fs(72), Color(COL_GOLD_DARK))
+		n.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		counter.add_child(n)
+		var done := counted.size() >= count
+		var under := ClassTheme.label(str(visual.get("groupingText", "")) if done else "Tap to count!", _fs(16),
+			Color(COL_CORRECT) if done else Color(COL_INK_SOFT))
+		under.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		under.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		counter.add_child(under)
+		if counted.size() > 0:
+			var again := _small_button("↺ Again")
+			again.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+			again.pressed.connect(func():
+				st["counted"] = []
+				_fill_card()
+			)
+			counter.add_child(again)
+		body.add_child(counter)
 
-	var title_vbox := VBoxContainer.new()
-	var title_row := HBoxContainer.new()
-	title_row.add_theme_constant_override("separation", 8)
-	var title_lbl := _make_label("GRADE 1 MATH EXERCISE BOOK", 15, COL_GOLD_LIGHT, true)
-	title_row.add_child(title_lbl)
-	var anno_lbl := _make_label("ANNO 1898", 10, COL_GOLD)
-	var anno_panel := PanelContainer.new()
-	anno_panel.add_theme_stylebox_override("panel", _flat_style(Color(0,0,0,0), _c("#8f6a2b"), 1, 2, 4))
-	#anno_panel.add_child(anno_lbl)
-	#title_row.add_child(anno_panel)
-	title_vbox.add_child(title_row)
-	var subtitle := _make_label("Counting, Arithmetic Numerals & Place Value", 11, COL_HEADER_SUBTEXT, false, true, true)
-	title_vbox.add_child(subtitle)
-	brand.add_child(title_vbox)
-	row.add_child(brand)
-
-	# --- Controls block ---
-	var controls := HBoxContainer.new()
-	controls.add_theme_constant_override("separation", 8)
-
-	var stars_panel := PanelContainer.new()
-	stars_panel.add_theme_stylebox_override("panel", _flat_style(_c("#351d10"), _c("#a68041"), 1, 2, 8))
-	var stars_lbl := _make_label("⭐ %d/%d Stars" % [completed_exercises.size(), _total_exercises()], 12, "#fdf6e6", true)
-	stars_panel.add_child(stars_lbl)
-	controls.add_child(stars_panel)
-
-	#row.add_child(controls)
-	return panel
-
-
-func _on_toggle_tagalog() -> void:
-	show_tagalog = not show_tagalog
-	render()
-
-
-# ---------------------------------------------------------------------------
-# CHAPTER TABS (ribbon bookmarks)
-# ---------------------------------------------------------------------------
-func _build_chapter_tabs() -> Control:
-	var scroll := ScrollContainer.new()
-	scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	scroll.custom_minimum_size = Vector2(0, _fsz(44))
-
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 6)
-
-	var chapter_index := int(current_page / 2)
-
-	for idx in range(book_data.size()):
-		var chapter: Dictionary = book_data[idx]
-		var is_current: bool = idx == chapter_index
-		var done: bool = _chapter_done(chapter)
-		var roman := _roman(int(chapter.get("pageNumber", idx + 1)))
-
-		var btn := Button.new()
-		btn.focus_mode = Control.FOCUS_NONE
-		btn.text = ("★ " if done else "") + "Tab " + roman
-		btn.add_theme_font_size_override("font_size", _fsz(12))
-		if is_current:
-			btn.add_theme_color_override("font_color", _c(COL_TAB_ACTIVE_TEXT))
-			btn.add_theme_color_override("font_hover_color", _c(COL_TAB_ACTIVE_TEXT))
-			btn.add_theme_stylebox_override("normal", _flat_style(_c(COL_TAB_ACTIVE_BG), _c("#b88e38"), 2, 6, 10))
-			btn.add_theme_stylebox_override("hover", _flat_style(_c(COL_TAB_ACTIVE_BG), _c("#b88e38"), 2, 6, 10))
-		else:
-			btn.add_theme_color_override("font_color", _c(COL_TAB_INACTIVE_TEXT))
-			btn.add_theme_color_override("font_hover_color", _c("#f3e7ce"))
-			btn.add_theme_stylebox_override("normal", _flat_style(_c(COL_TAB_INACTIVE_BG), _c(COL_TAB_INACTIVE_BORDER), 1, 6, 10))
-			btn.add_theme_stylebox_override("hover", _flat_style(_c("#4a2a19"), _c(COL_TAB_INACTIVE_BORDER), 1, 6, 10))
-		btn.pressed.connect(_on_go_to_chapter.bind(idx))
-		row.add_child(btn)
-
-	scroll.add_child(row)
-	return scroll
-
-
-func _on_go_to_chapter(idx: int) -> void:
-	_go_to_page(idx * 2)
-
-
-# ---------------------------------------------------------------------------
-# LEATHER COVER + PAGE (main book area)
-# ---------------------------------------------------------------------------
-func _build_leather_panel() -> Control:
-	var leather := PanelContainer.new()
-	leather.add_theme_stylebox_override("panel", _flat_style(_c(COL_LEATHER), _c(COL_LEATHER_BORDER), 4, 14, 16))
-
-	var page_panel := PanelContainer.new()
-	page_panel.add_theme_stylebox_override("panel", _flat_style(_c(COL_PARCHMENT), _c(COL_GOLD).darkened(0.1), 1, 4, 0))
-
-	var page_margin := MarginContainer.new()
-	page_margin.add_theme_constant_override("margin_left", 30)
-	page_margin.add_theme_constant_override("margin_right", 30)
-	page_margin.add_theme_constant_override("margin_top", 26)
-	page_margin.add_theme_constant_override("margin_bottom", 26)
-
-	var page_vbox := VBoxContainer.new()
-	page_vbox.add_theme_constant_override("separation", 0)
-
-	var chapter_index := int(current_page / 2)
-	var page_type := "lesson" if current_page % 2 == 0 else "exercise"
-	var chapter: Dictionary# = book_data[chapter_index] if chapter_index < book_data.size() else book_data[0]
-	
-	if book_data.size() > 0:
-		if chapter_index < book_data.size():
-			chapter = book_data[chapter_index]
-		else:
-			chapter = book_data[0]
-	
-	page_vbox.add_child(_build_page_subheader(chapter, page_type, chapter_index))
-	page_vbox.add_child(_spacer(18))
-
-	if page_type == "lesson":
-		page_vbox.add_child(_build_lesson_page(chapter, chapter_index))
+	# Tip bubble from the little wizard + Let's go
+	var foot := HBoxContainer.new()
+	foot.add_theme_constant_override("separation", int(10 * _s()))
+	var tip := str(lesson.get("keyTip", "")).replace("💡 Quick Tip:", "").replace("💡 Tip:", "").replace("💡", "").strip_edges()
+	if tip != "":
+		var wizard := ClassTheme.label("🧙", _fs(30))
+		wizard.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		foot.add_child(wizard)
+		var bubble := PanelContainer.new()
+		bubble.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		bubble.add_theme_stylebox_override("panel", ClassTheme.flat(Color(COL_PARCHMENT_DARK), Color(COL_GOLD), int(14 * _s()), 2, int(10 * _s())))
+		var t := ClassTheme.label(tip, _fs(15), Color(COL_INK))
+		t.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		bubble.add_child(t)
+		foot.add_child(bubble)
 	else:
-		page_vbox.add_child(_build_exercise_page(chapter, chapter_index))
-
-	page_vbox.add_child(_spacer(28))
-	page_vbox.add_child(_divider())
-	page_vbox.add_child(_spacer(12))
-	page_vbox.add_child(_build_bottom_nav(page_type))
-	page_vbox.add_child(_spacer(8))
-
-	var folio := _make_label(
-		"❧ — Page %d of %d : %s — ☙" % [current_page + 1, book_data.size() * 2,
-			("Lesson Folio" if page_type == "lesson" else "Exercise Plate")],
-		11, "#7a552f", true, true)
-	folio.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	page_vbox.add_child(folio)
-
-	page_margin.add_child(page_vbox)
-	page_panel.add_child(page_margin)
-	leather.add_child(page_panel)
-	return leather
+		var gap := Control.new()
+		gap.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		foot.add_child(gap)
+	var go := _gold_button("Let's go!  ➜", 20)
+	go.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	go.pressed.connect(_next_page)
+	foot.add_child(go)
+	col.add_child(foot)
+	return col
 
 
-func _build_page_subheader(chapter: Dictionary, page_type: String, chapter_index: int) -> Control:
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 10)
-
-	var left := HBoxContainer.new()
-	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	left.add_theme_constant_override("separation", 8)
-
-	var badge := PanelContainer.new()
-	badge.add_theme_stylebox_override("panel", _flat_style(_c("#ecd8ab"), _c("#b88e38"), 1, 2, 6))
-	badge.add_child(_make_label("Chapter %s of %s" % [_roman(int(chapter.get("pageNumber", 1))), _roman(book_data.size())], 11, "#3d2410", true))
-	left.add_child(badge)
-
-	var kind_lbl := _make_label("• " + ("Illustrated Lesson" if page_type == "lesson" else "Practice Exercises"), 10, "#7a4e1e")
-	left.add_child(kind_lbl)
-	row.add_child(left)
-
-	return row
+## "Activity 1: Counting Small Objects" -> "Counting Small Objects".
+func _short_title(t: String) -> String:
+	var i := t.find(":")
+	return t.substr(i + 1).strip_edges() if i >= 0 else t
 
 
-func _on_go_to_page(p: int) -> void:
-	_go_to_page(p)
+## `count` pictures split into rows of at most `per_row`.
+func _rows_for(count: int, per_row: int) -> Array:
+	var rows : Array = []
+	var left := count
+	while left > 0:
+		rows.append(mini(left, per_row))
+		left -= per_row
+	return rows
 
 
-# ---------------------------------------------------------------------------
-# LESSON PAGE
-# ---------------------------------------------------------------------------
-func _build_lesson_page(chapter: Dictionary, chapter_index: int) -> Control:
-	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 18)
-
-	vbox.add_child(_build_lesson_header(chapter))
-
-	# Scholar's Counting Rules
-	var rules_panel := PanelContainer.new()
-	rules_panel.add_theme_stylebox_override("panel", _flat_style(_c("#f4e8cf").lerp(Color(1,1,1,1), 0.0), _c("#c4ab7e"), 1, 3, 14))
-	var rules_vbox := VBoxContainer.new()
-	rules_vbox.add_theme_constant_override("separation", 6)
-	var rules_title := _make_label("📜 SCHOLAR'S COUNTING RULES", 11, "#66421c", true)
-	rules_vbox.add_child(rules_title)
-	for rule in [
-		"Point to and tally each object one by one with your finger or mouse.",
-		"Count in bundles of 5 and 10 for swifter reckoning.",
-		"Double-check before declaring your answer."
-	]:
-		rules_vbox.add_child(_make_label("• " + rule, 12, "#3b2413", false, false, true))
-	rules_panel.add_child(rules_vbox)
-	vbox.add_child(rules_panel)
-
-	return vbox
-
-
-func _build_lesson_header(chapter: Dictionary) -> Control:
-	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 10)
-
-	# Title block
-	var title_block := VBoxContainer.new()
-	title_block.add_theme_constant_override("separation", 4)
-
-	var chap_badge := PanelContainer.new()
-	chap_badge.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	chap_badge.add_theme_stylebox_override("panel", _flat_style(_c("#ecd69e").lerp(Color(1,1,1,1),0.3), _c("#b88e38"), 1, 2, 6))
-	chap_badge.add_child(_make_label("CHAPTER " + _roman(int(chapter.get("pageNumber", 1))), 10, "#3d2410", true))
-	title_block.add_child(chap_badge)
-
-	var title_lbl := _make_label(chapter.get("titleEn", ""), 22, "#261509", true, false, true)
-	title_block.add_child(title_lbl)
-
-	if show_tagalog and chapter.get("titleTl", "") != "":
-		title_block.add_child(_make_label("Salin: " + str(chapter.get("titleTl", "")), 12, "#734f2d", false, true, true))
-
-	title_block.add_child(_make_label(chapter.get("subtitle", ""), 12, "#5c3e23", false, true, true))
-	vbox.add_child(title_block)
-	vbox.add_child(_divider())
-
-	# Explanation plate
-	var plate := PanelContainer.new()
-	plate.add_theme_stylebox_override("panel", _flat_style(_c(COL_VINTAGE_PLATE), _c("#c4ab7e"), 1, 3, 16))
-	var plate_vbox := VBoxContainer.new()
-	plate_vbox.add_theme_constant_override("separation", 10)
-
-	var concept_row := HBoxContainer.new()
-	concept_row.add_theme_constant_override("separation", 8)
-	concept_row.add_child(_make_label("✨", 14))
-	var concept_lbl := _make_label(chapter.get("lessonContent", {}).get("conceptTitle", ""), 15, "#2a170b", true)
-	concept_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	concept_row.add_child(concept_lbl)
-	plate_vbox.add_child(concept_row)
-
-	var explanation := _make_label(chapter.get("lessonContent", {}).get("explanation", ""), 13, "#382313", false, false, true)
-	plate_vbox.add_child(explanation)
-
-	var tip_panel := PanelContainer.new()
-	tip_panel.add_theme_stylebox_override("panel", _flat_style(_c("#f2e6cb"), _c("#9b6c23"), 0, 2, 10))
-	tip_panel.add_child(_make_label(chapter.get("lessonContent", {}).get("keyTip", ""), 12, "#3b2311", false, true, true))
-	plate_vbox.add_child(tip_panel)
-
-	var visual = chapter.get("lessonContent", {}).get("visualExample", null)
-	if visual != null:
-		plate_vbox.add_child(_divider("#d8c59e"))
-		var ex_label := _make_label("— ILLUSTRATED EXAMPLE PLATE —", 10, "#7a532d", true)
-		ex_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		plate_vbox.add_child(ex_label)
-
-		# Built as explicit HBoxContainer rows (rather than an HFlowContainer)
-		# so the icons reliably lay out in a real horizontal grid. An
-		# HFlowContainer has to know its own width before it can decide
-		# where to wrap, but nothing upstream here ever hands it one, so it
-		# was permanently collapsing to a single vertical column.
-		var icons_panel := PanelContainer.new()
-		icons_panel.add_theme_stylebox_override("panel", _flat_style(_c("#fbf7ed"), _c("#d2be97"), 1, 3, 10))
-		var icons_rows := VBoxContainer.new()
-		icons_rows.alignment = BoxContainer.ALIGNMENT_CENTER
-		icons_rows.add_theme_constant_override("separation", 6)
-		var count: int = int(visual.get("count", 0))
-		var per_row := 10
-		var idx := 0
-		while idx < count:
-			var row_box := HBoxContainer.new()
-			row_box.alignment = BoxContainer.ALIGNMENT_CENTER
-			row_box.add_theme_constant_override("separation", 6)
-			var row_end: int = min(idx + per_row, count)
-			for i in range(idx, row_end):
-				row_box.add_child(_build_static_item_icon(visual.get("itemType", "star"), i + 1))
-			icons_rows.add_child(row_box)
-			idx = row_end
-		icons_panel.add_child(icons_rows)
-		var center_icons := CenterContainer.new()
-		center_icons.add_child(icons_panel)
-		plate_vbox.add_child(center_icons)
-
-		var grouping_lbl := _make_label(visual.get("groupingText", ""), 12, "#3f2612", true, false, true)
-		grouping_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		plate_vbox.add_child(grouping_lbl)
-
-	plate.add_child(plate_vbox)
-	vbox.add_child(plate)
-
-	return vbox
-
-
-func _build_static_item_icon(item_type: String, count_index: int) -> Control:
-	var stack := VBoxContainer.new()
-	stack.alignment = BoxContainer.ALIGNMENT_CENTER
-	stack.add_theme_constant_override("separation", 0)
-
-	var badge := PanelContainer.new()
-	badge.add_theme_stylebox_override("panel", _flat_style(_c("#8f191e"), _c("#dfbe76"), 1, 8, 2))
-	var badge_lbl := _make_icon_label(str(count_index), 9, "#fef9eb", true)
-	badge_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	badge.add_child(badge_lbl)
-	var badge_center := CenterContainer.new()
-	badge_center.add_child(badge)
-	stack.add_child(badge_center)
-
-	var lbl := _make_icon_label(ITEM_EMOJI.get(item_type, "❓"), 20)
-	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	stack.add_child(lbl)
-
-	return stack
-
-
-# ---------------------------------------------------------------------------
-# EXERCISE PAGE
-# ---------------------------------------------------------------------------
-func _build_exercise_page(chapter: Dictionary, chapter_index: int) -> Control:
-	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 18)
-
-	var banner := VBoxContainer.new()
-	banner.add_theme_constant_override("separation", 2)
-	banner.add_child(_make_label("CHAPTER %s • PRACTICAL PROBLEMS" % _roman(int(chapter.get("pageNumber", 1))), 10, "#855a2a", true))
-	banner.add_child(_make_label("Student Problem Plate", 20, "#241307", true))
-	banner.add_child(_make_label("Solve each question below and collect your scholar stars!", 12, "#634427", false, true, true))
-	vbox.add_child(banner)
-	vbox.add_child(_divider())
-
-	var exercises: Array = chapter.get("exercises", [])
-	for i in range(exercises.size()):
-		vbox.add_child(_build_exercise_card(exercises[i], i))
-
-	if chapter_index < book_data.size() - 1:
-		var center := CenterContainer.new()
-		var next_btn := _gold_button("Turn to Next Lesson (Chapter %s)  ➜" % _roman(chapter_index + 2), 12)
-		next_btn.pressed.connect(_next_page)
-		#center.add_child(next_btn)
-		vbox.add_child(center)
-
-	return vbox
-
-
-func _build_exercise_card(exercise: Dictionary, index: int) -> Control:
-	var id: String = exercise["id"]
+# ======================================================= question card --
+func _build_question_card(chapter: Dictionary, exercise: Dictionary) -> Control:
+	var id := str(exercise.get("id", ""))
 	var st := _get_ex_state(id)
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", int(10 * _s()))
 
-	var card := PanelContainer.new()
-	card.add_theme_stylebox_override("panel", _flat_style(_c(COL_VINTAGE_PLATE), _c(COL_VINTAGE_PLATE_BORDER), 1, 3, 18))
+	# The question (numbering like "1. " dropped)
+	var head := HBoxContainer.new()
+	head.add_theme_constant_override("separation", int(12 * _s()))
+	var page := _page()
+	var exercises: Array = chapter.get("exercises", [])
+	head.add_child(_ribbon("%s · %d/%d" % [_roman(int(chapter.get("pageNumber", 1))), int(page["ex"]) + 1, exercises.size()]))
+	var q := RegEx.create_from_string("^\\d+\\.\\s*").sub(str(exercise.get("questionEn", "")), "")
+	var title := ClassTheme.label(q, _fs(26), Color(COL_INK))
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	head.add_child(title)
+	if completed_exercises.has(id):
+		head.add_child(ClassTheme.label("⭐", _fs(34)))
+	head.add_child(_speaker_button())
+	col.add_child(head)
 
-	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 10)
-
-	# Header row: number badge + question
-	var header := HBoxContainer.new()
-	header.add_theme_constant_override("separation", 10)
-
-	var num_badge := PanelContainer.new()
-	num_badge.custom_minimum_size = Vector2(30, 30)
-	num_badge.add_theme_stylebox_override("panel", _flat_style(_c("#ecd69e"), _c("#b88e38"), 1, 15, 0))
-	var num_lbl := _make_label(str(index + 1), 13, "#3d2410", true)
-	num_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	num_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	num_badge.add_child(num_lbl)
-	header.add_child(num_badge)
-
-	var q_vbox := VBoxContainer.new()
-	q_vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	q_vbox.add_child(_make_label(exercise.get("questionEn", ""), 15, "#231206", true, false, true))
-	if show_tagalog and exercise.get("questionTl", "") != "":
-		q_vbox.add_child(_make_label("Salin: " + str(exercise.get("questionTl", "")), 11, "#734f2d", false, true, true))
-	header.add_child(q_vbox)
-	vbox.add_child(header)
-
-	# Instruction box
-	var instr_panel := PanelContainer.new()
-	instr_panel.add_theme_stylebox_override("panel", _flat_style(_c(COL_INK_BOX_BG), _c(COL_INK_BOX_BORDER), 0, 2, 10))
-	var instr_vbox := VBoxContainer.new()
-	instr_vbox.add_child(_make_label(exercise.get("instructionEn", ""), 12, "#3b2514", false, false, true))
-	if show_tagalog and exercise.get("instructionTl", "") != "":
-		instr_vbox.add_child(_make_label(str(exercise.get("instructionTl", "")), 11, "#734f2d", false, true, true))
-	instr_panel.add_child(instr_vbox)
-	vbox.add_child(instr_panel)
-
-	# Item grid plate
-	var grid_panel := PanelContainer.new()
-	grid_panel.add_theme_stylebox_override("panel", _flat_style(_c("#fdfbf6"), _c("#cfbb94"), 1, 3, 12))
-	var grid_vbox := VBoxContainer.new()
-	grid_vbox.alignment = BoxContainer.ALIGNMENT_CENTER
-	grid_vbox.add_theme_constant_override("separation", 6)
+	# Pictures | answer
+	var body := HBoxContainer.new()
+	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	body.add_theme_constant_override("separation", int(16 * _s()))
+	col.add_child(body)
+	var ex_type := str(exercise.get("type", "number-input"))
+	var answer_w := (240.0 if ex_type == "number-input" else 170.0) * _s()
 	var layout: Dictionary = exercise.get("layout", {})
 	var rows: Array = layout.get("rows", [exercise.get("count", 0)])
-	var item_counter := 0
-	var small_icons: bool = rows.size() > 5
-	for row_count in rows:
-		var row_flow := HBoxContainer.new()
-		row_flow.alignment = BoxContainer.ALIGNMENT_CENTER
-		row_flow.add_theme_constant_override("separation", 4)
-		for _i in range(int(row_count)):
-			var this_index := item_counter
-			item_counter += 1
-			row_flow.add_child(_build_interactive_item_icon(
-				exercise.get("itemType", "star"), this_index, st, id, small_icons))
-		grid_vbox.add_child(row_flow)
-	grid_panel.add_child(grid_vbox)
-	vbox.add_child(grid_panel)
-
-	vbox.add_child(_divider())
-
-	# Answer section
-	var ex_type: String = exercise.get("type", "number-input")
-	if ex_type == "multiple-choice":
-		vbox.add_child(_build_mc_answer(exercise, st, id))
-	elif ex_type == "number-input":
-		vbox.add_child(_build_number_answer(exercise, st, id))
-	elif ex_type == "place-value":
-		vbox.add_child(_build_place_value_answer(exercise, st, id))
-
-	# Feedback
-	if st["is_answered"] and st["is_correct"] == true:
-		vbox.add_child(_build_feedback_panel(true, exercise))
-	elif st["is_answered"] and st["is_correct"] == false:
-		vbox.add_child(_build_feedback_panel(false, exercise, id))
-
-	if st["show_hint"]:
-		var hint_panel := PanelContainer.new()
-		hint_panel.add_theme_stylebox_override("panel", _flat_style(_c(COL_HINT_BG), _c(COL_HINT_BORDER), 1, 3, 10))
-		var hint_row := HBoxContainer.new()
-		hint_row.add_theme_constant_override("separation", 8)
-		hint_row.add_child(_make_label("", 13))
-		var hint_lbl := _make_label("Scholar's Hint: " + str(exercise.get("hint", "")), 12, COL_HINT_TEXT, false, false, true)
-		hint_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		hint_row.add_child(hint_lbl)
-		hint_panel.add_child(hint_row)
-		vbox.add_child(hint_panel)
-
-	card.add_child(vbox)
-	return card
-
-
-func _build_interactive_item_icon(item_type: String, index: int, st: Dictionary, ex_id: String, small: bool) -> Control:
-	var is_counted: bool = st["counted"].has(index)
-	var size := _isz(26 if small else 34)
-
-	var stack := VBoxContainer.new()
-	stack.alignment = BoxContainer.ALIGNMENT_CENTER
-	stack.add_theme_constant_override("separation", 1)
-
-	var badge := PanelContainer.new()
-	badge.custom_minimum_size = Vector2(_isz(14), _isz(14))
-	badge.add_theme_stylebox_override("panel", _flat_style(_c("#8f191e"), _c("#dfbe76"), 1, 8, 1))
-	var badge_lbl := _make_icon_label(str(index + 1), 8, "#fef9eb", true)
-	badge_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	badge_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	badge.add_child(badge_lbl)
-	badge.modulate.a = 1.0 if is_counted else 0.0
-	var badge_center := CenterContainer.new()
-	badge_center.add_child(badge)
-	stack.add_child(badge_center)
-
-	var btn := Button.new()
-	btn.custom_minimum_size = Vector2(size, size)
-	btn.focus_mode = Control.FOCUS_NONE
-	btn.text = ITEM_EMOJI.get(item_type, "❓")
-	btn.add_theme_font_size_override("font_size", int(size * 0.6))
-	var bg := _c("#f4d998") if is_counted else _c("#ffffff")
-	var border := _c("#b88e38") if is_counted else _c("#c9b48a")
-	btn.add_theme_stylebox_override("normal", _flat_style(bg, border, 2, size, 0))
-	btn.add_theme_stylebox_override("hover", _flat_style(bg.lightened(0.05), border, 2, size, 0))
-	btn.add_theme_stylebox_override("pressed", _flat_style(bg.darkened(0.05), border, 2, size, 0))
-	btn.pressed.connect(_on_toggle_item.bind(ex_id, index))
-	stack.add_child(btn)
-
-	return stack
-
-
-func _build_mc_answer(exercise: Dictionary, st: Dictionary, id: String) -> Control:
-	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 8)
-
-	var label_row := HBoxContainer.new()
-	var lbl := _make_label("SELECT MATCHING NUMBER:" + (" (piliin ang tamang sagot)" if show_tagalog else ""), 11, "#4e321b", true)
-	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	label_row.add_child(lbl)
-	if st["is_answered"] and st["is_correct"] == false:
-		var retry := _make_btn("↺ Try another choice", "#faf4e5", "#faf4e5", "#9c252b", "#faf4e5", 11)
-		retry.pressed.connect(_on_reset_answer.bind(id))
-		label_row.add_child(retry)
-	vbox.add_child(label_row)
-
-	var options_row := HBoxContainer.new()
-	options_row.add_theme_constant_override("separation", 10)
-	var letters := ["A", "B", "C", "D"]
-	var options: Array = exercise.get("options", [])
-	for i in range(options.size()):
-		var option: int = int(options[i])
-		var is_selected: bool = st["selected_option"] == option
-		var btn := Button.new()
-		btn.focus_mode = Control.FOCUS_NONE
-		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		btn.custom_minimum_size = Vector2(0, _fsz(60))
-		btn.text = "%s\n%d" % [letters[i] if i < letters.size() else str(i + 1), option]
-		btn.add_theme_font_size_override("font_size", _fsz(20))
-
-		var bg: Color; var border: Color; var txt: Color
-		if is_selected:
-			if st["is_correct"] == true:
-				bg = _c(COL_MC_SELECTED_CORRECT); border = bg.darkened(0.2); txt = Color.WHITE
-			elif st["is_correct"] == false:
-				bg = _c(COL_MC_SELECTED_WRONG); border = bg.darkened(0.2); txt = Color.WHITE
-			else:
-				bg = _c(COL_MC_SELECTED_NEUTRAL); border = bg.darkened(0.2); txt = Color.WHITE
-		else:
-			bg = _c(COL_PARCH_BTN_BOT); border = _c(COL_PARCH_BTN_BORDER); txt = _c(COL_PARCH_BTN_TEXT)
-
-		btn.add_theme_color_override("font_color", txt)
-		btn.add_theme_color_override("font_hover_color", txt)
-		btn.add_theme_stylebox_override("normal", _flat_style(bg, border, 2, 4, 8))
-		btn.add_theme_stylebox_override("hover", _flat_style(bg.lightened(0.06), border, 2, 4, 8))
-		btn.disabled = st["is_correct"] == true
-		btn.pressed.connect(_on_mc_choose.bind(id, option))
-		options_row.add_child(btn)
-	vbox.add_child(options_row)
-
-	return vbox
-
-
-func _build_number_answer(exercise: Dictionary, st: Dictionary, id: String) -> Control:
-	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 10)
-
-	var top_row := HBoxContainer.new()
-	top_row.add_theme_constant_override("separation", 10)
-
-	var lbl := _make_label("Write the Number:", 13, "#382313", true)
-	top_row.add_child(lbl)
-
-	var line_edit := LineEdit.new()
-	line_edit.text = str(st["typed_number"])
-	line_edit.placeholder_text = "0"
-	line_edit.custom_minimum_size = Vector2(_fsz(90), _fsz(36))
-	line_edit.alignment = HORIZONTAL_ALIGNMENT_CENTER
-	line_edit.add_theme_font_size_override("font_size", _fsz(20))
-	line_edit.editable = st["is_correct"] != true
-	line_edit.add_theme_stylebox_override("normal", _flat_style(_c("#fefcf8"), _c("#bda376"), 2, 3, 6))
-	line_edit.text_changed.connect(_on_number_typed.bind(id))
-	line_edit.text_submitted.connect(func(_t): _on_check_answer(id, exercise))
-	line_edit.add_theme_color_override("font_color", Color("000000ff"))
-	top_row.add_child(line_edit)
-
-	top_row.add_child(_spacer(4))
-
-	var verify_btn := _gold_button("Verify Answer", 12)
-	# Only ever disabled once answered correctly -- it must NOT depend on
-	# typed_number, because typing updates state without a full re-render
-	# (to keep the LineEdit's focus/caret), so a disabled-state that reads
-	# typed_number would never get re-evaluated and the button would stay
-	# permanently disabled. Pressing while empty is already handled safely
-	# by _check_answer(), which just no-ops on empty/invalid input.
-	verify_btn.disabled = st["is_correct"] == true
-	verify_btn.pressed.connect(_on_check_answer.bind(id, exercise))
-	top_row.add_child(verify_btn)
-
-	if st["is_answered"]:
-		var reset_btn := _parchment_button("↺", 14)
-		reset_btn.pressed.connect(_on_reset_answer.bind(id))
-		top_row.add_child(reset_btn)
-
-	vbox.add_child(top_row)
-
-	return vbox
-
-
-func _build_place_value_answer(exercise: Dictionary, st: Dictionary, id: String) -> Control:
-	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 10)
-
-	var top_row := HBoxContainer.new()
-	var lbl := _make_label("PLACE VALUE BUILDER: TENS & ONES", 11, "#4a2e18", true)
-	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	top_row.add_child(lbl)
-	var total_lbl := _make_label("Total: %d" % (int(st["tens"]) * 10 + int(st["ones"])), 12, "#6d461f", true)
-	top_row.add_child(total_lbl)
-	vbox.add_child(top_row)
-
-	var counters_row := HBoxContainer.new()
-	counters_row.add_theme_constant_override("separation", 10)
-	counters_row.add_child(_build_place_value_counter("Tens (Sampuan)", int(st["tens"]), 10, id, "tens", st))
-	counters_row.add_child(_build_place_value_counter("Ones (Isahan)", int(st["ones"]), 1, id, "ones", st))
-	vbox.add_child(counters_row)
-
-	var bottom_row := HBoxContainer.new()
-	var eq_lbl := _make_label("Equation: %d + %d = %d" % [int(st["tens"]) * 10, int(st["ones"]), int(st["tens"]) * 10 + int(st["ones"])], 11, "#5a391e")
-	eq_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	bottom_row.add_child(eq_lbl)
-	var verify_btn := _gold_button("Verify", 12)
-	verify_btn.disabled = st["is_correct"] == true
-	verify_btn.pressed.connect(_on_check_answer.bind(id, exercise))
-	bottom_row.add_child(verify_btn)
-	if st["is_answered"]:
-		var reset_btn := _parchment_button("↺", 12)
-		reset_btn.pressed.connect(_on_reset_answer.bind(id))
-		bottom_row.add_child(reset_btn)
-	vbox.add_child(bottom_row)
-
-	return vbox
-
-
-func _build_place_value_counter(title: String, value: int, unit: int, ex_id: String, field: String, st: Dictionary) -> Control:
-	var panel := PanelContainer.new()
-	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	panel.add_theme_stylebox_override("panel", _flat_style(_c("#fdfaf2"), _c("#cbb387"), 1, 3, 10))
-
-	var row := HBoxContainer.new()
-	var left := VBoxContainer.new()
-	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	left.add_child(_make_label(title, 11, "#734d26", true))
-	left.add_child(_make_label("%d = %d" % [value, value * unit], 12, "#3d2511"))
-	row.add_child(left)
-
-	var stepper := HBoxContainer.new()
-	stepper.add_theme_constant_override("separation", 6)
-	var minus_btn := _make_btn("-", "#f5ecda", "#bfa576", "#38200f", "#ffffff", 14)
-	minus_btn.custom_minimum_size = Vector2(_fsz(28), _fsz(28))
-	minus_btn.disabled = value <= 0 or st["is_correct"] == true
-	minus_btn.pressed.connect(_on_place_value_step.bind(ex_id, field, -1))
-	stepper.add_child(minus_btn)
-	stepper.add_child(_make_label(str(value), 18, "#281508", true))
-	var plus_btn := _make_btn("+", "#f5ecda", "#bfa576", "#38200f", "#ffffff", 14)
-	plus_btn.custom_minimum_size = Vector2(_fsz(28), _fsz(28))
-	plus_btn.disabled = value >= 9 or st["is_correct"] == true
-	plus_btn.pressed.connect(_on_place_value_step.bind(ex_id, field, 1))
-	stepper.add_child(plus_btn)
-	row.add_child(stepper)
-
-	panel.add_child(row)
-	return panel
-
-
-func _build_feedback_panel(correct: bool, exercise: Dictionary, ex_id: String = "") -> Control:
-	var panel := PanelContainer.new()
-	if correct:
-		panel.add_theme_stylebox_override("panel", _flat_style(_c(COL_SUCCESS_BG), _c(COL_SUCCESS_BORDER), 2, 3, 10))
-	else:
-		panel.add_theme_stylebox_override("panel", _flat_style(_c(COL_ERROR_BG), _c(COL_ERROR_BORDER), 2, 3, 10))
-
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 10)
-
-	var icon_lbl := _make_label("✔" if correct else "✘", 16, "#ffffff", true)
-	var icon_bg := PanelContainer.new()
-	var icon_bg_color: Color = _c("#207c42") if correct else _c("#a32228")
-	icon_bg.add_theme_stylebox_override("panel", _flat_style(icon_bg_color, Color(0, 0, 0, 0), 0, 14, 6))
-	icon_bg.add_child(icon_lbl)
-	row.add_child(icon_bg)
-
-	var text_vbox := VBoxContainer.new()
-	text_vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	if correct:
-		text_vbox.add_child(_make_label("Splendid! Problem Solved Correctly! ✦", 13, "#0f4420", true))
-		var detail := "Count verified = %s" % str(exercise.get("correctAnswer", ""))
-		if exercise.get("type", "") == "place-value":
-			var pv = exercise.get("placeValue", {})
-			var tens = pv.get("tens", int(exercise.get("correctAnswer", 0)) / 10)
-			var ones = pv.get("ones", int(exercise.get("correctAnswer", 0)) % 10)
-			detail = "%s = %s Tens and %s Ones" % [str(exercise.get("correctAnswer","")), str(tens), str(ones)]
-		text_vbox.add_child(_make_label(detail, 11, "#1b5d30", false, false, true))
-	else:
-		text_vbox.add_child(_make_label("Not quite yet! Check the count once more.", 13, "#5c0d12", true))
-		var detail2 := "Count each row carefully or tap each picture to put a mark on it!"
-		if exercise.get("type", "") == "place-value":
-			detail2 = "Count how many full rows of 10 there are, and how many extra single items!"
-		text_vbox.add_child(_make_label(detail2, 11, "#7e1c22", false, false, true))
-	row.add_child(text_vbox)
-
-	if not correct and ex_id != "":
-		var hint_btn := _make_btn(" Hint", "#fdf0f0", "#fdf0f0", "#8d181e", "#fdf0f0", 11)
-		hint_btn.pressed.connect(_on_toggle_hint.bind(ex_id))
-		row.add_child(hint_btn)
-
-	panel.add_child(row)
-	return panel
-
-
-# ---------------------------------------------------------------------------
-# BOTTOM PAGE NAVIGATION
-# ---------------------------------------------------------------------------
-func _build_bottom_nav(page_type: String) -> Control:
-	var row := HBoxContainer.new()
-
-	var back_btn := _parchment_button("‹ Turn Back", 12)
-	back_btn.disabled = current_page == 0
-	back_btn.pressed.connect(_prev_page)
-	row.add_child(back_btn)
-
-	var dots_center := CenterContainer.new()
-	dots_center.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	var dots_row := HBoxContainer.new()
-	dots_row.add_theme_constant_override("separation", 6)
-	var total_pages := book_data.size() * 2
-	for i in range(total_pages):
-		var dot := Button.new()
-		dot.focus_mode = Control.FOCUS_NONE
-		dot.custom_minimum_size = Vector2(12, 12)
-		var is_cur := i == current_page
-		var bg := _c("#9c7128") if is_cur else _c("#e5d5b7")
-		var border := _c("#6e4a10") if is_cur else _c("#bca57a")
-		dot.add_theme_stylebox_override("normal", _flat_style(bg, border, 1, 6, 0))
-		dot.add_theme_stylebox_override("hover", _flat_style(bg.lightened(0.1), border, 1, 6, 0))
-		dot.pressed.connect(_on_go_to_page.bind(i))
-		dots_row.add_child(dot)
-	dots_center.add_child(dots_row)
-	row.add_child(dots_center)
-
-	var next_btn := _gold_button("Turn Next ›", 12)
-	next_btn.disabled = current_page == total_pages - 1
-	next_btn.pressed.connect(_next_page)
-	row.add_child(next_btn)
-
-	return row
-
-
-# ---------------------------------------------------------------------------
-# FOOTER
-# ---------------------------------------------------------------------------
-func _build_footer() -> Control:
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 10)
-
-	var left := HBoxContainer.new()
-	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	left.add_theme_constant_override("separation", 8)
-
-	var total := _total_exercises()
-	var percent := 0
-	if total > 0:
-		percent = int(round(float(completed_exercises.size()) / float(total) * 100.0))
-
-	left.add_child(_make_label("Volume Mastery: %d%%" % percent, 12, COL_GOLD_LIGHT, true))
-
-	# Plain Control (not a Container) so the fill ColorRect can be given an
-	# explicit pixel width instead of being auto-stretched by a layout parent.
-	var bar_container := Control.new()
-	bar_container.custom_minimum_size = Vector2(130, 10)
-
-	var bar_track := Panel.new()
-	bar_track.set_anchors_preset(Control.PRESET_FULL_RECT)
-	bar_track.add_theme_stylebox_override("panel", _flat_style(_c("#2a160b"), _c("#6b4728"), 1, 2, 0))
-	bar_container.add_child(bar_track)
-
-	var fill_w: float = max(0.0, (130.0 - 4.0) * float(percent) / 100.0)
-	var bar_fill := ColorRect.new()
-	bar_fill.color = _c("#dcc07a")
-	bar_fill.position = Vector2(2, 2)
-	bar_fill.size = Vector2(fill_w, 6)
-	bar_container.add_child(bar_fill)
-
-	left.add_child(bar_container)
-	#row.add_child(left)
-
-	var right := HBoxContainer.new()
-	right.add_theme_constant_override("separation", 14)
-
-	if completed_exercises.size() == total and total > 0:
-		var diploma_btn := _gold_button("🏆 View Diploma", 11)
-		diploma_btn.pressed.connect(_on_show_certificate)
-		right.add_child(diploma_btn)
-
-	var wipe_btn := _make_btn("Wipe Book Slate Clean", "#170e08", "#170e08", "#aa8a60", "#170e08", 11)
-	wipe_btn.pressed.connect(_on_wipe_requested)
-	#right.add_child(wipe_btn)
-
-	row.add_child(right)
-	return row
-
-
-func _on_show_certificate() -> void:
-	show_certificate = true
-	_pending_reset_scroll = true
-	render()
-
-
-func _on_wipe_requested() -> void:
-	if _confirm_dialog == null or not is_instance_valid(_confirm_dialog):
-		_confirm_dialog = ConfirmationDialog.new()
-		get_tree().root.add_child(_confirm_dialog)
-	_confirm_dialog.dialog_text = "Wipe the book clean and reset all completed stars and exercise answers?"
-	_confirm_dialog.title = "Confirm Reset"
-	if not _confirm_dialog.confirmed.is_connected(_on_wipe_confirmed):
-		_confirm_dialog.confirmed.connect(_on_wipe_confirmed)
-	_confirm_dialog.popup_centered()
-
-
-func _on_wipe_confirmed() -> void:
-	completed_exercises = []
-	ex_state = {}
-	show_certificate = false
-	#_save_progress()
-	_pending_reset_scroll = true
-	render()
-
-
-# ---------------------------------------------------------------------------
-# CERTIFICATE MODAL
-# ---------------------------------------------------------------------------
-func _build_certificate_overlay() -> Control:
-	var overlay := ColorRect.new()
-	overlay.color = Color(0.07, 0.04, 0.02, 0.85)
-	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
-	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
-
-	var center := CenterContainer.new()
-	center.set_anchors_preset(Control.PRESET_FULL_RECT)
-
-	var card := PanelContainer.new()
-	card.custom_minimum_size = Vector2(480, 0)
-	card.add_theme_stylebox_override("panel", _flat_style(_c("#fcf7ec"), _c("#b88e38"), 4, 4, 30))
-
-	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 10)
-	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
-
-	var seal := PanelContainer.new()
-	seal.custom_minimum_size = Vector2(56, 56)
-	seal.add_theme_stylebox_override("panel", _flat_style(_c("#8d161d"), _c("#5a0c10"), 2, 28, 0))
-	var seal_lbl := _make_label("🏅", 22)
-	seal_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	seal_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	seal.add_child(seal_lbl)
-	var seal_center := CenterContainer.new()
-	seal_center.add_child(seal)
-	vbox.add_child(seal_center)
-
-	var badge := PanelContainer.new()
-	badge.add_theme_stylebox_override("panel", _flat_style(_c("#f4e6c9"), _c("#cfba8f"), 1, 3, 8))
-	var badge_lbl := _make_label("PASSED", 10, "#7a4e1e", true)
-	badge.add_child(badge_lbl)
-	var badge_center := CenterContainer.new()
-	badge_center.add_child(badge)
-	vbox.add_child(badge_center)
-
-	var title_lbl := _make_label("Entrance Exam", 20, "#241306", true)
-	title_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	vbox.add_child(title_lbl)
-
-	var body_lbl := _make_label(
-		"Be it known that this student has successfully passed the entrance examination and is hereby declared eligible to enroll at Acade Math!",
-		12, "#472d17", false, false, true)
-	body_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	vbox.add_child(body_lbl)
-
-	var achieve_panel := PanelContainer.new()
-	achieve_panel.add_theme_stylebox_override("panel", _flat_style(_c("#f7eed8"), _c("#cbb387"), 1, 3, 12))
-	var achieve_vbox := VBoxContainer.new()
-	achieve_vbox.add_theme_constant_override("separation", 4)
-	for line in [
-		"✔ Counted collections and item groupings",
-		"✔ Mastered numerical selection and quantity recognition",
-		"✔ Concluded all arithmetic lessons and exercise plates"
-	]:
-		achieve_vbox.add_child(_make_label(line, 11, "#14572b", true, false, true))
-	achieve_panel.add_child(achieve_vbox)
-	vbox.add_child(achieve_panel)
-
-	var close_btn := _gold_button("Return", 12)
-	close_btn.pressed.connect(_on_close_certificate)
-	var close_center := CenterContainer.new()
-	close_center.add_child(close_btn)
-	vbox.add_child(close_center)
-
-	card.add_child(vbox)
-	center.add_child(card)
-	overlay.add_child(center)
-	return overlay
-
-
-func _on_close_certificate() -> void:
-	show_certificate = false
-	_pending_reset_scroll = true
-	#render()
-	hide()
-	isChapter_Done.emit()
-
-
-# ---------------------------------------------------------------------------
-# NAVIGATION LOGIC
-# ---------------------------------------------------------------------------
-func _go_to_page(target: int) -> void:
-	DisplayServer.tts_stop()
-	var total_pages := book_data.size() * 2
-	if target < 0 or target >= total_pages or target == current_page:
+	var area := Vector2(_card.size.x - answer_w - 90.0 * _s(), _card.size.y - 150.0 * _s())
+	var pics := _picture_grid(str(exercise.get("itemType", "star")), rows, st, id, area)
+	pics.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	body.add_child(pics)
+
+	var answer := VBoxContainer.new()
+	answer.custom_minimum_size = Vector2(answer_w, 0)
+	answer.alignment = BoxContainer.ALIGNMENT_CENTER
+	answer.add_theme_constant_override("separation", int(10 * _s()))
+	body.add_child(answer)
+	match ex_type:
+		"multiple-choice":
+			_build_choices(answer, exercise, st, id)
+		"place-value":
+			_build_place_value(answer, exercise, st, id)
+		_:
+			_build_number_pad(answer, exercise, st, id)
+
+	# Hint after a few misses
+	if int(st["misses"]) >= HINT_AFTER and not completed_exercises.has(id) and str(exercise.get("hint", "")) != "":
+		var hint := PanelContainer.new()
+		hint.add_theme_stylebox_override("panel", ClassTheme.flat(Color("#fff3c4"), Color(COL_GOLD), int(12 * _s()), 2, int(8 * _s())))
+		var hl := ClassTheme.label("💡 " + str(exercise.get("hint", "")), _fs(15), Color(COL_INK))
+		hl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		hint.add_child(hl)
+		col.add_child(hint)
+	return col
+
+
+func _build_choices(box: VBoxContainer, exercise: Dictionary, st: Dictionary, id: String) -> void:
+	var solved := completed_exercises.has(id)
+	for o in exercise.get("options", []):
+		var option := int(o)
+		var b := Button.new()
+		b.text = str(option)
+		b.focus_mode = Control.FOCUS_NONE
+		b.custom_minimum_size = Vector2(0, 78.0 * _s())
+		var bg := Color(COL_PARCHMENT_DARK)
+		var fg := Color(COL_INK)
+		if solved and option == int(exercise.get("correctAnswer", -1)):
+			bg = Color(COL_CORRECT)
+			fg = Color.WHITE
+		elif st["selected_option"] != null and int(st["selected_option"]) == option and st["is_correct"] == false:
+			bg = Color(COL_WRONG)
+			fg = Color.WHITE
+		ClassTheme.style_button(b, bg, Color(COL_GOLD_DARK), fg, _fs(34))
+		b.disabled = solved
+		b.add_theme_stylebox_override("disabled", b.get_theme_stylebox("normal"))
+		b.add_theme_color_override("font_disabled_color", fg)
+		b.pressed.connect(func():
+			st["selected_option"] = option
+			_answer(id, exercise, b)
+		)
+		box.add_child(b)
+
+
+func _build_number_pad(box: VBoxContainer, exercise: Dictionary, st: Dictionary, id: String) -> void:
+	var pad := NumberPad.new()
+	box.add_child(pad)
+	pad.setup({})
+	var answer := str(int(exercise.get("correctAnswer", 0)))
+	if completed_exercises.has(id):
+		for c in answer:
+			pad._on_key(c)
+		pad.lock(true, answer)
 		return
-	current_page = target
-	_pending_reset_scroll = true
-	render()
+	var check := _gold_button("Check  ✔", 20)
+	check.pressed.connect(func():
+		st["typed_number"] = pad.get_value()
+		_answer(id, exercise, pad)
+	)
+	pad.submitted.connect(func():
+		st["typed_number"] = pad.get_value()
+		_answer(id, exercise, pad)
+	)
+	box.add_child(check)
+
+
+func _build_place_value(box: VBoxContainer, exercise: Dictionary, st: Dictionary, id: String) -> void:
+	for field in ["tens", "ones"]:
+		var row := HBoxContainer.new()
+		row.alignment = BoxContainer.ALIGNMENT_CENTER
+		row.add_child(ClassTheme.label(str(field).capitalize(), _fs(16), Color(COL_INK_SOFT)))
+		var minus := _small_button("−")
+		minus.pressed.connect(func():
+			st[field] = clampi(int(st[field]) - 1, 0, 9)
+			_fill_card()
+		)
+		row.add_child(minus)
+		row.add_child(ClassTheme.label(str(st[field]), _fs(30), Color(COL_INK)))
+		var plus := _small_button("+")
+		plus.pressed.connect(func():
+			st[field] = clampi(int(st[field]) + 1, 0, 9)
+			_fill_card()
+		)
+		row.add_child(plus)
+		box.add_child(row)
+	var check := _gold_button("Check  ✔", 20)
+	check.pressed.connect(func(): _answer(id, exercise, check))
+	box.add_child(check)
+
+
+## Check an answer: right = green glow, star, confetti; wrong = shake and
+## a red flash (the hint shows after a few misses).
+func _answer(id: String, exercise: Dictionary, source: Control) -> void:
+	var st := _get_ex_state(id)
+	var correct = _check_answer(id, exercise)
+	if correct == null:
+		ClassTheme.shake(source)
+		return
+	if correct:
+		_card.add_theme_stylebox_override("panel", _card_style(Color(COL_CORRECT)))
+		_fill_card()
+		ClassTheme.pop(_card, 1.03)
+		ClassTheme.confetti(_card)
+		if _map:
+			_map.queue_redraw()
+		_say("Great job!")
+		if show_certificate:
+			get_tree().create_timer(1.2).timeout.connect(render)
+		else:
+			if _next_btn:
+				ClassTheme.pulse(_next_btn)
+			# Flip on by itself (unless the player already moved on)
+			var here := current_page
+			get_tree().create_timer(AUTO_NEXT_DELAY).timeout.connect(func():
+				if visible and current_page == here and not show_certificate:
+					_next_page()
+			)
+	else:
+		st["misses"] = int(st["misses"]) + 1
+		_card.add_theme_stylebox_override("panel", _card_style(Color(COL_WRONG)))
+		_fill_card()
+		ClassTheme.shake(_card)
+		var card := _card
+		get_tree().create_timer(0.6).timeout.connect(func():
+			if is_instance_valid(card):
+				card.add_theme_stylebox_override("panel", _card_style(Color(COL_GOLD)))
+		)
+
+
+## true / false, or null when there is nothing to check yet.
+func _check_answer(ex_id: String, exercise: Dictionary):
+	if exercise.is_empty():
+		return null
+	var st := _get_ex_state(ex_id)
+	var correct := false
+	match str(exercise.get("type", "")):
+		"multiple-choice":
+			if st["selected_option"] == null:
+				return null
+			correct = int(st["selected_option"]) == int(exercise.get("correctAnswer", -999999))
+		"number-input":
+			var raw := str(st["typed_number"]).strip_edges()
+			if raw == "" or not raw.is_valid_int():
+				return null
+			correct = int(raw) == int(exercise.get("correctAnswer", -999999))
+		"place-value":
+			var pv: Dictionary = exercise.get("placeValue", {})
+			correct = int(st["tens"]) == int(pv.get("tens", int(exercise.get("correctAnswer", 0)) / 10)) \
+				and int(st["ones"]) == int(pv.get("ones", int(exercise.get("correctAnswer", 0)) % 10))
+	st["is_answered"] = true
+	st["is_correct"] = correct
+	if correct and not completed_exercises.has(ex_id):
+		completed_exercises.append(ex_id)
+		if completed_exercises.size() == _total_exercises():
+			show_certificate = true
+	return correct
+
+
+# ============================================================ pictures --
+## The pictures to count, as rows of tappable tiles sized to fit `area`.
+## Each tile's corner badge shows the ORDER it was tapped in.
+func _picture_grid(item_type: String, rows: Array, st: Dictionary, id: String, area: Vector2, max_tile: float = MAX_TILE) -> Control:
+	var widest := 1
+	for r in rows:
+		widest = maxi(widest, int(r))
+	var tile := minf(area.x / widest, area.y / maxf(rows.size(), 1)) * 0.86
+	tile = clampf(tile, 16.0 * _s(), max_tile * _s())
+	var box := VBoxContainer.new()
+	box.alignment = BoxContainer.ALIGNMENT_CENTER
+	box.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	box.add_theme_constant_override("separation", int(tile * 0.1))
+	var index := 0
+	for r in rows:
+		var row := HBoxContainer.new()
+		row.alignment = BoxContainer.ALIGNMENT_CENTER
+		row.add_theme_constant_override("separation", int(tile * 0.1))
+		for _i in range(int(r)):
+			row.add_child(_picture_tile(item_type, index, st, tile))
+			index += 1
+		box.add_child(row)
+	return box
+
+
+func _picture_tile(item_type: String, index: int, st: Dictionary, tile: float) -> Control:
+	var counted: Array = st["counted"]
+	var order := counted.find(index) + 1
+	var b := Button.new()
+	b.focus_mode = Control.FOCUS_NONE
+	b.custom_minimum_size = Vector2(tile, tile)
+	b.text = ITEM_EMOJI.get(item_type, "❓")
+	b.add_theme_font_size_override("font_size", int(tile * 0.58))
+	var bg := Color("#f4d998") if order > 0 else Color("#fffdf6")
+	var border := Color(COL_GOLD_DARK) if order > 0 else Color("#d8c59e")
+	var r := int(tile / 2.0)
+	b.add_theme_stylebox_override("normal", ClassTheme.flat(bg, border, r, 2, 0))
+	b.add_theme_stylebox_override("hover", ClassTheme.flat(bg.lightened(0.05), border, r, 2, 0))
+	b.add_theme_stylebox_override("pressed", ClassTheme.flat(bg.darkened(0.05), border, r, 2, 0))
+	b.pressed.connect(func():
+		if counted.has(index):
+			counted.erase(index)
+			DisplayServer.tts_stop()
+		else:
+			counted.append(index)
+			_speak_number(counted.size())
+		_fill_card()
+	)
+	if order > 0:
+		var badge := Label.new()
+		badge.text = str(order)
+		badge.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		badge.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		var bs := maxf(tile * 0.42, 14.0)
+		badge.size = Vector2(bs, bs)
+		badge.position = Vector2(tile - bs * 0.75, -bs * 0.25)
+		badge.add_theme_font_size_override("font_size", int(bs * 0.62))
+		badge.add_theme_color_override("font_color", Color("#fef9eb"))
+		badge.add_theme_stylebox_override("normal", ClassTheme.flat(Color(COL_SEAL), Color(COL_GOLD_LIGHT), int(bs / 2.0), 1, 0))
+		badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		b.add_child(badge)
+	return b
+
+
+# ============================================================= widgets --
+func _ribbon(text: String) -> Control:
+	var p := PanelContainer.new()
+	p.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	p.add_theme_stylebox_override("panel", ClassTheme.flat(Color(COL_LEATHER), Color(COL_GOLD), int(8 * _s()), 2, int(8 * _s())))
+	p.add_child(ClassTheme.label(text, _fs(15), Color(COL_GOLD_LIGHT)))
+	return p
+
+
+func _gold_button(text: String, px: int) -> Button:
+	var b := Button.new()
+	b.text = text
+	b.focus_mode = Control.FOCUS_NONE
+	b.custom_minimum_size = Vector2(0, 54.0 * _s())
+	ClassTheme.style_button(b, Color("#d9b56a"), Color(COL_GOLD_DARK), Color(COL_INK), _fs(px))
+	return b
+
+
+## 🔊: read the card again.
+func _speaker_button() -> Button:
+	var b := _small_button("🔊")
+	b.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	b.tooltip_text = "Listen again"
+	b.pressed.connect(func(): _say(_card_speech()))
+	return b
+
+
+func _small_button(text: String) -> Button:
+	var b := Button.new()
+	b.text = text
+	b.focus_mode = Control.FOCUS_NONE
+	b.custom_minimum_size = Vector2(44, 40) * _s()
+	ClassTheme.style_button(b, Color(COL_PARCHMENT_DARK), Color(COL_GOLD_DARK), Color(COL_INK), _fs(16))
+	return b
+
+
+# ========================================================== navigation --
+## Flip the card: it narrows to a sliver, the page changes, it opens again.
+func _go_to_page(target: int) -> void:
+	if _flipping or target < 0 or target >= _pages.size() or target == current_page or _card == null:
+		return
+	DisplayServer.tts_stop()
+	_flipping = true
+	var tw := create_tween()
+	tw.tween_property(_card, "scale:x", 0.02, 0.12).set_ease(Tween.EASE_IN)
+	tw.tween_callback(func():
+		current_page = target
+		if not _visited.has(target):
+			_visited.append(target)
+		render()
+		_card.scale.x = 0.02
+		var open := create_tween()
+		open.tween_property(_card, "scale:x", 1.0, 0.16).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+		open.finished.connect(func(): _flipping = false)
+		_read_card()
+	)
 
 
 func _next_page() -> void:
@@ -1273,119 +741,168 @@ func _prev_page() -> void:
 	_go_to_page(current_page - 1)
 
 
-# ---------------------------------------------------------------------------
-# EXERCISE INTERACTION LOGIC
-# ---------------------------------------------------------------------------
-func _on_toggle_item(ex_id: String, index: int) -> void:
-	var st := _get_ex_state(ex_id)
-	if st["counted"].has(index):
-		st["counted"].erase(index)
-		DisplayServer.tts_stop()          # un-tapping stays silent
-	else:
-		st["counted"].append(index)
-		_speak_number(index + 1)          # same number shown on the badge
-	render()
+## Map stops: visited pages can be jumped to.
+func can_jump_to(page_index: int) -> bool:
+	return _visited.has(page_index)
 
 
-func _on_reset_count(ex_id: String) -> void:
-	var st := _get_ex_state(ex_id)
-	st["counted"] = []
-	render()
+func is_solved(page_index: int) -> bool:
+	var page: Dictionary = _pages[page_index]
+	if page["kind"] == "lesson":
+		return _visited.has(page_index)
+	return completed_exercises.has(str(_exercise_at(page).get("id", "")))
 
 
-func _on_auto_count(ex_id: String, count: int) -> void:
-	var st := _get_ex_state(ex_id)
-	var all := []
-	for i in range(count):
-		all.append(i)
-	st["counted"] = all
-	render()
+# ======================================================== certificate --
+func _build_certificate() -> Control:
+	var dim := ColorRect.new()
+	dim.color = Color(0.07, 0.04, 0.02, 0.8)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	var center := CenterContainer.new()
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.add_child(center)
+	var card := PanelContainer.new()
+	card.custom_minimum_size = Vector2(460, 0) * _s()
+	card.add_theme_stylebox_override("panel", _card_style(Color(COL_GOLD)))
+	center.add_child(card)
+	var col := VBoxContainer.new()
+	col.alignment = BoxContainer.ALIGNMENT_CENTER
+	col.add_theme_constant_override("separation", int(12 * _s()))
+	card.add_child(col)
+	var seal := ClassTheme.label("🏅", _fs(64))
+	seal.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	col.add_child(seal)
+	var passed := ClassTheme.label("PASSED!", _fs(36), Color(COL_CORRECT))
+	passed.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	col.add_child(passed)
+	var line := ClassTheme.label("You can join Acade Math!", _fs(20), Color(COL_INK))
+	line.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	col.add_child(line)
+	var stars := ClassTheme.label("⭐".repeat(mini(_total_exercises(), 12)), _fs(22))
+	stars.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	col.add_child(stars)
+	var ret := _gold_button("Return", 22)
+	ret.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	ret.custom_minimum_size.x = 200 * _s()
+	ret.pressed.connect(_on_close_certificate)
+	col.add_child(ret)
+	return dim
 
 
-func _on_number_typed(new_text: String, ex_id: String) -> void:
-	# Update state without a full re-render so the LineEdit keeps focus/caret.
-	var st := _get_ex_state(ex_id)
-	st["typed_number"] = new_text
-	st["is_correct"] = null
-	st["is_answered"] = false
+func _on_close_certificate() -> void:
+	show_certificate = false
+	hide()
+	isChapter_Done.emit()
 
 
-func _on_mc_choose(ex_id: String, option: int) -> void:
-	var st := _get_ex_state(ex_id)
-	st["selected_option"] = option
-	_check_answer(ex_id, _find_exercise(ex_id))
+# ========================================================= background --
+## A treasure-map desk: dark leather, faint dotted trails, a compass rose
+## and a few X marks.
+func _draw() -> void:
+	draw_rect(Rect2(Vector2.ZERO, size), Color(COL_DESK_BG))
+	draw_rect(Rect2(Vector2.ZERO, size).grow(-6), Color(COL_LEATHER).lerp(Color(COL_DESK_BG), 0.3))
+	var trail := Color(COL_TRAIL)
+	trail.a = 0.55
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 7
+	for t in range(3):
+		var p := Vector2(rng.randf() * size.x * 0.3, size.y * (0.3 + 0.25 * t))
+		for k in range(14):
+			var q := p + Vector2(size.x / 12.0, rng.randf_range(-40, 40) * _s())
+			_dotted(p, q, trail)
+			p = q
+	# Compass rose (bottom right) and X marks
+	var c := Vector2(size.x * 0.93, size.y * 0.86)
+	var r := 38.0 * _s()
+	var gold := Color(COL_GOLD)
+	gold.a = 0.35
+	for k in range(8):
+		var ray := r if k % 2 == 0 else r * 0.55
+		draw_line(c, c + Vector2.from_angle(k * PI / 4.0) * ray, gold, 2.0)
+	draw_arc(c, r * 0.4, 0, TAU, 24, gold, 2.0)
+	for x in [Vector2(0.07, 0.8), Vector2(0.95, 0.35)]:
+		var at := Vector2(size.x * x.x, size.y * x.y)
+		var d := 9.0 * _s()
+		draw_line(at - Vector2(d, d), at + Vector2(d, d), Color(COL_SEAL, 0.6), 3.0)
+		draw_line(at - Vector2(d, -d), at + Vector2(d, -d), Color(COL_SEAL, 0.6), 3.0)
 
 
-func _on_place_value_step(ex_id: String, field: String, delta: int) -> void:
-	var st := _get_ex_state(ex_id)
-	st[field] = clampi(int(st[field]) + delta, 0, 9)
-	st["is_correct"] = null
-	st["is_answered"] = false
-	render()
+func _dotted(a: Vector2, b: Vector2, color: Color) -> void:
+	var n := maxi(int(a.distance_to(b) / (10.0 * _s())), 1)
+	for i in range(n):
+		if i % 2 == 0:
+			draw_line(a.lerp(b, float(i) / n), a.lerp(b, float(i + 1) / n), color, 2.0)
 
 
-func _on_check_answer(ex_id: String, exercise: Dictionary) -> void:
-	_check_answer(ex_id, exercise)
+# =====================================================================
+#  The map path at the top: one stop per page joined by a dotted trail.
+#  Lessons are bigger medallions with the chapter's roman numeral,
+#  questions are round markers; solved = gold star, current = glowing.
+#  Tap a visited stop to go there.
+# =====================================================================
+class MapPath extends Control:
+	var exam : BookApp
+	var _time : float = 0.0
 
+	func _process(delta: float) -> void:
+		_time += delta
+		queue_redraw()
 
-func _find_exercise(ex_id: String) -> Dictionary:
-	for chapter in book_data:
-		for ex in chapter.get("exercises", []):
-			if ex["id"] == ex_id:
-				return ex
-	return {}
+	func _stop_pos(i: int) -> Vector2:
+		var n := maxi(exam._pages.size(), 1)
+		var x0 := size.x * 0.06
+		var x1 := size.x * 0.94
+		var x := x0 + (x1 - x0) * (i / maxf(n - 1, 1.0))
+		return Vector2(x, size.y * 0.55 + sin(i * 0.9) * size.y * 0.12)
 
+	func _draw() -> void:
+		var s := exam._s()
+		var n := exam._pages.size()
+		for i in range(n - 1):
+			var a := _stop_pos(i)
+			var b := _stop_pos(i + 1)
+			var col := Color(BookApp.COL_GOLD) if exam.is_solved(i + 1) else Color(BookApp.COL_TRAIL)
+			for k in range(8):
+				if k % 2 == 0:
+					draw_line(a.lerp(b, k / 8.0), a.lerp(b, (k + 1) / 8.0), col, 3.0 * s)
+		var font := get_theme_default_font()
+		for i in range(n):
+			var p := _stop_pos(i)
+			var lesson : bool = exam._pages[i]["kind"] == "lesson"
+			var current := i == exam.current_page
+			var solved := exam.is_solved(i)
+			var r := (15.0 if lesson else 10.0) * s * (1.25 if current else 1.0)
+			if current:
+				draw_circle(p, r * 1.7, Color(1.0, 0.85, 0.4, 0.25 + 0.15 * sin(_time * 4.0)))
+			var fill := Color(BookApp.COL_PARCHMENT)
+			if solved:
+				fill = Color(BookApp.COL_GOLD_LIGHT)
+			elif not exam.can_jump_to(i):
+				fill = Color(BookApp.COL_PARCHMENT_DARK)
+				fill.a = 0.35
+			draw_circle(p, r, fill)
+			draw_arc(p, r, 0, TAU, 24, Color(BookApp.COL_GOLD_DARK), 2.0 * s)
+			var text := ""
+			if lesson:
+				text = BookApp.ROMAN.get(int(exam.book_data[int(exam._pages[i]["ch"])].get("pageNumber", 1)), "?")
+			elif solved:
+				text = "★"
+			if text != "":
+				var fs := int((14.0 if lesson else 13.0) * s)
+				var w := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x
+				draw_string(font, p + Vector2(-w / 2.0, fs * 0.36), text, HORIZONTAL_ALIGNMENT_LEFT, -1, fs,
+					Color(BookApp.COL_GOLD_DARK) if solved and not lesson else Color(BookApp.COL_INK))
 
-func _check_answer(ex_id: String, exercise: Dictionary) -> void:
-	if exercise.is_empty():
-		return
-	var st := _get_ex_state(ex_id)
-	var correct := false
-	var ex_type: String = exercise.get("type", "")
-
-	if ex_type == "multiple-choice":
-		if st["selected_option"] == null:
-			render()
-			return
-		correct = int(st["selected_option"]) == int(exercise.get("correctAnswer", -999999))
-	elif ex_type == "number-input":
-		var raw := str(st["typed_number"]).strip_edges()
-		if raw == "" or not raw.is_valid_int():
-			render()
-			return
-		correct = int(raw) == int(exercise.get("correctAnswer", -999999))
-	elif ex_type == "place-value":
-		var pv: Dictionary = exercise.get("placeValue", {})
-		var target_tens: int = pv.get("tens", int(exercise.get("correctAnswer", 0)) / 10)
-		var target_ones: int = pv.get("ones", int(exercise.get("correctAnswer", 0)) % 10)
-		correct = int(st["tens"]) == target_tens and int(st["ones"]) == target_ones
-
-	st["is_answered"] = true
-	st["is_correct"] = correct
-
-	if correct:
-		if not completed_exercises.has(ex_id):
-			completed_exercises.append(ex_id)
-			#_save_progress()
-			if completed_exercises.size() == _total_exercises():
-				show_certificate = true
-				_pending_reset_scroll = true
-
-	render()
-
-
-func _on_reset_answer(ex_id: String) -> void:
-	var st := _get_ex_state(ex_id)
-	st["is_answered"] = false
-	st["is_correct"] = null
-	st["selected_option"] = null
-	st["typed_number"] = ""
-	st["tens"] = 0
-	st["ones"] = 0
-	render()
-
-
-func _on_toggle_hint(ex_id: String) -> void:
-	var st := _get_ex_state(ex_id)
-	st["show_hint"] = not st["show_hint"]
-	render()
+	func _gui_input(event: InputEvent) -> void:
+		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			var best := -1
+			var best_d := 30.0 * exam._s()
+			for i in range(exam._pages.size()):
+				var d := _stop_pos(i).distance_to(event.position)
+				if d < best_d:
+					best_d = d
+					best = i
+			if best >= 0 and exam.can_jump_to(best):
+				exam._go_to_page(best)
+				accept_event()

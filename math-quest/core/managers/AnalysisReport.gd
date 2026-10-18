@@ -7,7 +7,7 @@ signal share_requested(paths: PackedStringArray)
 
 var _last_export_paths : PackedStringArray = []
 
-const ANALYSIS_PATH := "user://analysis_data.json"
+var analysis_path : String = "user://mathquest_analysis_data.json"
 const EXPORT_FOLDER_NAME := "MathQuest-Report"
 
 var _fell_back_to_private : bool = false
@@ -21,6 +21,13 @@ const C_ACCENT := Color("#a8781a")
 
 var _overlay : CanvasLayer = null
 
+
+func _ready() -> void:
+	# Reset data (Settings) clears the answer log too.
+	DataManager.data_cleared.connect(clear_data)
+	# A new device starts with an empty answer log file.
+	if not FileAccess.file_exists(analysis_path):
+		clear_data()
 
 func _is_mobile() -> bool:
 	return OS.get_name().to_lower() in ["android", "ios"]
@@ -40,9 +47,9 @@ func clear_data() -> void:
 
 func _load_raw() -> Dictionary:
 	var empty := {"attempts": []}
-	if not FileAccess.file_exists(ANALYSIS_PATH):
+	if not FileAccess.file_exists(analysis_path):
 		return empty
-	var f := FileAccess.open(ANALYSIS_PATH, FileAccess.READ)
+	var f := FileAccess.open(analysis_path, FileAccess.READ)
 	if f == null:
 		return empty
 	var parsed = JSON.parse_string(f.get_as_text())
@@ -52,9 +59,9 @@ func _load_raw() -> Dictionary:
 	return parsed
 
 func _save_raw(data: Dictionary) -> void:
-	var f := FileAccess.open(ANALYSIS_PATH, FileAccess.WRITE)
+	var f := FileAccess.open(analysis_path, FileAccess.WRITE)
 	if f == null:
-		push_error("AnalysisReport: cannot write %s" % ANALYSIS_PATH)
+		push_error("AnalysisReport: cannot write %s" % analysis_path)
 		return
 	f.store_string(JSON.stringify(data, "\t"))
 	f.close()

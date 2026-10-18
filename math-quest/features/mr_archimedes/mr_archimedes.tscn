@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://nw0spdahvh48"]
 
-[ext_resource type="Texture2D" uid="uid://c8tdwcmbjrwsq" path="res://assets/models/npc/npcs.png" id="1_0j13s"]
 [ext_resource type="Script" uid="uid://cvg0386xnpvv4" path="res://features/mr_archimedes/mr_archimedes.gd" id="1_hmdfm"]
+[ext_resource type="Texture2D" uid="uid://yvpa4uv5apgd" path="res://assets/models/npc/mr_archimedes.png" id="2_hmdfm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0j13s"]
 size = Vector2(60, 25)
@@ -12,9 +12,7 @@ script = ExtResource("1_hmdfm")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -2)
 scale = Vector2(0.122, 0.122)
-texture = ExtResource("1_0j13s")
-hframes = 12
-vframes = 8
+texture = ExtResource("2_hmdfm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0j13s")

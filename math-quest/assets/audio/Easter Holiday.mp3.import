@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://crbnyipblldk4"
+path="res://.godot/imported/Easter Holiday.mp3-6a02cb1cdf561877b3ea12e637df6a34.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Easter Holiday.mp3"
+dest_files=["res://.godot/imported/Easter Holiday.mp3-6a02cb1cdf561877b3ea12e637df6a34.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
